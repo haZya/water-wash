@@ -1,0 +1,10 @@
+/**
+ * Component classes registered by plugins.
+ *
+ */
+
+@import 'print.css';
+
+@import 'nprogress.css';
+
+@tailwind components;
