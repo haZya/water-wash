@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.1",
     "@emotion/react": "^11.10.0",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@hookform/resolvers": "^2.9.7",
+    "@lottiefiles/react-lottie-player": "^3.4.7",
     "@mui/material": "^5.10.0",
     "@reduxjs/toolkit": "^1.8.3",
     "clsx": "^1.2.1",
