@@ -1,3 +1,3 @@
-import Seo, { ISeo } from './Seo';
+import Seo from './Seo';
 
-export { Seo, type ISeo };
+export { Seo };

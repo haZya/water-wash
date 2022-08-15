@@ -4,8 +4,9 @@ import 'styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { ISeo, Seo } from 'components/shared';
+import { Seo } from 'components/shared';
 import { createEmotionCache, theme } from 'lib/mui';
+import { ISeo } from 'models/shared';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
@@ -18,6 +19,7 @@ Router.events.on('routeChangeError', () => nProgress.done());
 nProgress.configure({ showSpinner: false }); // Remove spinner
 
 export type NextPageExtended = NextPage & {
+  name: string;
   seo: ISeo;
 };
 
@@ -35,7 +37,7 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Seo {...Component.seo} />
+        <Seo {...Component.seo} metaTitle={Component.seo?.metaTitle ?? Component.name} />
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
