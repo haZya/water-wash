@@ -54,7 +54,6 @@ module.exports = {
       colors: {
         primary: { main: '#19A6DC' },
         secondary: { main: '#A5CE39' },
-        decor: { primary: '#FF9191', secondary: '#FFD491' },
       },
       fontFamily: {
         heading: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
