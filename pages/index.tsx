@@ -3,8 +3,9 @@ import residentialLottie from '@/assets/lotties/clean-house.json';
 import commercialLottie from '@/assets/lotties/mall-cleaning.json';
 
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Box, useTheme } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { useWindowSize } from 'hooks';
+import { useRef } from 'react';
 import { NextPageExtended } from './_app';
 
 const Home: NextPageExtended = () => {
@@ -12,6 +13,9 @@ const Home: NextPageExtended = () => {
   const { width } = useWindowSize();
   const mdDown = width < theme.breakpoints.values.md;
   const scale = width * 0.009375;
+
+  const groupRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLSpanElement>(null);
 
   return (
     <>
@@ -26,8 +30,8 @@ const Home: NextPageExtended = () => {
               src={commercialLottie}
             />
           </div>
-          <div className="absolute-center ml-[14rem] -z-10">
-            <div className="group relative inline-block cursor-pointer w-20 h-20">
+          <div className="absolute-center flex-center ml-[14rem] -z-10">
+            <div ref={groupRef} className="group relative inline-block cursor-pointer w-20 h-20">
               <span className="absolute top-0 left-0 w-full h-full rounded-full ping-animation ring-decor-primary ring-2 opacity-40" />
               <Box
                 className="absolute pointer-events-none w-full h-full bg-decor-primary rounded-full transform-gpu"
@@ -36,14 +40,14 @@ const Home: NextPageExtended = () => {
                   transform: 'matrix(1, 0, 0, 1, 0, 0)',
                   '.group:hover &': {
                     transitionDuration: '.5s',
-                    transitionDelay: '.15s',
+                    transitionDelay: '.2s',
                     transform: `matrix(${scale}, 0, 0, ${scale}, -140, ${
                       width * (mdDown ? -0.0025 : -0.25) + 5.75
                     })`,
                   },
                 }}
               />
-              <div className="absolute flex-center text-gray-500 bg-decor-primary group-hover:bg-white transition-colors duration-300 group-hover:delay-100 w-full h-full rounded-full">
+              <div className="absolute flex-center text-white group-hover:text-gray-500 bg-decor-primary group-hover:bg-white transition-colors duration-300 group-hover:delay-100 w-full h-full rounded-full">
                 <svg
                   version="1.0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +77,29 @@ const Home: NextPageExtended = () => {
                   </g>
                 </svg>
               </div>
+              <div
+                className="absolute top-20 left-0 w-40 text-start"
+                style={{
+                  marginLeft:
+                    ((groupRef.current?.clientWidth ?? 0) - (titleRef.current?.clientWidth ?? 0)) /
+                    2,
+                }}
+              >
+                <Typography
+                  ref={titleRef}
+                  className="text-base group-hover:text-white font-semibold w-fit mt-2 transition-colors duration-200 group-hover:duration-500"
+                  color="text.secondary"
+                  variant="h2"
+                >
+                  Commercial
+                </Typography>
+                <Typography
+                  className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 mt-1"
+                  color="white"
+                >
+                  Try simple tricks to make every drop count.
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
@@ -95,7 +122,7 @@ const Home: NextPageExtended = () => {
                   transform: 'matrix(1, 0, 0, 1, 0, 0)',
                   '.group:hover &': {
                     transitionDuration: '.5s',
-                    transitionDelay: '.15s',
+                    transitionDelay: '.2s',
                     transform: `matrix(${scale}, 0, 0, ${scale}, 140, ${
                       width * (mdDown ? 0.0025 : 0.25) + -3
                     })`,
@@ -105,7 +132,7 @@ const Home: NextPageExtended = () => {
                   },
                 }}
               />
-              <div className="absolute flex-center text-gray-500 bg-decor-secondary group-hover:bg-white transition-colors duration-300 group-hover:delay-100 w-full h-full rounded-full">
+              <div className="absolute flex-center text-white group-hover:text-gray-500 bg-decor-secondary group-hover:bg-white transition-colors duration-300 group-hover:delay-100 w-full h-full rounded-full">
                 <svg
                   version="1.0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -127,6 +154,21 @@ const Home: NextPageExtended = () => {
                     <path d="M2439 1504 c-56 -17 -141 -90 -172 -148 -22 -41 -22 -45 -27 -699 l-5 -657 303 0 302 0 0 285 0 285 -92 0 c-108 0 -150 16 -185 69 -48 71 -20 175 57 213 26 13 59 18 128 18 l94 0 -4 208 c-3 200 -4 209 -30 264 -67 143 -218 209 -369 162z" />
                   </g>
                 </svg>
+              </div>
+              <div className="absolute top-20 right-0 w-40 text-end">
+                <Typography
+                  className="text-base group-hover:text-white font-semibold w-full mt-2 transition-colors duration-200 group-hover:duration-500"
+                  color="text.secondary"
+                  variant="h2"
+                >
+                  Residential
+                </Typography>
+                <Typography
+                  className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 w-full mt-1"
+                  color="white"
+                >
+                  Learn easy ways to toss less to save more.
+                </Typography>
               </div>
             </div>
           </div>
