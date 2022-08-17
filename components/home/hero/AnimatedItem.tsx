@@ -35,8 +35,8 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
   return (
     <div
       className={clsx(
-        'absolute-center w-72 lg:w-96 h-auto',
-        index === 0 ? 'top-1/4 left-3/4' : index === 1 && 'top-3/4 left-1/4'
+        'absolute-center w-64 lg:w-80 h-auto',
+        index === 0 ? 'top-1/4 left-3/4 -mt-8' : index === 1 && 'top-3/4 left-1/4 mt-8'
       )}
     >
       <div
@@ -106,15 +106,17 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
             >
               {title}
             </Typography>
-            <Typography
-              className={clsx(
-                'absolute text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 w-40 mt-1',
-                index === 0 ? 'left-0' : index === 1 && 'right-0'
-              )}
-              color="white"
-            >
-              {description}
-            </Typography>
+            {description && (
+              <Typography
+                className={clsx(
+                  'absolute text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 w-40 mt-1',
+                  index === 0 ? 'left-0' : index === 1 && 'right-0'
+                )}
+                color="white"
+              >
+                {description}
+              </Typography>
+            )}
           </div>
         </div>
       </div>

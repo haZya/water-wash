@@ -1,3 +1,4 @@
+import Image from './Image';
 import Seo from './Seo';
 
-export { Seo };
+export { Image, Seo };
