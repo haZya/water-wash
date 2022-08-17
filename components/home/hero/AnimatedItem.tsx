@@ -10,7 +10,9 @@ type CircleTranslate = {
   circleTY: number;
 };
 
-const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: IAnimatedItem) => {
+interface IProps extends IAnimatedItem {}
+
+const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: IProps) => {
   const theme = useTheme();
   const { width } = useWindowSize();
 

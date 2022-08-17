@@ -1,3 +1,5 @@
+import AnimatedItem from './AnimatedItem';
 import Hero from './Hero';
+import MobileCard from './MobileCard';
 
-export { Hero };
+export { Hero, AnimatedItem, MobileCard };
