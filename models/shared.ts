@@ -32,3 +32,7 @@ export interface ISeo {
    */
   ogAltText?: string;
 }
+
+export interface IPage {
+  seo: ISeo;
+}
