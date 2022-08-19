@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import logo from '@/assets/logos/logo.svg';
 
 import { Box } from '@mui/material';
+import clsx from 'clsx';
 import { Image } from 'components/shared';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
@@ -14,13 +15,14 @@ import { useSelector } from 'react-redux';
 import { EffectCards, Pagination, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { AnimatedItem, MobileCard } from '.';
+import styles from './Hero.module.css';
 
 const swiperOptions: SwiperOptions = {
   grabCursor: true,
   effect: 'cards',
   pagination: {
     clickable: true,
-    horizontalClass: '!-bottom-8',
+    clickableClass: clsx('!-bottom-8', styles.swiperPagination),
   },
   modules: [EffectCards, Pagination],
 };
@@ -33,8 +35,10 @@ const Hero = () => {
     <div className="relative h-screen overflow-hidden">
       <div className="hidden sm:block">
         <Link href="/">
-          <a className="pointer-events-none absolute-center w-[56rem] h-[56rem] lg:w-[60rem] lg:h-[72rem] z-10">
-            <Image src={logo} alt="logo" layout="fill" priority />
+          <a className="absolute-center w-[56rem] h-[56rem] lg:w-[64rem] lg:h-[64rem] xl:w-[72rem] xl:h-[72rem] z-10">
+            <div className={clsx('pointer-events-none', styles.logo)}>
+              <Image src={logo} alt="logo" priority />
+            </div>
           </a>
         </Link>
         {items.map((item, i) => (
@@ -46,8 +50,10 @@ const Hero = () => {
         sx={{ backgroundColor: items[activeIndex]?.color }}
       >
         <Link href="/">
-          <a className="pointer-events-none max-w-96 max-h-96 -mb-16 -mt-24">
-            <Image src={logo} alt="logo" priority />
+          <a className={clsx('max-w-96 max-h-96 -mb-16 -mt-24', styles.logoMobile)}>
+            <div className="pointer-events-none">
+              <Image src={logo} alt="logo" priority />
+            </div>
           </a>
         </Link>
         <Swiper
@@ -60,7 +66,10 @@ const Hero = () => {
           {items.map((item) => (
             <SwiperSlide
               key={item.title}
-              className="flex flex-col justify-around items-center rounded-2xl bg-white shadow-2xl"
+              className={clsx(
+                'flex flex-col justify-around items-center rounded-2xl bg-white w-full h-full',
+                styles.swiperSlide
+              )}
             >
               <MobileCard {...item} />
             </SwiperSlide>
