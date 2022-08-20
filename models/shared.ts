@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
 
 export type NavLink = {
   label: string;
@@ -6,11 +7,18 @@ export type NavLink = {
   color: 'primary' | 'secondary';
 };
 
+export type Social = {
+  label: string;
+  icon: ReactNode;
+  url: string;
+};
+
 export interface ILayout {
   logo: any;
   nav: {
     links: NavLink[];
   };
+  socials: Social[];
 }
 
 export interface ISeo {

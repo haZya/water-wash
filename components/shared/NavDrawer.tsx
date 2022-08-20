@@ -55,12 +55,14 @@ const NavDrawer = () => {
         <div className="m-2">
           <Link href="/">
             <a>
-              <Image src={logo} alt="Water Wash Logo" width={240} height={138} />
+              <div className="w-36 mx-auto my-4">
+                <Image src={logo} alt="Water Wash Logo" priority />
+              </div>
             </a>
           </Link>
         </div>
-        <Divider className="bg-primary-main mb-2" />
-        <List className="flex-1">
+        <Divider className="bg-primary-main" />
+        <List className="flex-1 my-4">
           {links.map(({ label, path }) => (
             <Link key={label} href={path ?? ''} scroll={!!path}>
               <a>
@@ -78,6 +80,14 @@ const NavDrawer = () => {
           ))}
         </List>
       </Container>
+      <div className="flex justify-center items-center w-full h-10 px-4 py-6 bg-neutral-200 border-t border-secondary-main">
+        <Typography className="text-xs">
+          Copyright © 2022{' '}
+          <Link href="/">
+            <a>Water Wash</a>
+          </Link>
+        </Typography>
+      </div>
     </StyledDrawer>
   );
 };

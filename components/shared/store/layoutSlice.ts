@@ -12,6 +12,7 @@ const initialState: IInitialState = {
     nav: {
       links: [],
     },
+    socials: [],
   },
   navDrawerOpen: false,
 };

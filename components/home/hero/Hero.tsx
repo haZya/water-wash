@@ -35,8 +35,13 @@ const Hero = () => {
     <section aria-label="hero" className="relative h-screen overflow-hidden">
       <div className="hidden sm:block">
         <Link href="/">
-          <a className="absolute-center w-[56rem] h-[56rem] lg:w-[64rem] lg:h-[64rem] xl:w-[72rem] xl:h-[72rem] z-10">
-            <div className={clsx('pointer-events-none', styles.logo)}>
+          <a className="absolute-center z-10">
+            <div
+              className={clsx(
+                'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
+                styles.logo
+              )}
+            >
               <Image src={logo} alt="logo" priority />
             </div>
           </a>
@@ -46,11 +51,11 @@ const Hero = () => {
         ))}
       </div>
       <Box
-        className="flex-center flex-col sm:hidden w-full h-full transition-colors duration-500"
+        className="flex-center flex-col sm:hidden w-full h-full transition-colors duration-500 space-y-6"
         sx={{ backgroundColor: items[activeIndex]?.color }}
       >
         <Link href="/">
-          <a className={clsx('max-w-96 max-h-96 -mb-16 -mt-24', styles.logoMobile)}>
+          <a className={clsx('max-w-60', styles.logoMobile)}>
             <div className="pointer-events-none">
               <Image src={logo} alt="logo" priority />
             </div>

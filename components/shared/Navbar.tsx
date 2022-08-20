@@ -8,8 +8,6 @@ import Image from './Image';
 import styles from './Navbar.module.css';
 import NavDrawer from './NavDrawer';
 import { setLayout } from './store/layoutSlice';
-// import NavDrawer, { DrawerNavItem } from './NavDrawer';
-// import { setLayoutState } from './store/layoutSlice';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -43,12 +41,12 @@ const Navbar = () => {
             >
               <FormatAlignLeft fontSize="large" />
             </IconButton>
-            <div
-              className={clsx('mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start')}
-            >
+            <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start">
               <Link href="/">
                 <a>
-                  <Image src={logo} alt="Water Wash Logo" width={128} height={64} />
+                  <div className="w-20">
+                    <Image src={logo} alt="Water Wash Logo" priority />
+                  </div>
                 </a>
               </Link>
             </div>
@@ -56,7 +54,7 @@ const Navbar = () => {
               {links.map(({ label, path, color }) => (
                 <Link key={label} href={path}>
                   <a className="group relative">
-                    <Typography className={`text-lg text-${color}-main`}>{label}</Typography>
+                    <Typography className={`text-base text-${color}-main`}>{label}</Typography>
                     <span
                       className={`absolute block h-0.5 w-0 group-hover:w-full bg-${color}-main transition-all duration-500`}
                     />

@@ -1,5 +1,4 @@
 import { Hero } from 'components/home';
-import { Section1 } from 'components/home/section-1';
 import { setHero } from 'components/home/store/heroSlice';
 import { Seo } from 'components/shared';
 import { IAnimatedItem, IHome } from 'models/home';
@@ -99,7 +98,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
     <>
       <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
       <Hero />
-      <Section1 />
+      {/* <Section1 /> */}
     </>
   );
 };
