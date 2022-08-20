@@ -27,7 +27,7 @@ const Footer = () => {
               <Link key={label} href={path}>
                 <a>
                   <Typography
-                    className="text-base whitespace-nowrap hover:text-gray-700"
+                    className="text-base font-medium whitespace-nowrap hover:text-gray-700"
                     color="text.secondary"
                   >
                     {label}
@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-center items-center w-full h-10 bg-neutral-200 border-t border-secondary-main">
-        <Typography className="text-xs">
+        <Typography className="text-xs font-medium">
           Copyright © 2022{' '}
           <Link href="/">
             <a>Water Wash</a>
