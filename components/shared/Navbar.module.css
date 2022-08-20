@@ -1,0 +1,12 @@
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: slide-down 0.5s ease-out;
+}

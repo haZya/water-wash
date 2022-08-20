@@ -1,5 +1,18 @@
 import { StaticImageData } from 'next/image';
 
+export type NavLink = {
+  label: string;
+  path: string;
+  color: 'primary' | 'secondary';
+};
+
+export interface ILayout {
+  logo: any;
+  nav: {
+    links: NavLink[];
+  };
+}
+
 export interface ISeo {
   /**
    * Should the page be indexed?

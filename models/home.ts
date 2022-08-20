@@ -1,3 +1,5 @@
+import { IPage } from './shared';
+
 //#region Hero
 export interface IAnimatedItem {
   index: number;
@@ -8,8 +10,9 @@ export interface IAnimatedItem {
   color: string;
 }
 
-export interface IHero {
-  logo: string;
-  items: Omit<IAnimatedItem, 'index'>[];
+export interface IHome extends IPage {
+  hero: {
+    items: Omit<IAnimatedItem, 'index'>[];
+  };
 }
 //#endregion

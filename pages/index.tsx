@@ -1,8 +1,8 @@
 import { Hero } from 'components/home';
-import { setHeroContent } from 'components/home/store/heroSlice';
+import { Section1 } from 'components/home/section-1';
+import { setHero } from 'components/home/store/heroSlice';
 import { Seo } from 'components/shared';
-import { IAnimatedItem, IHero } from 'models/home';
-import { IPage } from 'models/shared';
+import { IAnimatedItem, IHome } from 'models/home';
 import { GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -77,13 +77,12 @@ const items: Omit<IAnimatedItem, 'index'>[] = [
   },
 ];
 
-interface IProps extends IPage, IHero {}
+interface IProps extends IHome {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
-      logo: '',
-      items,
+      hero: { items },
       seo: { indexing: true, metaDesc: '' },
     },
   };
@@ -93,13 +92,14 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHeroContent(props));
-  }, [dispatch, props]);
+    dispatch(setHero(props.hero));
+  }, [dispatch, props.hero]);
 
   return (
     <>
       <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
       <Hero />
+      <Section1 />
     </>
   );
 };

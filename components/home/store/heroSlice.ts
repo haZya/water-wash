@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IHero } from 'models/home';
+import { IHome } from 'models/home';
 
-const initialState: IHero = {
-  logo: '',
+const initialState: IHome['hero'] = {
   items: [],
 };
 
@@ -10,10 +9,10 @@ const heroSlice = createSlice({
   name: 'home/hero',
   initialState,
   reducers: {
-    setHeroContent: (_state, action: PayloadAction<IHero>) => action.payload,
+    setHero: (_state, action: PayloadAction<typeof initialState>) => action.payload,
   },
 });
 
-export const { setHeroContent } = heroSlice.actions;
+export const { setHero } = heroSlice.actions;
 
 export default heroSlice.reducer;

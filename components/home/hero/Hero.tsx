@@ -32,7 +32,7 @@ const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <section aria-label="hero" className="relative h-screen overflow-hidden">
       <div className="hidden sm:block">
         <Link href="/">
           <a className="absolute-center w-[56rem] h-[56rem] lg:w-[64rem] lg:h-[64rem] xl:w-[72rem] xl:h-[72rem] z-10">
@@ -76,7 +76,7 @@ const Hero = () => {
           ))}
         </Swiper>
       </Box>
-    </div>
+    </section>
   );
 };
 

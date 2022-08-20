@@ -4,6 +4,7 @@ import 'styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
+import Layout from 'components/shared/Layout';
 import { createEmotionCache, theme } from 'lib/mui';
 import { store } from 'lib/redux';
 import type { AppProps } from 'next/app';
@@ -31,7 +32,9 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Provider store={store}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Provider>
       </ThemeProvider>
     </CacheProvider>
