@@ -53,21 +53,18 @@ const Navbar = () => {
             <div className="hidden sm:flex items-center ml-auto gap-8 md:gap-12">
               {links.map(({ label, path, color }) => (
                 <Link key={label} href={path}>
-                  <a className="group relative">
+                  <a className={clsx('relative', styles.navLink)}>
                     <Typography
                       className={clsx(
-                        'text-base',
-                        color === 'primary' ? 'text-primary-main' : 'text-secondary-main'
+                        'relative text-base',
+                        color === 'primary'
+                          ? 'text-primary-main after:bg-primary-main'
+                          : 'text-secondary-main after:bg-secondary-main',
+                        styles.navLinkText
                       )}
                     >
                       {label}
                     </Typography>
-                    <span
-                      className={clsx(
-                        'absolute block h-0.5 w-0 group-hover:w-full bg-${color}-main transition-all duration-500',
-                        color === 'primary' ? 'bg-primary-main' : 'bg-secondary-main'
-                      )}
-                    />
                   </a>
                 </Link>
               ))}
