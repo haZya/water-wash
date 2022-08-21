@@ -14,15 +14,15 @@ const Footer = () => {
   return (
     <footer className="bg-neutral-100">
       <div className="container mx-auto py-2 flex items-center min-h-20">
-        <div className="flex items-center justify-center sm:justify-between w-full">
+        <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/">
-            <a className="flex-1 hidden sm:block">
+            <a className="grow hidden sm:block">
               <div className="w-24 my-2">
                 <Image src={logo} alt="Water Wash Logo" priority />
               </div>
             </a>
           </Link>
-          <div className="flex items-center space-x-8 sm:space-x-12 overflow-auto">
+          <div className="grow flex justify-center items-center gap-8 sm:gap-12">
             {links.map(({ label, path }) => (
               <Link key={label} href={path}>
                 <a>
@@ -36,7 +36,7 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-          <ul className="hidden sm:flex flex-1 justify-end space-x-6">
+          <ul className="grow hidden sm:flex justify-end flex-nowrap gap-6">
             {socials.map(({ label, icon, url }, i) => (
               <li key={i}>
                 <a

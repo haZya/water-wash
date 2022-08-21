@@ -50,7 +50,7 @@ const Navbar = () => {
                 </a>
               </Link>
             </div>
-            <div className="hidden sm:flex items-center ml-auto space-x-8 md:space-x-12">
+            <div className="hidden sm:flex items-center ml-auto gap-8 md:gap-12">
               {links.map(({ label, path, color }) => (
                 <Link key={label} href={path}>
                   <a className="group relative">

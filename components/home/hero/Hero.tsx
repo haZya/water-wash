@@ -28,7 +28,7 @@ const swiperOptions: SwiperOptions = {
 };
 
 const Hero = () => {
-  const { items } = useSelector(({ home }: RootState) => home.hero);
+  const { items } = useSelector(({ home }: RootState) => home.content.hero);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -51,7 +51,7 @@ const Hero = () => {
         ))}
       </div>
       <Box
-        className="flex-center flex-col sm:hidden w-full h-full transition-colors duration-500 space-y-6"
+        className="flex-center flex-col sm:hidden w-full h-full transition-colors duration-500 gap-6"
         sx={{ backgroundColor: items[activeIndex]?.color }}
       >
         <Link href="/">
