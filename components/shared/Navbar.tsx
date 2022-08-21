@@ -54,9 +54,19 @@ const Navbar = () => {
               {links.map(({ label, path, color }) => (
                 <Link key={label} href={path}>
                   <a className="group relative">
-                    <Typography className={`text-base text-${color}-main`}>{label}</Typography>
+                    <Typography
+                      className={clsx(
+                        'text-base',
+                        color === 'primary' ? 'text-primary-main' : 'text-secondary-main'
+                      )}
+                    >
+                      {label}
+                    </Typography>
                     <span
-                      className={`absolute block h-0.5 w-0 group-hover:w-full bg-${color}-main transition-all duration-500`}
+                      className={clsx(
+                        'absolute block h-0.5 w-0 group-hover:w-full bg-${color}-main transition-all duration-500',
+                        color === 'primary' ? 'bg-primary-main' : 'bg-secondary-main'
+                      )}
                     />
                   </a>
                 </Link>
