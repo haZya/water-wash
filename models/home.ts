@@ -1,5 +1,3 @@
-import { IPage } from './shared';
-
 //#region Hero
 export interface IAnimatedItem {
   index: number;
@@ -9,10 +7,23 @@ export interface IAnimatedItem {
   description?: string;
   color: string;
 }
+//#endregion
 
-export interface IHome extends IPage {
+//#region Section1
+export interface ISection1Item {
+  icon: string;
+  title: string;
+  content: string;
+}
+//#endregion
+
+export interface IHome {
   hero: {
     items: Omit<IAnimatedItem, 'index'>[];
   };
+  section1: {
+    title: string;
+    subtitle: string;
+    items: ISection1Item[];
+  };
 }
-//#endregion

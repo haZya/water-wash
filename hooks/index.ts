@@ -1,3 +1,4 @@
-import { useWindowSize } from './useWindowSize';
+import useInView from './useInView';
+import useWindowSize from './useWindowSize';
 
-export { useWindowSize };
+export { useInView, useWindowSize };

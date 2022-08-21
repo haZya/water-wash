@@ -1,0 +1,15 @@
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(384px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slideUp {
+  animation: slide-up 1s;
+  animation-fill-mode: forwards;
+}

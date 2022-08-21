@@ -1,6 +1,7 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Box, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
+import { sanitize } from 'dompurify';
 import { useWindowSize } from 'hooks';
 import { IAnimatedItem } from 'models/home';
 import { useMemo, useRef } from 'react';
@@ -113,7 +114,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
               <Box
                 className="absolute flex-center transition-colors w-full h-full rounded-full"
                 component="div"
-                dangerouslySetInnerHTML={{ __html: icon }}
+                dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
                 color="white"
                 sx={{
                   backgroundColor: color,

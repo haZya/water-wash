@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import hero from './heroSlice';
+import content from './contentSlice';
 
 const reducer = combineReducers({
-  hero,
+  content,
 });
 
 export default reducer;
