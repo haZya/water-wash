@@ -31,7 +31,7 @@ const Navbar = () => {
       <AppBar
         className={clsx(
           'bg-transparent fixed w-full z-50',
-          navSticky && 'backdrop-blur-sm !bg-white/70 shadow-sm',
+          navSticky && 'backdrop-blur-sm !bg-white/70 shadow-sm border-b border-white/50',
           styles.navbar
         )}
         component="nav"
