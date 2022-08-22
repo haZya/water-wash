@@ -44,7 +44,7 @@ const Navbar = () => {
             disableGutters
           >
             <IconButton
-              className="block sm:hidden mr-4"
+              className="block sm:hidden mr-4 drop-shadow-md"
               color="primary"
               aria-label="open drawer"
               edge="start"
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <a>
                   <div
                     className={clsx(
-                      'transition-all duration-500',
+                      'transition-all duration-500 drop-shadow-md',
                       navSticky ? 'w-20' : 'w-24 sm:w-32'
                     )}
                   >

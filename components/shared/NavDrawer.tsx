@@ -55,7 +55,7 @@ const NavDrawer = () => {
         <div className="m-2">
           <Link href="/">
             <a>
-              <div className="w-36 mx-auto my-4">
+              <div className="w-36 mx-auto my-4 drop-shadow-md">
                 <Image src={logo} alt="Water Wash Logo" priority />
               </div>
             </a>

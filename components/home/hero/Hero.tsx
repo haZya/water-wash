@@ -60,7 +60,7 @@ const Hero = () => {
       >
         <Link href="/">
           <a className={clsx('max-w-60', styles.logoMobile)}>
-            <div className="pointer-events-none">
+            <div className="pointer-events-none drop-shadow-md">
               <Image src={logo} alt="logo" priority />
             </div>
           </a>
@@ -76,7 +76,7 @@ const Hero = () => {
             <SwiperSlide
               key={item.title}
               className={clsx(
-                'flex flex-col justify-around items-center rounded-2xl bg-white w-full h-full',
+                'flex flex-col justify-around items-center rounded-2xl backdrop-blur-lg bg-white/50 w-full h-full',
                 styles.swiperSlide
               )}
             >
