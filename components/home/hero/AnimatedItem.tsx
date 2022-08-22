@@ -1,8 +1,8 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Box, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { sanitize } from 'dompurify';
 import { useWindowSize } from 'hooks';
+import { sanitize } from 'lib/dompurify';
 import { IAnimatedItem } from 'models/home';
 import { useMemo, useRef } from 'react';
 import styles from './Hero.module.css';

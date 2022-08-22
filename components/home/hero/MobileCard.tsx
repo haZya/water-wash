@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Typography } from '@mui/material';
-import { sanitize } from 'dompurify';
+import { sanitize } from 'lib/dompurify';
 import { IAnimatedItem } from 'models/home';
 
 interface IProps extends Omit<IAnimatedItem, 'index' | 'color'> {}

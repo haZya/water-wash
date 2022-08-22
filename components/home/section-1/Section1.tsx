@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
-import { sanitize } from 'dompurify';
 import { useInView } from 'hooks';
+import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import CardItem from './CardItem';
@@ -8,7 +8,6 @@ import CardItem from './CardItem';
 const Section1 = () => {
   const { title, subtitle, items } = useSelector(({ home }: RootState) => home.content.section1);
   const [ref, inView] = useInView<HTMLDivElement>('-80px');
-  console.log(inView);
 
   return (
     <section aria-labelledby="section-1-title" className="bg-sky-100 py-16">
