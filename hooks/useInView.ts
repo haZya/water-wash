@@ -1,13 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 
-function useInView<T extends Element>(
-  /**
-   * Margin around the root.
-   *
-   * Initial value: `0px`
-   */
-  rootMargin: string = '0px'
-): [RefObject<T>, boolean] {
+function useInView<T extends Element>(rootMargin: string = '0px'): [RefObject<T>, boolean] {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState<boolean>(false);
   useEffect(() => {

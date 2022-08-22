@@ -1,7 +1,47 @@
+.wrapper {
+  transition: all 0.7s cubic-bezier(0.5, 2, 0.5, 0.5);
+}
+
+.wrapper:hover {
+  transform: scale(1.12) translateY(-1.4rem);
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  height: 10px;
+  background: var(--secondary-main);
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: 0;
+  height: 10px;
+  background: var(--primary-main);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.9s ease;
+}
+
+.wrapper:hover::after {
+  visibility: visible;
+  opacity: 1;
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(384px);
+    transform: translateY(6.4rem);
   }
   to {
     opacity: 1;
@@ -10,6 +50,8 @@
 }
 
 .slideUp {
-  animation: slide-up 1s;
+  animation-name: slide-up;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.5, 2, 0.5, 0.5);
   animation-fill-mode: forwards;
 }
