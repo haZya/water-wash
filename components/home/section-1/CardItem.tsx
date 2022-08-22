@@ -24,7 +24,7 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
     >
       <div
         className={clsx(
-          'group w-full h-full bg-white shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
+          'group w-full h-full backdrop-blur-sm bg-white/50 hover:bg-white/80 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
           styles.wrapper
         )}
       >
