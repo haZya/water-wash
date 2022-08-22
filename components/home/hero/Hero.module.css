@@ -146,3 +146,20 @@
   animation-duration: 0.7s;
   animation-fill-mode: forwards;
 }
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-16px);
+  }
+}
+
+.float {
+  animation: float;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}

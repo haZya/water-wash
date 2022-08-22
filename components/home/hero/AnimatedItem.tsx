@@ -53,7 +53,15 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
           index === 0 ? '-ml-16 lg:-ml-28' : index === 1 && 'ml-16 lg:ml-28'
         )}
       >
-        <Player className="absolute top-0 left-0 w-full h-full" autoplay loop src={lottie} />
+        <Player
+          className={clsx('absolute top-0 left-0 w-full h-full drop-shadow-xl', styles.float)}
+          autoplay
+          loop
+          src={lottie}
+          style={{
+            animationDelay: `${4 * index}s`,
+          }}
+        />
       </div>
       <div
         className={clsx(
@@ -112,7 +120,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 }}
               />
               <Box
-                className="absolute flex-center transition-colors w-full h-full rounded-full"
+                className="absolute flex-center transition-colors w-full h-full rounded-full drop-shadow-md"
                 component="div"
                 dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
                 color="white"

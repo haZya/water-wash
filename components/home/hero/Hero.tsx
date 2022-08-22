@@ -11,6 +11,7 @@ import { Image } from 'components/shared';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useState } from 'react';
+import Tilt from 'react-parallax-tilt';
 import { useSelector } from 'react-redux';
 import { EffectCards, Pagination, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -36,14 +37,17 @@ const Hero = () => {
       <div className="hidden sm:block">
         <Link href="/">
           <a className="absolute-center z-10">
-            <div
+            <Tilt
               className={clsx(
                 'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
                 styles.logo
               )}
+              transitionSpeed={2000}
+              gyroscope
+              trackOnWindow
             >
               <Image src={logo} alt="logo" priority />
-            </div>
+            </Tilt>
           </a>
         </Link>
         {items.map((item, i) => (
