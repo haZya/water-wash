@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import useInView from 'hooks/useInView';
 import { sanitize } from 'lib/dompurify';
 import { ISection1Item } from 'models/home';
+import Tilt from 'react-parallax-tilt';
 import styles from './CardItem.module.css';
 
 interface IProps extends ISection1Item {
@@ -22,21 +23,23 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
         animationDelay: `${index * 0.3}s`,
       }}
     >
-      <div
-        className={clsx(
-          'group w-full h-full backdrop-blur-sm bg-white/50 hover:bg-white/80 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
-          styles.wrapper
-        )}
-      >
+      <Tilt className="w-full h-full" scale={1.1} tiltMaxAngleX={15} tiltMaxAngleY={15}>
         <div
-          className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 mx-auto"
-          dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-        />
-        <Typography className="text-center text-lg font-medium select-none" variant="h3">
-          {title}
-        </Typography>
-        <Typography className="text-center text-xs select-none">{content}</Typography>
-      </div>
+          className={clsx(
+            'group w-full h-full backdrop-blur-sm bg-white/50 hover:bg-white/80 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
+            styles.wrapper
+          )}
+        >
+          <div
+            className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 mx-auto"
+            dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
+          />
+          <Typography className="text-center text-lg font-medium select-none" variant="h3">
+            {title}
+          </Typography>
+          <Typography className="text-center text-xs select-none">{content}</Typography>
+        </div>
+      </Tilt>
     </Box>
   );
 };
