@@ -53,7 +53,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full h-10 bg-neutral-200 border-t border-secondary-main">
+      <div className="flex justify-center items-center w-full h-10 text-center bg-neutral-200 border-t border-secondary-main">
         <Typography className="text-xs font-medium">
           Copyright © 2022{' '}
           <Link href="/">
