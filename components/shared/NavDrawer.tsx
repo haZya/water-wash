@@ -49,7 +49,7 @@ const NavDrawer = () => {
       }}
     >
       <Container
-        className="flex flex-col flex-1 text-center text-secondary-main bg-white-main"
+        className="flex flex-col flex-1 text-center text-secondary-500 bg-white-500"
         onClick={handleDrawerToggle}
       >
         <div className="m-2">
@@ -61,7 +61,7 @@ const NavDrawer = () => {
             </a>
           </Link>
         </div>
-        <Divider className="bg-primary-main" />
+        <Divider className="bg-primary-500" />
         <List className="flex-1 my-4">
           {links.map(({ label, path }) => (
             <Link key={label} href={path ?? ''} scroll={!!path}>
@@ -80,7 +80,7 @@ const NavDrawer = () => {
           ))}
         </List>
       </Container>
-      <div className="flex justify-center items-center w-full h-10 px-4 py-6 bg-neutral-200 border-t border-secondary-main">
+      <div className="flex justify-center items-center w-full h-10 px-4 py-6 bg-neutral-200 border-t border-secondary-500">
         <Typography className="text-xs">
           Copyright © 2022{' '}
           <Link href="/">

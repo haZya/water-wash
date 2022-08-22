@@ -1,5 +1,5 @@
 import { FormatAlignLeft } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Typography, useScrollTrigger } from '@mui/material';
 import clsx from 'clsx';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
@@ -17,6 +17,11 @@ const Navbar = () => {
   } = useSelector(({ shared }: RootState) => shared.layoutSlice.layout);
   const { navDrawerOpen } = useSelector(({ shared }: RootState) => shared.layoutSlice);
 
+  const navSticky = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
   const handleDrawerToggle = () => {
     dispatch(setLayout({ navDrawerOpen: !navDrawerOpen }));
   };
@@ -24,13 +29,20 @@ const Navbar = () => {
   return (
     <>
       <AppBar
-        className={clsx('backdrop-blur-sm bg-white/70 shadow-sm fixed w-full z-50', styles.navbar)}
+        className={clsx(
+          'bg-transparent fixed w-full z-50',
+          navSticky && 'backdrop-blur-sm !bg-white/70 shadow-sm',
+          styles.navbar
+        )}
         component="nav"
         color="transparent"
         elevation={0}
       >
         <div className="container mx-auto">
-          <Toolbar className="transition-all duration-500 mx-4 sm:mx-0" disableGutters>
+          <Toolbar
+            className={clsx('transition-all duration-500 mx-4 sm:mx-0', navSticky ? 'm-0' : 'my-4')}
+            disableGutters
+          >
             <IconButton
               className="block sm:hidden mr-4"
               color="primary"
@@ -44,7 +56,12 @@ const Navbar = () => {
             <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start">
               <Link href="/">
                 <a>
-                  <div className="w-20">
+                  <div
+                    className={clsx(
+                      'transition-all duration-500',
+                      navSticky ? 'w-20' : 'w-24 sm:w-32'
+                    )}
+                  >
                     <Image src={logo} alt="Water Wash Logo" priority />
                   </div>
                 </a>
@@ -58,8 +75,8 @@ const Navbar = () => {
                       className={clsx(
                         'relative text-base',
                         color === 'primary'
-                          ? 'text-primary-main after:bg-primary-main'
-                          : 'text-secondary-main after:bg-secondary-main',
+                          ? 'text-primary-700 after:bg-primary-700'
+                          : 'text-secondary-700 after:bg-secondary-700',
                         styles.navLinkText
                       )}
                     >

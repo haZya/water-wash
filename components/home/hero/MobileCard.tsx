@@ -19,7 +19,7 @@ const MobileCard = ({ lottie, icon, title, description }: IProps) => {
         variant="h2"
       >
         <div
-          className="flex-center w-14 h-14"
+          className="flex items-center w-14 h-14 -mr-4"
           dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
         />
         {title}

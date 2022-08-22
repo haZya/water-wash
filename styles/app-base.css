@@ -7,8 +7,24 @@
 @tailwind base;
 
 :root {
-  --primary-main: #19a6dc;
-  --secondary-main: #a5ce39;
+  --primary-100: #b3e3f3;
+  --primary-200: #82d1ec;
+  --primary-300: #55bfe4;
+  --primary-400: #36b2e0;
+  --primary-500: #19a5dc;
+  --primary-600: #1197ce;
+  --primary-700: #0585bb;
+  --primary-800: #0574a8;
+  --primary-900: #005586;
+  --secondary-100: #e5f0c6;
+  --secondary-200: #d3e7a1;
+  --secondary-300: #c1dd7a;
+  --secondary-400: #b2d65a;
+  --secondary-500: #a4ce39;
+  --secondary-600: #93be31;
+  --secondary-700: #7daa26;
+  --secondary-800: #68961c;
+  --secondary-900: #427405;
 }
 
 html {
