@@ -26,7 +26,7 @@ export interface IHome {
   section1: {
     title: string;
     subtitle: string;
-    background: StaticImageData;
+    background: StaticImageData | string;
     items: ISection1Item[];
   };
 }
