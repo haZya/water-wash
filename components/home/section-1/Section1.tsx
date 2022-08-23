@@ -1,18 +1,25 @@
+import bg from '@/assets/images/bg-2.png';
 import { Typography } from '@mui/material';
+import clsx from 'clsx';
+import { Image } from 'components/shared';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import CardItem from './CardItem';
+import styles from './Section1.module.css';
 import Wave from './Wave';
 
 const Section1 = () => {
   const { title, subtitle, items } = useSelector(({ home }: RootState) => home.content.section1);
 
   return (
-    <section aria-labelledby="section-1-title" className="relative">
-      <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-10 px-2">
+    <section aria-labelledby="section-1-title" className="relative overflow-hidden">
+      <div className={clsx(styles.imageWrapper)}>
+        <Image src={bg} alt="" />
+      </div>
+      <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-4 px-2">
         <div className="container mx-auto">
-          <header className="flex flex-col items-center">
+          <header className="flex flex-col items-center space-y-8 mb-16">
             <Typography
               className="text-3xl sm:text-4xl text-center font-bold leading-tight"
               id="section-1-title"

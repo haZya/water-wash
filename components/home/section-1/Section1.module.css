@@ -1,0 +1,16 @@
+.imageWrapper {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  width: 100%;
+  min-width: 1800px;
+  opacity: 0.2;
+}
+
+@media (min-width: 1921px) {
+  .imageWrapper {
+    max-width: 86%;
+  }
+}

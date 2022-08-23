@@ -18,7 +18,7 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
   return (
     <Box
       ref={ref}
-      className={clsx('translate-y-16 opacity-0', inView && styles.slideUp)}
+      className={clsx('translate-y-16 opacity-0 backdrop-blur-sm', inView && styles.slideUp)}
       sx={{
         animationDelay: `${index * 0.3}s`,
       }}
@@ -26,7 +26,7 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
       <Tilt className="w-full h-full" scale={1.1} tiltMaxAngleX={15} tiltMaxAngleY={15}>
         <div
           className={clsx(
-            'group w-full h-full backdrop-blur-sm bg-white/50 hover:bg-white/80 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
+            'group w-full h-full bg-white/40 hover:bg-white/60 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',
             styles.wrapper
           )}
         >
