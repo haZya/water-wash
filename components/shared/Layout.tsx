@@ -1,9 +1,10 @@
 import logo from '@/assets/logos/logo.svg';
 import { Facebook, Instagram, Twitter } from '@mui/icons-material';
+import { RootState } from 'lib/redux';
 import { NavLink, Social } from 'models/shared';
 import dynamic from 'next/dynamic';
 import { ReactNode, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import { setLayout } from './store/layoutSlice';
@@ -53,6 +54,7 @@ interface IProps {
 
 const Layout = ({ children }: IProps) => {
   const dispatch = useDispatch();
+  const { show } = useSelector(({ shared }: RootState) => shared.message);
 
   useEffect(() => {
     dispatch(setLayout({ layoutContent: { logo, nav: { links: navLinks }, socials } }));
@@ -63,7 +65,7 @@ const Layout = ({ children }: IProps) => {
       <Navbar />
       <main>{children}</main>
       <Footer />
-      <DynamicMessage />
+      {show && <DynamicMessage />}
     </>
   );
 };
