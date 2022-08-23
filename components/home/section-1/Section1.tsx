@@ -10,7 +10,7 @@ const Section1 = () => {
 
   return (
     <section aria-labelledby="section-1-title" className="relative">
-      <div className="bg-gradient-to-r from-primary-100 to-secondary-100 py-16 px-2">
+      <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-10 px-2">
         <div className="container mx-auto">
           <header className="flex flex-col items-center">
             <Typography

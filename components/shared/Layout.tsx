@@ -55,7 +55,7 @@ const Layout = ({ children }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLayout({ layout: { logo, nav: { links: navLinks }, socials } }));
+    dispatch(setLayout({ layoutContent: { logo, nav: { links: navLinks }, socials } }));
   }, [dispatch]);
 
   return (

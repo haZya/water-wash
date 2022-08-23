@@ -29,10 +29,12 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 const NavDrawer = () => {
   const dispatch = useDispatch();
   const {
-    logo,
-    nav: { links },
-  } = useSelector(({ shared }: RootState) => shared.layoutSlice.layout);
-  const { navDrawerOpen } = useSelector(({ shared }: RootState) => shared.layoutSlice);
+    navDrawerOpen,
+    layoutContent: {
+      logo,
+      nav: { links },
+    },
+  } = useSelector(({ shared }: RootState) => shared.layout);
 
   const handleDrawerToggle = () => {
     dispatch(setLayout({ navDrawerOpen: !navDrawerOpen }));

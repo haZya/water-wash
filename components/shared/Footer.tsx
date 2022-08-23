@@ -9,7 +9,7 @@ const Footer = () => {
     logo,
     nav: { links },
     socials,
-  } = useSelector(({ shared }: RootState) => shared.layoutSlice.layout);
+  } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
 
   return (
     <footer className="bg-neutral-100">

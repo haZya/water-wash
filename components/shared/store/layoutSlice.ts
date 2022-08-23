@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILayout } from 'models/shared';
 
 interface IInitialState {
-  layout: ILayout;
+  layoutContent: ILayout;
   navDrawerOpen: boolean;
 }
 
 const initialState: IInitialState = {
-  layout: {
+  layoutContent: {
     logo: null,
     nav: {
       links: [],

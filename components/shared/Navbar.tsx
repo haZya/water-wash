@@ -1,21 +1,35 @@
 import { FormatAlignLeft } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Typography, useScrollTrigger } from '@mui/material';
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useScrollTrigger,
+  useTheme,
+} from '@mui/material';
 import clsx from 'clsx';
 import { RootState } from 'lib/redux';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from './Image';
 import styles from './Navbar.module.css';
-import NavDrawer from './NavDrawer';
 import { setLayout } from './store/layoutSlice';
+
+const DynamicNavDrawer = dynamic(() => import('./NavDrawer'));
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const {
-    logo,
-    nav: { links },
-  } = useSelector(({ shared }: RootState) => shared.layoutSlice.layout);
-  const { navDrawerOpen } = useSelector(({ shared }: RootState) => shared.layoutSlice);
+    navDrawerOpen,
+    layoutContent: {
+      logo,
+      nav: { links },
+    },
+  } = useSelector(({ shared }: RootState) => shared.layout);
 
   const navSticky = useScrollTrigger({
     disableHysteresis: true,
@@ -89,7 +103,7 @@ const Navbar = () => {
           </Toolbar>
         </div>
       </AppBar>
-      <NavDrawer />
+      {smDown && <DynamicNavDrawer />}
     </>
   );
 };
