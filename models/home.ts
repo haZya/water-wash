@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 //#region Hero
 export interface IAnimatedItem {
   index: number;
@@ -24,6 +26,7 @@ export interface IHome {
   section1: {
     title: string;
     subtitle: string;
+    background: StaticImageData;
     items: ISection1Item[];
   };
 }

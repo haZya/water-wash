@@ -1,3 +1,5 @@
+import background from '@/assets/images/bg-2.png'; // TODO: From CMS
+
 import { Hero } from 'components/home';
 import { Section1 } from 'components/home/section-1';
 import { setHomeContent } from 'components/home/store/contentSlice';
@@ -80,7 +82,7 @@ const hero: IHome['hero'] = {
   ],
 };
 
-const section1 = {
+const section1: IHome['section1'] = {
   title: renderToStaticMarkup(
     <p>
       The Dependable Power <br /> Washing Solution For Your Home Or Business
@@ -92,6 +94,7 @@ const section1 = {
       <strong>34 power washing projects last month</strong> in the Melbourne area
     </p>
   ),
+  background,
   items: [
     {
       icon: renderToStaticMarkup(
