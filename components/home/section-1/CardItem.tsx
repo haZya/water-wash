@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import clsx from 'clsx';
 import useInView from 'hooks/useInView';
 import { sanitize } from 'lib/dompurify';
@@ -11,9 +11,7 @@ interface IProps extends ISection1Item {
 }
 
 const CardItem = ({ index, icon, title, content }: IProps) => {
-  const theme = useTheme();
-  const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
-  const [ref, inView] = useInView<HTMLDivElement>(xsDown ? '-10px' : '-40px');
+  const [ref, inView] = useInView<HTMLDivElement>();
 
   return (
     <Box

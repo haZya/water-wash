@@ -14,7 +14,7 @@ const DesktopHero = () => {
   return (
     <>
       <Link href="/">
-        <a className="absolute-center z-10">
+        <a className="absolute transform-center z-10">
           <Tilt
             className={clsx(
               'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',

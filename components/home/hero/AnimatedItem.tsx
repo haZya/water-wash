@@ -37,7 +37,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
   return (
     <Box
       className={clsx(
-        'absolute-center w-64 lg:w-80 h-auto',
+        'absolute transform-center w-64 lg:w-80 h-auto',
         index === 0
           ? 'top-1/4 left-3/4 -mt-4 translate-x-full translate-y-[-180%]'
           : index === 1 && 'top-3/4 left-1/4 mt-12 translate-x-[-180%] translate-y-full',
@@ -65,7 +65,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
       </div>
       <div
         className={clsx(
-          'absolute-center -z-10',
+          'absolute transform-center -z-10',
           index === 0 ? 'ml-[14rem]' : index === 1 && '-ml-[14rem]'
         )}
       >
