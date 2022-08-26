@@ -1,3 +1,4 @@
+import ExportedImage from 'next-image-export-optimizer';
 import NextImage, { ImageProps } from 'next/image';
 
 const Image = ({ ...props }: ImageProps) => {
@@ -13,7 +14,7 @@ const Image = ({ ...props }: ImageProps) => {
   if (props.layout === 'fill') {
     return (
       <div className="relative w-full h-full">
-        <NextImage {...combinedProps} />
+        <ExportedImage {...combinedProps} src={combinedProps.src as string} />
       </div>
     );
   }

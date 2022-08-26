@@ -7,9 +7,7 @@ import { useRouter } from 'next/router';
 const removeLeadingSlash = (slug: string) =>
   slug.startsWith('/') ? slug.substring(1, slug.length) : slug;
 
-interface IProps extends Omit<ISeo, 'metaTitle'> {
-  metaTitle: string;
-}
+interface IProps extends ISeo {}
 
 const Seo = ({ indexing = false, metaTitle, metaDesc, ogImage, ogAltText }: IProps) => {
   const { pathname } = useRouter();

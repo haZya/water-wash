@@ -120,8 +120,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
             className="w-full h-full"
             onlyHandleDraggable
             portrait={portrait}
-            itemOne={<Image src={image1} alt="Image One" layout="fill" />}
-            itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
+            itemOne={<Image src={image1} alt="Image One" layout="fill" unoptimized />}
+            itemTwo={<Image src={image2} alt="Image two" layout="fill" unoptimized />}
             position={position}
             onPositionChange={(pos) => {
               setPosition(pos);
@@ -157,8 +157,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
             <ReactCompareSlider
               className="w-full h-full"
               portrait={portrait}
-              itemOne={<Image src={image1} alt="Image One" layout="fill" />}
-              itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
+              itemOne={<Image src={image1} alt="Image One" layout="fill" unoptimized />}
+              itemTwo={<Image src={image2} alt="Image two" layout="fill" unoptimized />}
               position={position}
               onPositionChange={(pos) => {
                 setPosition(pos);

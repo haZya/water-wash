@@ -12,7 +12,7 @@ const Section3 = () => {
 
   return (
     <section aria-labelledby="section-2-title">
-      <div className="container mx-auto pt-16">
+      <div className="container mx-auto pt-16 overflow-hidden">
         <header className="flex flex-col items-center space-y-8 mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"

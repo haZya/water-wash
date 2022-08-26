@@ -34,7 +34,7 @@ export interface IHome {
   section1: {
     title: string;
     subtitle: string;
-    background: StaticImageData | string;
+    background: string;
     items: ISection1Item[];
   };
   section2: {

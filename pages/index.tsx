@@ -1,5 +1,3 @@
-import background from '@/assets/images/bg-2.png'; // TODO: From CMS
-
 import { Hero } from 'components/home';
 import { Section1 } from 'components/home/section-1';
 import { Section2 } from 'components/home/section-2';
@@ -96,7 +94,7 @@ const section1: IHome['section1'] = {
       <strong>34 power washing projects last month</strong> in the Melbourne area
     </p>
   ),
-  background,
+  background: '/assets/images/bg-2.png',
   items: [
     {
       icon: renderToStaticMarkup(
@@ -215,7 +213,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       section1,
       section2,
       section3,
-      seo: { indexing: true, metaDesc: '' },
+      seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
     },
   };
 };
@@ -229,7 +227,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
 
   return (
     <>
-      <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
+      <Seo {...seo} />
       <Hero />
       <Section1 />
       <Section2 />

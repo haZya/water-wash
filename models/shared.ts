@@ -33,7 +33,7 @@ export interface ISeo {
    *
    * Initial value: `Component.name`
    */
-  metaTitle?: string;
+  metaTitle: string;
   /**
    * Meta Description
    *

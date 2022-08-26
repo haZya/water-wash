@@ -17,8 +17,8 @@ const Footer = () => {
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/">
             <a className="grow hidden sm:block">
-              <div className="w-24 my-2">
-                <Image src={logo} alt="Water Wash Logo" priority />
+              <div className="w-24 h-[6.2rem] my-2">
+                <Image src={logo} alt="Water Wash Logo" layout="fill" priority unoptimized />
               </div>
             </a>
           </Link>

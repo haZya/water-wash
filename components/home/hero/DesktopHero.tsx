@@ -17,14 +17,14 @@ const DesktopHero = () => {
         <a className="absolute transform-center z-10">
           <Tilt
             className={clsx(
-              'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
+              'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem] h-[24.7rem] lg:h-[28.2rem] xl:h-[30.8rem]',
               styles.logo
             )}
             transitionSpeed={2000}
             gyroscope
             trackOnWindow
           >
-            <Image src={logo} alt="logo" priority />
+            <Image src={logo} alt="logo" layout="fill" priority unoptimized />
           </Tilt>
         </a>
       </Link>

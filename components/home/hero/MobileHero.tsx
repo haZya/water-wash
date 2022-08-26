@@ -38,7 +38,7 @@ const MobileHero = () => {
       <Link href="/">
         <a className={clsx('max-w-60', styles.logoMobile)}>
           <div className="pointer-events-none drop-shadow-md">
-            <Image src={logo} alt="logo" priority />
+            <Image src={logo} alt="logo" width={'200px'} height={'130px'} priority unoptimized />
           </div>
         </a>
       </Link>

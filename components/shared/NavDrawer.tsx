@@ -8,10 +8,10 @@ import {
   styled,
   Typography,
 } from '@mui/material';
+import { Image } from 'components/shared';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from './Image';
 import { setLayout } from './store/layoutSlice';
 
 const drawerWidth = 240;
@@ -58,7 +58,14 @@ const NavDrawer = () => {
           <Link href="/">
             <a>
               <div className="w-36 mx-auto my-4 drop-shadow-md">
-                <Image src={logo} alt="Water Wash Logo" priority />
+                <Image
+                  src={logo}
+                  alt="Water Wash Logo"
+                  width={'100px'}
+                  height={'64px'}
+                  priority
+                  unoptimized
+                />
               </div>
             </a>
           </Link>

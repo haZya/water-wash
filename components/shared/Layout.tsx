@@ -1,4 +1,3 @@
-import logo from '@/assets/logos/logo.svg';
 import { Facebook, Instagram, Twitter } from '@mui/icons-material';
 import { RootState } from 'lib/redux';
 import { NavLink, Social } from 'models/shared';
@@ -57,7 +56,11 @@ const Layout = ({ children }: IProps) => {
   const { show } = useSelector(({ shared }: RootState) => shared.message);
 
   useEffect(() => {
-    dispatch(setLayout({ layoutContent: { logo, nav: { links: navLinks }, socials } }));
+    dispatch(
+      setLayout({
+        layoutContent: { logo: '/assets/logos/logo.svg', nav: { links: navLinks }, socials },
+      })
+    );
   }, [dispatch]);
 
   return (

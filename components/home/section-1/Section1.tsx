@@ -16,7 +16,7 @@ const Section1 = () => {
   return (
     <section aria-labelledby="section-1-title" className="relative overflow-hidden">
       <div className={clsx('z-0', styles.imageWrapper)}>
-        <Image src={background} alt="" />
+        <Image src={background} alt="" width={7000} height={2189} unoptimized />
       </div>
       <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-4 px-2">
         <div className="container mx-auto">

@@ -73,10 +73,10 @@ const Navbar = () => {
                   <div
                     className={clsx(
                       'transition-all duration-500 drop-shadow-md',
-                      navSticky ? 'w-20' : 'w-24 sm:w-32'
+                      navSticky ? 'w-20 h-[5.1rem]' : 'w-24 sm:w-32 h-[6.1rem] sm:h-[8.2rem]'
                     )}
                   >
-                    <Image src={logo} alt="Water Wash Logo" priority />
+                    <Image src={logo} alt="Water Wash Logo" layout="fill" priority unoptimized />
                   </div>
                 </a>
               </Link>
