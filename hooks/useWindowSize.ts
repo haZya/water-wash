@@ -17,8 +17,6 @@ function useWindowSize(when: boolean = true): WindowSize {
     // Handler to call on window resize
     function handleResize() {
       if (when) {
-        console.log('hit');
-
         // Set window width/height to state
         setWindowSize({
           width: window.innerWidth,

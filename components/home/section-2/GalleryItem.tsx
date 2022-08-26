@@ -6,7 +6,7 @@ import { ISection2Item } from 'models/home';
 import { useLayoutEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
-import styles from './GalleryItem.module.scss';
+import styles from './GalleryItem.module.css';
 
 interface IProps extends ISection2Item {
   index: number;
@@ -17,7 +17,7 @@ type StyledReactCompareSliderProps = {
   scaleY: number;
 };
 
-const StyledDiv = styled('div', {
+const Popup = styled('div', {
   shouldForwardProp: (prop) => prop !== 'scaleX' && prop !== 'scaleY',
 })<StyledReactCompareSliderProps>(({ scaleX, scaleY }) => ({
   '@keyframes zoom-in': {
@@ -68,7 +68,6 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
 
   useLayoutEffect(() => {
     if (!scrolling && animationEnded) {
-      console.log(scrolling);
       setRect(ref.current?.getBoundingClientRect());
     }
   }, [ref, scrolling, animationEnded]);
@@ -143,10 +142,10 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
       </Box>
       {open != undefined && (
         <>
-          <StyledDiv
+          <Popup
             className={clsx('!fixed', open ? 'zoom-in' : 'zoom-out')}
-            scaleX={(width * 0.9) / (rect?.width ?? 1)}
-            scaleY={(width * 0.9) / (rect?.width ?? 1)}
+            scaleX={(width * 0.85) / (rect?.width ?? 1)}
+            scaleY={(width * 0.85) / (rect?.width ?? 1)}
             style={{
               width: rect?.width,
               height: rect?.height,
@@ -157,8 +156,6 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
           >
             <ReactCompareSlider
               className="w-full h-full"
-              // className={clsx('!fixed', open ? styles.zoomIn : styles.zoomOut)}
-
               portrait={portrait}
               itemOne={<Image src={image1} alt="Image One" layout="fill" />}
               itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
@@ -166,9 +163,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
               onPositionChange={(pos) => {
                 setPosition(pos);
               }}
-            ></ReactCompareSlider>
-            <h2 className="absolute text-black text-xl">Something</h2>
-          </StyledDiv>
+            />
+          </Popup>
           <Backdrop
             className="backdrop-blur-sm"
             open={open}
