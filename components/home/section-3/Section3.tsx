@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import Script from 'next/script';
@@ -11,12 +11,12 @@ const Section3 = () => {
   } = useSelector(({ home }: RootState) => home.content.section3);
 
   return (
-    <section aria-labelledby="section-2-title">
-      <div className="container mx-auto pt-16">
+    <section aria-labelledby="section-3-title">
+      <div className="container mx-auto pt-16 overflow-hidden">
         <header className="flex flex-col items-center space-y-8 mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"
-            id="section-2-title"
+            id="section-3-title"
             variant="h2"
             color="text.secondary"
           >
@@ -24,14 +24,7 @@ const Section3 = () => {
           </Typography>
         </header>
         <Script src={url} strategy="lazyOnload"></Script>
-        <Box
-          className={className}
-          sx={{
-            '.Main__Container-sc-1n4ud0o-0': {
-              maxWidth: 1280,
-            },
-          }}
-        />
+        <div className={className} />
       </div>
     </section>
   );

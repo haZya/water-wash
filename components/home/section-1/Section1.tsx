@@ -29,9 +29,10 @@ const Section1 = () => {
             >
               <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
             </Typography>
-            <Typography className="text-center text-base my-6 z-10" variant="subtitle1">
-              <div dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }} />
-            </Typography>
+            <Typography
+              className="text-center text-base my-6 z-10"
+              dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}
+            />
           </header>
           <div className="grid grid-cols-1 xs:grid-cols-3 gap-6 xs:gap-4 sm:gap-8 lg:gap-12 mt-4">
             {items.map((item, i) => (

@@ -97,7 +97,7 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
         )}
         component="div"
         sx={{
-          animationDelay: `${(index + 1) * 0.1}s`,
+          animationDelay: `${index * 0.1}s`,
         }}
         onAnimationStart={() => {
           setAnimationEnded(false);
