@@ -1,15 +1,18 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
+import Script from 'next/script';
 import { useSelector } from 'react-redux';
-import { GalleryItem } from '.';
 
-const Section2 = () => {
-  const { title, items } = useSelector(({ home }: RootState) => home.content.section2);
+const Section3 = () => {
+  const {
+    title,
+    script: { url, className },
+  } = useSelector(({ home }: RootState) => home.content.section3);
 
   return (
     <section aria-labelledby="section-2-title">
-      <div className="container mx-auto pt-16 pb-8">
+      <div className="container mx-auto pt-16">
         <header className="flex flex-col items-center space-y-8 mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"
@@ -20,14 +23,18 @@ const Section2 = () => {
             <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
           </Typography>
         </header>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 md:gap-8">
-          {items.map((item, i) => (
-            <GalleryItem key={i} index={i} {...item} />
-          ))}
-        </div>
+        <Script src={url} strategy="lazyOnload"></Script>
+        <Box
+          className={className}
+          sx={{
+            '.Main__Container-sc-1n4ud0o-0': {
+              maxWidth: 1280,
+            },
+          }}
+        />
       </div>
     </section>
   );
 };
 
-export default Section2;
+export default Section3;

@@ -13,6 +13,13 @@ const initialState: IHome = {
     title: '',
     items: [],
   },
+  section3: {
+    title: '',
+    script: {
+      url: '',
+      className: '',
+    },
+  },
 };
 
 const contentSlice = createSlice({

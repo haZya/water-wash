@@ -12,8 +12,8 @@ module.exports = {
     container: {
       padding: {
         DEFAULT: '1rem',
-        sm: '1.5rem',
-        xl: '12rem',
+        sm: '1.6rem',
+        xl: '12.8rem',
       },
     },
     maxHeight: (theme) => ({

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import useInView from 'hooks/useInView';
 import { sanitize } from 'lib/dompurify';
@@ -11,6 +11,8 @@ interface IProps extends ISection1Item {
 }
 
 const CardItem = ({ index, icon, title, content }: IProps) => {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const [ref, inView] = useInView<HTMLDivElement>('30px 0px -30px 0px');
 
   return (
@@ -18,10 +20,15 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
       ref={ref}
       className={clsx('translate-y-0 opacity-0 backdrop-blur-sm', inView && styles.slideUp)}
       sx={{
-        animationDelay: `${(index + 1) * 0.3}s`,
+        animationDelay: `${index * 0.3}s`,
       }}
     >
-      <Tilt className="w-full h-full" scale={1.1} tiltMaxAngleX={15} tiltMaxAngleY={15}>
+      <Tilt
+        className="w-full h-full"
+        scale={smDown ? 1 : 1.1}
+        tiltMaxAngleX={15}
+        tiltMaxAngleY={15}
+      >
         <div
           className={clsx(
             'group w-full h-full bg-white/40 hover:bg-white/60 shadow hover:shadow-xl rounded-xl overflow-hidden px-4 py-8 space-y-4 will-change-transform transform-gpu',

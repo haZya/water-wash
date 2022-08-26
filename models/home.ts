@@ -41,4 +41,11 @@ export interface IHome {
     title: string;
     items: ISection2Item[];
   };
+  section3: {
+    title: string;
+    script: {
+      url: string;
+      className: string;
+    };
+  };
 }

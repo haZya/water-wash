@@ -117,7 +117,7 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
           glareMaxOpacity={0.3}
         >
           <ReactCompareSlider
-            className="w-full h-full flex"
+            className="w-full h-full"
             onlyHandleDraggable
             portrait={portrait}
             itemOne={<Image src={image1} alt="Image One" layout="fill" />}
