@@ -11,14 +11,14 @@ interface IProps extends ISection1Item {
 }
 
 const CardItem = ({ index, icon, title, content }: IProps) => {
-  const [ref, inView] = useInView<HTMLDivElement>();
+  const [ref, inView] = useInView<HTMLDivElement>('30px 0px -30px 0px');
 
   return (
     <Box
       ref={ref}
-      className={clsx('translate-y-16 opacity-0 backdrop-blur-sm', inView && styles.slideUp)}
+      className={clsx('translate-y-0 opacity-0 backdrop-blur-sm', inView && styles.slideUp)}
       sx={{
-        animationDelay: `${index * 0.3}s`,
+        animationDelay: `${(index + 1) * 0.3}s`,
       }}
     >
       <Tilt className="w-full h-full" scale={1.1} tiltMaxAngleX={15} tiltMaxAngleY={15}>

@@ -1,7 +1,7 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Box, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { useWindowSize } from 'hooks';
+import { useInView, useWindowSize } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IAnimatedItem } from 'models/home';
 import { useMemo, useRef } from 'react';
@@ -16,7 +16,8 @@ interface IProps extends IAnimatedItem {}
 
 const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: IProps) => {
   const theme = useTheme();
-  const { width } = useWindowSize();
+  const [ref, inView] = useInView();
+  const { width } = useWindowSize(inView);
 
   const groupRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
@@ -36,6 +37,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
 
   return (
     <Box
+      ref={ref}
       className={clsx(
         'absolute transform-center w-64 lg:w-80 h-auto',
         index === 0

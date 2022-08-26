@@ -10,7 +10,7 @@ const Wave = () => {
       width="100%"
       height="100%"
       id="svg"
-      viewBox="0 0 1440 400"
+      viewBox="0 0 1440 270"
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
     >
