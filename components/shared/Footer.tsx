@@ -12,7 +12,7 @@ const Footer = () => {
   } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
 
   return (
-    <footer className="bg-neutral-100">
+    <footer className="bg-neutral-100 mt-16">
       <div className="container mx-auto py-2 flex items-center min-h-20">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/">

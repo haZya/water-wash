@@ -6,15 +6,21 @@ function useInView<T extends Element>(rootMargin: string = '0px'): [RefObject<T>
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    let intersectingTimeout: NodeJS.Timeout;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
+        clearTimeout(intersectingTimeout);
+
         // Update our state when observer callback fires
-        setInView(entry.isIntersecting);
+        intersectingTimeout = setTimeout(() => setInView(entry.isIntersecting), 150);
       },
       {
         rootMargin,
       }
     );
+
     observer.observe(el);
     return () => {
       observer.unobserve(el);

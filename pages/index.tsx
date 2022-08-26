@@ -2,6 +2,7 @@ import background from '@/assets/images/bg-2.png'; // TODO: From CMS
 
 import { Hero } from 'components/home';
 import { Section1 } from 'components/home/section-1';
+import { Section2 } from 'components/home/section-2';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
 import { IHome } from 'models/home';
@@ -180,6 +181,22 @@ const section1: IHome['section1'] = {
   ],
 };
 
+const section2: IHome['section2'] = {
+  title: 'GALLERY',
+  items: [...Array(9)]
+    .map(() => ({
+      image1: `https://unsplash.it/800/800/?${Math.random()}`,
+      image2: `https://unsplash.it/800/800/?${Math.random()}`,
+    }))
+    .concat(
+      [...Array(3)].map(() => ({
+        image1: `https://unsplash.it/800/800/?${Math.random()}`,
+        image2: `https://unsplash.it/800/800/?${Math.random()}`,
+        portrait: true,
+      }))
+    ),
+};
+
 interface IProps extends IPage, IHome {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -187,6 +204,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
     props: {
       hero,
       section1,
+      section2,
       seo: { indexing: true, metaDesc: '' },
     },
   };
@@ -204,6 +222,9 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
       <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
       <Hero />
       <Section1 />
+      <Section2 />
+      {/* <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+      <div className="elfsight-app-5c9cc84e-038a-49ea-867d-11b5d721584d"></div> */}
     </>
   );
 };

@@ -19,6 +19,14 @@ export interface ISection1Item {
 }
 //#endregion
 
+//#region Section2
+export interface ISection2Item {
+  image1: StaticImageData | string;
+  image2: StaticImageData | string;
+  portrait?: boolean;
+}
+//#endregion
+
 export interface IHome {
   hero: {
     items: Omit<IAnimatedItem, 'index'>[];
@@ -28,5 +36,9 @@ export interface IHome {
     subtitle: string;
     background: StaticImageData | string;
     items: ISection1Item[];
+  };
+  section2: {
+    title: string;
+    items: ISection2Item[];
   };
 }

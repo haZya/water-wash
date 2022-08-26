@@ -9,6 +9,10 @@ const initialState: IHome = {
     background: '',
     items: [],
   },
+  section2: {
+    title: '',
+    items: [],
+  },
 };
 
 const contentSlice = createSlice({

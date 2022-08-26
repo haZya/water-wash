@@ -142,7 +142,7 @@
 }
 
 .textVisibility {
-  animation: opacity-in;
+  animation-name: opacity-in;
   animation-duration: 0.7s;
   animation-fill-mode: forwards;
 }
@@ -158,7 +158,7 @@
 }
 
 .float {
-  animation: float;
+  animation-name: float;
   animation-duration: 8s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;

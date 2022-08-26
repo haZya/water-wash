@@ -25,6 +25,7 @@
   --secondary-700: #7daa26;
   --secondary-800: #68961c;
   --secondary-900: #427405;
+  --gallery-item-scale: 2;
 }
 
 html {

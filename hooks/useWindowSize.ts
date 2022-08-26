@@ -6,7 +6,7 @@ type WindowSize = {
   height: number;
 };
 
-function useWindowSize(): WindowSize {
+function useWindowSize(when: boolean = true): WindowSize {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState<WindowSize>({
@@ -16,11 +16,15 @@ function useWindowSize(): WindowSize {
   useEffect(() => {
     // Handler to call on window resize
     function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      if (when) {
+        console.log('hit');
+
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
     }
     // Add event listener
     window.addEventListener('resize', handleResize);
@@ -28,7 +32,7 @@ function useWindowSize(): WindowSize {
     handleResize();
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
+  }, [when]); // Empty array ensures that effect is only run on mount
   return windowSize;
 }
 
