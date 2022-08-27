@@ -13,7 +13,7 @@ interface IProps extends ISection1Item {
 const CardItem = ({ index, icon, title, content }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const [ref, inView] = useInView<HTMLDivElement>('30px 0px -30px 0px');
+  const [ref, inView] = useInView<HTMLDivElement>('30px 0px 0px 0px');
 
   return (
     <Box

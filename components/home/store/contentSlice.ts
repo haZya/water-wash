@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IHome } from 'models/home';
+import { IHome, ISection2Item } from 'models/home';
 
 const initialState: IHome = {
   hero: { items: [] },
@@ -19,6 +19,10 @@ const initialState: IHome = {
       className: '',
     },
   },
+  section4: {
+    title: '',
+    subtitle: '',
+  },
 };
 
 const contentSlice = createSlice({
@@ -26,9 +30,21 @@ const contentSlice = createSlice({
   initialState,
   reducers: {
     setHomeContent: (_state, action: PayloadAction<IHome>) => action.payload,
+    setSection2ItemState: (
+      state,
+      action: PayloadAction<
+        Pick<ISection2Item, 'inView' | 'animationStarted' | 'animationEnded'> & { index: number }
+      >
+    ) => {
+      const { index, inView, animationStarted, animationEnded } = action.payload;
+      const item = state.section2.items[index];
+      item.inView = inView;
+      item.animationStarted = animationStarted;
+      item.animationEnded = animationEnded;
+    },
   },
 });
 
-export const { setHomeContent } = contentSlice.actions;
+export const { setHomeContent, setSection2ItemState } = contentSlice.actions;
 
 export default contentSlice.reducer;

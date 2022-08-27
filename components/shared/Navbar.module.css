@@ -11,6 +11,10 @@
   animation: slide-down 0.5s ease-out;
 }
 
+.navLinkText {
+  text-shadow: 0px 0px 10px #fff;
+}
+
 .navLinkText::after {
   content: '';
   position: absolute;

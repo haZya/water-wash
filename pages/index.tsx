@@ -4,6 +4,7 @@ import { Hero } from 'components/home';
 import { Section1 } from 'components/home/section-1';
 import { Section2 } from 'components/home/section-2';
 import { Section3 } from 'components/home/section-3';
+import { Section4 } from 'components/home/section-4';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
 import { IHome } from 'models/home';
@@ -206,6 +207,12 @@ const section3: IHome['section3'] = {
   },
 };
 
+const section4: IHome['section4'] = {
+  title: 'GET IN TOUCH',
+  subtitle:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro adipisci ex facilis assumenda atque.',
+};
+
 interface IProps extends IPage, IHome {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -215,6 +222,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       section1,
       section2,
       section3,
+      section4,
       seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
     },
   };
@@ -234,6 +242,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
       <Section1 />
       <Section2 />
       <Section3 />
+      <Section4 />
     </>
   );
 };

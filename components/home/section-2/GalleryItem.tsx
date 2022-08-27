@@ -3,13 +3,16 @@ import clsx from 'clsx';
 import { Image } from 'components/shared';
 import { useInView, useScrolling, useWindowSize } from 'hooks';
 import { ISection2Item } from 'models/home';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
+import { useDispatch } from 'react-redux';
+import { setSection2ItemState } from '../store/contentSlice';
 import styles from './GalleryItem.module.css';
 
 interface IProps extends ISection2Item {
   index: number;
+  prevItem: ISection2Item;
 }
 
 type StyledReactCompareSliderProps = {
@@ -54,16 +57,24 @@ const Popup = styled('div', {
   },
 }));
 
-const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
+const GalleryItem = ({
+  index,
+  animationStarted,
+  animationEnded,
+  prevItem,
+  image1,
+  image2,
+  portrait,
+}: IProps) => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const [ref, inView] = useInView<HTMLDivElement>('30px 0px -30px 0px');
+  const [ref, inView] = useInView<HTMLDivElement>('30px 0px 0px 0px');
   const { width } = useWindowSize();
   const scrolling = useScrolling(inView);
 
   const [rect, setRect] = useState<DOMRect>();
   const [open, setOpen] = useState<boolean>();
-  const [animationEnded, setAnimationEnded] = useState(false);
   const [position, setPosition] = useState(50);
 
   useLayoutEffect(() => {
@@ -87,23 +98,50 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
     }
   }, [open]);
 
+  useEffect(() => {
+    dispatch(
+      setSection2ItemState({
+        index,
+        inView,
+        animationStarted,
+        animationEnded: !inView ? false : animationEnded,
+      })
+    );
+  }, [animationEnded, animationStarted, dispatch, inView, index]);
+
   return (
     <>
       <Box
         ref={ref}
         className={clsx(
           'translate-y-0 opacity-0 invisible w-full aspect-video',
-          inView && styles.slideUp
+          (animationStarted ||
+            animationEnded ||
+            (inView &&
+              (!prevItem ||
+                !prevItem.inView ||
+                prevItem.animationStarted ||
+                prevItem.animationEnded))) &&
+            styles.slideUp
         )}
         component="div"
         sx={{
-          animationDelay: `${index * 0.1}s`,
+          animationDelay: `${0.1}s`,
         }}
         onAnimationStart={() => {
-          setAnimationEnded(false);
+          dispatch(
+            setSection2ItemState({ index, inView, animationStarted: true, animationEnded: false })
+          );
         }}
         onAnimationEnd={() => {
-          setAnimationEnded(true);
+          dispatch(
+            setSection2ItemState({
+              index,
+              inView,
+              animationStarted: false,
+              animationEnded: true,
+            })
+          );
         }}
       >
         <Tilt

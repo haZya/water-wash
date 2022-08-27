@@ -87,7 +87,7 @@ const Navbar = () => {
                   <a className={clsx('relative', styles.navLink)}>
                     <Typography
                       className={clsx(
-                        'relative text-base',
+                        'relative text-lg font-medium',
                         color === 'primary'
                           ? 'text-primary-700 after:bg-primary-700'
                           : 'text-secondary-700 after:bg-secondary-700',

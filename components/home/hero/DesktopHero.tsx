@@ -21,7 +21,6 @@ const DesktopHero = () => {
               styles.logo
             )}
             transitionSpeed={2000}
-            gyroscope
             trackOnWindow
           >
             <Image src={logo} alt="logo" priority />

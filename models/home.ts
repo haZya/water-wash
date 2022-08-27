@@ -24,6 +24,9 @@ export interface ISection2Item {
   image1: StaticImageData | string;
   image2: StaticImageData | string;
   portrait?: boolean;
+  inView: boolean;
+  animationStarted: boolean;
+  animationEnded: boolean;
 }
 //#endregion
 
@@ -47,5 +50,9 @@ export interface IHome {
       url: string;
       className: string;
     };
+  };
+  section4: {
+    title: string;
+    subtitle: string;
   };
 }
