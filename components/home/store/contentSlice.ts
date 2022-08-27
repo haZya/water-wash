@@ -6,7 +6,6 @@ const initialState: IHome = {
   section1: {
     title: '',
     subtitle: '',
-    background: '',
     items: [],
   },
   section2: {

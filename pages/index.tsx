@@ -1,4 +1,4 @@
-import background from '@/assets/images/bg-2.png'; // TODO: From CMS
+import background from '@/assets/images/home/section-1/bg.png'; // TODO: from cms
 
 import { Hero } from 'components/home';
 import { Section1 } from 'components/home/section-1';
@@ -215,7 +215,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       section1,
       section2,
       section3,
-      seo: { indexing: true, metaDesc: '' },
+      seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
     },
   };
 };
