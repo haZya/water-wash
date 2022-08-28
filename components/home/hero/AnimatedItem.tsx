@@ -3,8 +3,9 @@ import { Box, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { useInView, useWindowSize } from 'hooks';
 import { sanitize } from 'lib/dompurify';
+import player from 'lottie-web';
 import { IAnimatedItem } from 'models/home';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import styles from './Hero.module.css';
 
 type CircleTranslate = {
@@ -20,6 +21,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
   const { width } = useWindowSize(inView);
 
   const groupRef = useRef<HTMLDivElement>(null);
+  const lottieRef = useRef<Element>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
 
   const mdDown = width < theme.breakpoints.values.md;
@@ -34,6 +36,18 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
         return { circleTX: 0, circleTY: 0 };
     }
   }, [index, mdDown, width]);
+
+  useEffect(() => {
+    if (lottieRef.current) {
+      player.loadAnimation({
+        container: lottieRef.current, // the dom element that will contain the animation: ;
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: lottie, // the path to the animation json
+      });
+    }
+  }, [lottie]);
 
   return (
     <Box
@@ -56,10 +70,11 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
         )}
       >
         <Player
-          className={clsx('absolute top-0 left-0 w-full h-full drop-shadow-xl', styles.float)}
+          id="lottie-player"
           autoplay
           loop
           src={lottie}
+          className={clsx('absolute top-0 left-0 w-full h-full drop-shadow-xl', styles.float)}
           style={{
             animationDelay: `${4 * index}s`,
           }}
@@ -109,7 +124,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
               }}
             >
               <Box
-                className="absolute pointer-events-none w-full h-full rounded-full transform-gpu"
+                className="absolute pointer-events-none w-full h-full rounded-full transform-gpu opacity-60 drop"
                 sx={{
                   backgroundColor: color,
                   transition: 'all .2s cubic-bezier(.655,0.045,.355,1)',
@@ -122,12 +137,12 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 }}
               />
               <Box
-                className="absolute flex-center transition-colors w-full h-full rounded-full drop-shadow-md"
+                className="absolute flex-center transition-colors w-full h-full rounded-full drop-shadow-md drop text-gray-500"
                 component="div"
                 dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
                 color="white"
                 sx={{
-                  backgroundColor: color,
+                  // backgroundColor: color,
                   transitionDuration: '.2s',
                   '.group:hover &': {
                     color: 'text.secondary',
@@ -153,7 +168,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
           >
             <Typography
               ref={titleRef}
-              className="text-base group-hover:text-white font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
+              className="text-base font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
               color="text.secondary"
               variant="h2"
             >
@@ -165,7 +180,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                   'absolute text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 w-40 mt-1',
                   index === 0 ? 'left-0' : index === 1 && 'right-0'
                 )}
-                color="white"
+                color="text.secondary"
               >
                 {description}
               </Typography>

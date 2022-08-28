@@ -103,3 +103,33 @@ a {
     @apply flex justify-center items-center;
   }
 }
+
+@keyframes eye-focus {
+  0% {
+    filter: blur(1px);
+  }
+  100% {
+    filter: blur(10px);
+  }
+}
+@keyframes focus-shift {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+.glass {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/54046/glass_droplets.jpeg);
+  filter: blur(0);
+  animation: eye-focus 4s ease-in infinite 4s alternate, focus-shift 4s ease-in infinite alternate;
+  opacity: 0.5;
+}
+
+.drop {
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05), 15px 25px 10px rgba(0, 0, 0, 0.05),
+    15px 20px 20px rgba(0, 0, 0, 0.05), inset -10px -10px 15px rgba(255, 255, 255, 09);
+  border-radius: 50%;
+}

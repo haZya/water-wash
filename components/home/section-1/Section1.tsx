@@ -8,10 +8,10 @@ import CardItem from './CardItem';
 import styles from './Section1.module.css';
 import Wave from './Wave';
 
+import background from '@/assets/images/home/section-1/bg.png';
+
 const Section1 = () => {
-  const { title, subtitle, background, items } = useSelector(
-    ({ home }: RootState) => home.content.section1
-  );
+  const { title, subtitle, items } = useSelector(({ home }: RootState) => home.content.section1);
 
   return (
     <section aria-labelledby="section-1-title" className="relative overflow-hidden">
@@ -26,7 +26,7 @@ const Section1 = () => {
             <Typography
               className="text-3xl sm:text-4xl text-center font-bold leading-tight z-10"
               id="section-1-title"
-              variant="h2"
+              variant="h1"
               color="text.secondary"
             >
               <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
