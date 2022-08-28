@@ -31,17 +31,17 @@ const navLinks: NavLink[] = [
 const socials: Social[] = [
   {
     label: 'Instagram',
-    icon: <Instagram fontSize="large" />,
+    icon: <Instagram fontSize="medium" />,
     url: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '#',
   },
   {
     label: 'Facebook',
-    icon: <Facebook fontSize="large" />,
+    icon: <Facebook fontSize="medium" />,
     url: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? '#',
   },
   {
     label: 'Twitter',
-    icon: <Twitter fontSize="large" />,
+    icon: <Twitter fontSize="medium" />,
     url: process.env.NEXT_PUBLIC_TWITTER_URL ?? '#',
   },
 ];

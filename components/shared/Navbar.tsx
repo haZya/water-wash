@@ -62,10 +62,10 @@ const Navbar = () => {
               color="primary"
               aria-label="open drawer"
               edge="start"
-              size="large"
+              size="medium"
               onClick={handleDrawerToggle}
             >
-              <FormatAlignLeft fontSize="large" />
+              <FormatAlignLeft fontSize="medium" />
             </IconButton>
             <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start">
               <Link href="/">
