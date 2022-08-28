@@ -42,6 +42,14 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    htmlFontSize: 10,
+    fontSize: 14,
+    body1: {
+      fontSize: '1.4rem',
+    },
+    body2: {
+      fontSize: '1.4rem',
+    },
   },
 });
 
