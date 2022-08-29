@@ -1,9 +1,10 @@
 import { StaticImageData } from 'next/image';
+import { ICheckboxGroup, ITextArea, ITextField } from './shared';
 
 //#region Hero
 export interface IAnimatedItem {
   index: number;
-  lottie: string | object;
+  lottie: string;
   icon: string;
   title: string;
   description?: string;
@@ -24,9 +25,9 @@ export interface ISection2Item {
   image1: StaticImageData | string;
   image2: StaticImageData | string;
   portrait?: boolean;
-  inView: boolean;
-  animationStarted: boolean;
-  animationEnded: boolean;
+  inView?: boolean;
+  animationStarted?: boolean;
+  animationEnded?: boolean;
 }
 //#endregion
 
@@ -54,5 +55,12 @@ export interface IHome {
   section4: {
     title: string;
     subtitle: string;
+    form: {
+      title: string;
+      sections: {
+        title: string;
+        fields: (ITextField | ITextArea | ICheckboxGroup)[];
+      }[];
+    };
   };
 }

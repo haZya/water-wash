@@ -57,3 +57,23 @@ export interface ISeo {
 export interface IPage {
   seo: ISeo;
 }
+
+export interface IFormField {
+  type: string;
+  name: string;
+  label: string;
+  required: boolean;
+  width: 'full' | '2/3' | '1/2' | '1/3';
+  validationType?: string;
+  validations?: { type: string; params?: any[] }[];
+}
+
+export interface ITextField extends IFormField {}
+
+export interface ITextArea extends IFormField {
+  rows?: number;
+}
+
+export interface ICheckboxGroup extends IFormField {
+  options?: { name: string; label: string }[];
+}

@@ -1,55 +1,26 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
 import { showMessage } from 'components/shared/store/messageSlice';
-import { useFormContext, UseFormProps } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
+import { RootState } from 'lib/redux';
+import { Fragment } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { CheckboxGroup, TextField } from './fields';
 
 export interface IForm {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
+  [x: string]: string;
 }
 
-const initialForm: IForm = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-};
-
-/**
- * Form Validation Schema
- */
-const schema = yup
-  .object()
-  .shape({
-    email: yup.string().email('Must be a valid email'),
-    password: yup.string().min(8, 'Password must be at least 8 characters'),
-  })
-  .required();
-
-export const formProps: UseFormProps<IForm> = {
-  mode: 'onChange',
-  defaultValues: initialForm,
-  resolver: yupResolver(schema),
-};
-
-interface IProps {
-  handleClose: () => void;
-}
-
-const Form = ({ handleClose }: IProps) => {
+const Form = () => {
   const dispatch = useDispatch();
+  const { title, sections } = useSelector(({ home }: RootState) => home.content.section4.form);
   const {
     reset,
     handleSubmit,
     formState: { isSubmitting },
   } = useFormContext<IForm>();
 
-  const onSubmit = async ({ firstName, lastName, email, password }: IForm) => {
+  const onSubmit = async ({ firstName, lastName, email }: IForm) => {
     try {
       //   await sendEmail(email);
       dispatch(
@@ -62,6 +33,8 @@ const Form = ({ handleClose }: IProps) => {
           variant: 'success',
         })
       );
+
+      reset();
     } catch (error: any) {
       dispatch(showMessage({ message: error.message || error.code, variant: 'error' }));
     }
@@ -69,37 +42,49 @@ const Form = ({ handleClose }: IProps) => {
 
   return (
     <form
-      className="backdrop-blur backdrop-brightness-125 bg-white/50 rounded-3xl shadow-lg max-h-[90vh] overflow-auto p-6 sm:p-8 md:p-8 m-4 max-w-[520px]"
+      className="backdrop-blur backdrop-brightness-125 bg-white/50 rounded-3xl shadow-lg overflow-auto p-6 sm:p-8 md:p-16"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Typography className="text-center text-secondary-main text-3xl md:text-5xl" variant="h3">
-        Sign Up
+      <Typography
+        className="text-center text-secondary-main text-2xl sm:text-3xl font-semibold"
+        variant="h2"
+        color="text.secondary"
+      >
+        {title}
       </Typography>
       <Divider className="border-t-2 my-4 md:my-7" />
-      <div className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 max-w-96 md:max-w-[440px]">
-        {/* <div className="flex w-full sm:w-[350px] sm:space-x-1 md:space-x-3">
-          <Gender />
-          <InterestedIn />
-        </div>
-        <div className="space-y-3 md:space-y-4">
-          <FirstName />
-          <LastName />
-          <Email />
-          <Password />
-        </div> */}
+      <div className="flex flex-col items-center space-y-8 md:space-y-12 mt-8 md:mt-12">
+        {sections.map((s) => (
+          <div key={s.title} className="w-full space-y-4">
+            <Typography className="text-xl font-semibold" variant="h3" color="text.secondary">
+              {s.title}
+            </Typography>
+            <div className="grid grid-cols-12 gap-4 w-full">
+              {s.fields.map((f) => (
+                <Fragment key={f.name}>
+                  {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (
+                    <TextField {...f} />
+                  ) : (
+                    f.type === 'checkbox' && <CheckboxGroup {...f} />
+                  )}
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
       <Button
         type="submit"
         className={clsx(
           'flex mx-auto !bg-red-500 text-white shadow-xl hover:shadow-xl shadow-red-500/40 hover:shadow-red-500/60 duration-300 rounded-full',
-          'px-8 md:px-16 py-1.5 md:py-3 mt-4 sm:mt-6 md:mt-8'
+          'px-8 md:px-16 py-1.5 md:py-3 mt-8 md:mt-16'
         )}
         variant="contained"
         disabled={isSubmitting}
       >
         {isSubmitting && (
           <svg
-            className="w-5 h-5 md:w-6 md:h-6 mr-3 -ml-1 text-primary-main animate-spin"
+            className="w-5 h-5 md:w-6 md:h-6 mr-3 -ml-1 text-primary-500 animate-spin"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -120,7 +105,7 @@ const Form = ({ handleClose }: IProps) => {
           </svg>
         )}
         <Typography className="text-lg md:text-2xl" variant="h5">
-          Sign Up
+          Submit
         </Typography>
       </Button>
     </form>

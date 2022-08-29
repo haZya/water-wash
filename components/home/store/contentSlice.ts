@@ -22,6 +22,10 @@ const initialState: IHome = {
   section4: {
     title: '',
     subtitle: '',
+    form: {
+      title: '',
+      sections: [],
+    },
   },
 };
 

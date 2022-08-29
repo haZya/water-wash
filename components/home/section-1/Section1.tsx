@@ -26,7 +26,7 @@ const Section1 = () => {
             <Typography
               className="text-3xl sm:text-4xl text-center font-bold leading-tight z-10"
               id="section-1-title"
-              variant="h2"
+              variant="h1"
               color="text.secondary"
             >
               <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />

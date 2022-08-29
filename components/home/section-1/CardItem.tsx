@@ -39,7 +39,7 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
             className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 mx-auto"
             dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
           />
-          <Typography className="text-center text-lg font-medium select-none" variant="h3">
+          <Typography className="text-center text-lg font-medium select-none" variant="h2">
             {title}
           </Typography>
           <Typography className="text-center text-xs select-none">{content}</Typography>

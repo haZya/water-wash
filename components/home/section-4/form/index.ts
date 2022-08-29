@@ -1,3 +1,3 @@
-import Form from './Form';
+import Form, { IForm } from './Form';
 
-export { Form };
+export { Form, type IForm };

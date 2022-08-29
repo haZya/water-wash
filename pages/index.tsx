@@ -7,7 +7,7 @@ import { Section3 } from 'components/home/section-3';
 import { Section4 } from 'components/home/section-4';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
-import { IHome } from 'models/home';
+import { IHome, ISection2Item } from 'models/home';
 import { IPage } from 'models/shared';
 import { GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
@@ -186,16 +186,22 @@ const section1: IHome['section1'] = {
 const section2: IHome['section2'] = {
   title: 'GALLERY',
   items: [...Array(9)]
-    .map(() => ({
-      image1: `https://unsplash.it/800/800/?${Math.random()}`,
-      image2: `https://unsplash.it/800/800/?${Math.random()}`,
-    }))
+    .map(
+      () =>
+        ({
+          image1: `https://unsplash.it/800/800/?${Math.random()}`,
+          image2: `https://unsplash.it/800/800/?${Math.random()}`,
+        } as ISection2Item)
+    )
     .concat(
-      [...Array(3)].map(() => ({
-        image1: `https://unsplash.it/800/800/?${Math.random()}`,
-        image2: `https://unsplash.it/800/800/?${Math.random()}`,
-        portrait: true,
-      }))
+      [...Array(3)].map(
+        () =>
+          ({
+            image1: `https://unsplash.it/800/800/?${Math.random()}`,
+            image2: `https://unsplash.it/800/800/?${Math.random()}`,
+            portrait: true,
+          } as ISection2Item)
+      )
     ),
 };
 
@@ -211,6 +217,139 @@ const section4: IHome['section4'] = {
   title: 'GET IN TOUCH',
   subtitle:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro adipisci ex facilis assumenda atque.',
+  form: {
+    title: 'NEW REQUEST',
+    sections: [
+      {
+        title: 'Contact Details',
+        fields: [
+          {
+            type: 'text',
+            name: 'firstName',
+            label: 'First Name',
+            required: true,
+            width: '1/2',
+          },
+          {
+            type: 'text',
+            name: 'lastName',
+            label: 'Last Name',
+            required: true,
+            width: '1/2',
+          },
+          {
+            type: 'text',
+            name: 'companyName',
+            label: 'Company Name (if applicable)',
+            required: false,
+            width: 'full',
+          },
+          {
+            type: 'email',
+            name: 'email',
+            label: 'Email',
+            required: true,
+            width: '1/2',
+            validationType: 'string',
+            validations: [{ type: 'email', params: ['Must be a valid email'] }],
+          },
+          {
+            type: 'text',
+            name: 'phone',
+            label: 'Phone',
+            required: true,
+            width: '1/2',
+          },
+        ],
+      },
+      {
+        title: 'Address',
+        fields: [
+          {
+            type: 'text',
+            name: 'street1',
+            label: 'Street 1',
+            required: true,
+            width: 'full',
+          },
+          {
+            type: 'text',
+            name: 'street2',
+            label: 'Street 1',
+            required: false,
+            width: 'full',
+          },
+          {
+            type: 'text',
+            name: 'city',
+            label: 'City',
+            required: true,
+            width: '1/3',
+          },
+          {
+            type: 'text',
+            name: 'state',
+            label: 'State',
+            required: true,
+            width: '1/3',
+          },
+          {
+            type: 'text',
+            name: 'zip',
+            label: 'ZIP Code',
+            required: true,
+            width: '1/3',
+          },
+        ],
+      },
+      {
+        title: 'Property Info',
+        fields: [
+          {
+            type: 'checkbox',
+            name: 'services',
+            label: 'What services are you looking to have done at your property?',
+            options: [
+              {
+                name: 'houseWashing',
+                label: 'House Washing',
+              },
+              {
+                name: 'roofWashing',
+                label: 'Roof Washing',
+              },
+              {
+                name: 'cementCleaning',
+                label: 'Cement Cleaning (Sidewalk, Patio, Porch, etc)',
+              },
+              {
+                name: 'fenceCleaning',
+                label: 'Fence Cleaning',
+              },
+              {
+                name: 'commercial',
+                label: 'Commercial',
+              },
+              {
+                name: 'other',
+                label: 'Other',
+              },
+            ],
+            required: true,
+            width: 'full',
+          },
+          {
+            type: 'textarea',
+            name: 'details',
+            label: 'What are you looking to have cleaned? (List any specific details)',
+            required: false,
+            width: 'full',
+            rows: 4,
+          },
+        ],
+      },
+    ],
+  },
 };
 
 interface IProps extends IPage, IHome {}
