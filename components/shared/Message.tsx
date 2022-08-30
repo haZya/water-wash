@@ -35,7 +35,7 @@ const Message = () => {
               </Button>
             ))}
             <IconButton aria-label="close" size="small" color="inherit" onClick={handleClose}>
-              <Close />
+              <Close fontSize="small" />
             </IconButton>
           </>
         }
