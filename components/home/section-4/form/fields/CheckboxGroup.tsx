@@ -8,15 +8,15 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { ICheckboxGroup } from 'models/shared';
+import { ICheckboxGroup, IForm } from 'models/shared';
 import { Controller, useFormContext } from 'react-hook-form';
-import { IForm } from '../Form';
 
-const CheckboxGroup = ({ type, name, label, options, required, width }: ICheckboxGroup) => {
+const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup) => {
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
   const {
     control,
+    getValues,
     formState: { errors },
   } = useFormContext<IForm>();
 
@@ -41,7 +41,15 @@ const CheckboxGroup = ({ type, name, label, options, required, width }: ICheckbo
             <FormControlLabel
               key={o.name}
               {...field}
-              control={<Checkbox required={required && !field.value} color="primary" />}
+              control={
+                <Checkbox
+                  required={required && !field.value}
+                  color="primary"
+                  sx={{
+                    color: theme.palette.primary[200],
+                  }}
+                />
+              }
               name={name}
               label={
                 <Typography
@@ -52,9 +60,18 @@ const CheckboxGroup = ({ type, name, label, options, required, width }: ICheckbo
                   {o.label}
                 </Typography>
               }
+              value={field.value ?? []}
+              checked={(field.value as string[])?.includes(o.name) ?? false}
+              onChange={(e, c) => {
+                const currentValues = (getValues(name) ?? []) as string[];
+                const newValues = c
+                  ? [...currentValues, o.name]
+                  : currentValues.filter((v) => v !== o.name);
+                field.onChange([...newValues]);
+              }}
             />
           ))}
-          <FormHelperText>{errors.name?.message}</FormHelperText>
+          <FormHelperText error>{errors[name]?.message}</FormHelperText>
         </FormGroup>
       )}
     />

@@ -3,10 +3,10 @@ import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { createYupSchema } from 'lib/yup';
+import { IForm } from 'models/shared';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import * as yup from 'yup';
-import { Form, IForm } from './form';
+import { Form } from './form';
 
 const Section4 = () => {
   const {
@@ -15,15 +15,19 @@ const Section4 = () => {
     form: { sections },
   } = useSelector(({ home }: RootState) => home.content.section4);
   const fields = sections.flatMap((s) => s.fields);
-  const schemaShape = fields.filter((f) => f.validationType).reduce(createYupSchema, {});
 
   /**
    * Form Validation Schema
    */
-  const schema = yup.object().shape(schemaShape).required();
+  const validationFields = fields.filter((f) => f.validationType);
+  const schema = createYupSchema(validationFields);
 
   const formProps: UseFormProps<IForm> = {
     mode: 'onChange',
+    defaultValues: Object.assign(
+      {},
+      ...fields.map((f) => ({ [f.name]: f.type === 'checkbox' ? [] : '' }))
+    ),
     resolver: yupResolver(schema),
   };
   const methods = useForm<IForm>(formProps);

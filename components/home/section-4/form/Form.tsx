@@ -2,14 +2,11 @@ import { Button, Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
 import { showMessage } from 'components/shared/store/messageSlice';
 import { RootState } from 'lib/redux';
+import { IForm } from 'models/shared';
 import { Fragment } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { CheckboxGroup, TextField } from './fields';
-
-export interface IForm {
-  [x: string]: string;
-}
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -76,7 +73,7 @@ const Form = () => {
       <Button
         type="submit"
         className={clsx(
-          'flex mx-auto !bg-red-500 text-white shadow-xl hover:shadow-xl shadow-red-500/40 hover:shadow-red-500/60 duration-300 rounded-full',
+          'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 duration-300 rounded-full',
           'px-8 md:px-16 py-1.5 md:py-3 mt-8 md:mt-16'
         )}
         variant="contained"

@@ -1,8 +1,7 @@
 import { InputAdornment, TextField as MuiTextField, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { ITextArea, ITextField } from 'models/shared';
+import { IForm, ITextArea, ITextField } from 'models/shared';
 import { Controller, useFormContext } from 'react-hook-form';
-import { IForm } from '..';
 
 const TextField = ({ type, name, label, required, width, rows }: ITextField & ITextArea) => {
   const theme = useTheme();

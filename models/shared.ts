@@ -65,7 +65,8 @@ export interface IFormField {
   required: boolean;
   width: 'full' | '2/3' | '1/2' | '1/3';
   validationType?: string;
-  validations?: { type: string; params?: any[] }[];
+  validations?: { type: string; params: any[] }[];
+  validationTypeError?: string;
 }
 
 export interface ITextField extends IFormField {}
@@ -76,4 +77,8 @@ export interface ITextArea extends IFormField {
 
 export interface ICheckboxGroup extends IFormField {
   options?: { name: string; label: string }[];
+}
+
+export interface IForm {
+  [x: string]: string | string[];
 }
