@@ -1,13 +1,13 @@
 import background from '@/assets/images/home/section-1/bg.png'; // TODO: from cms
 
 import { Hero } from 'components/home';
-import { Section1 } from 'components/home/section-1';
-import { Section2 } from 'components/home/section-2';
-import { Section3 } from 'components/home/section-3';
-import { Section4 } from 'components/home/section-4';
+import { DescriptiveSection } from 'components/home/descriptive-section';
+import { GallerySection } from 'components/home/GallerySection';
+import { ReqFormSection } from 'components/home/req-form-section';
+import { ReviewSection } from 'components/home/review-section';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
-import { IHome, ISection2Item } from 'models/home';
+import { IGallerySectionItem, IHome } from 'models/home';
 import { IPage } from 'models/shared';
 import { GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
@@ -85,7 +85,7 @@ const hero: IHome['hero'] = {
   ],
 };
 
-const section1: IHome['section1'] = {
+const descriptiveSection: IHome['descriptiveSection'] = {
   title: renderToStaticMarkup(
     <p>
       The Dependable Power <br /> Washing Solution For Your Home Or Business
@@ -183,7 +183,7 @@ const section1: IHome['section1'] = {
   ],
 };
 
-const section2: IHome['section2'] = {
+const gallerySection: IHome['gallerySection'] = {
   title: 'GALLERY',
   items: [...Array(9)]
     .map(
@@ -191,7 +191,7 @@ const section2: IHome['section2'] = {
         ({
           image1: `https://unsplash.it/800/800/?${Math.random()}`,
           image2: `https://unsplash.it/800/800/?${Math.random()}`,
-        } as ISection2Item)
+        } as IGallerySectionItem)
     )
     .concat(
       [...Array(3)].map(
@@ -200,12 +200,12 @@ const section2: IHome['section2'] = {
             image1: `https://unsplash.it/800/800/?${Math.random()}`,
             image2: `https://unsplash.it/800/800/?${Math.random()}`,
             portrait: true,
-          } as ISection2Item)
+          } as IGallerySectionItem)
       )
     ),
 };
 
-const section3: IHome['section3'] = {
+const reviewSection: IHome['reviewSection'] = {
   title: 'READ OUR REVIEWS',
   script: {
     url: 'https://apps.elfsight.com/p/platform.js',
@@ -213,7 +213,7 @@ const section3: IHome['section3'] = {
   },
 };
 
-const section4: IHome['section4'] = {
+const reqFormSection: IHome['reqFormSection'] = {
   title: 'GET IN TOUCH',
   subtitle:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro adipisci ex facilis assumenda atque.',
@@ -358,10 +358,10 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
       hero,
-      section1,
-      section2,
-      section3,
-      section4,
+      descriptiveSection,
+      gallerySection,
+      reviewSection,
+      reqFormSection,
       seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
     },
   };
@@ -378,10 +378,10 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
     <>
       <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
       <Hero />
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
+      <DescriptiveSection />
+      <GallerySection />
+      <ReviewSection />
+      <ReqFormSection />
     </>
   );
 };

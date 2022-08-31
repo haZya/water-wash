@@ -181,15 +181,6 @@
   animation-iteration-count: infinite;
 }
 
-@keyframes focus-shift {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.01);
-  }
-}
-
 .drop {
   box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05), 15px 25px 10px rgba(0, 0, 0, 0.05),
     15px 20px 20px rgba(0, 0, 0, 0.05), inset -10px -10px 15px rgba(255, 255, 255, 09);

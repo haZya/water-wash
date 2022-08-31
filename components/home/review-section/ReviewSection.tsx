@@ -1,33 +1,33 @@
 import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
+import Script from 'next/script';
 import { useSelector } from 'react-redux';
-import { GalleryItem } from '.';
 
-const Section2 = () => {
-  const { title, items } = useSelector(({ home }: RootState) => home.content.section2);
+const ReviewSection = () => {
+  const {
+    title,
+    script: { url, className },
+  } = useSelector(({ home }: RootState) => home.content.reviewSection);
 
   return (
-    <section aria-labelledby="section-2-title">
-      <div className="container mx-auto pt-16 pb-8">
+    <section aria-labelledby="section-3-title">
+      <div className="container mx-auto pt-16 overflow-hidden">
         <header className="flex flex-col items-center mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"
-            id="section-2-title"
+            id="section-3-title"
             variant="h1"
             color="text.secondary"
           >
             <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
           </Typography>
         </header>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 md:gap-8">
-          {items.map((item, i) => (
-            <GalleryItem key={i} index={i} prevItem={items[i - 1]} {...item} />
-          ))}
-        </div>
+        <Script src={url} strategy="lazyOnload"></Script>
+        <div className={className} />
       </div>
     </section>
   );
 };
 
-export default Section2;
+export default ReviewSection;
