@@ -55,7 +55,7 @@ const NavDrawer = () => {
         onClick={handleDrawerToggle}
       >
         <div className="m-2">
-          <Link href="/">
+          <Link href="/" shallow>
             <a>
               <div className="w-36 mx-auto my-4 drop-shadow-md">
                 <Image src={logo} alt="Water Wash Logo" priority />
@@ -85,7 +85,7 @@ const NavDrawer = () => {
       <div className="flex justify-center items-center w-full h-10 px-4 py-6 bg-neutral-200 border-t border-secondary-500">
         <Typography className="text-xs">
           Copyright © 2022{' '}
-          <Link href="/">
+          <Link href="/" shallow>
             <a>Water Wash</a>
           </Link>
         </Typography>

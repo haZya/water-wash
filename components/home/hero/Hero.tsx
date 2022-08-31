@@ -1,7 +1,7 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import dynamic from 'next/dynamic';
 
-const DynamicDesktopHero = dynamic(() => import('./DesktopHero'));
+const DynamicDesktopHero = dynamic(() => import('./DesktopHero'), { ssr: false });
 const DynamicMobileHero = dynamic(() => import('./MobileHero'));
 
 const Hero = () => {
