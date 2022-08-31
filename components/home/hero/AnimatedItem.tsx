@@ -1,5 +1,5 @@
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, lighten, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { useInView, useWindowSize } from 'hooks';
 import { sanitize } from 'lib/dompurify';
@@ -87,11 +87,11 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 styles.circleOnePulse
               )}
               component="span"
-              sx={{ backgroundColor: color, animationDelay: `${1 + index * 0.6}s` }}
+              sx={{ backgroundColor: lighten(color, 0.4), animationDelay: `${1 + index * 0.6}s` }}
             />
             <Box
               className={clsx(
-                'absolute top-0 left-0 w-full h-full bg-white rounded-full',
+                'absolute top-0 left-0 w-full h-full scale-0 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full',
                 styles.circleTwoPulse
               )}
               component="span"
@@ -99,6 +99,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 animationDelay: `${1 + index * 0.6 + 0.15}s`,
               }}
             />
+
             <Box
               className={clsx(
                 'absolute top-0 left-0 w-full h-full opacity-0',
@@ -109,7 +110,10 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
               }}
             >
               <Box
-                className="absolute pointer-events-none w-full h-full rounded-full transform-gpu"
+                className={clsx(
+                  'absolute pointer-events-none w-full h-full rounded-full transform-gpu opacity-60',
+                  styles.drop
+                )}
                 sx={{
                   backgroundColor: color,
                   transition: 'all .2s cubic-bezier(.655,0.045,.355,1)',
@@ -122,15 +126,17 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 }}
               />
               <Box
-                className="absolute flex-center transition-colors w-full h-full rounded-full drop-shadow-md"
+                className={clsx(
+                  'absolute flex-center transition-colors w-full h-full rounded-full text-gray-500'
+                )}
                 component="div"
                 dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-                color="white"
+                // color="text.secondary"
                 sx={{
-                  backgroundColor: color,
+                  // backgroundColor: color,
                   transitionDuration: '.2s',
                   '.group:hover &': {
-                    color: 'text.secondary',
+                    // color: 'text.secondary',
                     backgroundColor: 'white',
                     transitionDelay: '.1s',
                     transitionDuration: '.3s',
@@ -153,7 +159,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
           >
             <Typography
               ref={titleRef}
-              className="text-base group-hover:text-white font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
+              className="text-base font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
               color="text.secondary"
               variant="h2"
             >
@@ -165,7 +171,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                   'absolute text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-700 group-hover:delay-200 w-40 mt-1',
                   index === 0 ? 'left-0' : index === 1 && 'right-0'
                 )}
-                color="white"
+                color="text.secondary"
               >
                 {description}
               </Typography>

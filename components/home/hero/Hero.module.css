@@ -105,7 +105,7 @@
     transform: scale(0);
   }
   to {
-    transform: scale(1.2);
+    transform: scale(1);
   }
 }
 
@@ -162,4 +162,35 @@
   animation-duration: 8s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+@keyframes float-bg {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% + 46px));
+  }
+}
+
+.floatBg {
+  animation-name: float-bg;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes focus-shift {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+.drop {
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05), 15px 25px 10px rgba(0, 0, 0, 0.05),
+    15px 20px 20px rgba(0, 0, 0, 0.05), inset -10px -10px 15px rgba(255, 255, 255, 09);
 }
