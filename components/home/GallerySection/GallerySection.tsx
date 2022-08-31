@@ -8,12 +8,12 @@ const GallerySection = () => {
   const { title, items } = useSelector(({ home }: RootState) => home.content.gallerySection);
 
   return (
-    <section aria-labelledby="section-2-title">
+    <section aria-labelledby="gallery-section-title">
       <div className="container mx-auto pt-16 pb-8">
         <header className="flex flex-col items-center mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"
-            id="section-2-title"
+            id="gallery-section-title"
             variant="h1"
             color="text.secondary"
           >

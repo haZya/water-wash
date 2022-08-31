@@ -11,12 +11,12 @@ const ReviewSection = () => {
   } = useSelector(({ home }: RootState) => home.content.reviewSection);
 
   return (
-    <section aria-labelledby="section-3-title">
-      <div className="container mx-auto pt-16 overflow-hidden">
+    <section aria-labelledby="review-section-title">
+      <div className="container mx-auto pt-16 pb-8 overflow-hidden">
         <header className="flex flex-col items-center mb-16">
           <Typography
             className="text-3xl sm:text-4xl text-center font-bold leading-tight"
-            id="section-3-title"
+            id="review-section-title"
             variant="h1"
             color="text.secondary"
           >

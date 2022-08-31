@@ -14,7 +14,7 @@ const DescriptiveSection = () => {
   );
 
   return (
-    <section aria-labelledby="section-1-title" className="relative overflow-hidden">
+    <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden">
       {background && (
         <div className={clsx('z-0', styles.imageWrapper)}>
           <Image src={background} alt="" />
@@ -25,7 +25,7 @@ const DescriptiveSection = () => {
           <header className="flex flex-col items-center space-y-8 mb-16">
             <Typography
               className="text-3xl sm:text-4xl text-center font-bold leading-tight z-10"
-              id="section-1-title"
+              id="descriptive-section-title"
               variant="h1"
               color="text.secondary"
             >
