@@ -1,25 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IHome, ISection2Item } from 'models/home';
+import { IGallerySectionItem, IHome } from 'models/home';
 
 const initialState: IHome = {
   hero: { items: [] },
-  section1: {
+  descriptiveSection: {
     title: '',
     subtitle: '',
     items: [],
   },
-  section2: {
+  gallerySection: {
     title: '',
     items: [],
   },
-  section3: {
+  reviewSection: {
     title: '',
     script: {
       url: '',
       className: '',
     },
   },
-  section4: {
+  reqFormSection: {
     title: '',
     subtitle: '',
     form: {
@@ -34,14 +34,16 @@ const contentSlice = createSlice({
   initialState,
   reducers: {
     setHomeContent: (_state, action: PayloadAction<IHome>) => action.payload,
-    setSection2ItemState: (
+    setGallerySectionItemState: (
       state,
       action: PayloadAction<
-        Pick<ISection2Item, 'inView' | 'animationStarted' | 'animationEnded'> & { index: number }
+        Pick<IGallerySectionItem, 'inView' | 'animationStarted' | 'animationEnded'> & {
+          index: number;
+        }
       >
     ) => {
       const { index, inView, animationStarted, animationEnded } = action.payload;
-      const item = state.section2.items[index];
+      const item = state.gallerySection.items[index];
       item.inView = inView;
       item.animationStarted = animationStarted;
       item.animationEnded = animationEnded;
@@ -49,6 +51,6 @@ const contentSlice = createSlice({
   },
 });
 
-export const { setHomeContent, setSection2ItemState } = contentSlice.actions;
+export const { setHomeContent, setGallerySectionItemState } = contentSlice.actions;
 
 export default contentSlice.reducer;

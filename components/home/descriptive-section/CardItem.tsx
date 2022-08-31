@@ -2,11 +2,11 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import useInView from 'hooks/useInView';
 import { sanitize } from 'lib/dompurify';
-import { ISection1Item } from 'models/home';
+import { IDescriptiveSectionItem } from 'models/home';
 import Tilt from 'react-parallax-tilt';
 import styles from './CardItem.module.css';
 
-interface IProps extends ISection1Item {
+interface IProps extends IDescriptiveSectionItem {
   index: number;
 }
 

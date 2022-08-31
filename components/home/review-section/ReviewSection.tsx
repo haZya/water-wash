@@ -4,11 +4,11 @@ import { RootState } from 'lib/redux';
 import Script from 'next/script';
 import { useSelector } from 'react-redux';
 
-const Section3 = () => {
+const ReviewSection = () => {
   const {
     title,
     script: { url, className },
-  } = useSelector(({ home }: RootState) => home.content.section3);
+  } = useSelector(({ home }: RootState) => home.content.reviewSection);
 
   return (
     <section aria-labelledby="section-3-title">
@@ -30,4 +30,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default ReviewSection;

@@ -2,7 +2,7 @@ import { Backdrop, Box, styled, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { Image } from 'components/shared';
 import { useInView, useScrolling, useWindowSize } from 'hooks';
-import { ISection2Item } from 'models/home';
+import { IGallerySectionItem } from 'models/home';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
@@ -10,9 +10,9 @@ import { useDispatch } from 'react-redux';
 import { setSection2ItemState } from '../store/contentSlice';
 import styles from './GalleryItem.module.css';
 
-interface IProps extends ISection2Item {
+interface IProps extends IGallerySectionItem {
   index: number;
-  prevItem: ISection2Item;
+  prevItem: IGallerySectionItem;
 }
 
 type StyledReactCompareSliderProps = {

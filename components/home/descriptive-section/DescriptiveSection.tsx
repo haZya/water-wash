@@ -5,12 +5,12 @@ import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import CardItem from './CardItem';
-import styles from './Section1.module.css';
+import styles from './DescriptiveSection.module.css';
 import Wave from './Wave';
 
-const Section1 = () => {
+const DescriptiveSection = () => {
   const { title, subtitle, background, items } = useSelector(
-    ({ home }: RootState) => home.content.section1
+    ({ home }: RootState) => home.content.descriptiveSection
   );
 
   return (
@@ -48,4 +48,4 @@ const Section1 = () => {
   );
 };
 
-export default Section1;
+export default DescriptiveSection;

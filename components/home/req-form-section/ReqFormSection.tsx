@@ -8,12 +8,12 @@ import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Form } from './form';
 
-const Section4 = () => {
+const ReqFormSection = () => {
   const {
     title,
     subtitle,
     form: { sections },
-  } = useSelector(({ home }: RootState) => home.content.section4);
+  } = useSelector(({ home }: RootState) => home.content.reqFormSection);
   const fields = sections.flatMap((s) => s.fields);
 
   /**
@@ -57,4 +57,4 @@ const Section4 = () => {
   );
 };
 
-export default Section4;
+export default ReqFormSection;

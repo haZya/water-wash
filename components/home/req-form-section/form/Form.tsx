@@ -10,7 +10,9 @@ import { CheckboxGroup, TextField } from './fields';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const { title, sections } = useSelector(({ home }: RootState) => home.content.section4.form);
+  const { title, sections } = useSelector(
+    ({ home }: RootState) => home.content.reqFormSection.form
+  );
   const {
     reset,
     handleSubmit,

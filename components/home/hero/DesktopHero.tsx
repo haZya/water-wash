@@ -14,13 +14,8 @@ const DesktopHero = () => {
 
   return (
     <WaterWave
+      className="w-full h-full bg-cover bg-center bg-opacity-10"
       imageUrl="/assets/images/home/hero/bg.jpg"
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
     >
       {() => (
         <div className="w-full h-full">
