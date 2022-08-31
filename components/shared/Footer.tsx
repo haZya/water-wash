@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="bg-neutral-100 mt-16">
       <div className="container mx-auto py-2 flex items-center min-h-20">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
-          <Link href="/">
+          <Link href="/" shallow>
             <a className="grow hidden sm:block">
               <div className="w-24 my-2">
                 <Image src={logo} alt="Water Wash Logo" priority />
@@ -56,7 +56,7 @@ const Footer = () => {
       <div className="flex justify-center items-center w-full h-10 text-center bg-neutral-200">
         <Typography className="text-xs font-medium">
           Copyright © 2022{' '}
-          <Link href="/">
+          <Link href="/" shallow>
             <a>Water Wash</a>
           </Link>
           . All rights reserved.

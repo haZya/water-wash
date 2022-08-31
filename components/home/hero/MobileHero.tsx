@@ -35,7 +35,7 @@ const MobileHero = () => {
       className="flex-center flex-col w-full h-full transition-colors duration-500 gap-6"
       sx={{ backgroundColor: items[activeIndex]?.color }}
     >
-      <Link href="/">
+      <Link href="/" shallow>
         <a className={clsx('max-w-60', styles.logoMobile)}>
           <div className="pointer-events-none drop-shadow-md">
             <Image src={logo} alt="logo" priority />

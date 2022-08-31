@@ -91,7 +91,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
             />
             <Box
               className={clsx(
-                'absolute top-0 left-0 w-full h-full scale-0 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full',
+                'absolute top-0 left-0 w-full h-full scale-0 bg-neutral-100 rounded-full',
                 styles.circleTwoPulse
               )}
               component="span"
