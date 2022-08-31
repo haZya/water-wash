@@ -14,7 +14,7 @@ const DesktopHero = () => {
 
   return (
     <WaterWave
-      imageUrl="/assets/images/home/hero/bg-blur.png"
+      imageUrl="/assets/images/home/hero/bg.jpg"
       style={{
         width: '100%',
         height: '100%',
@@ -23,7 +23,7 @@ const DesktopHero = () => {
       }}
     >
       {() => (
-        <div className="w-full h-full">
+        <div className="w-full h-full backdrop-blur-sm">
           <Link href="/" shallow>
             <a className="absolute transform-center z-10">
               <Tilt
