@@ -14,7 +14,7 @@ const DesktopHero = () => {
 
   return (
     <WaterWave
-      imageUrl="/assets/images/home/hero/bg-blur.png"
+      imageUrl="/assets/images/home/hero/bg.jpg"
       style={{
         width: '100%',
         height: '100%',

@@ -101,9 +101,7 @@ const Form = () => {
             />
           </svg>
         )}
-        <Typography className="text-lg md:text-2xl" variant="h5">
-          Submit
-        </Typography>
+        <Typography className="text-lg md:text-2xl">Submit</Typography>
       </Button>
     </form>
   );
