@@ -55,6 +55,7 @@ export interface IHome {
   reqFormSection: {
     title: string;
     subtitle: string;
+    background?: StaticImageData;
     form: {
       title: string;
       sections: {

@@ -127,16 +127,14 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
               />
               <Box
                 className={clsx(
-                  'absolute flex-center transition-colors w-full h-full rounded-full text-gray-500'
+                  'absolute flex-center transition-colors w-full h-full rounded-full'
                 )}
                 component="div"
                 dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-                // color="text.secondary"
+                color="text.secondary"
                 sx={{
-                  // backgroundColor: color,
                   transitionDuration: '.2s',
                   '.group:hover &': {
-                    // color: 'text.secondary',
                     backgroundColor: 'white',
                     transitionDelay: '.1s',
                     transitionDuration: '.3s',

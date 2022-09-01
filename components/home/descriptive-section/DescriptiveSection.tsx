@@ -16,7 +16,7 @@ const DescriptiveSection = () => {
   return (
     <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden">
       {background && (
-        <div className={clsx('z-0', styles.imageWrapper)}>
+        <div className={clsx('z-0', styles.background)}>
           <Image src={background} alt="" />
         </div>
       )}

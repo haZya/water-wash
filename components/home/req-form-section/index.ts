@@ -1,3 +1,4 @@
 import ReqFormSection from './ReqFormSection';
+import Wave from './Wave';
 
-export { ReqFormSection };
+export { Wave, ReqFormSection };

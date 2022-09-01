@@ -1,4 +1,4 @@
-.imageWrapper {
+.background {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 1921px) {
-  .imageWrapper {
+  .background {
     max-width: 85%;
   }
 }

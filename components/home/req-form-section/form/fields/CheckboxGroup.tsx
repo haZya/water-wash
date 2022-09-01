@@ -41,20 +41,24 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
             <FormControlLabel
               key={o.name}
               {...field}
+              className={clsx(
+                'mr-auto backdrop-blur-sm bg-white/10 hover:bg-white/80 transition-colors duration-300 pr-2 my-1 ml-0',
+                (field.value as string[])?.includes(o.name) && '!bg-white/80'
+              )}
+              name={name}
               control={
                 <Checkbox
-                  required={required && !field.value}
+                  required={required && !(field.value as string[])?.length}
                   color="primary"
                   sx={{
                     color: theme.palette.primary[200],
                   }}
                 />
               }
-              name={name}
               label={
                 <Typography
                   sx={{
-                    textShadow: `0px 0px 30px ${theme.palette.primary[700]}`,
+                    textShadow: `0px 0px 30px ${theme.palette.primary[500]}`,
                   }}
                 >
                   {o.label}

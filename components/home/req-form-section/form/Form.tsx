@@ -41,7 +41,7 @@ const Form = () => {
 
   return (
     <form
-      className="backdrop-blur backdrop-brightness-125 bg-white/50 rounded-3xl shadow-lg overflow-auto p-6 sm:p-8 md:p-16"
+      className="backdrop-blur-md bg-white/40 rounded-3xl shadow-lg overflow-auto p-6 sm:p-8 md:p-16"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Typography

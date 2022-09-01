@@ -26,7 +26,7 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
               : width === '1/2'
               ? 'col-span-6'
               : width === '1/3' && 'col-span-4',
-            'bg-white/30 shadow-lg shadow-primary-300/30 hover:shadow-primary-500/50 focus-within:!shadow-primary-500/70 duration-300 rounded-t-md'
+            'brightness-105 bg-white/50 hover:bg-white shadow-lg shadow-primary-300/30 hover:shadow-primary-500/50 focus-within:!shadow-primary-500/70 transition duration-300'
           )}
           id={name}
           type={type}
@@ -52,8 +52,8 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
             ),
           }}
           sx={{
-            '& .MuiFilledInput-root': {
-              backgroundColor: 'whitesmoke',
+            '& .Mui-focused': {
+              backgroundColor: 'rgb(255 255 255 / 0.4)',
             },
             '& .Mui-focused .MuiInputAdornment-root svg': {
               color: (theme) => theme.palette.primary.main,

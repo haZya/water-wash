@@ -1,4 +1,6 @@
-import background from '@/assets/images/home/section-1/bg.png'; // TODO: from cms
+// import assets // TODO: from cms
+import background from '@/assets/images/home/descriptive-section/bg.png';
+import bg from '@/assets/images/home/req-form-section/bg.png';
 
 import { Hero } from 'components/home';
 import { DescriptiveSection } from 'components/home/descriptive-section';
@@ -217,6 +219,7 @@ const reqFormSection: IHome['reqFormSection'] = {
   title: 'GET IN TOUCH',
   subtitle:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro adipisci ex facilis assumenda atque.',
+  background: bg,
   form: {
     title: 'NEW REQUEST',
     sections: [
