@@ -72,7 +72,7 @@ const Navbar = () => {
                 <a>
                   <div
                     className={clsx(
-                      'transition-all duration-500 drop-shadow-md',
+                      'select-none transition-all duration-500 drop-shadow-md',
                       navSticky ? 'w-20' : 'w-24 sm:w-32'
                     )}
                   >

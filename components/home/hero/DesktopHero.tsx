@@ -23,7 +23,7 @@ const DesktopHero = () => {
             <a className="absolute transform-center z-10">
               <Tilt
                 className={clsx(
-                  'pointer-events-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
+                  'pointer-events-none select-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
                   styles.logo
                 )}
                 transitionSpeed={2000}
