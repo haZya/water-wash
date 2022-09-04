@@ -4,7 +4,7 @@ import bg from '@/assets/images/home/req-form-section/bg.png';
 
 import { Hero } from 'components/home';
 import { DescriptiveSection } from 'components/home/descriptive-section';
-import { GallerySection } from 'components/home/GallerySection';
+import { GallerySection } from 'components/home/gallery-section';
 import { ReqFormSection } from 'components/home/req-form-section';
 import { ReviewSection } from 'components/home/review-section';
 import { setHomeContent } from 'components/home/store/contentSlice';
