@@ -21,6 +21,10 @@ function useStaggerItem(containerName: string, index: number, when: boolean) {
       item?.when &&
       (!prevItem || !prevItem.when || prevItem.animationStarted || prevItem.animationEnded)
     );
+<<<<<<< HEAD
+=======
+  console.log('hit', when);
+>>>>>>> 0fdf71a04006e434119e8efaa2ee9eec5d28a2ee
 
   useEffect(() => {
     dispatch(
