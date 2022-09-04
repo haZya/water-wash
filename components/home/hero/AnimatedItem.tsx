@@ -157,7 +157,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
           >
             <Typography
               ref={titleRef}
-              className="text-base font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
+              className="text-base !font-body font-semibold mt-2 transition-colors duration-200 group-hover:duration-500"
               color="text.secondary"
               variant="h2"
             >

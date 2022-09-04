@@ -54,7 +54,7 @@ const ReqFormSection = () => {
         <div className="container mx-auto">
           <header className="flex flex-col items-center pt-8 space-y-4 md:space-y-8 mb-8 md:mb-16">
             <Typography
-              className="text-3xl sm:text-4xl text-center font-bold leading-tight z-0"
+              className="text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-0"
               id="req-form-section-title"
               variant="h1"
               color="text.secondary"
