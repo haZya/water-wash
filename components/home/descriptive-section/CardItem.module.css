@@ -42,10 +42,12 @@
 
 @keyframes slide-up {
   from {
+    visibility: hidden;
     opacity: 0;
     transform: translateY(6.4rem);
   }
   to {
+    visibility: visible;
     opacity: 1;
     transform: translateY(0);
   }

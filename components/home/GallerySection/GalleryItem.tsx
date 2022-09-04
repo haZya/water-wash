@@ -30,7 +30,7 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
       <Box
         ref={ref}
         className={clsx(
-          'translate-y-0 opacity-0 invisible w-full aspect-video',
+          'translate-y-0 opacity-0 invisible w-full aspect-video cursor-pointer',
           animate && styles.slideUp
         )}
         component="div"

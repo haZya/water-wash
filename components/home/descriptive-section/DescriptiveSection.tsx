@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import clsx from 'clsx';
 import { Image } from 'components/shared';
+import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ const DescriptiveSection = () => {
   const { title, subtitle, background, items } = useSelector(
     ({ home }: RootState) => home.content.descriptiveSection
   );
+  const [ref, inView] = useInView<HTMLDivElement>('30px 0px 0px 0px');
 
   return (
     <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden">
@@ -36,9 +38,12 @@ const DescriptiveSection = () => {
               dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}
             />
           </header>
-          <div className="grid grid-cols-1 xs:grid-cols-3 gap-6 xs:gap-4 sm:gap-8 lg:gap-12 mt-4">
+          <div
+            ref={ref}
+            className="grid grid-cols-1 xs:grid-cols-3 gap-6 xs:gap-4 sm:gap-8 lg:gap-12 mt-4"
+          >
             {items.map((item, i) => (
-              <CardItem key={item.title} index={i} {...item} />
+              <CardItem key={item.title} {...item} index={i} inView={inView} />
             ))}
           </div>
         </div>

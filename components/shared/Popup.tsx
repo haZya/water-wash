@@ -1,4 +1,5 @@
-import { Backdrop, keyframes, styled, useTheme } from '@mui/material';
+import { Close } from '@mui/icons-material';
+import { Backdrop, IconButton, keyframes, styled, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { useScrollLock } from 'hooks';
 import { RootState } from 'lib/redux';
@@ -107,7 +108,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-const Popup = ({ children, ...props }: IProps) => {
+const Popup = (props: IProps) => {
   const dispatch = useDispatch();
   const {
     open,
@@ -123,9 +124,13 @@ const Popup = ({ children, ...props }: IProps) => {
     else unlockScroll();
   }, [open, animationEnded, unlockScroll, lockScroll]);
 
+  const handleClose = () => {
+    dispatch(closePopup());
+  };
+
   return (
     <>
-      <div {...props}>{children}</div>
+      <div {...props} />
       {open != undefined && (
         <>
           <StyledPopup
@@ -148,11 +153,18 @@ const Popup = ({ children, ...props }: IProps) => {
           <Backdrop
             className="backdrop-blur-sm"
             open={open}
-            onClick={() => {
-              dispatch(closePopup());
-            }}
+            onClick={handleClose}
             sx={{ zIndex: theme.zIndex.drawer + 1 }}
-          />
+          >
+            <IconButton
+              className="absolute top-2 right-2 text-white"
+              aria-label="close"
+              size="medium"
+              onClick={handleClose}
+            >
+              <Close fontSize="medium" />
+            </IconButton>
+          </Backdrop>
         </>
       )}
     </>
