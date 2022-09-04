@@ -1,4 +1,5 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit';
+import about from 'components/about/store';
 import home from 'components/home/store';
 import shared from 'components/shared/store';
 import { createLogger } from 'redux-logger';
@@ -17,6 +18,7 @@ const store = configureStore({
   reducer: {
     shared,
     home,
+    about,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
