@@ -51,16 +51,15 @@ const ReqFormSection = () => {
             <Image src={bg} alt="" />
           </div>
         )}
-        <div className="container mx-auto">
-          <header className="flex flex-col items-center pt-8 space-y-4 md:space-y-8 mb-8 md:mb-16">
+        <div className="container mx-auto pt-8">
+          <header className="flex flex-col items-center space-y-4 md:space-y-8 mb-8 md:mb-16">
             <Typography
-              className="text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-0"
+              className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-0"
               id="req-form-section-title"
               variant="h1"
               color="text.secondary"
-            >
-              <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
-            </Typography>
+              dangerouslySetInnerHTML={{ __html: sanitize(title) }}
+            />
             <Typography
               className="text-center text-base my-6 z-0"
               dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}

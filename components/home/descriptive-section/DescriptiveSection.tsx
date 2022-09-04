@@ -26,7 +26,7 @@ const DescriptiveSection = () => {
         <div className="container mx-auto">
           <header className="flex flex-col items-center space-y-8 mb-16">
             <Typography
-              className="text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-10"
+              className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-10"
               id="descriptive-section-title"
               variant="h1"
               color="text.secondary"

@@ -75,11 +75,14 @@ const Form = () => {
       <Button
         type="submit"
         className={clsx(
-          'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 duration-300 rounded-full',
-          'px-8 md:px-16 py-1.5 md:py-3 mt-8 md:mt-16'
+          'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 duration-700 rounded-full',
+          'px-8 md:px-16 py-1.5 md:py-3 mt-8 md:mt-16 hover:scale-110'
         )}
         variant="contained"
         disabled={isSubmitting}
+        sx={{
+          transition: 'transform 0.7s cubic-bezier(0.5, 2, 0.5, 0.5)',
+        }}
       >
         {isSubmitting && (
           <svg

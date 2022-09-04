@@ -21,8 +21,6 @@ const CardItem = ({ index, inView, icon, title, content }: IProps) => {
     inView
   );
 
-  console.log('ind', index);
-
   return (
     <Box
       className={clsx(

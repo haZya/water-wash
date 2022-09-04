@@ -14,7 +14,7 @@ const ReviewSection = () => {
       <div className="container mx-auto pt-16 pb-8 overflow-hidden">
         <header className="flex flex-col items-center mb-16">
           <Typography
-            className="text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight"
+            className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight"
             id="review-section-title"
             variant="h1"
             color="text.secondary"

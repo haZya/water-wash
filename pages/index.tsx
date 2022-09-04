@@ -184,7 +184,7 @@ const reviewSection: IHome['reviewSection'] = {
   title: 'READ OUR REVIEWS',
   script: {
     url: 'https://apps.elfsight.com/p/platform.js',
-    className: 'elfsight-app-5c9cc84e-038a-49ea-867d-11b5d721584d',
+    className: 'elfsight-app-df54c5cf-6646-42df-906c-fb7195d046b0',
   },
 };
 
