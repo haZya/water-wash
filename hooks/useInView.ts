@@ -1,20 +1,17 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { Ref, useEffect, useRef, useState } from 'react';
 
-function useInView<T extends Element>(rootMargin: string = '0px'): [RefObject<T>, boolean] {
+function useInView<T extends Element>(rootMargin: string = '0px'): [Ref<T>, boolean] {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState<boolean>(false);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    let intersectingTimeout: NodeJS.Timeout;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        clearTimeout(intersectingTimeout);
-
         // Update our state when observer callback fires
-        intersectingTimeout = setTimeout(() => setInView(entry.isIntersecting), 150);
+        setInView(entry.isIntersecting);
       },
       {
         rootMargin,

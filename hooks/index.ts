@@ -1,5 +1,6 @@
 import useInView from './useInView';
-import useScrolling from './useScrolling';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import useScrollLock from './useScrollLock';
 import useWindowSize from './useWindowSize';
 
-export { useInView, useWindowSize, useScrolling };
+export { useIsomorphicLayoutEffect, useInView, useWindowSize, useScrollLock };

@@ -76,7 +76,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        heading: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
         body: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       margin: {

@@ -1,113 +1,29 @@
-import { Backdrop, Box, styled, useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { Image } from 'components/shared';
-import { useInView, useScrolling, useWindowSize } from 'hooks';
+import { Image, PopupItem, useStaggerItem } from 'components/shared';
+import { useInView } from 'hooks';
 import { IGallerySectionItem } from 'models/home';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
-import { useDispatch } from 'react-redux';
-import { setGallerySectionItemState } from '../store/contentSlice';
 import styles from './GalleryItem.module.css';
 
 interface IProps extends IGallerySectionItem {
   index: number;
-  prevItem: IGallerySectionItem;
 }
 
-type StyledReactCompareSliderProps = {
-  scaleX: number;
-  scaleY: number;
-};
-
-const Popup = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'scaleX' && prop !== 'scaleY',
-})<StyledReactCompareSliderProps>(({ scaleX, scaleY }) => ({
-  '@keyframes zoom-in': {
-    from: {
-      visibility: 'hidden',
-    },
-    to: {
-      top: '50%',
-      left: '50%',
-      transform: `translate3d(-50%, -50%, 0) scale3d(${scaleX}, ${scaleY}, 1)`,
-    },
-  },
-  '@keyframes zoom-out': {
-    from: {
-      top: '50%',
-      left: '50%',
-      transform: `translate3d(-50%, -50%, 0) scale3d(${scaleX}, ${scaleY}, 1)`,
-    },
-    to: {
-      visibility: 'hidden',
-    },
-  },
-
-  '&.zoom-in': {
-    animationName: 'zoom-in',
-    animationDuration: '0.5s',
-    animationFillMode: 'forwards',
-  },
-
-  '&.zoom-out': {
-    animationName: 'zoom-out',
-    animationDuration: '0.5s',
-    animationFillMode: 'forwards',
-  },
-}));
-
-const GalleryItem = ({
-  index,
-  animationStarted,
-  animationEnded,
-  prevItem,
-  image1,
-  image2,
-  portrait,
-}: IProps) => {
-  const dispatch = useDispatch();
+const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const [ref, inView] = useInView<HTMLDivElement>('30px 0px 0px 0px');
-  const { width } = useWindowSize();
-  const scrolling = useScrolling(inView);
 
-  const [rect, setRect] = useState<DOMRect>();
-  const [open, setOpen] = useState<boolean>();
-  const [position, setPosition] = useState(50);
+  const { animate, handleAnimationStart, handleAnimationEnd } = useStaggerItem(
+    'gallery',
+    index,
+    inView
+  );
 
-  useLayoutEffect(() => {
-    if (!scrolling && animationEnded) {
-      setRect(ref.current?.getBoundingClientRect());
-    }
-  }, [ref, scrolling, animationEnded]);
-
-  const toggleOpen = () => {
-    setOpen(!open);
-  };
-
-  useLayoutEffect(() => {
-    if (open) {
-      const scrollBarCompensation = window.innerWidth - document.body.offsetWidth;
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = `${scrollBarCompensation}px`;
-    } else {
-      document.body.style.overflow = 'auto';
-      document.body.style.paddingRight = '';
-    }
-  }, [open]);
-
-  useEffect(() => {
-    dispatch(
-      setGallerySectionItemState({
-        index,
-        inView,
-        animationStarted,
-        animationEnded: !inView ? false : animationEnded,
-      })
-    );
-  }, [animationEnded, animationStarted, dispatch, inView, index]);
+  const [compareSliderPosition, setCompareSliderPosition] = useState(50);
 
   return (
     <>
@@ -115,38 +31,13 @@ const GalleryItem = ({
         ref={ref}
         className={clsx(
           'translate-y-0 opacity-0 invisible w-full aspect-video',
-          (animationStarted ||
-            animationEnded ||
-            (inView &&
-              (!prevItem ||
-                !prevItem.inView ||
-                prevItem.animationStarted ||
-                prevItem.animationEnded))) &&
-            styles.slideUp
+          animate && styles.slideUp
         )}
         component="div"
+        onAnimationStart={handleAnimationStart}
+        onAnimationEnd={handleAnimationEnd}
         sx={{
           animationDelay: `${0.1}s`,
-        }}
-        onAnimationStart={() => {
-          dispatch(
-            setGallerySectionItemState({
-              index,
-              inView,
-              animationStarted: true,
-              animationEnded: false,
-            })
-          );
-        }}
-        onAnimationEnd={() => {
-          dispatch(
-            setGallerySectionItemState({
-              index,
-              inView,
-              animationStarted: false,
-              animationEnded: true,
-            })
-          );
         }}
       >
         <Tilt
@@ -159,63 +50,48 @@ const GalleryItem = ({
           glarePosition="all"
           glareMaxOpacity={0.3}
         >
-          <ReactCompareSlider
-            className="w-full h-full"
-            onlyHandleDraggable
-            portrait={portrait}
-            itemOne={<Image src={image1} alt="Image One" layout="fill" />}
-            itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
-            position={position}
-            onPositionChange={(pos) => {
-              setPosition(pos);
-            }}
-            onClick={toggleOpen}
-            handle={
-              <div
+          <PopupItem
+            customRender={
+              <ReactCompareSlider
                 className="w-full h-full"
-                onClick={(e) => {
-                  e.stopPropagation();
+                portrait={portrait}
+                itemOne={<Image src={image1} alt="Image One" layout="fill" />}
+                itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
+                position={compareSliderPosition}
+                onPositionChange={(pos) => {
+                  setCompareSliderPosition(pos);
                 }}
-              >
-                <ReactCompareSliderHandle portrait={portrait} />
-              </div>
+              />
             }
-          />
+          >
+            {({ ref }) => (
+              <div ref={ref} className="w-full h-full">
+                <ReactCompareSlider
+                  className="w-full h-full"
+                  onlyHandleDraggable
+                  portrait={portrait}
+                  itemOne={<Image src={image1} alt="Image One" layout="fill" />}
+                  itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
+                  position={compareSliderPosition}
+                  onPositionChange={(pos) => {
+                    setCompareSliderPosition(pos);
+                  }}
+                  handle={
+                    <div
+                      className="w-full h-full"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <ReactCompareSliderHandle portrait={portrait} />
+                    </div>
+                  }
+                />
+              </div>
+            )}
+          </PopupItem>
         </Tilt>
       </Box>
-      {open != undefined && (
-        <>
-          <Popup
-            className={clsx('!fixed', open ? 'zoom-in' : 'zoom-out')}
-            scaleX={(width * 0.85) / (rect?.width ?? 1)}
-            scaleY={(width * 0.85) / (rect?.width ?? 1)}
-            style={{
-              width: rect?.width,
-              height: rect?.height,
-              top: rect?.top,
-              left: rect?.left,
-              zIndex: theme.zIndex.drawer + 2,
-            }}
-          >
-            <ReactCompareSlider
-              className="w-full h-full"
-              portrait={portrait}
-              itemOne={<Image src={image1} alt="Image One" layout="fill" />}
-              itemTwo={<Image src={image2} alt="Image two" layout="fill" />}
-              position={position}
-              onPositionChange={(pos) => {
-                setPosition(pos);
-              }}
-            />
-          </Popup>
-          <Backdrop
-            className="backdrop-blur-sm"
-            open={open}
-            onClick={toggleOpen}
-            sx={{ zIndex: theme.zIndex.drawer + 1 }}
-          />
-        </>
-      )}
     </>
   );
 };

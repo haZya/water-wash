@@ -44,6 +44,24 @@ const theme = createTheme({
     fontFamily: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
     htmlFontSize: 10,
     fontSize: 14,
+    h1: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
+    h2: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
+    h3: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
+    h4: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
+    h5: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
+    h6: {
+      fontFamily: ['Chivo', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+    },
     body1: {
       fontSize: '1.4rem',
     },

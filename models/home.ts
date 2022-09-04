@@ -25,9 +25,6 @@ export interface IGallerySectionItem {
   image1: StaticImageData | string;
   image2: StaticImageData | string;
   portrait?: boolean;
-  inView?: boolean;
-  animationStarted?: boolean;
-  animationEnded?: boolean;
 }
 //#endregion
 
