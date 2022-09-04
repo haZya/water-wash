@@ -1,0 +1,18 @@
+.background {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 100%;
+  min-width: 3320px;
+  opacity: 0.2;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 1024px) {
+  .background {
+    min-width: 3080px;
+  }
+}

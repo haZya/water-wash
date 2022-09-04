@@ -4,12 +4,13 @@ import 'styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { ISeo, Seo } from 'components/shared';
+import Layout from 'components/shared/Layout';
 import { createEmotionCache, theme } from 'lib/mui';
-import { NextPage } from 'next';
+import { store } from 'lib/redux';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import nProgress from 'nprogress';
+import { Provider } from 'react-redux';
 
 // Binding events for loading indicator when navigating.
 Router.events.on('routeChangeStart', () => nProgress.start());
@@ -17,12 +18,7 @@ Router.events.on('routeChangeComplete', () => nProgress.done());
 Router.events.on('routeChangeError', () => nProgress.done());
 nProgress.configure({ showSpinner: false }); // Remove spinner
 
-export type NextPageExtended = NextPage & {
-  seo: ISeo;
-};
-
-type AppPropsExtended = Omit<AppProps, 'Component'> & {
-  Component: NextPageExtended;
+type AppPropsExtended = AppProps & {
   emotionCache: EmotionCache;
 };
 
@@ -35,8 +31,11 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Seo {...Component.seo} />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );

@@ -1,4 +1,6 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit';
+import home from 'components/home/store';
+import shared from 'components/shared/store';
 import { createLogger } from 'redux-logger';
 
 const middlewares: Middleware[] = [];
@@ -12,7 +14,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    shared,
+    home,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       immutableCheck: false,
