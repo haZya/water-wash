@@ -1,6 +1,6 @@
 import { Ref, useEffect, useRef, useState } from 'react';
 
-function useInView<T extends Element>(rootMargin: string = '0px'): [Ref<T>, boolean] {
+function useInView<T extends Element>(options?: IntersectionObserverInit): [Ref<T>, boolean] {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState<boolean>(false);
 
@@ -8,21 +8,16 @@ function useInView<T extends Element>(rootMargin: string = '0px'): [Ref<T>, bool
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Update our state when observer callback fires
-        setInView(entry.isIntersecting);
-      },
-      {
-        rootMargin,
-      }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      // Update our state when observer callback fires
+      setInView(entry.isIntersecting);
+    }, options);
 
     observer.observe(el);
     return () => {
       observer.unobserve(el);
     };
-  }, [ref, rootMargin]);
+  }, [options, ref]);
   return [ref, inView];
 }
 

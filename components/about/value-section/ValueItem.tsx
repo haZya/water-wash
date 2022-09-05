@@ -1,20 +1,51 @@
-// Import assets; TODO: From CMS
-
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { Image } from 'components/shared';
+import { Image, useStaggerItem } from 'components/shared';
+import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IValueSectionItem } from 'models/about';
+import { useEffect, useState } from 'react';
+import styles from './ValueItem.module.css';
 
-function ValueItem({ badge, title, content }: IValueSectionItem) {
+interface IProps extends IValueSectionItem {
+  index: number;
+}
+
+function ValueItem({ index, badge, title, content }: IProps) {
+  const [animating, setAnimating] = useState(false);
+  const [ref, inView] = useInView({
+    threshold: !animating ? 0.3 : undefined,
+  });
+
+  const { animate, handleAnimationStart, handleAnimationEnd } = useStaggerItem(
+    'value',
+    index,
+    inView
+  );
+
+  useEffect(() => {
+    setAnimating(animate);
+  }, [animate]);
+
   return (
-    <div className="rounded-3xl shadow-md overflow-hidden">
+    <Box
+      ref={ref}
+      className={clsx(
+        'opacity-0 invisible rounded-3xl shadow-md overflow-hidden',
+        animate && styles.slideUp
+      )}
+      onAnimationStart={handleAnimationStart}
+      onAnimationEnd={handleAnimationEnd}
+      sx={{
+        animationDelay: `${(index + 1) * 0.15}s`,
+      }}
+    >
       <div className="bg-black py-4">
         <div className="max-w-64 mx-auto">
           <Image src={badge} alt="Badge" />
         </div>
       </div>
-      <div className={clsx('flex flex-col max-w-sm md:max-w-none p-6 sm:py-8 sm:px-10 space-y-6')}>
+      <div className={clsx('flex flex-col max-w-sm md:max-w-none p-6 sm:py-8 sm:px-10 space-y-8')}>
         <Typography
           className="relative text-4xl font-normal"
           variant="h2"
@@ -34,12 +65,12 @@ function ValueItem({ badge, title, content }: IValueSectionItem) {
           {title}
         </Typography>
         <Typography
-          className="text-base font-medium space-y-4"
+          className="text-base text-justify font-medium space-y-4"
           color="text.secondary"
           dangerouslySetInnerHTML={{ __html: sanitize(content) }}
         />
       </div>
-    </div>
+    </Box>
   );
 }
 

@@ -1,19 +1,22 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
 import { useStaggerItem } from 'components/shared';
+import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IDescriptiveSectionItem } from 'models/home';
+import { useEffect, useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from './CardItem.module.css';
 
 interface IProps extends IDescriptiveSectionItem {
   index: number;
-  inView: boolean;
 }
 
-const CardItem = ({ index, inView, icon, title, content }: IProps) => {
+const CardItem = ({ index, icon, title, content }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const [animating, setAnimating] = useState(false);
+  const [ref, inView] = useInView({ threshold: !animating ? 0.3 : undefined });
 
   const { animate, handleAnimationStart, handleAnimationEnd } = useStaggerItem(
     'descriptive',
@@ -21,16 +24,18 @@ const CardItem = ({ index, inView, icon, title, content }: IProps) => {
     inView
   );
 
+  useEffect(() => {
+    setAnimating(animate);
+  }, [animate]);
+
   return (
     <Box
-      className={clsx(
-        'translate-y-0 opacity-0 invisible backdrop-blur-sm',
-        animate && styles.slideUp
-      )}
+      ref={ref}
+      className={clsx('opacity-0 invisible backdrop-blur-sm', animate && styles.slideUp)}
       onAnimationStart={handleAnimationStart}
       onAnimationEnd={handleAnimationEnd}
       sx={{
-        animationDelay: `${index * 0.15}s`,
+        animationDelay: `${(index + 1) * 0.15}s`,
       }}
     >
       <Tilt
