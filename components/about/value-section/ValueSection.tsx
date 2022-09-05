@@ -8,18 +8,19 @@ const ValueSection = () => {
   return (
     <section aria-label="Our Values">
       <div className="container mx-auto pt-20 sm:pt-40">
+        <div className="h-[96rem]" />
         <div
           // variants={container}
           // initial="hidden"
           // animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-y-0 md:gap-x-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-y-0 md:gap-x-6 items-center"
         >
-          {items.map((b) => (
+          {items.map((b, i) => (
             <div
               key={b.title}
               // variants={item}
             >
-              <ValueItem {...b} />
+              <ValueItem index={i} {...b} />
             </div>
           ))}
         </div>

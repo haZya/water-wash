@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Image, PopupItem, useStaggerItem } from 'components/shared';
 import { useInView } from 'hooks';
 import { IGallerySectionItem } from 'models/home';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
 import styles from './GalleryItem.module.css';
@@ -15,13 +15,18 @@ interface IProps extends IGallerySectionItem {
 const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const [ref, inView] = useInView<HTMLDivElement>('30px 0px 0px 0px');
+  const [animating, setAnimating] = useState(false);
+  const [ref, inView] = useInView({ threshold: !animating ? 0.3 : undefined });
 
   const { animate, handleAnimationStart, handleAnimationEnd } = useStaggerItem(
     'gallery',
     index,
     inView
   );
+
+  useEffect(() => {
+    setAnimating(animate);
+  }, [animate]);
 
   const [compareSliderPosition, setCompareSliderPosition] = useState(50);
 
@@ -30,12 +35,12 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
       <Box
         ref={ref}
         className={clsx(
-          'translate-y-0 opacity-0 invisible w-full aspect-video cursor-pointer',
+          'opacity-0 invisible w-full aspect-video cursor-pointer',
           animate && styles.slideUp
         )}
         component="div"
         onAnimationStart={handleAnimationStart}
-        onAnimationEnd={handleAnimationEnd}
+        onTransitionEnd={handleAnimationEnd}
         sx={{
           animationDelay: `${0.1}s`,
         }}

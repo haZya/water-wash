@@ -32,6 +32,8 @@ function useStaggerItem(containerName: string, index: number, when: boolean) {
     );
   }, [containerName, dispatch, index, when]);
 
+  console.log('hit');
+
   const handleAnimationStart = () => {
     dispatch(
       setStaggerItem({
