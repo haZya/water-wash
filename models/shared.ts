@@ -54,7 +54,13 @@ export interface ISeo {
   ogAltText?: string;
 }
 
+export interface IBanner {
+  title: string;
+  backgroundImage: StaticImageData | string;
+}
+
 export interface IPage {
+  banner?: IBanner;
   seo: ISeo;
 }
 
