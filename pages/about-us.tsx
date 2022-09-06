@@ -1,5 +1,7 @@
 // Import assets; TODO: From CMS
+import greenTick from '@/assets/images/about/mission-section/green-tick.png';
 import badge from '@/assets/images/about/value-section/badge.png';
+import { MissionSection } from 'components/about/mission-section';
 
 import { setAboutContent } from 'components/about/store/contentSlice';
 import { ValueSection } from 'components/about/value-section';
@@ -10,6 +12,24 @@ import { GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useDispatch } from 'react-redux';
+
+const missionSection: IAbout['missionSection'] = {
+  title: '"Our Mission"',
+  content: renderToStaticMarkup(
+    <p>
+      Here at Waterwash, our mission is to reduce Australia’s pressure washing industry emissions to
+      ⅓ of what it currently is by 2025. The company prides itself on customer service and any type
+      of person-to-person interaction as a mutual feature of the overall service provided. Specific
+      operational machinery has been resourced to aid in this long-term goal of reducing emissions
+      by over half. Despite the nature of cleaning and high/soft pressure cleaning as an industry,
+      Waterwash aims to break this trend while spreading awareness regarding the opportunity for
+      sustainable change over time. Taking an unorthodox approach to service, through renewable
+      energy sources and overall reduction in water volume usage Waterwash aims to not only provide
+      a clear example of sustainable practice but also lead the industry through quality of service.
+    </p>
+  ),
+  badge: greenTick,
+};
 
 const valueSection: IAbout['valueSection'] = {
   items: [
@@ -22,7 +42,7 @@ const valueSection: IAbout['valueSection'] = {
           comfort, and aesthetic of your home or business. We’re committed to the utmost
           professionalism to ensure your complete satisfaction, confidence, and peace of mind. Our
           technicians are experienced, honest, and hardworking, and will always go above and beyond
-          for you, our customers
+          for you, our customers.
         </p>
       ),
     },
@@ -70,6 +90,7 @@ interface IProps extends IPage, IAbout {}
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      missionSection,
       valueSection,
       seo: { indexing: true, metaTitle: 'About', metaDesc: '' },
     },
@@ -86,6 +107,7 @@ const AboutUs: NextPage<IProps> = ({ seo, ...props }: IProps) => {
   return (
     <>
       <Seo {...seo} metaTitle={seo?.metaTitle ?? AboutUs.name} />
+      <MissionSection />
       <ValueSection />
     </>
   );

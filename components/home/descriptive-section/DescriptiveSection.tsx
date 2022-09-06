@@ -28,9 +28,8 @@ const DescriptiveSection = () => {
               id="descriptive-section-title"
               variant="h1"
               color="text.secondary"
-            >
-              <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
-            </Typography>
+              dangerouslySetInnerHTML={{ __html: sanitize(title) }}
+            ></Typography>
             <Typography
               className="text-center text-lg my-6 z-10"
               dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}

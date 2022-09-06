@@ -9,6 +9,11 @@ export interface IValueSectionItem {
 //#endregion
 
 export interface IAbout {
+  missionSection: {
+    title: string;
+    content: string;
+    badge: StaticImageData | string;
+  };
   valueSection: {
     items: IValueSectionItem[];
   };
