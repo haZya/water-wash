@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import { RootState } from 'lib/redux';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from './Image';
 import styles from './Navbar.module.css';
@@ -21,6 +22,7 @@ const DynamicNavDrawer = dynamic(() => import('./NavDrawer'));
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const { pathname } = useRouter();
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const {
@@ -89,9 +91,10 @@ const Navbar = () => {
                       className={clsx(
                         'relative text-lg font-medium',
                         color === 'primary'
-                          ? 'text-primary-700 after:bg-primary-700'
-                          : 'text-secondary-700 after:bg-secondary-700',
-                        styles.navLinkText
+                          ? 'text-primary-700 after:bg-primary-700 before:bg-primary-700'
+                          : 'text-secondary-700 after:bg-secondary-700 before:bg-secondary-700',
+                        styles.navLinkText,
+                        pathname === path && styles.navLinkActive
                       )}
                     >
                       {label}
