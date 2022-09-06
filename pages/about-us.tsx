@@ -1,17 +1,24 @@
 // Import assets; TODO: From CMS
 import greenTick from '@/assets/images/about/mission-section/green-tick.png';
 import badge from '@/assets/images/about/value-section/badge.png';
+import bannerImage from '@/assets/images/shared/banner/1920x400.png';
 import { MissionSection } from 'components/about/mission-section';
 
 import { setAboutContent } from 'components/about/store/contentSlice';
 import { ValueSection } from 'components/about/value-section';
 import { Seo } from 'components/shared';
+import { setLayout } from 'components/shared/store/layoutSlice';
 import { IAbout } from 'models/about';
-import { IPage } from 'models/shared';
+import { IBanner, IPage } from 'models/shared';
 import { GetStaticProps, NextPage } from 'next';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useDispatch } from 'react-redux';
+
+const banner: IBanner = {
+  title: 'About Us',
+  backgroundImage: bannerImage,
+};
 
 const missionSection: IAbout['missionSection'] = {
   title: '"Our Mission"',
@@ -45,6 +52,7 @@ const valueSection: IAbout['valueSection'] = {
           for you, our customers.
         </p>
       ),
+      color: '#000',
     },
     {
       badge,
@@ -63,6 +71,7 @@ const valueSection: IAbout['valueSection'] = {
           </p>
         </>
       ),
+      color: '#000',
     },
     {
       badge,
@@ -81,6 +90,7 @@ const valueSection: IAbout['valueSection'] = {
           </p>
         </>
       ),
+      color: '#000',
     },
   ],
 };
@@ -90,6 +100,7 @@ interface IProps extends IPage, IAbout {}
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      banner,
       missionSection,
       valueSection,
       seo: { indexing: true, metaTitle: 'About', metaDesc: '' },
@@ -97,12 +108,13 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   };
 };
 
-const AboutUs: NextPage<IProps> = ({ seo, ...props }: IProps) => {
+const AboutUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setLayout({ banner }));
     dispatch(setAboutContent(props));
-  }, [dispatch, props]);
+  }, [banner, dispatch, props]);
 
   return (
     <>

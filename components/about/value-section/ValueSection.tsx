@@ -7,8 +7,8 @@ const ValueSection = () => {
 
   return (
     <section aria-label="Our Values">
-      <div className="container mx-auto py-8 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 lg:gap-y-0 md:gap-x-6 items-center">
+      <div className="container mx-auto pb-8 sm:pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-6 lg:gap-y-0 md:gap-x-6 items-center">
           {items.map((b, i) => (
             <ValueItem key={b.title} index={i} {...b} />
           ))}

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Theme, Typography, useMediaQuery } from '@mui/material';
 import clsx from 'clsx';
 import { Image, useStaggerItem } from 'components/shared';
 import { useInView } from 'hooks';
@@ -13,9 +13,11 @@ interface IProps extends IValueSectionItem {
 }
 
 function ValueItem({ index, badge, title, content }: IProps) {
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+  const [hovering, setHovering] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [ref, inView] = useInView({
-    threshold: !animating ? 0.3 : undefined,
+    threshold: !animating ? 0.15 : undefined,
   });
 
   const { animate, handleAnimationStart, handleAnimationEnd } = useStaggerItem(
@@ -32,13 +34,21 @@ function ValueItem({ index, badge, title, content }: IProps) {
     <div className={clsx(styles.wrapper)}>
       <Tilt
         className={clsx('w-full h-full')}
-        scale={1.06}
-        tiltMaxAngleX={15}
+        scale={mdDown ? 1 : 1.06}
+        tiltMaxAngleX={mdDown ? 10 : 15}
         tiltAxis="y"
         glareEnable
         glarePosition="all"
         glareMaxOpacity={0.3}
-        tiltAngleYInitial={index === 0 ? -15 : index === 2 ? 15 : 0}
+        tiltAngleYManual={
+          hovering ? undefined : mdDown ? 0 : index === 0 ? 15 : index === 2 ? -15 : 0
+        }
+        onEnter={() => {
+          setHovering(true);
+        }}
+        onLeave={() => {
+          setHovering(false);
+        }}
       >
         <Box
           ref={ref}
@@ -61,8 +71,8 @@ function ValueItem({ index, badge, title, content }: IProps) {
             className={clsx('flex flex-col max-w-sm md:max-w-none p-6 sm:py-8 sm:px-10 space-y-8')}
           >
             <Typography
-              className="relative text-4xl font-normal"
-              variant="h2"
+              className="relative text-3xl xs:text-4xl md:text-3xl lg:text-4xl font-normal"
+              variant="h3"
               sx={{
                 '&::after': {
                   content: '""',
@@ -70,14 +80,13 @@ function ValueItem({ index, badge, title, content }: IProps) {
                   backgroundColor: 'currentColor',
                   bottom: '-6px',
                   left: 0,
-                  width: '44px',
+                  width: '48px',
                   height: '4px',
                   borderRadius: '10px',
                 },
               }}
-            >
-              {title}
-            </Typography>
+              dangerouslySetInnerHTML={{ __html: sanitize(title) }}
+            />
             <Typography
               className="text-base text-justify font-medium space-y-4"
               color="text.secondary"

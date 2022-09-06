@@ -5,6 +5,7 @@ import { NavLink, Social } from 'models/shared';
 import dynamic from 'next/dynamic';
 import { ReactNode, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Banner } from '.';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import { setLayout } from './store/layoutSlice';
@@ -63,6 +64,7 @@ const Layout = ({ children }: IProps) => {
   return (
     <>
       <Navbar />
+      <Banner />
       <main>{children}</main>
       <Footer />
       {show && <DynamicMessage />}

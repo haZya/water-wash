@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ILayout } from 'models/shared';
+import { IBanner, ILayout } from 'models/shared';
 
 interface IInitialState {
   layoutContent: ILayout;
+  banner: IBanner;
   navDrawerOpen: boolean;
 }
 
@@ -13,6 +14,10 @@ const initialState: IInitialState = {
       links: [],
     },
     socials: [],
+  },
+  banner: {
+    title: '',
+    backgroundImage: '',
   },
   navDrawerOpen: false,
 };

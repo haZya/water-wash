@@ -5,6 +5,7 @@ export interface IValueSectionItem {
   badge: StaticImageData | string;
   title: string;
   content: string;
+  color: string;
 }
 //#endregion
 
