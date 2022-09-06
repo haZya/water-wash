@@ -2,6 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAbout } from 'models/about';
 
 const initialState: IAbout = {
+  missionSection: {
+    title: '',
+    content: '',
+    badge: '',
+  },
   valueSection: {
     items: [],
   },
