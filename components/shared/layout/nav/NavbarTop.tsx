@@ -55,22 +55,14 @@ const NavbarTop = () => {
               <div className="grow flex md:justify-center space-x-6">
                 <a className="group relative flex items-center space-x-4" href="tel:03 8539 4855">
                   <div
-<<<<<<< HEAD
                     className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 scale-75 sm:scale-100"
-=======
-                    className="text-gray-500 group-hover:text-primary-500 scale-75 sm:scale-100"
->>>>>>> 3139594bc5b1860f32d3cb5b98af08760f35fb10
                     dangerouslySetInnerHTML={{ __html: sanitize(phone.icon) }}
                   />
                   <div>
                     <Typography className="text-xs sm:text-sm" color="text.secondary">
                       {phone.title}
                     </Typography>
-<<<<<<< HEAD
                     <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
-=======
-                    <Typography className="text-gray-600 group-hover:text-primary-500 text-sm sm:text-base font-medium">
->>>>>>> 3139594bc5b1860f32d3cb5b98af08760f35fb10
                       {phone.content}
                     </Typography>
                   </div>
