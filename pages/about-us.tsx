@@ -1,6 +1,8 @@
 // Import assets; TODO: From CMS
 import greenTick from '@/assets/images/about/mission-section/green-tick.png';
-import badge from '@/assets/images/about/value-section/badge.png';
+import badge1 from '@/assets/images/about/value-section/badge-1.png';
+import badge2 from '@/assets/images/about/value-section/badge-2.png';
+import badge3 from '@/assets/images/about/value-section/badge-3.png';
 import bannerImage from '@/assets/images/shared/banner/1920x400.png';
 import { MissionSection } from 'components/about/mission-section';
 
@@ -42,7 +44,7 @@ const missionSection: IAbout['missionSection'] = {
 const valueSection: IAbout['valueSection'] = {
   items: [
     {
-      badge,
+      badge: badge1,
       title: 'PROFESSIONAL',
       content: renderToStaticMarkup(
         <p>
@@ -53,10 +55,10 @@ const valueSection: IAbout['valueSection'] = {
           for you, our customers.
         </p>
       ),
-      color: '#000',
+      color: '#fff',
     },
     {
-      badge,
+      badge: badge2,
       title: 'PROMPT',
       content: renderToStaticMarkup(
         <>
@@ -72,10 +74,10 @@ const valueSection: IAbout['valueSection'] = {
           </p>
         </>
       ),
-      color: '#000',
+      color: '#fff',
     },
     {
-      badge,
+      badge: badge3,
       title: 'POLITE',
       content: renderToStaticMarkup(
         <>
@@ -91,7 +93,7 @@ const valueSection: IAbout['valueSection'] = {
           </p>
         </>
       ),
-      color: '#000',
+      color: '#fff',
     },
   ],
 };

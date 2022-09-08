@@ -43,7 +43,7 @@ const Banner = ({ title, backgroundImage }: IBanner) => {
           },
         }}
       >
-        <Image src={bannerImage} alt="Banner" layout="fill" />
+        <Image src={bannerImage} alt="Banner" layout="fill" placeholder="blur" />
       </Box>
     </section>
   );
