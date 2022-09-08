@@ -14,9 +14,9 @@ const MissionSection = () => {
   return (
     <section aria-labelledby="mission-section-title">
       <div className="container mx-auto py-8 sm:py-16">
-        <header className="flex flex-col items-center space-y-8 mb-8">
+        <header className="flex flex-col space-y-8 mb-8">
           <Typography
-            className="relative italic text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight"
+            className="relative text-4xl sm:text-5xl text-center xs:text-start font-bold leading-tight"
             id="mission-section-title"
             variant="h2"
             color="text.secondary"

@@ -62,7 +62,7 @@ const NavbarTop = () => {
                     <Typography className="text-xs sm:text-sm" color="text.secondary">
                       {phone.title}
                     </Typography>
-                    <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
+                    <Typography className="whitespace-nowrap text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
                       {phone.content}
                     </Typography>
                   </div>
