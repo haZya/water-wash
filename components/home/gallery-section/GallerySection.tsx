@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { Popup } from 'components/shared';
+import { Popup } from 'components/shared/popup';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';

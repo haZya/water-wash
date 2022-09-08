@@ -1,6 +1,7 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { Image, PopupItem, useStaggerItem } from 'components/shared';
+import { Image, useStaggerItem } from 'components/shared';
+import { PopupItem } from 'components/shared/popup';
 import { useInView } from 'hooks';
 import { IGallerySectionItem } from 'models/home';
 import { useEffect, useState } from 'react';

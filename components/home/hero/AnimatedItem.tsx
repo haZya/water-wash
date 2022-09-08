@@ -41,8 +41,8 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
       className={clsx(
         'absolute transform-center w-64 lg:w-80 h-auto',
         index === 0
-          ? 'top-1/4 left-3/4 -mt-4 translate-x-full translate-y-[-180%]'
-          : index === 1 && 'top-3/4 left-1/4 mt-12 translate-x-[-180%] translate-y-full',
+          ? 'top-1/4 left-3/4 mt-6 translate-x-full'
+          : index === 1 && 'top-3/4 left-1/4 mt-16 translate-y-full',
         index === 0 ? styles.slideInTopRight : index === 1 && styles.slideInBottomLeft
       )}
       sx={{

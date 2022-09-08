@@ -4,7 +4,7 @@ import 'styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import Layout from 'components/shared/Layout';
+import { Layout } from 'components/shared/layout';
 import { createEmotionCache, theme } from 'lib/mui';
 import { store } from 'lib/redux';
 import type { AppProps } from 'next/app';

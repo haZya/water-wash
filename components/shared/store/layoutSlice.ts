@@ -1,24 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBanner, ILayout } from 'models/shared';
+import { ILayout } from 'models/shared';
 
 interface IInitialState {
   layoutContent: ILayout;
-  banner: IBanner;
+  hasBanner: boolean;
   navDrawerOpen: boolean;
 }
 
 const initialState: IInitialState = {
   layoutContent: {
     logo: null,
+    navTop: {
+      contacts: [],
+      links: [],
+    },
     nav: {
       links: [],
     },
     socials: [],
   },
-  banner: {
-    title: '',
-    backgroundImage: '',
-  },
+  hasBanner: false,
   navDrawerOpen: false,
 };
 

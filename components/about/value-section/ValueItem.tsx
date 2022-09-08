@@ -12,7 +12,7 @@ interface IProps extends IValueSectionItem {
   index: number;
 }
 
-function ValueItem({ index, badge, title, content }: IProps) {
+function ValueItem({ index, badge, title, content, color }: IProps) {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [hovering, setHovering] = useState(false);
   const [animating, setAnimating] = useState(false);
@@ -62,11 +62,11 @@ function ValueItem({ index, badge, title, content }: IProps) {
             animationDelay: `${(index + 1) * 0.15}s`,
           }}
         >
-          <div className="bg-black py-4">
+          <Box className="py-4" sx={{ backgroundColor: color }}>
             <div className="max-w-64 mx-auto">
               <Image src={badge} alt="Badge" />
             </div>
-          </div>
+          </Box>
           <div
             className={clsx('flex flex-col max-w-sm md:max-w-none p-6 sm:py-8 sm:px-10 space-y-8')}
           >
