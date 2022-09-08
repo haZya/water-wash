@@ -13,7 +13,7 @@ const NavbarTop = () => {
 
   const {
     layoutContent: {
-      navTop: { contacts, links },
+      navTop: { phone, email, links },
       socials,
     },
   } = useSelector(({ shared }: RootState) => shared.layout);
@@ -53,23 +53,37 @@ const NavbarTop = () => {
                 ))}
               </ul>
               <div className="grow flex md:justify-center space-x-6">
-                {contacts.map((c) => (
-                  <div key={c.title} className="flex items-center space-x-4">
-                    <div
-                      className="text-gray-500 scale-75 sm:scale-100"
-                      dangerouslySetInnerHTML={{ __html: sanitize(c.icon) }}
-                    />
-                    <div>
-                      <Typography className="text-xs sm:text-sm" color="text.secondary">
-                        {c.title}
-                      </Typography>
-                      <div
-                        className="text-gray-600 hover:text-primary-500 text-sm sm:text-base font-medium"
-                        dangerouslySetInnerHTML={{ __html: sanitize(c.content) }}
-                      />
-                    </div>
+                <a className="group relative flex items-center space-x-4" href="tel:03 8539 4855">
+                  <div
+                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 scale-75 sm:scale-100"
+                    dangerouslySetInnerHTML={{ __html: sanitize(phone.icon) }}
+                  />
+                  <div>
+                    <Typography className="text-xs sm:text-sm" color="text.secondary">
+                      {phone.title}
+                    </Typography>
+                    <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
+                      {phone.content}
+                    </Typography>
                   </div>
-                ))}
+                </a>
+                <a
+                  className="group relative flex items-center space-x-4"
+                  href="mailto:enquiries@waterwash.com.au"
+                >
+                  <div
+                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 scale-75 sm:scale-100"
+                    dangerouslySetInnerHTML={{ __html: sanitize(email.icon) }}
+                  />
+                  <div>
+                    <Typography className="text-xs sm:text-sm" color="text.secondary">
+                      {email.title}
+                    </Typography>
+                    <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
+                      {email.content}
+                    </Typography>
+                  </div>
+                </a>
               </div>
               <div className="hidden sm:flex items-center gap-8 md:gap-12">
                 {links.map((l) => (
