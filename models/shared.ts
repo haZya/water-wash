@@ -4,7 +4,8 @@ import { ReactNode } from 'react';
 export type NavLink = {
   label: string;
   path: string;
-  color: 'primary' | 'secondary';
+  color: 'primary' | 'secondary' | 'text';
+  type: 'text' | 'outlined';
 };
 
 export type Social = {
@@ -15,6 +16,19 @@ export type Social = {
 
 export interface ILayout {
   logo: any;
+  navTop: {
+    phone: {
+      title: string;
+      content: string;
+      icon: string;
+    };
+    email: {
+      title: string;
+      content: string;
+      icon: string;
+    };
+    links: NavLink[];
+  };
   nav: {
     links: NavLink[];
   };
@@ -54,7 +68,13 @@ export interface ISeo {
   ogAltText?: string;
 }
 
+export interface IBanner {
+  title: string;
+  backgroundImage: StaticImageData | string;
+}
+
 export interface IPage {
+  banner?: IBanner;
   seo: ISeo;
 }
 

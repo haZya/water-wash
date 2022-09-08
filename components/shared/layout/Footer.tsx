@@ -2,11 +2,12 @@ import { Typography } from '@mui/material';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import Image from './Image';
+import Image from '../Image';
 
 const Footer = () => {
   const {
     logo,
+    navTop: { links: topLinks },
     nav: { links },
     socials,
   } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
@@ -23,7 +24,7 @@ const Footer = () => {
             </a>
           </Link>
           <div className="grow flex-center gap-8 sm:gap-12">
-            {links.map(({ label, path }) => (
+            {[...links, ...topLinks].map(({ label, path }) => (
               <Link key={label} href={path}>
                 <a>
                   <Typography
@@ -40,7 +41,7 @@ const Footer = () => {
             {socials.map(({ label, icon, url }, i) => (
               <li key={i}>
                 <a
-                  className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                  className="text-2xl text-gray-500 hover:text-gray-700 transition-colors duration-300"
                   href={url}
                   aria-label={label}
                   target="_blank"

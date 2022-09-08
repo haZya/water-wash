@@ -3,19 +3,19 @@ import {
   AppBar,
   IconButton,
   Toolbar,
-  Typography,
   useMediaQuery,
   useScrollTrigger,
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
+import Image from 'components/shared/Image';
+import { setLayout } from 'components/shared/store/layoutSlice';
 import { RootState } from 'lib/redux';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from './Image';
+import { NavLink } from '.';
 import styles from './Navbar.module.css';
-import { setLayout } from './store/layoutSlice';
 
 const DynamicNavDrawer = dynamic(() => import('./NavDrawer'));
 
@@ -44,8 +44,9 @@ const Navbar = () => {
     <>
       <AppBar
         className={clsx(
-          'bg-transparent fixed w-full z-50',
+          'bg-transparent w-full z-50 transition-colors duration-300',
           navSticky && 'backdrop-blur-sm !bg-white/70 shadow-sm border-b border-white/50',
+          navSticky ? styles.navSticky : 'relative',
           styles.navbar
         )}
         component="nav"
@@ -54,7 +55,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto">
           <Toolbar
-            className={clsx('transition-all duration-500 mx-4 sm:mx-0', navSticky ? 'm-0' : 'my-4')}
+            className={clsx('transition-all duration-300 mx-4 sm:mx-0', navSticky ? 'm-0' : 'my-3')}
             disableGutters
           >
             <IconButton
@@ -72,8 +73,8 @@ const Navbar = () => {
                 <a>
                   <div
                     className={clsx(
-                      'select-none transition-all duration-500 drop-shadow-md',
-                      navSticky ? 'w-20' : 'w-24 sm:w-32'
+                      'select-none transition-all duration-300 drop-shadow-md',
+                      navSticky ? 'w-20' : 'w-24 sm:w-28'
                     )}
                   >
                     <Image src={logo} alt="Water Wash Logo" priority />
@@ -82,22 +83,8 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="hidden sm:flex items-center ml-auto gap-8 md:gap-12">
-              {links.map(({ label, path, color }) => (
-                <Link key={label} href={path}>
-                  <a className={clsx('relative', styles.navLink)}>
-                    <Typography
-                      className={clsx(
-                        'relative text-lg font-medium',
-                        color === 'primary'
-                          ? 'text-primary-700 after:bg-primary-700'
-                          : 'text-secondary-700 after:bg-secondary-700',
-                        styles.navLinkText
-                      )}
-                    >
-                      {label}
-                    </Typography>
-                  </a>
-                </Link>
+              {links.map((l) => (
+                <NavLink key={l.path} {...l} />
               ))}
             </div>
           </Toolbar>
