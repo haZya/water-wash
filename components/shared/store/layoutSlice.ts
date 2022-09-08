@@ -11,7 +11,16 @@ const initialState: IInitialState = {
   layoutContent: {
     logo: null,
     navTop: {
-      contacts: [],
+      email: {
+        icon: '',
+        title: '',
+        content: '',
+      },
+      phone: {
+        icon: '',
+        title: '',
+        content: '',
+      },
       links: [],
     },
     nav: {

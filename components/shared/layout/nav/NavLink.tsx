@@ -37,10 +37,12 @@ const NavLink = ({ label, path, color, type }: NavLink) => {
             color === 'primary'
               ? 'bg-primary-400 hover:bg-primary-500 shadow-primary-100/70 hover:shadow-primary-200/70'
               : color === 'secondary'
-              ? 'bg-secondary-400 hover:bg-secondary-500 shadow-secondary-100 hover:shadow-secondary-200'
-              : 'bg-gray-500 hover:bg-gray-700 shadow-gray-300 hover:shadow-gray-400'
+              ? 'bg-secondary-400 hover:bg-secondary-500 shadow-secondary-100/70 hover:shadow-secondary-200/70'
+              : 'bg-gray-500 hover:bg-gray-700 shadow-gray-300 hover:shadow-gray-400',
+            !activePath && '!bg-white/20 !text-secondary-700 border border-secondary-700'
           )}
-          variant={activePath ? 'contained' : 'contained'}
+          variant={activePath ? 'contained' : 'outlined'}
+          color={color === 'text' ? 'inherit' : color}
         >
           <Link href={path}>
             <a className={clsx('relative', styles.navLink)}>{label}</a>

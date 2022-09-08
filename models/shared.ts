@@ -17,11 +17,16 @@ export type Social = {
 export interface ILayout {
   logo: any;
   navTop: {
-    contacts: {
+    phone: {
       title: string;
       content: string;
       icon: string;
-    }[];
+    };
+    email: {
+      title: string;
+      content: string;
+      icon: string;
+    };
     links: NavLink[];
   };
   nav: {
