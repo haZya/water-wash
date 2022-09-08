@@ -23,7 +23,7 @@ const Footer = () => {
               </div>
             </a>
           </Link>
-          <div className="grow flex-center gap-8 sm:gap-12">
+          <div className="grow flex-center gap-8 sm:gap-12 h-16">
             {[...links, ...topLinks].map(({ label, path }) => (
               <Link key={label} href={path}>
                 <a>

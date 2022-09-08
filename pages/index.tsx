@@ -416,7 +416,14 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHomeContent({ ...props, gallerySection })); // TODO: remove gallerySection later when getting from CMS
+    dispatch(
+      setHomeContent({
+        ...props,
+        gallerySection,
+        descriptiveSection: { ...props.descriptiveSection, background },
+        reqFormSection: { ...props.reqFormSection, background: bg },
+      })
+    ); // TODO: remove these later when getting from CMS
   }, [dispatch, props]);
 
   return (

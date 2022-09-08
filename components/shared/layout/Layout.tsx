@@ -69,13 +69,13 @@ const email: ILayout['navTop']['email'] = {
 const navLinks: NavLink[] = [
   {
     label: 'Residential',
-    path: '/residential',
+    path: '/#1',
     color: 'primary',
     type: 'text',
   },
   {
     label: 'Commercial',
-    path: '/commercial',
+    path: '/#2',
     color: 'primary',
     type: 'text',
   },

@@ -22,7 +22,7 @@ const NavbarTop = () => {
     <>
       <AppBar
         className={clsx(
-          'bg-transparent border-b relative w-full z-50 h-16 transition-all duration-500',
+          'hidden xs:block bg-transparent border-b relative w-full z-50 h-16 transition-all duration-500',
           navSticky && '-translate-y-16 opacity-0 invisible'
         )}
         component="nav"
