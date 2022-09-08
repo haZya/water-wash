@@ -8,11 +8,11 @@ import {
   styled,
   Typography,
 } from '@mui/material';
+import Image from 'components/shared/Image';
+import { setLayout } from 'components/shared/store/layoutSlice';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from './Image';
-import { setLayout } from './store/layoutSlice';
 
 const drawerWidth = 240;
 
@@ -32,6 +32,7 @@ const NavDrawer = () => {
     navDrawerOpen,
     layoutContent: {
       logo,
+      navTop: { links: topLinks },
       nav: { links },
     },
   } = useSelector(({ shared }: RootState) => shared.layout);
@@ -65,8 +66,8 @@ const NavDrawer = () => {
         </div>
         <Divider className="bg-primary-500" />
         <List className="flex-1 my-4">
-          {links.map(({ label, path }) => (
-            <Link key={label} href={path ?? ''} scroll={!!path}>
+          {[...links, ...topLinks].map(({ label, path }) => (
+            <Link key={label} href={path}>
               <a>
                 <ListItemButton className="text-center">
                   <ListItemText

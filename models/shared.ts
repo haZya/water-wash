@@ -4,7 +4,8 @@ import { ReactNode } from 'react';
 export type NavLink = {
   label: string;
   path: string;
-  color: 'primary' | 'secondary';
+  color: 'primary' | 'secondary' | 'text';
+  type: 'text' | 'outlined';
 };
 
 export type Social = {
@@ -15,6 +16,14 @@ export type Social = {
 
 export interface ILayout {
   logo: any;
+  navTop: {
+    contacts: {
+      title: string;
+      content: string;
+      icon: string;
+    }[];
+    links: NavLink[];
+  };
   nav: {
     links: NavLink[];
   };

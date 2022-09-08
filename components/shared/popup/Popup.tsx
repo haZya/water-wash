@@ -5,7 +5,7 @@ import { useScrollLock } from 'hooks';
 import { RootState } from 'lib/redux';
 import { HTMLAttributes, ReactNode, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closePopup, setAnimationEnd } from './store/popupSlice';
+import { closePopup, setAnimationEnd } from '../store/popupSlice';
 
 type StyledReactCompareSliderProps = {
   width: number;

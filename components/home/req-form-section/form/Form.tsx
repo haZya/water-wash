@@ -81,7 +81,7 @@ const Form = () => {
         variant="contained"
         disabled={isSubmitting}
         sx={{
-          transition: 'transform 0.7s cubic-bezier(0.5, 2, 0.5, 0.5)',
+          transition: 'all 0.7s cubic-bezier(0.5, 2, 0.5, 0.5)',
         }}
       >
         {isSubmitting && (

@@ -1,6 +1,6 @@
 import { ReactNode, Ref, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { openPopup } from './store/popupSlice';
+import { openPopup } from '../store/popupSlice';
 
 export interface PopupItemProps {
   customRender?: ReactNode;

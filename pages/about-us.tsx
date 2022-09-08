@@ -7,6 +7,7 @@ import { MissionSection } from 'components/about/mission-section';
 import { setAboutContent } from 'components/about/store/contentSlice';
 import { ValueSection } from 'components/about/value-section';
 import { Seo } from 'components/shared';
+import { Banner } from 'components/shared/layout';
 import { setLayout } from 'components/shared/store/layoutSlice';
 import { IAbout } from 'models/about';
 import { IBanner, IPage } from 'models/shared';
@@ -112,13 +113,14 @@ const AboutUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLayout({ banner }));
+    dispatch(setLayout({ hasBanner: true }));
     dispatch(setAboutContent(props));
   }, [banner, dispatch, props]);
 
   return (
     <>
       <Seo {...seo} metaTitle={seo?.metaTitle ?? AboutUs.name} />
+      <Banner {...banner!} />
       <MissionSection />
       <ValueSection />
     </>
