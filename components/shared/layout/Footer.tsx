@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className="bg-neutral-100">
       <div className="container mx-auto py-2 flex items-center min-h-20">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
-          <Link href="/" shallow>
+          <Link href="/" shallow scroll>
             <a className="grow hidden sm:block">
               <div className="select-none w-24 my-2">
                 <Image src={logo} alt="Water Wash Logo" layout="responsive" priority />

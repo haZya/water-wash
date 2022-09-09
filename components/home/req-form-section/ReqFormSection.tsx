@@ -48,7 +48,7 @@ const ReqFormSection = () => {
       <div className="w-full pb-16 bg-gradient-to-r from-primary-100 to-secondary-100">
         {bg && (
           <div className={clsx(styles.background)}>
-            <Image src={bg} alt="" />
+            <Image src={bg} alt="" layout="responsive" />
           </div>
         )}
         <div className="container mx-auto pt-8">

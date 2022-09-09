@@ -65,7 +65,14 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
         >
           <Box className="py-4" sx={{ backgroundColor: color }}>
             <div className="max-w-64 mx-auto">
-              <Image src={index === 0 ? badge1 : index === 1 ? badge2 : badge3} alt="Badge" />
+              <Image
+                src={index === 0 ? badge1 : index === 1 ? badge2 : badge3}
+                alt="Badge"
+                layout="responsive"
+                sizes="(max-width: 640px) 100vw,
+              (max-width: 1024px) 50vw,
+              33vw"
+              />
             </div>
           </Box>
           <div

@@ -69,7 +69,7 @@ const Navbar = () => {
               <FormatAlignLeft fontSize="medium" />
             </IconButton>
             <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start">
-              <Link href="/" shallow>
+              <Link href="/" shallow scroll>
                 <a>
                   <div
                     className={clsx(

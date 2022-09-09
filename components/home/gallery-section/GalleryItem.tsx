@@ -4,10 +4,21 @@ import { Image, useStaggerItem } from 'components/shared';
 import { PopupItem } from 'components/shared/popup';
 import { useInView } from 'hooks';
 import { IGallerySectionItem } from 'models/home';
+import { StaticImageData } from 'next/image';
 import { useEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
 import styles from './GalleryItem.module.css';
+
+const image = (src: StaticImageData | string, alt: string, fullWidth: boolean) => (
+  <Image
+    src={src}
+    alt={alt}
+    layout="fill"
+    sizes={fullWidth ? '100vw' : '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'}
+    placeholder="blur"
+  />
+);
 
 interface IProps extends IGallerySectionItem {
   index: number;
@@ -61,8 +72,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
               <ReactCompareSlider
                 className="w-full h-full"
                 portrait={portrait}
-                itemOne={<Image src={image1} alt="Image One" layout="fill" placeholder="blur" />}
-                itemTwo={<Image src={image2} alt="Image two" layout="fill" placeholder="blur" />}
+                itemOne={image(image1, 'Image One', true)}
+                itemTwo={image(image2, 'Image Two', true)}
                 position={compareSliderPosition}
                 onPositionChange={(pos) => {
                   setCompareSliderPosition(pos);
@@ -76,8 +87,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
                   className="w-full h-full"
                   onlyHandleDraggable
                   portrait={portrait}
-                  itemOne={<Image src={image1} alt="Image One" layout="fill" placeholder="blur" />}
-                  itemTwo={<Image src={image2} alt="Image two" layout="fill" placeholder="blur" />}
+                  itemOne={image(image1, 'Image One', false)}
+                  itemTwo={image(image2, 'Image Two', false)}
                   position={compareSliderPosition}
                   onPositionChange={(pos) => {
                     setCompareSliderPosition(pos);

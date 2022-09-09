@@ -21,7 +21,7 @@ const DesktopHero = () => {
     >
       {() => (
         <div className="w-full h-full">
-          <Link href="/" shallow>
+          <Link href="/" shallow scroll>
             <a className="absolute transform-center z-10">
               <Tilt
                 className={clsx(
@@ -31,7 +31,16 @@ const DesktopHero = () => {
                 transitionSpeed={2000}
                 trackOnWindow
               >
-                <Image src={logo} alt="logo" priority />
+                <div className="w-full h-full">
+                  <Image
+                    src={logo}
+                    alt="logo"
+                    width={1129.725}
+                    height={726.354}
+                    layout="responsive"
+                    priority
+                  />
+                </div>
               </Tilt>
             </a>
           </Link>
