@@ -407,7 +407,11 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       gallerySection,
       reviewSection,
       reqFormSection,
-      seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
+      seo: {
+        indexing: true,
+        metaTitle: 'Home',
+        metaDesc: 'Water Wash is the dependable Power Washing Solution for your home or business.',
+      },
     },
   };
 };

@@ -77,7 +77,7 @@ const Navbar = () => {
                       navSticky ? 'w-20' : 'w-24 sm:w-28'
                     )}
                   >
-                    <Image src={logo} alt="Water Wash Logo" priority />
+                    <Image src={logo} alt="Water Wash Logo" layout="responsive" priority />
                   </div>
                 </a>
               </Link>

@@ -19,7 +19,7 @@ const Footer = () => {
           <Link href="/" shallow>
             <a className="grow hidden sm:block">
               <div className="select-none w-24 my-2">
-                <Image src={logo} alt="Water Wash Logo" priority />
+                <Image src={logo} alt="Water Wash Logo" layout="responsive" priority />
               </div>
             </a>
           </Link>

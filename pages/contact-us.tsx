@@ -146,7 +146,12 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       formSection,
       contactSection,
       mapSection,
-      seo: { indexing: true, metaTitle: 'Contact', metaDesc: '' },
+      seo: {
+        indexing: true,
+        metaTitle: 'Contact',
+        metaDesc:
+          'Visit Us: 93-97 Normanby Rd, Notting Hill VIC 3168, Australia. Mail Us: enquiries@waterwash.com.au. Phone Us: 03 8539 4855',
+      },
     },
   };
 };

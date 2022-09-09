@@ -16,6 +16,8 @@ const DesktopHero = () => {
     <WaterWave
       className="w-full h-full bg-cover bg-center bg-opacity-10"
       imageUrl="/assets/images/home/hero-section/bg.jpg"
+      dropRadius={36}
+      perturbance={0.04}
     >
       {() => (
         <div className="w-full h-full">

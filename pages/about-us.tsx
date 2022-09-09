@@ -106,7 +106,12 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       banner,
       missionSection,
       valueSection,
-      seo: { indexing: true, metaTitle: 'About', metaDesc: '' },
+      seo: {
+        indexing: true,
+        metaTitle: 'About',
+        metaDesc:
+          'Here at Waterwash, our mission is to reduce Australia’s pressure washing industry emissions to ⅓ of what it currently is by 2025. The company prides itself on customer service and any type of person-to-person interaction as a mutual feature of the overall service provided.',
+      },
     },
   };
 };
