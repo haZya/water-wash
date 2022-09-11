@@ -99,7 +99,6 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
                 animationDelay: `${1 + index * 0.6 + 0.15}s`,
               }}
             />
-
             <Box
               className={clsx(
                 'absolute top-0 left-0 w-full h-full opacity-0',
@@ -127,7 +126,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color }: I
               />
               <Box
                 className={clsx(
-                  'absolute flex-center transition-colors w-full h-full rounded-full'
+                  'absolute flex-center transition-colors rounded-full w-20 h-20 p-6'
                 )}
                 component="div"
                 dangerouslySetInnerHTML={{ __html: sanitize(icon) }}

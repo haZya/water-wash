@@ -51,7 +51,7 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
           )}
         >
           <div
-            className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 mx-auto"
+            className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 p-6 mx-auto"
             dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
           />
           <Typography className="text-center text-lg font-medium select-none" variant="h2">

@@ -24,16 +24,15 @@ const MissionSection = () => {
           />
         </header>
         <div className="space-y-6">
-          <div className="w-64 xs:float-right mx-auto xs:ml-8">
-            <Image
-              src={greenTick}
-              alt="Carbon Neutral Certified"
-              layout="responsive"
-              sizes="(max-width: 640px) 100vw,
+          <Image
+            className="w-64 h-auto xs:float-right mx-auto xs:ml-8"
+            src={greenTick}
+            alt="Carbon Neutral Certified"
+            sizes="(max-width: 640px) 100vw,
               (max-width: 1024px) 50vw,
               33vw"
-            />
-          </div>
+            placeholder="blur"
+          />
           <Typography
             className="text-base sm:text-lg text-justify font-medium mx-2 md:mx-0"
             dangerouslySetInnerHTML={{ __html: sanitize(content) }}

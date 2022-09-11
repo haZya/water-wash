@@ -46,11 +46,7 @@ const ReqFormSection = () => {
     >
       <Wave />
       <div className="w-full pb-16 bg-gradient-to-r from-primary-100 to-secondary-100">
-        {bg && (
-          <div className={clsx(styles.background)}>
-            <Image src={bg} alt="" layout="responsive" />
-          </div>
-        )}
+        {bg && <Image className={clsx(styles.background)} src={bg} alt="" />}
         <div className="container mx-auto pt-8">
           <header className="flex flex-col items-center space-y-4 md:space-y-8 mb-8 md:mb-16">
             <Typography

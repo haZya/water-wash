@@ -23,24 +23,18 @@ const DesktopHero = () => {
         <div className="w-full h-full">
           <Link href="/" shallow scroll>
             <a className="absolute transform-center z-10">
-              <Tilt
-                className={clsx(
-                  'pointer-events-none select-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
-                  styles.logo
-                )}
-                transitionSpeed={2000}
-                trackOnWindow
-              >
-                <div className="w-full h-full">
-                  <Image
-                    src={logo}
-                    alt="logo"
-                    width={1129.725}
-                    height={726.354}
-                    layout="responsive"
-                    priority
-                  />
-                </div>
+              <Tilt transitionSpeed={2000} trackOnWindow>
+                <Image
+                  className={clsx(
+                    'pointer-events-none select-none w-96 lg:w-[44rem] xl:w-[48rem]',
+                    styles.logo
+                  )}
+                  src={logo}
+                  alt="logo"
+                  width={1129.725}
+                  height={726.354}
+                  priority
+                />
               </Tilt>
             </a>
           </Link>

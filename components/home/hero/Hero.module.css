@@ -68,19 +68,6 @@
   animation: slide-up 1s ease-out;
 }
 
-@keyframes slide-down {
-  from {
-    transform: translateY(-384px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.logoMobile {
-  animation: slide-down 1s ease-out;
-}
-
 @keyframes scale-up {
   from {
     transform: scale(0);

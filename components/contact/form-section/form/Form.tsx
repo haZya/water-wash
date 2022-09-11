@@ -51,7 +51,7 @@ const Form = () => {
       </Typography>
       <Divider className="border-t-2 my-4 md:my-7" />
       <div className="flex flex-col items-center space-y-8 md:space-y-12 mt-8 md:mt-12">
-        <div className="grid grid-cols-12 gap-4 w-full">
+        <div className="grid grid-cols-12 gap-6 w-full">
           {fields.map((f) => (
             <Fragment key={f.name}>
               {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (

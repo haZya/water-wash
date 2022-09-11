@@ -14,7 +14,7 @@ const image = (src: StaticImageData | string, alt: string, fullWidth: boolean) =
   <Image
     src={src}
     alt={alt}
-    layout="fill"
+    fill
     sizes={fullWidth ? '100vw' : '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'}
     placeholder="blur"
   />

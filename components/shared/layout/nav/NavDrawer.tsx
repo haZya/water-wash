@@ -58,9 +58,12 @@ const NavDrawer = () => {
         <div className="m-2">
           <Link href="/" shallow scroll>
             <a>
-              <div className="select-none w-36 mx-auto my-4 drop-shadow-md">
-                <Image src={logo} alt="Water Wash Logo" layout="responsive" priority />
-              </div>
+              <Image
+                className="select-none w-36 h-auto mx-auto my-4 drop-shadow-md"
+                src={logo}
+                alt="Water Wash Logo"
+                priority
+              />
             </a>
           </Link>
         </div>

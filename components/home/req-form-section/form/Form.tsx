@@ -58,7 +58,7 @@ const Form = () => {
             <Typography className="text-xl font-semibold" variant="h3" color="text.secondary">
               {s.title}
             </Typography>
-            <div className="grid grid-cols-12 gap-4 w-full">
+            <div className="grid grid-cols-12 gap-5 w-full">
               {s.fields.map((f) => (
                 <Fragment key={f.name}>
                   {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (

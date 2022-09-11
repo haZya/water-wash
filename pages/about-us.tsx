@@ -122,7 +122,7 @@ const AboutUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
   useEffect(() => {
     dispatch(setLayout({ hasBanner: true }));
     dispatch(setAboutContent(props));
-  }, [banner, dispatch, props]);
+  }, [dispatch, props]);
 
   return (
     <>

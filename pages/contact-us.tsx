@@ -75,8 +75,6 @@ const contactSection: IContact['contactSection'] = {
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
-        width="34px"
-        height="34px"
         viewBox="0 0 512 512"
         fill="currentColor"
       >
@@ -94,8 +92,6 @@ const contactSection: IContact['contactSection'] = {
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
-        width="34px"
-        height="34px"
         viewBox="0 0 512 512"
         fill="currentColor"
       >
@@ -117,8 +113,6 @@ const contactSection: IContact['contactSection'] = {
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
-        width="34px"
-        height="34px"
         viewBox="0 0 512 512"
         fill="currentColor"
       >
@@ -162,7 +156,7 @@ const ContactUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
   useEffect(() => {
     dispatch(setLayout({ hasBanner: true }));
     dispatch(setContactContent(props));
-  }, [banner, dispatch, props]);
+  }, [dispatch, props]);
 
   return (
     <>

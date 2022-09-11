@@ -1,5 +1,4 @@
 import { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
 
 export type NavLink = {
   label: string;
@@ -10,7 +9,7 @@ export type NavLink = {
 
 export type Social = {
   label: string;
-  icon: ReactNode;
+  icon: string;
   url: string;
 };
 

@@ -42,27 +42,26 @@ const NavbarTop = () => {
                     className="group border-gray-500 hover:border-primary-500 border-2 rounded-full transition-colors duration-500 cursor-pointer"
                   >
                     <a
-                      className="flex-center text-lg w-8 h-8 text-gray-500 group-hover:text-primary-500 transition-colors duration-500"
+                      className="flex-center text-lg text-gray-500 group-hover:text-primary-500 transition-colors duration-500 w-8 h-8 p-2"
                       href={s.url}
                       target="_blank"
                       rel="noreferrer"
-                    >
-                      {s.icon}
-                    </a>
+                      dangerouslySetInnerHTML={{ __html: sanitize(s.icon) }}
+                    />
                   </li>
                 ))}
               </ul>
               <div className="grow flex md:justify-center space-x-6">
                 <a className="group relative flex items-center space-x-4" href="tel:03 8539 4855">
                   <div
-                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 scale-75 sm:scale-100"
+                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 w-9"
                     dangerouslySetInnerHTML={{ __html: sanitize(phone.icon) }}
                   />
                   <div>
                     <Typography className="text-xs sm:text-sm" color="text.secondary">
                       {phone.title}
                     </Typography>
-                    <Typography className="whitespace-nowrap text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
+                    <Typography className="whitespace-nowrap text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-base font-medium">
                       {phone.content}
                     </Typography>
                   </div>
@@ -72,14 +71,14 @@ const NavbarTop = () => {
                   href="mailto:enquiries@waterwash.com.au"
                 >
                   <div
-                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 scale-75 sm:scale-100"
+                    className="text-gray-500 group-hover:text-primary-500 transition-colors duration-500 w-9"
                     dangerouslySetInnerHTML={{ __html: sanitize(email.icon) }}
                   />
                   <div>
                     <Typography className="text-xs sm:text-sm" color="text.secondary">
                       {email.title}
                     </Typography>
-                    <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
+                    <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-base font-medium">
                       {email.content}
                     </Typography>
                   </div>

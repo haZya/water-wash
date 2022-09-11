@@ -24,13 +24,12 @@ const swiperOptions: SwiperOptions = {
 };
 
 const MobileHero = () => {
-  const { logo } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
   const { items } = useSelector(({ home }: RootState) => home.content.hero);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <Box
-      className="flex-center flex-col w-full h-full transition-colors duration-500 gap-6"
+      className="flex-center pt-14 w-full h-full transition-colors duration-500"
       sx={{ backgroundColor: items[activeIndex]?.color }}
     >
       <Swiper

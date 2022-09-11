@@ -18,9 +18,8 @@ const ReviewSection = () => {
             id="review-section-title"
             variant="h1"
             color="text.secondary"
-          >
-            <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
-          </Typography>
+            dangerouslySetInnerHTML={{ __html: sanitize(title) }}
+          />
         </header>
         {/* <Script src={url} strategy="lazyOnload"></Script>
         <div className={className} /> */}
