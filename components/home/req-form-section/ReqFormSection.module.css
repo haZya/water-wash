@@ -6,6 +6,7 @@
   transform: translatex(-50%);
   width: 100%;
   min-width: 3320px;
+  height: auto;
   opacity: 0.2;
   background-size: cover;
   background-position: center;

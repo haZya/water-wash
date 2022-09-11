@@ -15,15 +15,8 @@ interface IProps extends Omit<IAnimatedItem, 'index' | 'color'> {}
 const MobileCard = ({ lottie, icon, title, description }: IProps) => {
   return (
     <>
-      <Typography
-        className="flex-center text-base font-semibold -mt-4"
-        color="text.secondary"
-        variant="h2"
-      >
-        <div
-          className="flex items-center w-14 h-14 -mr-4"
-          dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-        />
+      <Typography className="text-base font-semibold" color="text.secondary" variant="h2">
+        <div className="mx-auto w-7" dangerouslySetInnerHTML={{ __html: sanitize(icon) }} />
         {title}
       </Typography>
       <Player

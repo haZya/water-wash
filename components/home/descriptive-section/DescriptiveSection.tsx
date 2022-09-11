@@ -15,11 +15,7 @@ const DescriptiveSection = () => {
 
   return (
     <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden">
-      {background && (
-        <div className={clsx('z-0', styles.background)}>
-          <Image src={background} alt="" />
-        </div>
-      )}
+      {background && <Image className={clsx(styles.background)} src={background} alt="" />}
       <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-4 px-2">
         <div className="container mx-auto">
           <header className="flex flex-col items-center space-y-8 mb-16">

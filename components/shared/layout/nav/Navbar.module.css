@@ -13,18 +13,20 @@
 
 @keyframes slide-up {
   from {
-    transform: translateY(100px);
+    transform: translateY(6.4rem);
   }
   to {
     transform: translateY(0);
   }
 }
 
-.navSticky {
-  animation-name: slide-up;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forward;
+@media (min-width: 640px) {
+  .navSticky {
+    animation-name: slide-up;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forward;
+  }
 }
 
 .navLinkText::after {

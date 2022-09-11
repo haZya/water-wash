@@ -1,3 +1,7 @@
+import badge1 from '@/assets/images/about/value-section/badge-1.png';
+import badge2 from '@/assets/images/about/value-section/badge-2.png';
+import badge3 from '@/assets/images/about/value-section/badge-3.png';
+
 import { Box, Theme, Typography, useMediaQuery } from '@mui/material';
 import clsx from 'clsx';
 import { Image, useStaggerItem } from 'components/shared';
@@ -37,9 +41,6 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
         scale={mdDown ? 1 : 1.06}
         tiltMaxAngleX={mdDown ? 10 : 15}
         tiltAxis="y"
-        glareEnable
-        glarePosition="all"
-        glareMaxOpacity={0.3}
         tiltAngleYManual={
           hovering ? undefined : mdDown ? 0 : index === 0 ? 15 : index === 2 ? -15 : 0
         }
@@ -53,7 +54,7 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
         <Box
           ref={ref}
           className={clsx(
-            'opacity-0 invisible rounded-3xl shadow-md overflow-hidden',
+            'opacity-0 invisible rounded-3xl border shadow-md overflow-hidden',
             animate && styles.slideUp
           )}
           onAnimationStart={handleAnimationStart}
@@ -63,9 +64,15 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
           }}
         >
           <Box className="py-4" sx={{ backgroundColor: color }}>
-            <div className="max-w-64 mx-auto">
-              <Image src={badge} alt="Badge" />
-            </div>
+            <Image
+              className="w-64 h-auto mx-auto"
+              src={index === 0 ? badge1 : index === 1 ? badge2 : badge3}
+              alt="Badge"
+              sizes="(max-width: 640px) 100vw,
+              (max-width: 1024px) 50vw,
+              33vw"
+              placeholder="blur"
+            />
           </Box>
           <div
             className={clsx('flex flex-col max-w-sm md:max-w-none p-6 sm:py-8 sm:px-10 space-y-8')}

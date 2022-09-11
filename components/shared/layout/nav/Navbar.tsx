@@ -68,17 +68,18 @@ const Navbar = () => {
             >
               <FormatAlignLeft fontSize="medium" />
             </IconButton>
-            <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start">
-              <Link href="/" shallow>
+            <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start pl-6 sm:pl-0">
+              <Link href="/" shallow scroll>
                 <a>
-                  <div
+                  <Image
                     className={clsx(
-                      'select-none transition-all duration-300 drop-shadow-md',
-                      navSticky ? 'w-20' : 'w-24 sm:w-28'
+                      'select-none transition-all duration-300 drop-shadow-md h-auto',
+                      navSticky ? 'w-20' : 'w-28'
                     )}
-                  >
-                    <Image src={logo} alt="Water Wash Logo" priority />
-                  </div>
+                    src={logo}
+                    alt="Water Wash Logo"
+                    priority
+                  />
                 </a>
               </Link>
             </div>

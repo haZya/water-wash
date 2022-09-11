@@ -15,21 +15,26 @@ const DesktopHero = () => {
   return (
     <WaterWave
       className="w-full h-full bg-cover bg-center bg-opacity-10"
-      imageUrl="/assets/images/home/hero/bg.jpg"
+      imageUrl="/assets/images/home/hero-section/bg.jpg"
+      dropRadius={36}
+      perturbance={0.04}
     >
       {() => (
         <div className="w-full h-full">
-          <Link href="/" shallow>
+          <Link href="/" shallow scroll>
             <a className="absolute transform-center z-10">
-              <Tilt
-                className={clsx(
-                  'pointer-events-none select-none flex justify-center w-96 lg:w-[44rem] xl:w-[48rem]',
-                  styles.logo
-                )}
-                transitionSpeed={2000}
-                trackOnWindow
-              >
-                <Image src={logo} alt="logo" priority />
+              <Tilt transitionSpeed={2000} trackOnWindow>
+                <Image
+                  className={clsx(
+                    'pointer-events-none select-none w-96 lg:w-[44rem] xl:w-[48rem]',
+                    styles.logo
+                  )}
+                  src={logo}
+                  alt="logo"
+                  width={1129.725}
+                  height={726.354}
+                  priority
+                />
               </Tilt>
             </a>
           </Link>

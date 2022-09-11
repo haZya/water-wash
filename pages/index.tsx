@@ -45,15 +45,14 @@ import { useDispatch } from 'react-redux';
 const hero: IHome['hero'] = {
   items: [
     {
-      lottie: '/assets/lotties/mall-cleaning.json',
+      lottie: '/assets/lotties/home/hero/commercial.json',
       icon: renderToStaticMarkup(
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
-          width="40%"
-          height="40%"
           viewBox="0 0 512.000000 512.000000"
           preserveAspectRatio="xMidYMid meet"
+          style={{ transform: 'scale(1.1)' }}
         >
           <g
             transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
@@ -81,13 +80,11 @@ const hero: IHome['hero'] = {
       color: '#FF9191',
     },
     {
-      lottie: '/assets/lotties/clean-house.json',
+      lottie: '/assets/lotties/home/hero/residential.json',
       icon: renderToStaticMarkup(
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
-          width="35%"
-          height="35%"
           viewBox="0 0 512.000000 512.000000"
           preserveAspectRatio="xMidYMid meet"
         >
@@ -131,8 +128,6 @@ const descriptiveSection: IHome['descriptiveSection'] = {
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
-          width="40%"
-          height="40%"
           viewBox="0 0 512 512"
           fill="currentColor"
         >
@@ -147,8 +142,6 @@ const descriptiveSection: IHome['descriptiveSection'] = {
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
-          width="40%"
-          height="40%"
           viewBox="0 0 512 512"
           fill="currentColor"
         >
@@ -166,10 +159,9 @@ const descriptiveSection: IHome['descriptiveSection'] = {
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
-          width="50%"
-          height="50%"
           viewBox="0 0 512 512"
           fill="currentColor"
+          style={{ transform: 'scale(1.15)' }}
         >
           <path
             d="M2534 4722c-7-4-59-103-118-219-58-117-109-213-114-213-28-1-463-70-471-75-6-3-11-19-11-34 0-22 30-57 161-186 88-87 164-166 168-174 5-10-7-109-31-245-37-216-38-229-22-247 9-11 24-19 32-19s104 47 213 105c110 58 208 105 220 105 11 0 109-47 219-105 109-58 204-105 212-105s23 9 32 19c16 18 15 30-19 227-19 115-38 221-41 235-4 22 16 46 166 194 140 139 170 174 170 197 0 38-8 40-235 72-104 15-205 29-223 33-32 5-37 14-139 217-58 116-110 214-117 218-6 4-18 8-26 8s-20-4-26-8zM1087 4332c-9-10-59-106-111-214s-100-200-107-204-114-22-237-41c-124-18-231-38-238-44-32-27-13-54 157-225 145-146 169-175 165-195-3-13-22-117-41-231-38-222-37-248 8-248 12 0 112 47 222 105 110 57 207 105 215 105s105-47 215-105 210-105 222-105c45 0 46 26 8 248-19 114-38 218-41 231-4 20 20 49 165 195 171 171 189 198 157 225-8 7-115 27-238 45s-230 36-236 40c-7 4-56 96-108 204-98 204-116 232-144 232-9 0-24-8-33-18zM3967 4332c-9-10-59-106-112-214-52-108-100-200-107-204-7-5-113-23-236-40-122-18-229-38-237-44-33-28-15-54 156-226 145-146 169-175 165-195-3-13-22-117-41-231-38-222-37-248 8-248 12 0 112 47 222 105 110 57 207 105 215 105s105-47 215-105 210-105 222-105c45 0 46 26 8 248-19 114-38 218-41 231-4 20 20 49 165 195 171 171 189 198 157 225-8 7-115 27-238 45s-230 36-236 40c-7 4-56 96-108 204s-102 204-111 214c-21 23-45 23-66 0zM2500 3028c-68-11-97-50-149-198-57-161-173-390-258-510-79-110-238-275-337-349l-69-51h-167V640h246l39-41c71-74 188-161 269-200 149-73 164-74 766-74h535l57 28c70 35 141 111 162 175 9 26 68 290 132 587 122 567 126 594 90 663-25 49-66 92-110 115-40 22-49 22-487 25l-447 3 44 97c78 173 174 492 174 581 0 56-22 147-49 199-26 51-106 138-154 169-81 51-198 76-287 61zM665 2055l-25-24V529l25-24 24-25h542l24 25 25 24v1502l-25 24-24 25H689l-24-25z"
@@ -407,7 +399,11 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       gallerySection,
       reviewSection,
       reqFormSection,
-      seo: { indexing: true, metaTitle: 'Home', metaDesc: '' },
+      seo: {
+        indexing: true,
+        metaTitle: 'Home',
+        metaDesc: 'Water Wash is the dependable Power Washing Solution for your home or business.',
+      },
     },
   };
 };
@@ -416,7 +412,14 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHomeContent({ ...props, gallerySection })); // TODO: remove gallerySection later when getting from CMS
+    dispatch(
+      setHomeContent({
+        ...props,
+        gallerySection,
+        descriptiveSection: { ...props.descriptiveSection, background },
+        reqFormSection: { ...props.reqFormSection, background: bg },
+      })
+    ); // TODO: remove these later when getting from CMS
   }, [dispatch, props]);
 
   return (

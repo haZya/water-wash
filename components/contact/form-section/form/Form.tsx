@@ -10,16 +10,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const { title, sections } = useSelector(
-    ({ home }: RootState) => home.content.reqFormSection.form
-  );
+  const {
+    title,
+    form: { fields },
+  } = useSelector(({ contact }: RootState) => contact.content.formSection);
   const {
     reset,
     handleSubmit,
     formState: { isSubmitting },
   } = useFormContext<IForm>();
 
-  const onSubmit = async ({ firstName, lastName, email }: IForm) => {
+  const onSubmit = async ({ firstName, lastName, email, phone, message }: IForm) => {
     try {
       //   await sendEmail(email);
       dispatch(
@@ -40,12 +41,9 @@ const Form = () => {
   };
 
   return (
-    <form
-      className="backdrop-blur bg-white/50 rounded-3xl shadow-lg overflow-auto p-6 sm:p-8 md:p-16"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="rounded-3xl overflow-auto w-full md:w-2/3" onSubmit={handleSubmit(onSubmit)}>
       <Typography
-        className="text-center text-secondary-main text-2xl sm:text-3xl font-semibold"
+        className="text-center text-secondary-main text-3xl xs:text-4xl sm:text-5xl font-bold leading-tight"
         variant="h2"
         color="text.secondary"
       >
@@ -53,30 +51,23 @@ const Form = () => {
       </Typography>
       <Divider className="border-t-2 my-4 md:my-7" />
       <div className="flex flex-col items-center space-y-8 md:space-y-12 mt-8 md:mt-12">
-        {sections.map((s) => (
-          <div key={s.title} className="w-full space-y-4">
-            <Typography className="text-xl font-semibold" variant="h3" color="text.secondary">
-              {s.title}
-            </Typography>
-            <div className="grid grid-cols-12 gap-5 w-full">
-              {s.fields.map((f) => (
-                <Fragment key={f.name}>
-                  {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (
-                    <TextField {...f} />
-                  ) : (
-                    f.type === 'checkbox' && <CheckboxGroup {...f} />
-                  )}
-                </Fragment>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div className="grid grid-cols-12 gap-6 w-full">
+          {fields.map((f) => (
+            <Fragment key={f.name}>
+              {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (
+                <TextField {...f} />
+              ) : (
+                f.type === 'checkbox' && <CheckboxGroup {...f} />
+              )}
+            </Fragment>
+          ))}
+        </div>
       </div>
       <Button
         type="submit"
         className={clsx(
           'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 duration-700 rounded-full',
-          'px-8 md:px-16 py-1.5 md:py-3 mt-8 md:mt-16 hover:scale-110'
+          'px-8 md:px-16 py-1.5 md:py-3 mt-6 md:mt-14 mb-16 hover:scale-110'
         )}
         variant="contained"
         disabled={isSubmitting}

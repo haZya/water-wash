@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -16,14 +17,17 @@ const Footer = () => {
     <footer className="bg-neutral-100">
       <div className="container mx-auto py-2 flex items-center min-h-20">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
-          <Link href="/" shallow>
+          <Link href="/" shallow scroll>
             <a className="grow hidden sm:block">
-              <div className="select-none w-24 my-2">
-                <Image src={logo} alt="Water Wash Logo" priority />
-              </div>
+              <Image
+                className="select-none w-24 h-auto my-2"
+                src={logo}
+                alt="Water Wash Logo"
+                priority
+              />
             </a>
           </Link>
-          <div className="grow flex-center gap-8 sm:gap-12">
+          <div className="grow flex-center gap-8 sm:gap-12 h-16">
             {[...links, ...topLinks].map(({ label, path }) => (
               <Link key={label} href={path}>
                 <a>
@@ -39,16 +43,15 @@ const Footer = () => {
           </div>
           <ul className="grow hidden sm:flex justify-end flex-nowrap gap-6">
             {socials.map(({ label, icon, url }, i) => (
-              <li key={i}>
+              <li key={i} className="w-5">
                 <a
-                  className="text-2xl text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                  className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
                   href={url}
                   aria-label={label}
                   target="_blank"
                   rel="noreferrer"
-                >
-                  {icon}
-                </a>
+                  dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
+                />
               </li>
             ))}
           </ul>
