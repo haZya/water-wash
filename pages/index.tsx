@@ -27,11 +27,13 @@ import image7 from '@/assets/images/home/gallery-section/image-7.webp';
 import image8 from '@/assets/images/home/gallery-section/image-8.webp';
 import image9 from '@/assets/images/home/gallery-section/image-9.webp';
 
-import { Hero } from 'components/home';
-import { DescriptiveSection } from 'components/home/descriptive-section';
-import { GallerySection } from 'components/home/gallery-section';
-import { ReqFormSection } from 'components/home/req-form-section';
-import { ReviewSection } from 'components/home/review-section';
+import {
+  DescriptiveSection,
+  GallerySection,
+  Hero,
+  ReqFormSection,
+  ReviewSection,
+} from 'components/home';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
 import { IHome } from 'models/home';

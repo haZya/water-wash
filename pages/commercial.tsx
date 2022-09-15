@@ -1,10 +1,15 @@
 // Import assets; TODO: From CMS
+import image from '@/assets/images/commercial/mission-section/800.png';
+import badge from '@/assets/images/commercial/mission-section/green-tick.png';
 import background from '@/assets/images/shared/banner/1920x1080.png';
 
-import { BannerSection } from 'components/commercial/banner-section';
-import { EnquireSection } from 'components/commercial/enquire-section';
-import { CommercialFormSection } from 'components/commercial/form-section';
-import { SpecializationSection } from 'components/commercial/specialization-section';
+import {
+  BannerSection,
+  CommercialFormSection,
+  EnquireSection,
+  MissionSection,
+  SpecializationSection,
+} from 'components/commercial';
 import { setCommercialContent } from 'components/commercial/store/contentSlice';
 import { Seo } from 'components/shared';
 import { ICommercial } from 'models/commercial';
@@ -438,6 +443,21 @@ const formSection: ICommercial['formSection'] = {
   },
 };
 
+const missionSection: ICommercial['missionSection'] = {
+  title: 'Want a more Sustainable Approach?',
+  mission: {
+    title: '"Our Mission"',
+    subtitle: `"Reduce Australia's Pressure washing industry emissions to 1/3 of what it currently is by 2025"`,
+  },
+  content: {
+    title: 'Ask about “Soft Washing”',
+    content:
+      'Using state-of-the-art equipment that has low energy usage which are focused on the circular economy. We will offer sustainable-orientated solutions which we have adopted from the USA. This includes "Soft Washing” which minimises the carbon footprint overall water usage by reducing output by It utilises a biodegradable chemical formula, destroying organisms at their root helping eliminate future buildup and even preventing moss regrowth. Competitors often use toxic chemicals that inter alia harm the native flora. Break-here Using state-of-the-art equipment that has low energy usage which are focused on the circular economy. We will offer sustainable-orientated solutions which we have adopted from the USA. This includes "Soft Washing” which minimises the carbon footprint overall water usage by reducing output by It utilises a biodegradable chemical formula, destroying organisms at their root helping eliminate future buildup and even preventing moss regrowth. Competitors often use toxic chemicals that inter alia harm the native flora. Using state-of-the-art equipment that has low energy usage which are focused on the circular economy. We will offer sustainable-orientated solutions which we have adopted from the USA. This includes "Soft Washing” which minimises the carbon footprint overall water usage by reducing output by It utilises a biodegradable chemical formula, destroying organisms at their root helping eliminate future buildup and even preventing moss regrowth. Competitors often use toxic chemicals that inter alia harm the native flora.',
+    image,
+    badge,
+  },
+};
+
 interface IProps extends IPage, ICommercial {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -447,6 +467,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       specializationSection,
       enquireSection,
       formSection,
+      missionSection,
       seo: {
         indexing: true,
         metaTitle: 'Commercial',
@@ -471,6 +492,7 @@ const Commercial = ({ seo, ...props }: IProps) => {
       <SpecializationSection />
       <EnquireSection />
       <CommercialFormSection />
+      <MissionSection />
     </>
   );
 };

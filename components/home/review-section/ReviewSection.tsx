@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
+import Script from 'next/script';
 import { useSelector } from 'react-redux';
 
 const ReviewSection = () => {
@@ -11,8 +12,8 @@ const ReviewSection = () => {
 
   return (
     <section aria-labelledby="review-section-title">
-      <div className="container mx-auto pt-16 pb-8 overflow-hidden">
-        <header className="flex flex-col items-center mb-16">
+      <div className="container mx-auto overflow-hidden">
+        <header className="flex flex-col items-center">
           <Typography
             className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight"
             id="review-section-title"
@@ -21,8 +22,8 @@ const ReviewSection = () => {
             dangerouslySetInnerHTML={{ __html: sanitize(title) }}
           />
         </header>
-        {/* <Script src={url} strategy="lazyOnload"></Script>
-        <div className={className} /> */}
+        <Script src={url} strategy="lazyOnload"></Script>
+        <div className={className} />
       </div>
     </section>
   );

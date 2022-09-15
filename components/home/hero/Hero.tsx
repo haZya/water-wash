@@ -10,7 +10,7 @@ const Hero = () => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <section aria-label="hero" className="relative h-screen overflow-hidden">
+    <section aria-label="hero" className="relative h-screen overflow-hidden pt-0">
       {smUp && <DynamicDesktopHero />}
       {smDown && <DynamicMobileHero />}
     </section>

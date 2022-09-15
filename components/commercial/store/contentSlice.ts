@@ -22,6 +22,19 @@ const initialState: ICommercial = {
       sections: [],
     },
   },
+  missionSection: {
+    title: '',
+    mission: {
+      title: '',
+      subtitle: '',
+    },
+    content: {
+      title: '',
+      content: '',
+      image: '',
+      badge: '',
+    },
+  },
 };
 
 const contentSlice = createSlice({

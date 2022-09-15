@@ -29,8 +29,8 @@ const CommercialFormSection = () => {
   const methods = useForm<IForm>(formProps);
 
   return (
-    <section aria-labelledby="commercial-form-section-title" className="relative overflow-hidden">
-      <div className="container mx-auto py-8 mt-16">
+    <section aria-labelledby="commercial-form-section-title" className="relative z-10">
+      <div className="container mx-auto">
         <header className="flex flex-col items-center space-y-4 md:space-y-8 mb-8 md:mb-16">
           <Typography
             className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-0"

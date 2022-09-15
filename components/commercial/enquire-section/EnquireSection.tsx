@@ -19,7 +19,7 @@ const EnquireSection = () => {
     <section
       ref={ref}
       aria-labelledby="enquire-section-title"
-      className="relative bg-primary-900 z-0"
+      className="relative bg-primary-900 z-0 py-0"
     >
       {inView && (
         <div className="pointer-events-none fixed transform-center w-full h-full">
@@ -27,7 +27,7 @@ const EnquireSection = () => {
         </div>
       )}
       <div className="container mx-auto flex-center flex-col py-16 space-y-12 overflow-hidden">
-        <header className="flex flex-col items-center">
+        <header className="flex flex-col items-center mb-0">
           <Typography
             className="text-3xl sm:text-5xl text-primary-100 text-center font-bold sm:leading-10"
             id="enquire-section-title"

@@ -14,11 +14,11 @@ const DescriptiveSection = () => {
   );
 
   return (
-    <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden">
+    <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden pt-0">
       {background && <Image className={clsx(styles.background)} src={background} alt="" />}
       <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-4 px-2">
         <div className="container mx-auto">
-          <header className="flex flex-col items-center space-y-8 mb-16">
+          <header className="flex flex-col items-center space-y-8">
             <Typography
               className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-10"
               id="descriptive-section-title"

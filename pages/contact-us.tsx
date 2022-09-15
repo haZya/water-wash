@@ -1,9 +1,7 @@
 // Import assets; TODO: From CMS
 import bannerImage from '@/assets/images/shared/banner/1920x400.png';
-import { ContactSection } from 'components/contact/contact-section';
-import { ContactFormSection } from 'components/contact/form-section';
 
-import { MapSection } from 'components/contact/map-section';
+import { ContactFormSection, ContactSection, MapSection } from 'components/contact';
 import { setContactContent } from 'components/contact/store/contentSlice';
 import { Seo } from 'components/shared';
 import { Banner } from 'components/shared/layout';
@@ -163,7 +161,7 @@ const ContactUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
       <Seo {...seo} metaTitle={seo?.metaTitle ?? ContactUs.name} />
       <Banner {...banner!} />
       <section aria-label="Get In Touch">
-        <div className="container mx-auto py-8 sm:py-16 flex flex-col md:flex-row gap-x-12 lg:gap-x-16">
+        <div className="container mx-auto flex flex-col md:flex-row gap-x-12 lg:gap-x-16">
           <ContactFormSection />
           <ContactSection />
         </div>

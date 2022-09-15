@@ -32,4 +32,17 @@ export interface ICommercial {
       }[];
     };
   };
+  missionSection: {
+    title: string;
+    mission: {
+      title: string;
+      subtitle: string;
+    };
+    content: {
+      title: string;
+      content: string;
+      image: StaticImageData | string;
+      badge: StaticImageData | string;
+    };
+  };
 }
