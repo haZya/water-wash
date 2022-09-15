@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Form = () => {
   const dispatch = useDispatch();
   const { title, sections } = useSelector(
-    ({ home }: RootState) => home.content.reqFormSection.form
+    ({ commercial }: RootState) => commercial.content.formSection.form
   );
   const {
     reset,
@@ -49,7 +49,7 @@ const Form = () => {
 
   return (
     <form
-      className="border-2 border-primary-100/30 backdrop-blur bg-white/50 rounded-3xl shadow-lg shadow-primary-100 overflow-auto p-6 sm:p-8 md:p-16"
+      className="border-2 border-primary-100/30 rounded-3xl shadow-2xl shadow-primary-100 overflow-auto p-6 sm:p-8 md:p-16"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Typography

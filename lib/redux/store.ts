@@ -1,5 +1,6 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit';
 import about from 'components/about/store';
+import commercial from 'components/commercial/store';
 import contact from 'components/contact/store';
 import home from 'components/home/store';
 import shared from 'components/shared/store';
@@ -21,6 +22,7 @@ const store = configureStore({
     home,
     about,
     contact,
+    commercial,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

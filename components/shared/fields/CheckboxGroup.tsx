@@ -24,6 +24,7 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
     <Controller
       name={name}
       control={control}
+      defaultValue={[]}
       render={({ field }) => (
         <FormGroup
           aria-label={label}
@@ -64,8 +65,6 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
                   {o.label}
                 </Typography>
               }
-              value={field.value ?? []}
-              checked={(field.value as string[])?.includes(o.name) ?? false}
               onChange={(e, c) => {
                 const currentValues = (getValues(name) ?? []) as string[];
                 const newValues = c

@@ -59,7 +59,7 @@ const formSection: IContact['formSection'] = {
         type: 'textarea',
         name: 'message',
         label: 'Message',
-        required: false,
+        required: true,
         width: 'full',
         rows: 4,
       },

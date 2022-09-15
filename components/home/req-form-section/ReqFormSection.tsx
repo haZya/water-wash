@@ -31,10 +31,6 @@ const ReqFormSection = () => {
 
   const formProps: UseFormProps<IForm> = {
     mode: 'onChange',
-    defaultValues: Object.assign(
-      {},
-      ...fields.map((f) => ({ [f.name]: f.type === 'checkbox' ? [] : '' }))
-    ),
     resolver: yupResolver(schema),
   };
   const methods = useForm<IForm>(formProps);

@@ -42,6 +42,7 @@ const NavbarTop = () => {
                     className="group border-gray-500 hover:border-primary-500 border-2 rounded-full transition-colors duration-500 cursor-pointer"
                   >
                     <a
+                      aria-label={s.label}
                       className="flex-center text-lg text-gray-500 group-hover:text-primary-500 transition-colors duration-500 w-8 h-8 p-2"
                       href={s.url}
                       target="_blank"

@@ -62,8 +62,10 @@ main {
   margin-top: var(--banner-height);
 }
 
-section {
+section,
+footer {
   background-color: #fff;
+  z-index: 1;
 }
 
 a {

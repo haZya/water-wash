@@ -1,9 +1,17 @@
-import { Button, Divider, Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { CheckboxGroup, TextField } from 'components/shared/fields';
+import { AnimatedButton } from 'components/shared';
+import { AutoComplete, CheckboxGroup, FileUpload, TextField } from 'components/shared/fields';
 import { showMessage } from 'components/shared/store/messageSlice';
 import { RootState } from 'lib/redux';
-import { IForm } from 'models/shared';
+import {
+  IAutoComplete,
+  ICheckboxGroup,
+  IFileUpload,
+  IForm,
+  ITextArea,
+  ITextField,
+} from 'models/shared';
 import { Fragment } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +49,11 @@ const Form = () => {
   };
 
   return (
-    <form className="rounded-3xl overflow-auto w-full md:w-2/3" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      id="contact-form"
+      className="rounded-3xl overflow-auto w-full md:w-2/3"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <Typography
         className="text-center text-secondary-main text-3xl xs:text-4xl sm:text-5xl font-bold leading-tight"
         variant="h2"
@@ -55,25 +67,26 @@ const Form = () => {
           {fields.map((f) => (
             <Fragment key={f.name}>
               {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (
-                <TextField {...f} />
+                <TextField {...(f as ITextField & ITextArea)} />
+              ) : f.type === 'autocomplete' ? (
+                <AutoComplete {...(f as IAutoComplete)} />
+              ) : f.type === 'checkbox' ? (
+                <CheckboxGroup {...(f as ICheckboxGroup)} />
               ) : (
-                f.type === 'checkbox' && <CheckboxGroup {...f} />
+                f.type === 'file' && <FileUpload {...(f as IFileUpload)} />
               )}
             </Fragment>
           ))}
         </div>
       </div>
-      <Button
+      <AnimatedButton
         type="submit"
         className={clsx(
-          'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 duration-700 rounded-full',
-          'px-8 md:px-16 py-1.5 md:py-3 mt-6 md:mt-14 mb-16 hover:scale-110'
+          'flex mx-auto !bg-secondary-500 text-white shadow-xl hover:shadow-xl shadow-secondary-500/40 hover:shadow-secondary-500/60 rounded-full',
+          'px-8 md:px-16 py-1.5 md:py-3 mt-6 md:mt-14 mb-16'
         )}
         variant="contained"
         disabled={isSubmitting}
-        sx={{
-          transition: 'all 0.7s cubic-bezier(0.5, 2, 0.5, 0.5)',
-        }}
       >
         {isSubmitting && (
           <svg
@@ -98,7 +111,7 @@ const Form = () => {
           </svg>
         )}
         <Typography className="text-lg md:text-2xl">Submit</Typography>
-      </Button>
+      </AnimatedButton>
     </form>
   );
 };
