@@ -23,31 +23,12 @@ const MissionSection = () => {
             color="text.secondary"
             dangerouslySetInnerHTML={{ __html: sanitize(title) }}
           />
-          <div className="space-y-4">
-            <Typography
-              className="relative italic text-2xl xs:text-3xl sm:text-4xl text-center font-bold leading-tight"
-              variant="h3"
-              color="text.secondary"
-              dangerouslySetInnerHTML={{ __html: sanitize(mission.title) }}
-            />
-            <Typography
-              className="relative !font-body italic text-lg xs:text-xl sm:text-2xl text-center font-bold leading-tight tracking-widest"
-              color="text.secondary"
-              dangerouslySetInnerHTML={{ __html: sanitize(mission.subtitle) }}
-            />
-          </div>
         </header>
         <div className="space-y-8 sm:space-y-12">
-          <Typography
-            className="relative text-2xl xs:text-3xl sm:text-4xl text-center xs:text-start font-bold leading-tight"
-            variant="h3"
-            color="text.secondary"
-            dangerouslySetInnerHTML={{ __html: sanitize(content.title) }}
-          />
-          <div className="space-y-6">
-            <div className="relative max-w-80 md:max-w-96 mx-auto xs:float-right xs:ml-24 xs:pb-12 space-y-6">
+          <div className="xs:flex md:block space-y-10 xs:space-y-16">
+            <div className="order-last relative max-w-64 xs:max-w-80 md:max-w-96 xs:min-w-68 sm:min-w-80 mx-auto md:float-right xs:ml-24 xs:pb-12 space-y-6">
               <Image
-                className="w-full h-auto mx-auto rounded-xl"
+                className="hidden xs:block w-full h-auto mx-auto rounded-xl"
                 src={image}
                 alt="Carbon Neutral Certified"
                 sizes="(max-width: 640px) 100vw,
@@ -65,6 +46,41 @@ const MissionSection = () => {
                 placeholder="blur"
               />
             </div>
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <Typography
+                  className="relative text-2xl xs:text-3xl sm:text-4xl text-center font-bold leading-tight"
+                  variant="h3"
+                  color="text.secondary"
+                  dangerouslySetInnerHTML={{ __html: sanitize(mission.title) }}
+                />
+                <Typography
+                  className="relative !font-body italic text-lg xs:text-xl sm:text-2xl text-center font-bold leading-tight tracking-widest"
+                  color="text.secondary"
+                  dangerouslySetInnerHTML={{ __html: sanitize(mission.subtitle) }}
+                />
+              </div>
+              <div className="hidden md:block space-y-4">
+                <Typography
+                  className="relative text-2xl xs:text-3xl sm:text-4xl text-center font-bold leading-tight"
+                  variant="h3"
+                  color="text.secondary"
+                  dangerouslySetInnerHTML={{ __html: sanitize(content.title) }}
+                />
+                <Typography
+                  className="text-base sm:text-lg text-justify font-medium mx-2 md:mx-0"
+                  dangerouslySetInnerHTML={{ __html: sanitize(content.content) }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="block md:hidden space-y-4">
+            <Typography
+              className="relative text-2xl xs:text-3xl sm:text-4xl text-center font-bold leading-tight"
+              variant="h3"
+              color="text.secondary"
+              dangerouslySetInnerHTML={{ __html: sanitize(content.title) }}
+            />
             <Typography
               className="text-base sm:text-lg text-justify font-medium mx-2 md:mx-0"
               dangerouslySetInnerHTML={{ __html: sanitize(content.content) }}
