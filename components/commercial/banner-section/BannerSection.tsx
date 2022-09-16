@@ -11,7 +11,7 @@ const BannerSection = () => {
       className="relative my-auto h-full md:h-screen pt-96 xs:pt-[50rem] sm:pt-[60rem] md:pt-0 overflow-hidden"
     >
       <Player
-        className={'absolute transform-center w-full !mt-16 xs:!mt-20'}
+        className={'absolute transform-center w-full !mt-16 xs:!mt-24 md:!mt-20'}
         autoplay
         loop
         src={lottie}

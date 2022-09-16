@@ -3,6 +3,7 @@ import about from 'components/about/store';
 import commercial from 'components/commercial/store';
 import contact from 'components/contact/store';
 import home from 'components/home/store';
+import residential from 'components/residential/store';
 import shared from 'components/shared/store';
 import { createLogger } from 'redux-logger';
 
@@ -23,6 +24,7 @@ const store = configureStore({
     about,
     contact,
     commercial,
+    residential,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -49,7 +49,7 @@ export interface IHome {
       className: string;
     };
   };
-  reqFormSection: {
+  quoteFormSection: {
     title: string;
     subtitle: string;
     background?: StaticImageData;
