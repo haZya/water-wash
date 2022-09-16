@@ -10,8 +10,8 @@ const GallerySection = () => {
 
   return (
     <section aria-labelledby="gallery-section-title">
-      <div className="container mx-auto pt-16 pb-8">
-        <header className="flex flex-col items-center mb-16">
+      <div className="container mx-auto">
+        <header className="flex flex-col items-center">
           <Typography
             className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight"
             id="gallery-section-title"

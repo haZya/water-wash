@@ -13,8 +13,8 @@ const MissionSection = () => {
 
   return (
     <section aria-labelledby="mission-section-title">
-      <div className="container mx-auto py-8 sm:py-16">
-        <header className="flex flex-col space-y-8 mb-8">
+      <div className="container mx-auto">
+        <header className="flex flex-col space-y-8 mb-8 sm:mb-12">
           <Typography
             className="relative text-4xl sm:text-5xl text-center xs:text-start font-bold leading-tight"
             id="mission-section-title"
@@ -25,7 +25,7 @@ const MissionSection = () => {
         </header>
         <div className="space-y-6">
           <Image
-            className="w-64 h-auto xs:float-right mx-auto xs:ml-8"
+            className="w-64 h-auto xs:float-right mx-auto xs:ml-8 sm:mb-4"
             src={greenTick}
             alt="Carbon Neutral Certified"
             sizes="(max-width: 640px) 100vw,

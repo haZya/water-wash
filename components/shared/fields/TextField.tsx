@@ -1,4 +1,10 @@
-import { InputAdornment, TextField as MuiTextField, useMediaQuery, useTheme } from '@mui/material';
+import {
+  BaseTextFieldProps,
+  InputAdornment,
+  TextField as MuiTextField,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import clsx from 'clsx';
 import { IForm, ITextArea, ITextField } from 'models/shared';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -10,11 +16,13 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
     control,
     formState: { errors },
   } = useFormContext<IForm>();
+  const size: BaseTextFieldProps['size'] = 'small';
 
   return (
     <Controller
       name={name}
       control={control}
+      defaultValue=""
       render={({ field }) => (
         <MuiTextField
           {...field}
@@ -33,12 +41,11 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
           name={name}
           label={label}
           placeholder={!required ? '(optional)' : undefined}
-          value={field.value ?? ''}
           required={required}
-          size="small"
+          size={size}
           variant="filled"
           color="primary"
-          fullWidth={width === 'full'}
+          fullWidth
           multiline={type === 'textarea'}
           rows={rows}
           error={!!errors[name]}
@@ -52,6 +59,8 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
             ),
           }}
           sx={{
+            maxHeight: type !== 'textarea' ? (size === 'small' ? 46 : 53) : undefined,
+            mb: errors[name] && 3,
             '& .Mui-focused .MuiInputAdornment-root svg': {
               color: (theme) => theme.palette.primary.main,
             },

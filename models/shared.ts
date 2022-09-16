@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { DropzoneOptions } from 'react-dropzone';
 
 export type NavLink = {
   label: string;
@@ -77,8 +78,14 @@ export interface IPage {
   seo: ISeo;
 }
 
+//#region Form
+export interface SelectOption {
+  name: string;
+  label: string;
+}
+
 export interface IFormField {
-  type: string;
+  type: 'text' | 'email' | 'textarea' | 'autocomplete' | 'checkbox' | 'file';
   name: string;
   label: string;
   required: boolean;
@@ -91,13 +98,23 @@ export interface IFormField {
 export interface ITextField extends IFormField {}
 
 export interface ITextArea extends IFormField {
-  rows?: number;
+  rows: number;
+}
+
+export interface IAutoComplete extends IFormField {
+  multiple: boolean;
+  options: SelectOption[] | null;
 }
 
 export interface ICheckboxGroup extends IFormField {
-  options?: { name: string; label: string }[];
+  options: SelectOption[];
+}
+
+export interface IFileUpload extends IFormField {
+  options: DropzoneOptions;
 }
 
 export interface IForm {
-  [x: string]: string | string[];
+  [x: string]: string | string[] | File[] | IAutoComplete['options'];
 }
+//#endregion

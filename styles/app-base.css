@@ -62,8 +62,36 @@ main {
   margin-top: var(--banner-height);
 }
 
-section {
+section,
+footer {
   background-color: #fff;
+  z-index: 1;
+}
+
+section {
+  padding-top: 96px;
+}
+
+section:last-child {
+  padding-bottom: 96px;
+}
+
+section header {
+  margin-bottom: 64px;
+}
+
+@media only screen and (max-width: 768px) {
+  section {
+    padding-top: 64px;
+  }
+
+  section:last-child {
+    padding-bottom: 64px;
+  }
+
+  section header {
+    margin-bottom: 64px;
+  }
 }
 
 a {

@@ -6,7 +6,7 @@ const MapSection = () => {
 
   return (
     <section aria-label="Location on Map" id="map">
-      <div className="container mx-auto pb-16">
+      <div className="container mx-auto">
         <iframe title="Water Wash Location on Map" className="w-full h-106" src={url} />
       </div>
     </section>

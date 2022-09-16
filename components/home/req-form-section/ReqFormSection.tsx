@@ -31,10 +31,6 @@ const ReqFormSection = () => {
 
   const formProps: UseFormProps<IForm> = {
     mode: 'onChange',
-    defaultValues: Object.assign(
-      {},
-      ...fields.map((f) => ({ [f.name]: f.type === 'checkbox' ? [] : '' }))
-    ),
     resolver: yupResolver(schema),
   };
   const methods = useForm<IForm>(formProps);
@@ -42,13 +38,13 @@ const ReqFormSection = () => {
   return (
     <section
       aria-labelledby="req-form-section-title"
-      className="relative overflow-hidden xs:min-h-[1400px]"
+      className="relative overflow-hidden xs:min-h-[1400px] !pb-0"
     >
       <Wave />
       <div className="w-full pb-16 bg-gradient-to-r from-primary-100 to-secondary-100">
         {bg && <Image className={clsx(styles.background)} src={bg} alt="" />}
         <div className="container mx-auto pt-8">
-          <header className="flex flex-col items-center space-y-4 md:space-y-8 mb-8 md:mb-16">
+          <header className="flex flex-col items-center space-y-4 md:space-y-8">
             <Typography
               className="relative text-3xl xs:text-4xl sm:text-5xl text-center font-bold leading-tight z-0"
               id="req-form-section-title"

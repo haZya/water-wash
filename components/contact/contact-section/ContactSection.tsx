@@ -12,7 +12,7 @@ const ContactSection = () => {
   return (
     <section
       aria-labelledby="contact-section-title"
-      className="w-full md:w-1/3 border-2 border-primary-500 bg-primary-100/20 rounded-3xl shadow-xl shadow-primary-100 p-4 mb-8 sm:mb-4"
+      className="w-full md:w-1/3 border border-primary-500 bg-primary-100/20 rounded-3xl shadow-xl shadow-primary-100 !p-4 h-min"
     >
       <header className="flex flex-col items-center space-y-6 mt-4 mb-8">
         <Typography

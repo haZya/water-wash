@@ -4,10 +4,9 @@ import badge1 from '@/assets/images/about/value-section/badge-1.png';
 import badge2 from '@/assets/images/about/value-section/badge-2.png';
 import badge3 from '@/assets/images/about/value-section/badge-3.png';
 import bannerImage from '@/assets/images/shared/banner/1920x400.png';
-import { MissionSection } from 'components/about/mission-section';
 
+import { MissionSection, ValueSection } from 'components/about';
 import { setAboutContent } from 'components/about/store/contentSlice';
-import { ValueSection } from 'components/about/value-section';
 import { Seo } from 'components/shared';
 import { Banner } from 'components/shared/layout';
 import { setLayout } from 'components/shared/store/layoutSlice';
