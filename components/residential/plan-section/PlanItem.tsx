@@ -79,7 +79,7 @@ const PlanItem = ({ index, tag, title, bullets }: IProps) => {
                 <div key={b} className="flex space-x-2">
                   <Check color="success" />
                   <Typography
-                    className="text-base text-justify font-medium"
+                    className="text-base font-medium"
                     color="text.secondary"
                     dangerouslySetInnerHTML={{ __html: sanitize(b) }}
                   />

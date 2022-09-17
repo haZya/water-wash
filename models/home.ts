@@ -9,6 +9,7 @@ export interface IAnimatedItem {
   title: string;
   description?: string;
   color: string;
+  path: string;
 }
 //#endregion
 

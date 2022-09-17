@@ -1,50 +1,90 @@
+import { Check } from '@mui/icons-material';
+import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { Image } from 'components/shared';
+import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 
 const ServiceSection = () => {
-  const {} = useSelector(({ residential }: RootState) => residential.content.serviceSection);
+  const { items } = useSelector(({ residential }: RootState) => residential.content.serviceSection);
 
   return (
     <section aria-label="Services We Provide">
-      <div className="container mx-auto">
-        <div className="skew-wrapper">
-          <div className="skew-track">
-            <div className="skew">
-              <div
-                className="skew-background-image"
-                style={{ backgroundImage: "url('http://lorempixel.com/1680/994/animals')" }}
-              ></div>
-              <div className="skew-content">
-                <h1>For the Animal Lover</h1>
+      <Box
+        className="flex flex-col flex-wrap sm:flex-row sm:flex-nowrap overflow-hidden"
+        sx={(theme) => ({ [theme.breakpoints.up('md')]: { mx: '-70px' } })}
+      >
+        {items.map(({ title, content, bullets, background }) => (
+          <Box
+            key={title}
+            className="group relative grow hover:z-10 will-change-transform transition-all duration-500"
+            sx={{
+              minHeight: '72rem',
+              m: '-0.5px',
+              '&:hover': {
+                flexGrow: '1.3 !important',
+              },
+              '&:first-of-type,&:last-of-type': (theme) => ({
+                [theme.breakpoints.between('md', 'xl')]: { flexGrow: 1.15 },
+              }),
+            }}
+          >
+            <Box className="absolute transform-center flex-center flex-col z-10 text-center text-white space-y-6 w-48 xs:w-106 sm:w-56 md:w-64 lg:w-80 xl:w-90 md:ml-5 md:group-last:-ml-5">
+              <Typography
+                className="text-4xl font-bold"
+                variant="h3"
+                dangerouslySetInnerHTML={{ __html: sanitize(title) }}
+              />
+              <Typography
+                className="text-white"
+                dangerouslySetInnerHTML={{ __html: sanitize(content) }}
+              />
+              <div className="space-y-0.5">
+                {bullets.map((b) => (
+                  <div key={b} className="flex space-x-2">
+                    <Check color="success" />
+                    <Typography
+                      className="text-white font-medium"
+                      dangerouslySetInnerHTML={{ __html: sanitize(b) }}
+                    />
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="skew">
-              <div
-                className="skew-background-image"
-                style={{ backgroundImage: "url('http://lorempixel.com/1680/994/nature')" }}
-              ></div>
-              <div className="skew-content">
-                <h1>Become One with Nature</h1>
+            </Box>
+            <Box
+              className="absolute w-full h-full md:-skew-x-10 will-change-transform overflow-hidden after:backdrop-blur-sm group-hover:after:backdrop-blur-none"
+              sx={{
+                m: '-0.5px',
+                transition: 'box-shadow 0.2s ease-out',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: 'rgb(0 0 0 / 0.5)',
+                  transition: 'all 0.5s',
+                },
+                '.group:hover &': {
+                  boxShadow: '0 0 50px 20px rgb(0 0 0 / 25%)',
+                },
+              }}
+            >
+              <div className="relative h-full md:skew-x-10 md:-mx-16">
+                <Image
+                  src={background}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw,
+                  (max-width: 1024px) 50vw"
+                />
               </div>
-            </div>
-            <div className="skew">
-              <div
-                className="skew-background-image"
-                style={{ backgroundImage: "url('http://lorempixel.com/1680/994/people')" }}
-              ></div>
-              <div className="skew-content">
-                <h1>Get To Know The Human Element</h1>
-              </div>
-            </div>
-          </div>
-          <div className="skew-content-target">
-            <h1>Enjoy The Skewed Background Banner</h1>
-            <a href="#" className="btn-default">
-              Learn More
-            </a>
-          </div>
-        </div>
-      </div>
+            </Box>
+          </Box>
+        ))}
+      </Box>
     </section>
   );
 };

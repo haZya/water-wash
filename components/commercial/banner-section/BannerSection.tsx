@@ -7,7 +7,7 @@ const BannerSection = () => {
 
   return (
     <section
-      aria-label="Commercial Banner"
+      aria-label="Commercial"
       className="relative my-auto h-full md:h-screen pt-96 xs:pt-[50rem] sm:pt-[60rem] md:pt-0 overflow-hidden"
     >
       <Player

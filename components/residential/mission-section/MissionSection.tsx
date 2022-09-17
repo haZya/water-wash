@@ -55,7 +55,7 @@ const MissionSection = () => {
                   dangerouslySetInnerHTML={{ __html: sanitize(mission.title) }}
                 />
                 <Typography
-                  className="relative !font-body italic text-lg xs:text-xl sm:text-2xl text-center font-bold leading-tight tracking-widest"
+                  className="relative !font-body italic text-lg xs:text-xl sm:text-2xl text-center font-normal leading-tight tracking-widest"
                   color="text.secondary"
                   dangerouslySetInnerHTML={{ __html: sanitize(mission.subtitle) }}
                 />

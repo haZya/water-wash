@@ -3,6 +3,10 @@ import image from '@/assets/images/residential/mission-section/800.png';
 import badge from '@/assets/images/residential/mission-section/green-tick.png';
 import background from '@/assets/images/shared/banner/1920x1080.png';
 
+import bg1 from '@/assets/images/home/gallery-section/image-1.webp';
+import bg2 from '@/assets/images/home/gallery-section/image-10.webp';
+import bg3 from '@/assets/images/home/gallery-section/image-11.webp';
+
 import {
   BannerSection,
   MissionSection,
@@ -333,7 +337,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Stucco Patios',
         'And More!',
       ],
-      background: '',
+      background: bg1,
     },
     {
       title: 'Patio Cleaning Services',
@@ -354,7 +358,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Concrete',
         'And So Much More!',
       ],
-      background: '',
+      background: bg2,
     },
     {
       title: 'Concrete Cleaning Services',
@@ -373,7 +377,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Swimming Pools',
         'And More!',
       ],
-      background: '',
+      background: bg3,
     },
   ],
 };

@@ -72,6 +72,7 @@ const hero: IHome['hero'] = {
       title: 'Commercial',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
       color: '#FF9191',
+      path: '/commercial',
     },
     {
       lottie: '/assets/lotties/home/hero/residential.json',
@@ -99,6 +100,7 @@ const hero: IHome['hero'] = {
       title: 'Residential',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
       color: '#FFD491',
+      path: '/residential',
     },
   ],
 };

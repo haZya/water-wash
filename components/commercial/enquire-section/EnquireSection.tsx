@@ -1,7 +1,7 @@
 // Import assets; TODO: From CMS
 import bg from '@/assets/images/shared/banner/1920x1080.png';
 
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { AnimatedButton, Image } from 'components/shared';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
@@ -16,17 +16,21 @@ const EnquireSection = () => {
   );
 
   return (
-    <section
+    <Box
       ref={ref}
       aria-labelledby="enquire-section-title"
       className="relative bg-primary-900 z-0 py-0"
+      component="section"
+      sx={{
+        clipPath: 'polygon(0 10%, 100% 0%, 100% 80%, 0% 100%)',
+      }}
     >
       {inView && (
         <div className="pointer-events-none fixed transform-center w-full h-full">
           <Image className="absolute opacity-25 object-cover" src={bg} alt="" fill />
         </div>
       )}
-      <div className="container mx-auto flex-center flex-col py-16 space-y-12 overflow-hidden">
+      <div className="container mx-auto flex-center flex-col pt-28 pb-36 space-y-12 overflow-hidden">
         <header className="flex flex-col items-center mb-0">
           <Typography
             className="text-3xl sm:text-5xl text-primary-100 text-center font-bold"
@@ -53,7 +57,7 @@ const EnquireSection = () => {
           </a>
         </Link>
       </div>
-    </section>
+    </Box>
   );
 };
 

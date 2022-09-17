@@ -8,7 +8,7 @@ const BannerSection = () => {
 
   return (
     <section
-      aria-label="Residential Banner"
+      aria-label="Residential"
       className="relative my-auto h-full md:h-screen pt-[45rem] xs:pt-[60rem] sm:pt-[75rem] md:pt-0 overflow-hidden"
     >
       <Box
