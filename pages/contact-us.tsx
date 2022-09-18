@@ -1,5 +1,5 @@
 // Import assets; TODO: From CMS
-import bannerImage from '@/assets/images/shared/banner/1920x400.png';
+import bannerImage from '@/assets/images/contact/banner/banner.jpg';
 
 import { ContactFormSection, ContactSection, MapSection } from 'components/contact';
 import { setContactContent } from 'components/contact/store/contentSlice';

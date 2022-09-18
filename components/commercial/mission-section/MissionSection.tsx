@@ -1,5 +1,5 @@
 // Import assets
-import image from '@/assets/images/commercial/mission-section/800.png';
+import image from '@/assets/images/commercial/mission-section/image.jpg';
 
 import { Typography } from '@mui/material';
 import { Image } from 'components/shared';
@@ -26,23 +26,26 @@ const MissionSection = () => {
         </header>
         <div className="space-y-8 sm:space-y-12">
           <div className="xs:flex md:block space-y-10 xs:space-y-16">
-            <div className="order-last relative max-w-64 xs:max-w-80 md:max-w-96 xs:min-w-68 sm:min-w-80 mx-auto md:float-right xs:ml-24 xs:pb-12 space-y-6">
+            <div className="order-last relative mx-auto md:float-right xs:ml-24 xs:pb-12 space-y-6">
+              <div className="relative xs:min-w-68 xs:h-68 sm:min-w-80 sm:h-80 md:min-w-96 md:h-96 rounded-xl overflow-hidden">
+                <Image
+                  className="hidden xs:block mx-auto rounded-xl object-cover hover:scale-125 transition-transform duration-300"
+                  src={image}
+                  alt="Carbon Neutral Certified"
+                  fill
+                  sizes="(max-width: 640px) 100vw,
+                  (max-width: 1024px) 50vw,
+                  33vw"
+                  placeholder="blur"
+                />
+              </div>
               <Image
-                className="hidden xs:block w-full h-auto mx-auto rounded-xl"
-                src={image}
-                alt="Carbon Neutral Certified"
-                sizes="(max-width: 640px) 100vw,
-              (max-width: 1024px) 50vw,
-              33vw"
-                placeholder="blur"
-              />
-              <Image
-                className="xs:absolute xs:bottom-0 xs:-left-16 xs:max-w-52 md:max-w-60 h-auto mx-auto rounded-lg"
+                className="xs:absolute xs:bottom-0 xs:-left-16 max-w-52 md:max-w-60 h-auto mx-auto rounded-lg"
                 src={content.badge}
                 alt="Badge"
                 sizes="(max-width: 640px) 50vw,
-              (max-width: 1024px) 20vw,
-              15vw"
+                (max-width: 1024px) 20vw,
+                15vw"
                 placeholder="blur"
               />
             </div>

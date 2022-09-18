@@ -53,11 +53,14 @@ const ServiceItem = ({ title, content, bullets, background }: IServiceSectionIte
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgb(0 0 0 / 0.5)',
+            backgroundColor: 'rgb(0 0 0 / 0.7)',
             transition: 'all 0.5s',
           },
           '.group:hover &': {
             boxShadow: '0 0 50px 20px rgb(0 0 0 / 25%)',
+            '&::after': {
+              backgroundColor: 'rgb(0 0 0 / 0.6)',
+            },
           },
         }}
       >

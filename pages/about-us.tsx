@@ -1,9 +1,9 @@
 // Import assets; TODO: From CMS
+import bannerImage from '@/assets/images/about/banner/banner.jpg';
 import greenTick from '@/assets/images/about/mission-section/green-tick.png';
 import badge1 from '@/assets/images/about/value-section/badge-1.png';
 import badge2 from '@/assets/images/about/value-section/badge-2.png';
 import badge3 from '@/assets/images/about/value-section/badge-3.png';
-import bannerImage from '@/assets/images/shared/banner/1920x400.png';
 
 import { MissionSection, ValueSection } from 'components/about';
 import { setAboutContent } from 'components/about/store/contentSlice';

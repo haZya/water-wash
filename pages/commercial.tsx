@@ -1,11 +1,10 @@
 // Import assets; TODO: From CMS
-import image from '@/assets/images/commercial/mission-section/800.png';
+import background from '@/assets/images/commercial/enquire-section/background.jpg';
 import badge from '@/assets/images/commercial/mission-section/green-tick.png';
-import background from '@/assets/images/shared/banner/1920x1080.png';
+import image from '@/assets/images/commercial/mission-section/image.jpg';
 
 import {
   BannerSection,
-  CommercialFormSection,
   EnquireSection,
   MissionSection,
   SpecializationSection,
@@ -15,6 +14,7 @@ import { Seo } from 'components/shared';
 import { ICommercial } from 'models/commercial';
 import { IAutoComplete, IPage } from 'models/shared';
 import { GetStaticProps } from 'next';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useDispatch } from 'react-redux';
@@ -458,6 +458,10 @@ const missionSection: ICommercial['missionSection'] = {
   },
 };
 
+const DynamicCommercialFormSection = dynamic(
+  () => import('components/commercial/form-section/CommercialFormSection')
+);
+
 interface IProps extends IPage, ICommercial {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -491,7 +495,7 @@ const Commercial = ({ seo, ...props }: IProps) => {
       <BannerSection />
       <SpecializationSection />
       <EnquireSection />
-      <CommercialFormSection />
+      <DynamicCommercialFormSection />
       <MissionSection />
     </>
   );

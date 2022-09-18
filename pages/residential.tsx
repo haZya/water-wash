@@ -1,11 +1,11 @@
 // Import assets; TODO: From CMS
-import image from '@/assets/images/residential/mission-section/800.png';
 import badge from '@/assets/images/residential/mission-section/green-tick.png';
-import background from '@/assets/images/shared/banner/1920x1080.png';
+import image from '@/assets/images/residential/mission-section/image.jpg';
+import background from '@/assets/images/residential/quote-section/background.jpg';
 
-import bg1 from '@/assets/images/home/gallery-section/image-1.webp';
-import bg2 from '@/assets/images/home/gallery-section/image-10.webp';
-import bg3 from '@/assets/images/home/gallery-section/image-11.webp';
+import background1 from '@/assets/images/residential/service-section/background-1.jpg';
+import background2 from '@/assets/images/residential/service-section/background-2.jpg';
+import background3 from '@/assets/images/residential/service-section/background-3.jpg';
 
 import {
   BannerSection,
@@ -337,7 +337,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Stucco Patios',
         'And More!',
       ],
-      background: bg1,
+      background: background1,
     },
     {
       title: 'Patio Cleaning Services',
@@ -358,7 +358,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Concrete',
         'And So Much More!',
       ],
-      background: bg2,
+      background: background2,
     },
     {
       title: 'Concrete Cleaning Services',
@@ -377,7 +377,7 @@ const serviceSection: IResidential['serviceSection'] = {
         'Swimming Pools',
         'And More!',
       ],
-      background: bg3,
+      background: background3,
     },
   ],
 };

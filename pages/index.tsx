@@ -1,44 +1,35 @@
 // import assets // TODO: from cms
 import background from '@/assets/images/home/descriptive-section/bg.png';
-import bg from '@/assets/images/home/quote-form-section/bg.png';
+import bg from '@/assets/images/home/quote-form-section/bg.jpg';
 // Gallery
-import image1 from '@/assets/images/home/gallery-section/image-1.webp';
-import image10 from '@/assets/images/home/gallery-section/image-10.webp';
-import image11 from '@/assets/images/home/gallery-section/image-11.webp';
-import image12 from '@/assets/images/home/gallery-section/image-12.webp';
-import image13 from '@/assets/images/home/gallery-section/image-13.webp';
-import image14 from '@/assets/images/home/gallery-section/image-14.webp';
-import image15 from '@/assets/images/home/gallery-section/image-15.webp';
-import image16 from '@/assets/images/home/gallery-section/image-16.webp';
-import image17 from '@/assets/images/home/gallery-section/image-17.webp';
-import image18 from '@/assets/images/home/gallery-section/image-18.webp';
-import image19 from '@/assets/images/home/gallery-section/image-19.webp';
-import image2 from '@/assets/images/home/gallery-section/image-2.webp';
-import image20 from '@/assets/images/home/gallery-section/image-20.webp';
-import image21 from '@/assets/images/home/gallery-section/image-21.webp';
-import image22 from '@/assets/images/home/gallery-section/image-22.webp';
-import image23 from '@/assets/images/home/gallery-section/image-23.webp';
-import image24 from '@/assets/images/home/gallery-section/image-24.webp';
-import image3 from '@/assets/images/home/gallery-section/image-3.webp';
-import image4 from '@/assets/images/home/gallery-section/image-4.webp';
-import image5 from '@/assets/images/home/gallery-section/image-5.webp';
-import image6 from '@/assets/images/home/gallery-section/image-6.webp';
-import image7 from '@/assets/images/home/gallery-section/image-7.webp';
-import image8 from '@/assets/images/home/gallery-section/image-8.webp';
-import image9 from '@/assets/images/home/gallery-section/image-9.webp';
+import after1 from '@/assets/images/home/gallery-section/1-after.png';
+import before1 from '@/assets/images/home/gallery-section/1-before.png';
+import after10 from '@/assets/images/home/gallery-section/10-after.png';
+import before10 from '@/assets/images/home/gallery-section/10-before.png';
+import after2 from '@/assets/images/home/gallery-section/2-after.png';
+import before2 from '@/assets/images/home/gallery-section/2-before.png';
+import after3 from '@/assets/images/home/gallery-section/3-after.png';
+import before3 from '@/assets/images/home/gallery-section/3-before.png';
+import after4 from '@/assets/images/home/gallery-section/4-after.png';
+import before4 from '@/assets/images/home/gallery-section/4-before.png';
+import after5 from '@/assets/images/home/gallery-section/5-after.png';
+import before5 from '@/assets/images/home/gallery-section/5-before.png';
+import after6 from '@/assets/images/home/gallery-section/6-after.jpeg';
+import before6 from '@/assets/images/home/gallery-section/6-before.jpeg';
+import after7 from '@/assets/images/home/gallery-section/7-after.png';
+import before7 from '@/assets/images/home/gallery-section/7-before.png';
+import after8 from '@/assets/images/home/gallery-section/8-after.jpeg';
+import before8 from '@/assets/images/home/gallery-section/8-before.jpeg';
+import after9 from '@/assets/images/home/gallery-section/9-after.png';
+import before9 from '@/assets/images/home/gallery-section/9-before.png';
 
-import {
-  DescriptiveSection,
-  GallerySection,
-  Hero,
-  QuoteFormSection,
-  ReviewSection,
-} from 'components/home';
+import { DescriptiveSection, Hero, ReviewSection } from 'components/home';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
 import { IHome } from 'models/home';
 import { IPage } from 'models/shared';
 import { GetStaticProps, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { useDispatch } from 'react-redux';
@@ -175,63 +166,53 @@ const gallerySection: IHome['gallerySection'] = {
   title: 'GALLERY',
   items: [
     {
-      image1,
-      image2,
+      before: before1,
+      after: after1,
       portrait: false,
     },
     {
-      image1: image3,
-      image2: image4,
+      before: before2,
+      after: after2,
       portrait: false,
     },
     {
-      image1: image5,
-      image2: image6,
+      before: before3,
+      after: after3,
       portrait: false,
     },
     {
-      image1: image7,
-      image2: image8,
+      before: before4,
+      after: after4,
       portrait: false,
     },
     {
-      image1: image9,
-      image2: image10,
+      before: before5,
+      after: after5,
       portrait: false,
     },
     {
-      image1: image11,
-      image2: image12,
+      before: before6,
+      after: after6,
       portrait: false,
     },
     {
-      image1: image13,
-      image2: image14,
+      before: before7,
+      after: after7,
       portrait: false,
     },
     {
-      image1: image15,
-      image2: image16,
+      before: before8,
+      after: after8,
       portrait: false,
     },
     {
-      image1: image17,
-      image2: image18,
+      before: before9,
+      after: after9,
       portrait: false,
     },
     {
-      image1: image19,
-      image2: image20,
-      portrait: true,
-    },
-    {
-      image1: image21,
-      image2: image22,
-      portrait: true,
-    },
-    {
-      image1: image23,
-      image2: image24,
+      before: before10,
+      after: after10,
       portrait: true,
     },
   ],
@@ -385,6 +366,13 @@ const quoteFormSection: IHome['quoteFormSection'] = {
   },
 };
 
+const DynamicGallerySection = dynamic(
+  () => import('components/home/gallery-section/GallerySection')
+);
+const DynamicQuoteFormSection = dynamic(
+  () => import('components/home/quote-form-section/QuoteFormSection')
+);
+
 interface IProps extends IPage, IHome {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -423,9 +411,9 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
       <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
       <Hero />
       <DescriptiveSection />
-      <GallerySection />
+      <DynamicGallerySection />
       <ReviewSection />
-      <QuoteFormSection />
+      <DynamicQuoteFormSection />
     </>
   );
 };

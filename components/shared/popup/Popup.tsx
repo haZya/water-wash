@@ -39,10 +39,10 @@ const zoomOut = (scaleX: number, scaleY: number) =>
 const StyledPopup = styled('div', {
   shouldForwardProp: (prop) => prop !== 'width' && prop !== 'animationEnded',
 })<StyledReactCompareSliderProps>(({ theme, width, animationEnded }) => {
-  const xlScale = (theme.breakpoints.values.xl * 0.95) / width;
-  const lgScale = (theme.breakpoints.values.lg * 0.95) / width;
-  const mdScale = (theme.breakpoints.values.md * 0.95) / width;
-  const smScale = (theme.breakpoints.values.sm * 0.95) / width;
+  const xlScale = (theme.breakpoints.values.xl * 0.8) / width;
+  const lgScale = (theme.breakpoints.values.lg * 0.8) / width;
+  const mdScale = (theme.breakpoints.values.md * 0.8) / width;
+  const smScale = (theme.breakpoints.values.sm * 0.8) / width;
   const xsScale = 1;
 
   return {

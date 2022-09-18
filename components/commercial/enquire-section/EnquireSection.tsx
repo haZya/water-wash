@@ -1,5 +1,5 @@
 // Import assets; TODO: From CMS
-import bg from '@/assets/images/shared/banner/1920x1080.png';
+import bg from '@/assets/images/commercial/enquire-section/background.jpg';
 
 import { Box, Typography } from '@mui/material';
 import { AnimatedButton, Image } from 'components/shared';
@@ -27,7 +27,13 @@ const EnquireSection = () => {
     >
       {inView && (
         <div className="pointer-events-none fixed transform-center w-full h-full">
-          <Image className="absolute opacity-25 object-cover" src={bg} alt="" fill />
+          <Image
+            className="absolute opacity-20 object-cover"
+            src={bg}
+            alt=""
+            fill
+            placeholder="blur"
+          />
         </div>
       )}
       <div className="container mx-auto flex-center flex-col pt-28 pb-36 space-y-12 overflow-hidden">

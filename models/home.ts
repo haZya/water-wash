@@ -23,8 +23,8 @@ export interface IDescriptiveSectionItem {
 
 //#region Gallery Section
 export interface IGallerySectionItem {
-  image1: StaticImageData | string;
-  image2: StaticImageData | string;
+  before: StaticImageData | string;
+  after: StaticImageData | string;
   portrait?: boolean;
 }
 //#endregion

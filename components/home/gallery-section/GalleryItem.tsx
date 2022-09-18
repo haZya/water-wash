@@ -24,7 +24,7 @@ interface IProps extends IGallerySectionItem {
   index: number;
 }
 
-const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
+const GalleryItem = ({ index, before, after, portrait }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const [animating, setAnimating] = useState(false);
@@ -72,8 +72,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
               <ReactCompareSlider
                 className="w-full h-full"
                 portrait={portrait}
-                itemOne={image(image1, 'Image One', true)}
-                itemTwo={image(image2, 'Image Two', true)}
+                itemOne={image(before, 'Image One', true)}
+                itemTwo={image(after, 'Image Two', true)}
                 position={compareSliderPosition}
                 onPositionChange={(pos) => {
                   setCompareSliderPosition(pos);
@@ -87,8 +87,8 @@ const GalleryItem = ({ index, image1, image2, portrait }: IProps) => {
                   className="w-full h-full"
                   onlyHandleDraggable
                   portrait={portrait}
-                  itemOne={image(image1, 'Image One', false)}
-                  itemTwo={image(image2, 'Image Two', false)}
+                  itemOne={image(before, 'Image One', false)}
+                  itemTwo={image(after, 'Image Two', false)}
                   position={compareSliderPosition}
                   onPositionChange={(pos) => {
                     setCompareSliderPosition(pos);
