@@ -54,6 +54,7 @@ const Banner = ({ title, backgroundImage }: IBanner) => {
               alt="Banner"
               fill
               placeholder="blur"
+              priority
             />
           </Box>
         )}

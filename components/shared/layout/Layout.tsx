@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { RootState } from 'lib/redux';
 import { ILayout, NavLink, Social } from 'models/shared';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -169,6 +170,13 @@ const Layout = ({ children }: IProps) => {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
       <div className="absolute top-0 left-0 right-0">
         <NavbarTop />
         <Navbar />
