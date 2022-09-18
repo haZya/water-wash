@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useStaggerItem } from 'components/shared';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
-import { ISpecializationSectionItem } from 'models/commercial';
+import { ISpecializationSectionItem } from 'models/residential';
 import { useEffect, useState } from 'react';
 import styles from './SpecializationItem.module.css';
 
@@ -43,7 +43,7 @@ const SpecializationItem = ({ index, icon, title }: IProps) => {
     >
       <div
         className={clsx(
-          'flex-center text-sm text-white bg-primary-500 group-hover:bg-secondary-500 transition-color duration-700 rounded-lg w-12 h-12 p-2',
+          'text-sm text-white bg-primary-500 group-hover:bg-secondary-500 transition-color duration-700 rounded-lg w-12 h-12 p-2',
           index % 2 === 0 ? 'xs:ml-auto' : 'xs:mr-auto'
         )}
         dangerouslySetInnerHTML={{ __html: sanitize(icon) }}

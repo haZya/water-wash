@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Form = () => {
   const dispatch = useDispatch();
   const { title, sections } = useSelector(
-    ({ home }: RootState) => home.content.reqFormSection.form
+    ({ home }: RootState) => home.content.quoteFormSection.form
   );
   const {
     reset,

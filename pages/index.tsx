@@ -1,6 +1,6 @@
 // import assets // TODO: from cms
 import background from '@/assets/images/home/descriptive-section/bg.png';
-import bg from '@/assets/images/home/req-form-section/bg.png';
+import bg from '@/assets/images/home/quote-form-section/bg.png';
 // Gallery
 import image1 from '@/assets/images/home/gallery-section/image-1.webp';
 import image10 from '@/assets/images/home/gallery-section/image-10.webp';
@@ -31,7 +31,7 @@ import {
   DescriptiveSection,
   GallerySection,
   Hero,
-  ReqFormSection,
+  QuoteFormSection,
   ReviewSection,
 } from 'components/home';
 import { setHomeContent } from 'components/home/store/contentSlice';
@@ -72,6 +72,7 @@ const hero: IHome['hero'] = {
       title: 'Commercial',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
       color: '#FF9191',
+      path: '/commercial',
     },
     {
       lottie: '/assets/lotties/home/hero/residential.json',
@@ -99,6 +100,7 @@ const hero: IHome['hero'] = {
       title: 'Residential',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
       color: '#FFD491',
+      path: '/residential',
     },
   ],
 };
@@ -243,7 +245,7 @@ const reviewSection: IHome['reviewSection'] = {
   },
 };
 
-const reqFormSection: IHome['reqFormSection'] = {
+const quoteFormSection: IHome['quoteFormSection'] = {
   title: 'GET IN TOUCH',
   subtitle:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro adipisci ex facilis assumenda atque.',
@@ -392,7 +394,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       descriptiveSection,
       gallerySection,
       reviewSection,
-      reqFormSection,
+      quoteFormSection,
       seo: {
         indexing: true,
         metaTitle: 'Home',
@@ -411,7 +413,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
         ...props,
         gallerySection,
         descriptiveSection: { ...props.descriptiveSection, background },
-        reqFormSection: { ...props.reqFormSection, background: bg },
+        quoteFormSection: { ...props.quoteFormSection, background: bg },
       })
     ); // TODO: remove these later when getting from CMS
   }, [dispatch, props]);
@@ -423,7 +425,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
       <DescriptiveSection />
       <GallerySection />
       <ReviewSection />
-      <ReqFormSection />
+      <QuoteFormSection />
     </>
   );
 };

@@ -163,6 +163,9 @@ module.exports = {
         '2xl': '1.6rem',
         '3xl': '2.4rem',
       },
+      skew: {
+        10: '10deg',
+      },
     },
   },
   plugins: [],

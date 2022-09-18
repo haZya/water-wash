@@ -19,7 +19,7 @@ const initialState: IHome = {
       className: '',
     },
   },
-  reqFormSection: {
+  quoteFormSection: {
     title: '',
     subtitle: '',
     form: {

@@ -9,6 +9,7 @@ export interface IAnimatedItem {
   title: string;
   description?: string;
   color: string;
+  path: string;
 }
 //#endregion
 
@@ -49,7 +50,7 @@ export interface IHome {
       className: string;
     };
   };
-  reqFormSection: {
+  quoteFormSection: {
     title: string;
     subtitle: string;
     background?: StaticImageData;

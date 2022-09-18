@@ -9,10 +9,10 @@ import { RootState } from 'lib/redux';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-const EnquireSection = () => {
+const QuoteSection = () => {
   const [ref, inView] = useInView();
   const { title, content, background } = useSelector(
-    ({ commercial }: RootState) => commercial.content.enquireSection
+    ({ residential }: RootState) => residential.content.quoteSection
   );
 
   return (
@@ -44,21 +44,35 @@ const EnquireSection = () => {
             dangerouslySetInnerHTML={{ __html: sanitize(content) }}
           />
         </header>
-        <Link href="/contact-us/#contact-form">
-          <a>
-            <AnimatedButton
-              className="xs:px-48 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
-              size="large"
-              variant="contained"
-              color="secondary"
-            >
-              Enquire Now
-            </AnimatedButton>
-          </a>
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-8">
+          <Link href="/#quote-form">
+            <a>
+              <AnimatedButton
+                className="w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
+                size="large"
+                variant="contained"
+                color="secondary"
+              >
+                Get A Quote
+              </AnimatedButton>
+            </a>
+          </Link>
+          <Link href="/#contact-form">
+            <a>
+              <AnimatedButton
+                className="w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
+                size="large"
+                variant="contained"
+                color="secondary"
+              >
+                Enquire Now
+              </AnimatedButton>
+            </a>
+          </Link>
+        </div>
       </div>
     </Box>
   );
 };
 
-export default EnquireSection;
+export default QuoteSection;
