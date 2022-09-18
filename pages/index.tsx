@@ -1,5 +1,6 @@
 // import assets // TODO: from cms
 import background from '@/assets/images/home/descriptive-section/bg.png';
+import ogImage from '@/assets/images/home/og.jpg';
 import bg from '@/assets/images/home/quote-form-section/bg.jpg';
 // Gallery
 import after1 from '@/assets/images/home/gallery-section/1-after.png';
@@ -387,6 +388,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
         indexing: true,
         metaTitle: 'Home',
         metaDesc: 'Water Wash is the dependable Power Washing Solution for your home or business.',
+        ogImage,
+        ogAltText: 'A worker cleaning a driveway with a power washer.',
       },
     },
   };

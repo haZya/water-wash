@@ -1,6 +1,7 @@
 // Import assets; TODO: From CMS
 import badge from '@/assets/images/residential/mission-section/green-tick.png';
 import image from '@/assets/images/residential/mission-section/image.jpg';
+import ogImage from '@/assets/images/residential/og.jpg';
 import background from '@/assets/images/residential/quote-section/background.jpg';
 
 import background1 from '@/assets/images/residential/service-section/background-1.jpg';
@@ -413,6 +414,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
         metaTitle: 'Residential',
         metaDesc:
           'We have got you covered at Water Wash... Whether you have stains from storm build-up or you’re preparing your deck for a re-stain, we’ll blast away all the dirt, debris, and grime from your patio in just a few hours.',
+        ogImage,
+        ogAltText: 'A worker cleaning a concrete floor with a high pressure washer.',
       },
     },
   };

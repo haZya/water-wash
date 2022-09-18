@@ -2,6 +2,7 @@
 import background from '@/assets/images/commercial/enquire-section/background.jpg';
 import badge from '@/assets/images/commercial/mission-section/green-tick.png';
 import image from '@/assets/images/commercial/mission-section/image.jpg';
+import ogImage from '@/assets/images/commercial/og.jpg';
 
 import {
   BannerSection,
@@ -477,6 +478,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
         metaTitle: 'Commercial',
         metaDesc:
           'Our team specialises in board array of industries. Every business is different, and has different needs. If you have a unique request, Send it through. Our trained professionals will be able to do it no matter the task...',
+        ogImage,
+        ogAltText: 'Cleaning the sidewalk with a power washer.',
       },
     },
   };

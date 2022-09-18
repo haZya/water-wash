@@ -42,10 +42,7 @@ const MobileHero = () => {
         {items.map((item) => (
           <SwiperSlide
             key={item.title}
-            className={clsx(
-              'flex flex-col justify-around items-center rounded-2xl backdrop-blur-lg bg-white/70 w-full h-full',
-              styles.swiperSlide
-            )}
+            className={clsx('rounded-2xl backdrop-blur-lg bg-white/70', styles.swiperSlide)}
           >
             <MobileCard {...item} />
           </SwiperSlide>

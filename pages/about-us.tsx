@@ -1,6 +1,7 @@
 // Import assets; TODO: From CMS
 import bannerImage from '@/assets/images/about/banner/banner.jpg';
 import greenTick from '@/assets/images/about/mission-section/green-tick.png';
+import ogImage from '@/assets/images/about/og.jpg';
 import badge1 from '@/assets/images/about/value-section/badge-1.png';
 import badge2 from '@/assets/images/about/value-section/badge-2.png';
 import badge3 from '@/assets/images/about/value-section/badge-3.png';
@@ -110,6 +111,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
         metaTitle: 'About',
         metaDesc:
           'Here at Waterwash, our mission is to reduce Australia’s pressure washing industry emissions to ⅓ of what it currently is by 2025. The company prides itself on customer service and any type of person-to-person interaction as a mutual feature of the overall service provided.',
+        ogImage,
+        ogAltText: 'Power washing a wooden terrace surface with high water pressure.',
       },
     },
   };

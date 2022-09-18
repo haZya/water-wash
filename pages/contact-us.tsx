@@ -1,5 +1,6 @@
 // Import assets; TODO: From CMS
 import bannerImage from '@/assets/images/contact/banner/banner.jpg';
+import ogImage from '@/assets/images/contact/og.jpg';
 
 import { ContactFormSection, ContactSection, MapSection } from 'components/contact';
 import { setContactContent } from 'components/contact/store/contentSlice';
@@ -143,6 +144,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
         metaTitle: 'Contact',
         metaDesc:
           'Visit Us: 93-97 Normanby Rd, Notting Hill VIC 3168, Australia. Mail Us: enquiries@waterwash.com.au. Phone Us: 03 8539 4855',
+        ogImage,
+        ogAltText: 'A worker cleaning a wooden terrace surface with a power washer.',
       },
     },
   };

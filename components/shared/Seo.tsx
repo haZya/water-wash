@@ -1,6 +1,4 @@
-// Import assets
 import { ISeo } from 'models/shared';
-
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
