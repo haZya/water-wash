@@ -1,3 +1,4 @@
+import ServiceItem from './ServiceItem';
 import ServiceSection from './ServiceSection';
 
-export { ServiceSection };
+export { ServiceSection, ServiceItem };
