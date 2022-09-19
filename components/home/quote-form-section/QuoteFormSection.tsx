@@ -1,4 +1,4 @@
-import bg from '@/assets/images/home/quote-form-section/bg.jpg';
+import bg from '@/assets/images/home/quote-form-section/bg.png';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
