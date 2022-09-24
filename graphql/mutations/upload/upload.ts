@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request';
-import { RequestDocument, Variables } from 'graphql-request/dist/types';
+import { RequestDocument } from 'graphql-request/dist/types';
 import { client } from 'lib/graphql-request';
 
 interface IUploadResponse {
@@ -26,7 +26,8 @@ const UPLOAD: RequestDocument = gql`
   }
 `;
 
-async function upload(variables: Variables) {
+async function upload(variables: { files: File[] }) {
+  if (!variables.files.length) return [];
   const { multipleUpload }: IUploadResponse = await client.request(UPLOAD, variables);
   return multipleUpload.map((u) => ({ id: u.data.id, name: u.data.attributes.name }));
 }

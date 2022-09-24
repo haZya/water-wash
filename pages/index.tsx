@@ -284,6 +284,7 @@ const quoteFormSection: IHome['quoteFormSection'] = {
       },
       {
         title: 'Address',
+        componentName: 'address',
         fields: [
           {
             type: 'text',
@@ -315,7 +316,7 @@ const quoteFormSection: IHome['quoteFormSection'] = {
           },
           {
             type: 'text',
-            name: 'zip',
+            name: 'zipCode',
             label: 'ZIP Code',
             required: true,
             width: '1/3',

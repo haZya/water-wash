@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { ICheckboxGroup, ITextArea, ITextField } from './shared';
+import { IFormSection } from './shared';
 
 //#region Hero
 export interface IAnimatedItem {
@@ -56,10 +56,7 @@ export interface IHome {
     background?: StaticImageData;
     form: {
       title: string;
-      sections: {
-        title: string;
-        fields: (ITextField | ITextArea | ICheckboxGroup)[];
-      }[];
+      sections: IFormSection[];
     };
   };
 }

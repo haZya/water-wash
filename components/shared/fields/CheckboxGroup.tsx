@@ -8,7 +8,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { ICheckboxGroup, IForm } from 'models/shared';
+import { ICheckboxGroup, IForm, SelectOption } from 'models/shared';
 import { Controller, useFormContext } from 'react-hook-form';
 
 const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup) => {
@@ -44,12 +44,12 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
               {...field}
               className={clsx(
                 'mr-auto backdrop-blur-sm bg-white/10 hover:bg-white/80 transition-colors duration-300 pr-2 my-1 ml-0',
-                (field.value as string[])?.includes(o.name) && '!bg-white/80'
+                (field.value as SelectOption[])?.find((v) => v.name === o.name) && '!bg-white/80'
               )}
               name={name}
               control={
                 <Checkbox
-                  required={required && !(field.value as string[])?.length}
+                  required={required && !(field.value as SelectOption[])?.length}
                   color="primary"
                   sx={{
                     color: theme.palette.primary[200],
@@ -66,10 +66,10 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
                 </Typography>
               }
               onChange={(e, c) => {
-                const currentValues = (getValues(name) ?? []) as string[];
+                const currentValues = (getValues(name) ?? []) as SelectOption[];
                 const newValues = c
-                  ? [...currentValues, o.name]
-                  : currentValues.filter((v) => v !== o.name);
+                  ? [...currentValues, o]
+                  : currentValues.filter((v) => v.name !== o.name);
                 field.onChange([...newValues]);
               }}
             />
