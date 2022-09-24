@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { ICheckboxGroup, IFileUpload, ITextArea, ITextField } from './shared';
+import { IFormSection } from './shared';
 
 //#region Specialization Section
 export interface ISpecializationSectionItem {
@@ -26,10 +26,7 @@ export interface ICommercial {
     subtitle: string;
     form: {
       title: string;
-      sections: {
-        title: string;
-        fields: (ITextField | ITextArea | ICheckboxGroup | IFileUpload)[];
-      }[];
+      sections: IFormSection[];
     };
   };
   missionSection: {

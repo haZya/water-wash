@@ -267,6 +267,11 @@ const quoteFormSection: IHome['quoteFormSection'] = {
             label: 'Phone',
             required: true,
             width: '1/2',
+            validationType: 'string',
+            validations: [
+              { type: 'matches', params: ['^[0-9]+$', 'Must only contain digits'] },
+              { type: 'max', params: [10, 'Cannot contain more than 10 digits'] },
+            ],
           },
           {
             type: 'text',
@@ -314,6 +319,11 @@ const quoteFormSection: IHome['quoteFormSection'] = {
             label: 'ZIP Code',
             required: true,
             width: '1/3',
+            validationType: 'string',
+            validations: [
+              { type: 'matches', params: ['^[0-9]+$', 'Must only contain digits'] },
+              { type: 'max', params: [4, 'Cannot contain more than 4 digits'] },
+            ],
           },
         ],
       },
@@ -322,7 +332,7 @@ const quoteFormSection: IHome['quoteFormSection'] = {
         fields: [
           {
             type: 'checkbox',
-            name: 'services',
+            name: 'servicesRequired',
             label: 'What services are you looking to have done at your property?',
             options: [
               {
@@ -355,7 +365,7 @@ const quoteFormSection: IHome['quoteFormSection'] = {
           },
           {
             type: 'textarea',
-            name: 'details',
+            name: 'serviceDetails',
             label: 'What are you looking to have cleaned? (List any specific details)',
             required: false,
             width: 'full',

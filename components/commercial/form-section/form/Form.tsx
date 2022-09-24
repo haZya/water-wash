@@ -1,23 +1,14 @@
 import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { AnimatedButton } from 'components/shared';
-import { AutoComplete, CheckboxGroup, FileUpload, TextField } from 'components/shared/fields';
-import { showMessage } from 'components/shared/store/messageSlice';
+import { AnimatedButton, useFormSubmit } from 'components/shared';
+import { Field } from 'components/shared/fields';
+import { create } from 'graphql/mutations/commercial';
 import { RootState } from 'lib/redux';
-import {
-  IAutoComplete,
-  ICheckboxGroup,
-  IFileUpload,
-  IForm,
-  ITextArea,
-  ITextField,
-} from 'models/shared';
-import { Fragment } from 'react';
+import { IForm } from 'models/shared';
 import { useFormContext } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Form = () => {
-  const dispatch = useDispatch();
   const { title, sections } = useSelector(
     ({ commercial }: RootState) => commercial.content.formSection.form
   );
@@ -26,26 +17,9 @@ const Form = () => {
     handleSubmit,
     formState: { isSubmitting },
   } = useFormContext<IForm>();
+  const { onFormSubmit } = useFormSubmit();
 
-  const onSubmit = async ({ firstName, lastName, email }: IForm) => {
-    try {
-      //   await sendEmail(email);
-      dispatch(
-        showMessage({
-          message: (
-            <Typography variant="body2">
-              Thank You! Your request has been submitted successfully. We will get back to you soon.
-            </Typography>
-          ),
-          variant: 'success',
-        })
-      );
-
-      reset();
-    } catch (error: any) {
-      dispatch(showMessage({ message: error.message || error.code, variant: 'error' }));
-    }
-  };
+  const onSubmit = async (form: IForm) => onFormSubmit(sections, form, create, reset);
 
   return (
     <form
@@ -68,17 +42,7 @@ const Form = () => {
             </Typography>
             <div className="grid grid-cols-12 gap-5 w-full">
               {s.fields.map((f) => (
-                <Fragment key={f.name}>
-                  {f.type === 'text' || f.type === 'email' || f.type === 'textarea' ? (
-                    <TextField {...(f as ITextField & ITextArea)} />
-                  ) : f.type === 'autocomplete' ? (
-                    <AutoComplete {...(f as IAutoComplete)} />
-                  ) : f.type === 'checkbox' ? (
-                    <CheckboxGroup {...(f as ICheckboxGroup)} />
-                  ) : (
-                    f.type === 'file' && <FileUpload {...(f as IFileUpload)} />
-                  )}
-                </Fragment>
+                <Field key={f.name} {...f} />
               ))}
             </div>
           </div>
@@ -95,7 +59,7 @@ const Form = () => {
       >
         {isSubmitting && (
           <svg
-            className="w-5 h-5 md:w-6 md:h-6 mr-3 -ml-1 text-primary-500 animate-spin"
+            className="w-5 h-5 md:w-6 md:h-6 mr-3 -ml-1 text-white animate-spin"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

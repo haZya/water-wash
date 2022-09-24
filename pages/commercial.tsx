@@ -294,6 +294,11 @@ const formSection: ICommercial['formSection'] = {
             label: 'Phone',
             required: true,
             width: '1/2',
+            validationType: 'string',
+            validations: [
+              { type: 'matches', params: ['^[0-9]+$', 'Must only contain digits'] },
+              { type: 'max', params: [10, 'Cannot contain more than 10 digits'] },
+            ],
           },
           {
             type: 'autocomplete',
@@ -320,6 +325,7 @@ const formSection: ICommercial['formSection'] = {
       },
       {
         title: 'Address',
+        componentName: 'address',
         fields: [
           {
             type: 'text',
@@ -331,7 +337,7 @@ const formSection: ICommercial['formSection'] = {
           {
             type: 'text',
             name: 'street2',
-            label: 'Street 1',
+            label: 'Street 2',
             required: false,
             width: 'full',
           },
@@ -351,10 +357,15 @@ const formSection: ICommercial['formSection'] = {
           },
           {
             type: 'text',
-            name: 'zip',
+            name: 'zipCode',
             label: 'ZIP Code',
             required: true,
             width: '1/3',
+            validationType: 'string',
+            validations: [
+              { type: 'matches', params: ['^[0-9]+$', 'Must only contain digits'] },
+              { type: 'max', params: [4, 'Cannot contain more than 4 digits'] },
+            ],
           },
         ],
       },
@@ -363,8 +374,8 @@ const formSection: ICommercial['formSection'] = {
         fields: [
           {
             type: 'autocomplete',
-            name: 'serviceRequired',
-            label: 'Service Required',
+            name: 'servicesRequired',
+            label: 'Services Required',
             required: true,
             width: 'full',
             multiple: true,
@@ -407,7 +418,7 @@ const formSection: ICommercial['formSection'] = {
           } as IAutoComplete,
           {
             type: 'textarea',
-            name: 'details',
+            name: 'serviceDetails',
             label: 'What are you looking to have cleaned? (List any specific details)',
             required: false,
             width: 'full',

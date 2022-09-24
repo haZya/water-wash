@@ -53,6 +53,11 @@ const formSection: IContact['formSection'] = {
         label: 'Phone',
         required: true,
         width: '1/3',
+        validationType: 'string',
+        validations: [
+          { type: 'matches', params: ['^[0-9]+$', 'Must only contain digits'] },
+          { type: 'max', params: [10, 'Cannot contain more than 10 digits'] },
+        ],
       },
       {
         type: 'textarea',

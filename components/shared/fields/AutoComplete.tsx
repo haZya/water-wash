@@ -80,7 +80,7 @@ const AutoComplete = ({ name, label, required, width, multiple, options }: IAuto
                         options?.length === 1 ? 'option...' : 'options...'
                       }` + (!required ? ' (optional)' : '')
                 }
-                required={required}
+                required={!(value as SelectOption[]).length && required}
                 type="text"
                 size="small"
                 variant={variant}

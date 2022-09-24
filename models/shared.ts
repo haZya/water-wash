@@ -79,6 +79,12 @@ export interface IPage {
 }
 
 //#region Form
+export interface IFormSection {
+  title: string;
+  componentName?: string;
+  fields: (ITextField | ITextArea | ICheckboxGroup | IFileUpload)[];
+}
+
 export interface SelectOption {
   name: string;
   label: string;
