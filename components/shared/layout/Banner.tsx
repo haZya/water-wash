@@ -35,6 +35,7 @@ const Banner = ({ title, backgroundImage }: IBanner) => {
         {inView && (
           <Box
             sx={{
+              position: 'relative',
               width: '100vw',
               height: 'var(--banner-height)',
               '&::after': {

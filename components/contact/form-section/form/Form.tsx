@@ -1,15 +1,14 @@
 import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { AnimatedButton } from 'components/shared';
+import { AnimatedButton, useFormSubmit } from 'components/shared';
 import { Field } from 'components/shared/fields';
-import { showMessage } from 'components/shared/store/messageSlice';
+import { create } from 'graphql/mutations/contact';
 import { RootState } from 'lib/redux';
 import { IForm } from 'models/shared';
 import { useFormContext } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Form = () => {
-  const dispatch = useDispatch();
   const {
     title,
     form: { fields },
@@ -19,26 +18,10 @@ const Form = () => {
     handleSubmit,
     formState: { isSubmitting },
   } = useFormContext<IForm>();
+  const { onFormSubmit } = useFormSubmit();
+  const sections = [{ title: '', fields }];
 
-  const onSubmit = async ({ firstName, lastName, email, phone, message }: IForm) => {
-    try {
-      //   await sendEmail(email);
-      dispatch(
-        showMessage({
-          message: (
-            <Typography variant="body2">
-              Thank You! Your request has been submitted successfully. We will get back to you soon.
-            </Typography>
-          ),
-          variant: 'success',
-        })
-      );
-
-      reset();
-    } catch (error: any) {
-      dispatch(showMessage({ message: error.message || error.code, variant: 'error' }));
-    }
-  };
+  const onSubmit = async (form: IForm) => onFormSubmit(sections, form, create, reset);
 
   return (
     <form
