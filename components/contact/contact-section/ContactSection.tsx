@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 const ContactSection = () => {
-  const { title, subtitle, address, email, phone } = useSelector(
+  const { title, subtitle, contactMethods } = useSelector(
     ({ contact }: RootState) => contact.content.contactSection
   );
 
@@ -29,55 +29,24 @@ const ContactSection = () => {
       </header>
       <Divider />
       <div className="space-y-4 sm:space-y-6 my-6 sm:my-8 overflow-auto">
-        <Link href="#map" shallow>
-          <a>
-            <address className="group cursor-pointer relative flex items-center space-x-4">
+        {contactMethods.map((m) => (
+          <Link key={m.content} href={m.url} shallow>
+            <a className="group cursor-pointer relative flex items-center space-x-4">
               <div
                 className="text-white bg-gray-400 rounded-full group-hover:bg-primary-500 transition-colors duration-500 min-w-14 lg:min-w-16 p-4"
-                dangerouslySetInnerHTML={{ __html: sanitize(address.icon) }}
+                dangerouslySetInnerHTML={{ __html: sanitize(m.icon) }}
               />
               <div>
                 <Typography className="text-xs sm:text-sm not-italic" color="text.secondary">
-                  {address.title}
+                  {m.title}
                 </Typography>
                 <Typography className="not-italic text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
-                  {address.content}
+                  {m.content}
                 </Typography>
               </div>
-            </address>
-          </a>
-        </Link>
-        <a
-          className="group relative flex items-center space-x-4"
-          href="mailto:enquiries@waterwash.com.au"
-        >
-          <div
-            className="text-white bg-gray-400 rounded-full group-hover:bg-primary-500 transition-colors duration-500 min-w-14 lg:min-w-16 p-4"
-            dangerouslySetInnerHTML={{ __html: sanitize(email.icon) }}
-          />
-          <div>
-            <Typography className="text-xs sm:text-sm" color="text.secondary">
-              {email.title}
-            </Typography>
-            <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
-              {email.content}
-            </Typography>
-          </div>
-        </a>
-        <a className="group relative flex items-center space-x-4" href="tel:03 8539 4855">
-          <div
-            className="text-white bg-gray-400 rounded-full group-hover:bg-primary-500 transition-colors duration-500 min-w-14 lg:min-w-16 p-4"
-            dangerouslySetInnerHTML={{ __html: sanitize(phone.icon) }}
-          />
-          <div>
-            <Typography className="text-xs sm:text-sm" color="text.secondary">
-              {phone.title}
-            </Typography>
-            <Typography className="text-gray-600 group-hover:text-primary-500 transition-colors duration-500 text-sm sm:text-base font-medium">
-              {phone.content}
-            </Typography>
-          </div>
-        </a>
+            </a>
+          </Link>
+        ))}
       </div>
     </section>
   );

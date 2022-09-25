@@ -2,10 +2,13 @@ import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Image from '../Image';
+import { setLayout } from '../store/layoutSlice';
 
 const Footer = () => {
+  const dispatch = useDispatch();
   const {
     logo,
     navTop: { links: topLinks },
@@ -13,9 +16,15 @@ const Footer = () => {
     socials,
   } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
 
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    dispatch(setLayout({ footerHeight: ref.current?.clientHeight }));
+  }, [dispatch]);
+
   return (
-    <footer className="bg-neutral-100">
-      <div className="container mx-auto py-2 flex items-center min-h-20">
+    <footer ref={ref} className="bg-neutral-100 h-32">
+      <div className="container mx-auto py-2 flex items-center h-24">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/" shallow scroll>
             <a className="grow hidden sm:block">
@@ -57,7 +66,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full h-10 text-center bg-neutral-200">
+      <div className="flex justify-center items-center w-full h-8 text-center bg-neutral-200">
         <Typography className="text-xs font-medium">
           Copyright © 2022{' '}
           <Link href="/" shallow>

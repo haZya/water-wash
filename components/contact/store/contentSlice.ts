@@ -12,21 +12,7 @@ const initialState: IContact = {
   contactSection: {
     title: '',
     subtitle: '',
-    address: {
-      icon: '',
-      title: '',
-      content: '',
-    },
-    email: {
-      icon: '',
-      title: '',
-      content: '',
-    },
-    phone: {
-      icon: '',
-      title: '',
-      content: '',
-    },
+    contactMethods: [],
   },
   mapSection: {
     url: '',

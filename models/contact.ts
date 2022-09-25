@@ -5,6 +5,7 @@ export interface IContactSectionItem {
   icon: string;
   title: string;
   content: string;
+  url: string;
 }
 //#endregion
 
@@ -19,9 +20,7 @@ export interface IContact {
   contactSection: {
     title: string;
     subtitle: string;
-    address: IContactSectionItem;
-    email: IContactSectionItem;
-    phone: IContactSectionItem;
+    contactMethods: IContactSectionItem[];
   };
   mapSection: {
     url: string;

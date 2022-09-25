@@ -14,25 +14,32 @@ export type Social = {
   url: string;
 };
 
+export type ContactAction = {
+  icon: string;
+  label: string;
+  path: string;
+};
+
 export interface ILayout {
   logo: any;
   navTop: {
-    phone: {
+    contactMethods: {
+      icon: string;
       title: string;
       content: string;
-      icon: string;
-    };
-    email: {
-      title: string;
-      content: string;
-      icon: string;
-    };
+      url: string;
+    }[];
     links: NavLink[];
   };
   nav: {
     links: NavLink[];
   };
   socials: Social[];
+  contactDial: {
+    icon: string;
+    color: 'primary' | 'secondary';
+    actions: ContactAction[];
+  };
 }
 
 export interface ISeo {

@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material';
-import { Popup } from 'components/shared/popup';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
@@ -21,11 +20,11 @@ const GallerySection = () => {
             <div dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
           </Typography>
         </header>
-        <Popup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 md:gap-8">
           {items.map((item, i) => (
             <GalleryItem key={i} index={i} {...item} />
           ))}
-        </Popup>
+        </div>
       </div>
     </section>
   );

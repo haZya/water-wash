@@ -329,7 +329,7 @@ const quoteFormSection: IHome['quoteFormSection'] = {
         ],
       },
       {
-        title: 'Property Info',
+        title: 'Service Info',
         fields: [
           {
             type: 'checkbox',

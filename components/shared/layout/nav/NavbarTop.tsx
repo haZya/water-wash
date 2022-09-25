@@ -9,7 +9,7 @@ const NavbarTop = () => {
   const {
     hasBanner,
     layoutContent: {
-      navTop: { phone, email, links },
+      navTop: { contactMethods, links },
       socials,
     },
   } = useSelector(({ shared }: RootState) => shared.layout);
@@ -60,63 +60,39 @@ const NavbarTop = () => {
                 ))}
               </ul>
               <div className="grow flex md:justify-center space-x-6">
-                <a className="group relative flex items-center space-x-4" href="tel:03 8539 4855">
-                  <div
-                    className={clsx(
-                      'group-hover:text-primary-300 transition-colors duration-500 w-9',
-                      hasBanner ? 'text-white' : 'text-gray-500'
-                    )}
-                    dangerouslySetInnerHTML={{ __html: sanitize(phone.icon) }}
-                  />
-                  <div>
-                    <Typography
+                {contactMethods.map((m) => (
+                  <a
+                    key={m.content}
+                    className="group relative flex items-center space-x-4"
+                    href={m.url}
+                  >
+                    <div
                       className={clsx(
-                        'text-xs sm:text-sm',
-                        hasBanner ? 'text-white/80' : 'text-gray-500'
+                        'group-hover:text-primary-300 transition-colors duration-500 w-9',
+                        hasBanner ? 'text-white' : 'text-gray-500'
                       )}
-                    >
-                      {phone.title}
-                    </Typography>
-                    <Typography
-                      className={clsx(
-                        'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-500 text-base font-medium',
-                        hasBanner ? 'text-white' : 'text-gray-600'
-                      )}
-                    >
-                      {phone.content}
-                    </Typography>
-                  </div>
-                </a>
-                <a
-                  className="group relative flex items-center space-x-4"
-                  href="mailto:enquiries@waterwash.com.au"
-                >
-                  <div
-                    className={clsx(
-                      'group-hover:text-primary-300 transition-colors duration-500 w-9',
-                      hasBanner ? 'text-white' : 'text-gray-500'
-                    )}
-                    dangerouslySetInnerHTML={{ __html: sanitize(email.icon) }}
-                  />
-                  <div>
-                    <Typography
-                      className={clsx(
-                        'text-xs sm:text-sm',
-                        hasBanner ? 'text-white/80' : 'text-gray-500'
-                      )}
-                    >
-                      {email.title}
-                    </Typography>
-                    <Typography
-                      className={clsx(
-                        'group-hover:text-primary-300 transition-colors duration-500 text-base font-medium',
-                        hasBanner ? 'text-white' : 'text-gray-600'
-                      )}
-                    >
-                      {email.content}
-                    </Typography>
-                  </div>
-                </a>
+                      dangerouslySetInnerHTML={{ __html: sanitize(m.icon) }}
+                    />
+                    <div>
+                      <Typography
+                        className={clsx(
+                          'text-xs sm:text-sm',
+                          hasBanner ? 'text-white/80' : 'text-gray-500'
+                        )}
+                      >
+                        {m.title}
+                      </Typography>
+                      <Typography
+                        className={clsx(
+                          'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-500 text-base font-medium',
+                          hasBanner ? 'text-white' : 'text-gray-600'
+                        )}
+                      >
+                        {m.content}
+                      </Typography>
+                    </div>
+                  </a>
+                ))}
               </div>
               <div className="hidden sm:flex items-center gap-8 md:gap-12">
                 {links.map((l) => (

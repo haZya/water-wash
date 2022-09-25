@@ -3,7 +3,7 @@ import { Backdrop, IconButton, keyframes, styled, useTheme } from '@mui/material
 import clsx from 'clsx';
 import { useScrollLock } from 'hooks';
 import { RootState } from 'lib/redux';
-import { HTMLAttributes, ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePopup, setAnimationEnd } from '../store/popupSlice';
 
@@ -39,10 +39,10 @@ const zoomOut = (scaleX: number, scaleY: number) =>
 const StyledPopup = styled('div', {
   shouldForwardProp: (prop) => prop !== 'width' && prop !== 'animationEnded',
 })<StyledReactCompareSliderProps>(({ theme, width, animationEnded }) => {
-  const xlScale = (theme.breakpoints.values.xl * 0.8) / width;
-  const lgScale = (theme.breakpoints.values.lg * 0.8) / width;
-  const mdScale = (theme.breakpoints.values.md * 0.8) / width;
-  const smScale = (theme.breakpoints.values.sm * 0.8) / width;
+  const xlScale = (theme.breakpoints.values.xl * 0.95) / width;
+  const lgScale = (theme.breakpoints.values.lg * 0.95) / width;
+  const mdScale = (theme.breakpoints.values.md * 0.95) / width;
+  const smScale = (theme.breakpoints.values.sm * 0.95) / width;
   const xsScale = 1;
 
   return {
@@ -104,11 +104,7 @@ const StyledPopup = styled('div', {
   };
 });
 
-interface IProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-}
-
-const Popup = (props: IProps) => {
+const Popup = () => {
   const dispatch = useDispatch();
   const {
     open,
@@ -130,7 +126,6 @@ const Popup = (props: IProps) => {
 
   return (
     <>
-      <div {...props} />
       {open != undefined && (
         <>
           <StyledPopup

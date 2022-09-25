@@ -5,31 +5,29 @@ interface IInitialState {
   layoutContent: ILayout;
   hasBanner: boolean;
   navDrawerOpen: boolean;
+  footerHeight: number;
 }
 
 const initialState: IInitialState = {
   layoutContent: {
     logo: null,
     navTop: {
-      email: {
-        icon: '',
-        title: '',
-        content: '',
-      },
-      phone: {
-        icon: '',
-        title: '',
-        content: '',
-      },
+      contactMethods: [],
       links: [],
     },
     nav: {
       links: [],
     },
     socials: [],
+    contactDial: {
+      icon: '',
+      color: 'primary',
+      actions: [],
+    },
   },
   hasBanner: false,
   navDrawerOpen: false,
+  footerHeight: 0,
 };
 
 const layoutSlice = createSlice({

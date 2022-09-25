@@ -38,6 +38,12 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
               : width === '1/3' && 'col-span-4'
           )}
         >
+          <div className="flex mb-2">
+            <Typography color="text.secondary">
+              {label}
+              {required && <sup className="text-sm align-sub">*</sup>}
+            </Typography>
+          </div>
           {options?.map((o) => (
             <FormControlLabel
               key={o.name}
