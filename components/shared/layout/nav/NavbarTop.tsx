@@ -1,6 +1,6 @@
-import { AppBar, Toolbar, Typography, useScrollTrigger } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, useScrollTrigger } from '@mui/material';
 import clsx from 'clsx';
-import { sanitize } from 'lib/dompurify';
+import { Image } from 'components/shared';
 import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import { NavLink } from '.';
@@ -45,34 +45,52 @@ const NavbarTop = () => {
                       hasBanner ? 'border-white' : 'border-gray-500'
                     )}
                   >
-                    <a
-                      aria-label={s.label}
-                      className={clsx(
-                        'flex-center text-lg group-hover:text-primary-300 transition-colors duration-500 w-8 h-8 p-2',
-                        hasBanner ? 'text-white' : 'text-gray-500'
-                      )}
+                    <Box
+                      aria-label={s.title}
+                      component="a"
                       href={s.url}
                       target="_blank"
                       rel="noreferrer"
-                      dangerouslySetInnerHTML={{ __html: sanitize(s.icon) }}
-                    />
+                      sx={{
+                        '& img': {
+                          filter: hasBanner
+                            ? 'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)'
+                            : 'invert(46%) sepia(8%) saturate(626%) hue-rotate(182deg) brightness(94%) contrast(93%)',
+                        },
+                        '.group:hover & img': {
+                          filter:
+                            'invert(75%) sepia(9%) saturate(2901%) hue-rotate(161deg) brightness(91%) contrast(97%)',
+                        },
+                      }}
+                    >
+                      <Image
+                        {...s.icon}
+                        className={clsx('flex-center transition duration-300 w-8 h-8 p-2')}
+                      />
+                    </Box>
                   </li>
                 ))}
               </ul>
               <div className="grow flex md:justify-center space-x-6">
                 {contactMethods.map((m) => (
-                  <a
+                  <Box
                     key={m.content}
                     className="group relative flex items-center space-x-4"
+                    component="a"
                     href={m.url}
+                    sx={{
+                      '& img': {
+                        filter: hasBanner
+                          ? 'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)'
+                          : 'invert(46%) sepia(8%) saturate(626%) hue-rotate(182deg) brightness(94%) contrast(93%)',
+                      },
+                      '&:hover img': {
+                        filter:
+                          'invert(75%) sepia(9%) saturate(2901%) hue-rotate(161deg) brightness(91%) contrast(97%)',
+                      },
+                    }}
                   >
-                    <div
-                      className={clsx(
-                        'group-hover:text-primary-300 transition-colors duration-500 w-9',
-                        hasBanner ? 'text-white' : 'text-gray-500'
-                      )}
-                      dangerouslySetInnerHTML={{ __html: sanitize(m.icon) }}
-                    />
+                    <Image {...m.icon} className="transition duration-300 w-9" />
                     <div>
                       <Typography
                         className={clsx(
@@ -84,19 +102,19 @@ const NavbarTop = () => {
                       </Typography>
                       <Typography
                         className={clsx(
-                          'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-500 text-base font-medium',
+                          'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-300 text-base font-medium',
                           hasBanner ? 'text-white' : 'text-gray-600'
                         )}
                       >
                         {m.content}
                       </Typography>
                     </div>
-                  </a>
+                  </Box>
                 ))}
               </div>
               <div className="hidden sm:flex items-center gap-8 md:gap-12">
                 {links.map((l) => (
-                  <NavLink key={l.path} {...l} />
+                  <NavLink key={l.url} {...l} />
                 ))}
               </div>
             </div>

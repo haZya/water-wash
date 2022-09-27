@@ -91,7 +91,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                   )}
                   component="span"
                   sx={{
-                    backgroundColor: lighten(color, 0.4),
+                    bgcolor: lighten(color, 0.4),
                     animationDelay: `${1 + index * 0.6}s`,
                   }}
                 />
@@ -120,7 +120,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                       styles.drop
                     )}
                     sx={{
-                      backgroundColor: color,
+                      bgcolor: color,
                       transition: 'all .2s cubic-bezier(.655,0.045,.355,1)',
                       transform: 'matrix(1, 0, 0, 1, 0, 0)',
                       '.group:hover &': {
@@ -140,7 +140,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                     sx={{
                       transitionDuration: '.2s',
                       '.group:hover &': {
-                        backgroundColor: 'white',
+                        bgcolor: 'white',
                         transitionDelay: '.1s',
                         transitionDuration: '.3s',
                       },

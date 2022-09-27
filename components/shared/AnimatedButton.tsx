@@ -23,7 +23,7 @@ const AnimatedButton = ({ ripple = true, spring = true, children, ...props }: IP
             bottom: 0,
             width: '10%',
             opacity: 0,
-            backgroundColor: 'rgba(0,0,0,.05)',
+            bgcolor: 'rgba(0,0,0,.05)',
             zIndex: 50,
             transition: 'opacity .05s, width .15s',
           },

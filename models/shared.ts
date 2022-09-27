@@ -1,31 +1,47 @@
-import { StaticImageData } from 'next/image';
 import { DropzoneOptions } from 'react-dropzone';
 
+//#region Common
+export interface IImage {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  blurDataURL?: string;
+}
+//#endregion
+
+// #region Layout
 export type NavLink = {
-  label: string;
-  path: string;
+  title: string;
+  url: string;
   color: 'primary' | 'secondary' | 'text';
   type: 'text' | 'outlined';
 };
 
 export type Social = {
-  label: string;
-  icon: string;
+  title: string;
   url: string;
+  icon: IImage;
 };
 
 export type ContactAction = {
-  icon: string;
-  label: string;
-  path: string;
+  title: string;
+  url: string;
+  icon: IImage;
 };
 
 export interface ILayout {
-  logo: any;
+  logo: IImage;
+  socials: Social[];
+  contactDial: {
+    icon: IImage;
+    color: 'primary' | 'secondary';
+    actions: ContactAction[];
+  };
   navTop: {
     contactMethods: {
-      icon: string;
       title: string;
+      icon: IImage;
       content: string;
       url: string;
     }[];
@@ -34,11 +50,8 @@ export interface ILayout {
   nav: {
     links: NavLink[];
   };
-  socials: Social[];
-  contactDial: {
-    icon: string;
-    color: 'primary' | 'secondary';
-    actions: ContactAction[];
+  footer: {
+    copyrightText: string;
   };
 }
 
@@ -60,30 +73,25 @@ export interface ISeo {
    *
    * Initial value: `undefined`
    */
-  metaDesc?: string;
+  metaDescription?: string;
   /**
    * Open Graph image
    *
-   * Initial value: `ogImageDefault`
+   * Initial value: `undefined`
    */
-  ogImage?: StaticImageData;
-  /**
-   * Open Graph image alt text
-   *
-   * Initial value: `ogAltText`
-   */
-  ogAltText?: string;
+  metaImage?: IImage;
 }
 
 export interface IBanner {
   title: string;
-  backgroundImage: StaticImageData | string;
+  backgroundImage: IImage;
 }
 
 export interface IPage {
   banner?: IBanner;
   seo: ISeo;
 }
+//#endregion
 
 //#region Form
 export interface IFormSection {
@@ -130,4 +138,40 @@ export interface IFileUpload extends IFormField {
 export interface IForm {
   [x: string]: string | string[] | File[] | IAutoComplete['options'];
 }
+//#endregion
+
+//#region Graphql
+export type ImageResponse = {
+  data: {
+    attributes: IImage;
+  };
+};
+
+export type SeoResponse = Omit<ISeo, 'metaImage'> & {
+  metaImage: ImageResponse;
+};
+
+export type LayoutResponse = {
+  layout: {
+    data: {
+      attributes: Omit<ILayout, 'logo' | 'socials' | 'contactDial' | 'navTop'> & {
+        logo: ImageResponse;
+        socials: (Omit<Social, 'icon'> & {
+          icon: ImageResponse;
+        })[];
+        contactDial: Omit<ILayout['contactDial'], 'icon' | 'actions'> & {
+          icon: ImageResponse;
+          actions: (Omit<ContactAction, 'icon'> & {
+            icon: ImageResponse;
+          })[];
+        };
+        navTop: Omit<ILayout['navTop'], 'contactMethods'> & {
+          contactMethods: (Omit<ILayout['navTop']['contactMethods'][number], 'icon'> & {
+            icon: ImageResponse;
+          })[];
+        };
+      };
+    };
+  };
+};
 //#endregion

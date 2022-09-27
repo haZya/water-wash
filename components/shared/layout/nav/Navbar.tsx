@@ -8,7 +8,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import Image from 'components/shared/Image';
+import { Image } from 'components/shared';
 import { setLayout } from 'components/shared/store/layoutSlice';
 import { RootState } from 'lib/redux';
 import dynamic from 'next/dynamic';
@@ -72,12 +72,11 @@ const Navbar = () => {
               <Link href="/" shallow scroll>
                 <a>
                   <Image
+                    {...logo}
                     className={clsx(
                       'select-none transition-all duration-300 drop-shadow-md h-auto',
                       navSticky ? 'w-20' : 'w-28'
                     )}
-                    src={logo}
-                    alt="Water Wash Logo"
                     priority
                   />
                 </a>
@@ -85,7 +84,7 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:flex items-center ml-auto gap-8 md:gap-12">
               {links.map((l) => (
-                <NavLink key={l.path} {...l} />
+                <NavLink key={l.url} {...l} />
               ))}
             </div>
           </Toolbar>

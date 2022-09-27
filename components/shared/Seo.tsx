@@ -9,7 +9,7 @@ interface IProps extends Omit<ISeo, 'metaTitle'> {
   metaTitle: string;
 }
 
-const Seo = ({ indexing = false, metaTitle, metaDesc, ogImage, ogAltText }: IProps) => {
+const Seo = ({ indexing = false, metaTitle, metaDescription, metaImage }: IProps) => {
   const { pathname } = useRouter();
   const pageUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${removeLeadingSlash(pathname)}`;
   metaTitle = `${metaTitle} - ${process.env.NEXT_PUBLIC_SITE_NAME}`;
@@ -17,7 +17,7 @@ const Seo = ({ indexing = false, metaTitle, metaDesc, ogImage, ogAltText }: IPro
   return (
     <NextSeo
       title={metaTitle}
-      description={metaDesc}
+      description={metaDescription}
       canonical={pageUrl}
       noindex={!indexing}
       nofollow={!indexing}
@@ -25,24 +25,22 @@ const Seo = ({ indexing = false, metaTitle, metaDesc, ogImage, ogAltText }: IPro
         type: 'website',
         url: pageUrl,
         title: metaTitle,
-        description: metaDesc,
-        images: ogImage
+        description: metaDescription,
+        images: metaImage
           ? [
               {
-                url: process.env.NEXT_PUBLIC_FRONTEND_URL + ogImage.src,
-                width: ogImage.width,
-                height: ogImage.height,
-                alt: ogAltText,
+                ...metaImage,
+                url: process.env.NEXT_PUBLIC_FRONTEND_URL + metaImage.url,
               },
             ]
           : undefined,
-        site_name: 'Water Wash',
+        site_name: process.env.NEXT_PUBLIC_SITE_NAME,
       }}
-      twitter={{
-        handle: '@',
-        site: '@',
-        cardType: 'summary_large_image',
-      }}
+      // twitter={{
+      //   handle: '@',
+      //   site: '@',
+      //   cardType: 'summary_large_image',
+      // }}
     />
   );
 };

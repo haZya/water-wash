@@ -21,6 +21,6 @@ const SUBMIT: RequestDocument = gql`
 `;
 
 export async function create(variables: Variables) {
-  const { createQuoteForm }: ICreateResponse = await client.request(SUBMIT, variables);
+  const { createQuoteForm } = await client.request<ICreateResponse>(SUBMIT, variables);
   return createQuoteForm.data.id;
 }

@@ -10,7 +10,19 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   layoutContent: {
-    logo: null,
+    logo: {
+      src: '',
+      alt: '',
+    },
+    socials: [],
+    contactDial: {
+      icon: {
+        src: '',
+        alt: '',
+      },
+      color: 'primary',
+      actions: [],
+    },
     navTop: {
       contactMethods: [],
       links: [],
@@ -18,11 +30,8 @@ const initialState: IInitialState = {
     nav: {
       links: [],
     },
-    socials: [],
-    contactDial: {
-      icon: '',
-      color: 'primary',
-      actions: [],
+    footer: {
+      copyrightText: '',
     },
   },
   hasBanner: false,

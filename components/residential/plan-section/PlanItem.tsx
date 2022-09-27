@@ -64,7 +64,7 @@ const PlanItem = ({ index, tag, title, bullets }: IProps) => {
                 '&::after': {
                   content: '""',
                   position: 'absolute',
-                  backgroundColor: 'currentColor',
+                  bgcolor: 'currentColor',
                   bottom: '-6px',
                   left: 0,
                   width: '48px',

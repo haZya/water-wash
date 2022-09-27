@@ -28,7 +28,7 @@ const UPLOAD: RequestDocument = gql`
 
 async function upload(variables: { files: File[] }) {
   if (!variables.files.length) return [];
-  const { multipleUpload }: IUploadResponse = await client.request(UPLOAD, variables);
+  const { multipleUpload } = await client.request<IUploadResponse>(UPLOAD, variables);
   return multipleUpload.map((u) => ({ id: u.data.id, name: u.data.attributes.name }));
 }
 
