@@ -10,8 +10,6 @@ export interface IValueSectionItem {
 //#endregion
 
 export interface IAbout extends IPage {
-  title: string;
-  slug: string;
   banner: IBanner;
   missionSection: {
     title: string;

@@ -66,7 +66,7 @@ const GET_LAYOUT: RequestDocument = gql`
   ${ImageFragment}
 `;
 
-function format(attr: LayoutResponse['layout']['data']['attributes']) {
+function format(attr: LayoutResponse['layout']['data']['attributes']): ILayout {
   return {
     ...attr,
     logo: attr.logo.data.attributes,

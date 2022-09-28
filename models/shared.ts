@@ -88,7 +88,8 @@ export interface IBanner {
 }
 
 export interface IPage {
-  banner?: IBanner;
+  title: string;
+  slug: string;
   seo: ISeo;
 }
 //#endregion
@@ -106,34 +107,35 @@ export interface SelectOption {
 }
 
 export interface IFormField {
-  type: 'text' | 'email' | 'textarea' | 'autocomplete' | 'checkbox' | 'file';
   name: string;
   label: string;
   required: boolean;
-  width: 'full' | '2/3' | '1/2' | '1/3';
+  width: 'full' | 'two_thirds' | 'half' | 'one_third';
   validationType?: string;
-  validations?: { type: string; params: any[] }[];
   validationTypeError?: string;
+  validations?: { type: string; params: any[] }[];
 }
 
-export interface ITextField extends IFormField {}
+export interface ITextField {}
 
-export interface ITextArea extends IFormField {
+export interface ITextArea {
   rows: number;
 }
 
-export interface IAutoComplete extends IFormField {
+export interface IAutoComplete {
   multiple: boolean;
   options: SelectOption[] | null;
 }
 
-export interface ICheckboxGroup extends IFormField {
+export interface ICheckboxGroup {
   options: SelectOption[];
 }
 
-export interface IFileUpload extends IFormField {
+export interface IFileUpload {
   options: DropzoneOptions;
 }
+
+export type FormField = ITextField | ITextArea | IAutoComplete | ICheckboxGroup | IFileUpload;
 
 export interface IForm {
   [x: string]: string | string[] | File[] | IAutoComplete['options'];
@@ -145,6 +147,23 @@ export type ImageResponse = {
   data: {
     attributes: IImage;
   };
+};
+
+export type FormFieldsResponse = {
+  data: {
+    attributes: {
+      field: Omit<IFormField, 'type'>;
+      fieldType: (FormField & {
+        type:
+          | 'ComponentFormText'
+          | 'ComponentFormEmail'
+          | 'ComponentFormTextArea'
+          | 'ComponentFormAutoComplete'
+          | 'ComponentFormCheckboxGroup'
+          | 'ComponentFormFileUpload';
+      })[];
+    };
+  }[];
 };
 
 export type SeoResponse = Omit<ISeo, 'metaImage'> & {

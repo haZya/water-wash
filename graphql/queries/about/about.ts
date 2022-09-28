@@ -42,7 +42,7 @@ const GET_PAGE: RequestDocument = gql`
   ${SeoFragment}
 `;
 
-function format(attr: AboutResponse['aboutUsPage']['data']['attributes']) {
+function format(attr: AboutResponse['aboutUsPage']['data']['attributes']): IAbout {
   return {
     ...attr,
     banner: { title: attr.title, backgroundImage: attr.banner.data.attributes },

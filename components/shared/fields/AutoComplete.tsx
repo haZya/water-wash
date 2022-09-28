@@ -32,11 +32,11 @@ const AutoComplete = ({ name, label, required, width, multiple, options }: IAuto
           className={clsx(
             xsDown || width === 'full'
               ? 'col-span-12'
-              : width === '2/3'
+              : width === 'two_thirds'
               ? 'col-span-8'
-              : width === '1/2'
+              : width === 'half'
               ? 'col-span-6'
-              : width === '1/3' && 'col-span-4'
+              : width === 'one_third' && 'col-span-4'
           )}
         >
           <Autocomplete

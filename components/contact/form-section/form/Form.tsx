@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 const Form = () => {
   const {
     title,
+    subtitle,
     form: { fields },
   } = useSelector(({ contact }: RootState) => contact.content.formSection);
   const {
@@ -35,6 +36,12 @@ const Form = () => {
         color="text.secondary"
       >
         {title}
+      </Typography>
+      <Typography
+        className="text-center text-secondary-main text-xl font-bold mt-4"
+        color="text.secondary"
+      >
+        {subtitle}
       </Typography>
       <Divider className="border-t-2 my-4 md:my-7" />
       <div className="flex flex-col items-center space-y-8 md:space-y-12 mt-8 md:mt-12">

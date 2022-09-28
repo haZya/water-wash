@@ -11,14 +11,16 @@ import { AutoComplete, CheckboxGroup, FileUpload, TextField } from '.';
 const Field = (field: IFormField) => {
   return (
     <>
-      {field.type === 'text' || field.type === 'email' || field.type === 'textarea' ? (
+      {field.type === 'ComponentFormText' ||
+      field.type === 'ComponentFormEmail' ||
+      field.type === 'ComponentFormTextArea' ? (
         <TextField {...(field as ITextField & ITextArea)} />
-      ) : field.type === 'autocomplete' ? (
+      ) : field.type === 'ComponentFormAutoComplete' ? (
         <AutoComplete {...(field as IAutoComplete)} />
-      ) : field.type === 'checkbox' ? (
+      ) : field.type === 'ComponentFormCheckboxGroup' ? (
         <CheckboxGroup {...(field as ICheckboxGroup)} />
       ) : (
-        field.type === 'file' && <FileUpload {...(field as IFileUpload)} />
+        field.type === 'ComponentFormFileUpload' && <FileUpload {...(field as IFileUpload)} />
       )}
     </>
   );

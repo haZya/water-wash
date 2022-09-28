@@ -1,4 +1,5 @@
-import { Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
+import { Image } from 'components/shared';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import Link from 'next/link';
@@ -23,7 +24,7 @@ const ContactSection = () => {
           dangerouslySetInnerHTML={{ __html: sanitize(title) }}
         />
         <Typography
-          className="text-center text-base z-0"
+          className="text-center text-base font-medium px-3 z-0"
           dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}
         />
       </header>
@@ -32,10 +33,17 @@ const ContactSection = () => {
         {contactMethods.map((m) => (
           <Link key={m.content} href={m.url} shallow>
             <a className="group cursor-pointer relative flex items-center space-x-4">
-              <div
-                className="text-white bg-gray-400 rounded-full group-hover:bg-primary-500 transition-colors duration-500 min-w-14 lg:min-w-16 p-4"
-                dangerouslySetInnerHTML={{ __html: sanitize(m.icon) }}
-              />
+              <Box
+                className="bg-gray-400 group-hover:bg-primary-500 transition-colors duration-500 rounded-full min-w-14 lg:min-w-16 w-min"
+                sx={{
+                  '& img': {
+                    filter:
+                      'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)',
+                  },
+                }}
+              >
+                <Image {...m.icon} className="text-white  transition duration-500 p-4" />
+              </Box>
               <div>
                 <Typography className="text-xs sm:text-sm not-italic" color="text.secondary">
                   {m.title}

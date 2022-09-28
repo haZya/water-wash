@@ -30,8 +30,6 @@ function ValueItem({ index, image, title, content, bgColor }: IProps) {
     setAnimating(animate);
   }, [animate]);
 
-  console.log(content);
-
   return (
     <div className={clsx(styles.wrapper)}>
       <Tilt
