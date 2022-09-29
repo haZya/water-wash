@@ -4,7 +4,7 @@ import { AnimatedButton, useFormSubmit } from 'components/shared';
 import { Field } from 'components/shared/fields';
 import { create } from 'graphql/mutations/home';
 import { RootState } from 'lib/redux';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 

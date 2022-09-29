@@ -1,13 +1,5 @@
-import {
-  FormField,
-  FormFieldsResponse,
-  IBanner,
-  IFormField,
-  IImage,
-  ImageResponse,
-  IPage,
-  SeoResponse,
-} from './shared';
+import { FormField, FormFieldsResponse } from './form';
+import { IBanner, IImage, ImageResponse, IPage, SeoResponse } from './shared';
 
 //#region Contact Section
 export interface IContactSectionItem {
@@ -24,7 +16,7 @@ export interface IContact extends IPage {
     title: string;
     subtitle: string;
     form: {
-      fields: (IFormField & FormField)[];
+      fields: FormField[];
     };
   };
   contactSection: {

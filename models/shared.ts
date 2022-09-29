@@ -1,5 +1,3 @@
-import { DropzoneOptions } from 'react-dropzone';
-
 //#region Common
 export interface IImage {
   src: string;
@@ -94,76 +92,11 @@ export interface IPage {
 }
 //#endregion
 
-//#region Form
-export interface IFormSection {
-  title: string;
-  componentName?: string;
-  fields: (ITextField | ITextArea | ICheckboxGroup | IFileUpload)[];
-}
-
-export interface SelectOption {
-  name: string;
-  label: string;
-}
-
-export interface IFormField {
-  name: string;
-  label: string;
-  required: boolean;
-  width: 'full' | 'two_thirds' | 'half' | 'one_third';
-  validationType?: string;
-  validationTypeError?: string;
-  validations?: { type: string; params: any[] }[];
-}
-
-export interface ITextField {}
-
-export interface ITextArea {
-  rows: number;
-}
-
-export interface IAutoComplete {
-  multiple: boolean;
-  options: SelectOption[] | null;
-}
-
-export interface ICheckboxGroup {
-  options: SelectOption[];
-}
-
-export interface IFileUpload {
-  options: DropzoneOptions;
-}
-
-export type FormField = ITextField | ITextArea | IAutoComplete | ICheckboxGroup | IFileUpload;
-
-export interface IForm {
-  [x: string]: string | string[] | File[] | IAutoComplete['options'];
-}
-//#endregion
-
 //#region Graphql
 export type ImageResponse = {
   data: {
     attributes: IImage;
   };
-};
-
-export type FormFieldsResponse = {
-  data: {
-    attributes: {
-      field: Omit<IFormField, 'type'>;
-      fieldType: (FormField & {
-        type:
-          | 'ComponentFormText'
-          | 'ComponentFormEmail'
-          | 'ComponentFormTextArea'
-          | 'ComponentFormAutoComplete'
-          | 'ComponentFormCheckboxGroup'
-          | 'ComponentFormFileUpload';
-      })[];
-    };
-  }[];
 };
 
 export type SeoResponse = Omit<ISeo, 'metaImage'> & {

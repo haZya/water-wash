@@ -1,14 +1,14 @@
 import {
+  FormField,
   IAutoComplete,
   ICheckboxGroup,
   IFileUpload,
-  IFormField,
   ITextArea,
   ITextField,
-} from 'models/shared';
+} from 'models/form';
 import { AutoComplete, CheckboxGroup, FileUpload, TextField } from '.';
 
-const Field = (field: IFormField) => {
+const Field = (field: FormField) => {
   return (
     <>
       {field.type === 'ComponentFormText' ||

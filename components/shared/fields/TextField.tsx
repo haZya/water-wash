@@ -6,7 +6,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { IForm, ITextArea, ITextField } from 'models/shared';
+import { IForm, ITextArea, ITextField } from 'models/form';
 import { Controller, useFormContext } from 'react-hook-form';
 
 const TextField = ({ type, name, label, required, width, rows }: ITextField & ITextArea) => {
