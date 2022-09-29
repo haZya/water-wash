@@ -66,6 +66,7 @@ const NavbarTop = () => {
                       <Image
                         {...s.icon}
                         className={clsx('flex-center transition duration-300 w-8 h-8 p-2')}
+                        placeholder="empty"
                       />
                     </Box>
                   </li>
@@ -90,7 +91,11 @@ const NavbarTop = () => {
                       },
                     }}
                   >
-                    <Image {...m.icon} className="transition duration-300 w-9" />
+                    <Image
+                      {...m.icon}
+                      className="transition duration-300 w-9"
+                      placeholder="empty"
+                    />
                     <div>
                       <Typography
                         className={clsx(

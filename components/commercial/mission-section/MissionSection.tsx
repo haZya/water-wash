@@ -60,7 +60,7 @@ const MissionSection = () => {
                 <Typography
                   className="relative !font-body italic text-lg xs:text-xl sm:text-2xl text-center font-bold leading-tight tracking-widest"
                   color="text.secondary"
-                  dangerouslySetInnerHTML={{ __html: sanitize(mission.subtitle) }}
+                  dangerouslySetInnerHTML={{ __html: sanitize(mission.content) }}
                 />
               </div>
               <div className="hidden md:block space-y-4">

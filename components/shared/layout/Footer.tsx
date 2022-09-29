@@ -67,7 +67,7 @@ const Footer = () => {
                     },
                   }}
                 >
-                  <Image {...icon} className="transition duration-300" />
+                  <Image {...icon} className="transition duration-300" placeholder="empty" />
                 </Box>
               </li>
             ))}

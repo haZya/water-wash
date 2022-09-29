@@ -6,7 +6,7 @@ import { SpecializationItem } from '.';
 
 const SpecializationSection = () => {
   const { title, specializations } = useSelector(
-    ({ residential }: RootState) => residential.content.specializationSection
+    ({ residential }: RootState) => residential.content.specializeSection
   );
 
   return (

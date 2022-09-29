@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { formatBytes } from 'utils';
+import { formatBytes } from 'utils/format';
 import { showMessage } from '../store/messageSlice';
 
 type UploadFile = File & { preview: string };

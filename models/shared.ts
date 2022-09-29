@@ -6,6 +6,10 @@ export interface IImage {
   height?: number;
   blurDataURL?: string;
 }
+
+export interface IFile {
+  src: string;
+}
 //#endregion
 
 // #region Layout
@@ -96,6 +100,12 @@ export interface IPage {
 export type ImageResponse = {
   data: {
     attributes: IImage;
+  };
+};
+
+export type FileResponse = {
+  data: {
+    attributes: IFile;
   };
 };
 

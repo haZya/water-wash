@@ -59,9 +59,8 @@ const NavDrawer = () => {
           <Link href="/" shallow scroll>
             <a>
               <Image
+                {...logo}
                 className="select-none w-36 h-auto mx-auto my-4 drop-shadow-md"
-                src={logo}
-                alt="Water Wash Logo"
                 priority
               />
             </a>
@@ -69,14 +68,14 @@ const NavDrawer = () => {
         </div>
         <Divider className="bg-primary-500" />
         <List className="flex-1 my-4">
-          {[...links, ...topLinks].map(({ label, path }) => (
-            <Link key={label} href={path}>
+          {[...links, ...topLinks].map(({ title, url }) => (
+            <Link key={title} href={url}>
               <a>
                 <ListItemButton className="text-center">
                   <ListItemText
                     primary={
                       <Typography className="text-base" color="text.primary">
-                        {label}
+                        {title}
                       </Typography>
                     }
                   />

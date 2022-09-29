@@ -1,20 +1,17 @@
 import NextImage, { ImageProps } from 'next/future/image';
+import { backendUrl } from 'utils/env';
 
 const Image = (props: ImageProps & { noHostname?: boolean }) => {
   if (!props.src) return null;
 
-  const src = props.noHostname
-    ? props.src
-    : ((process.env.NODE_ENV === 'production'
-        ? process.env.NEXT_PUBLIC_BACKEND_URL
-        : process.env.NEXT_PUBLIC_BACKEND_LH_URL) ?? '') + props.src;
+  const src = props.noHostname ? props.src : backendUrl + props.src;
 
   return (
     <NextImage
       className="object-cover"
+      placeholder={props.blurDataURL ? 'blur' : 'empty'}
       {...props}
       src={src}
-      placeholder={props.blurDataURL ? 'blur' : 'empty'}
     />
   );
 };

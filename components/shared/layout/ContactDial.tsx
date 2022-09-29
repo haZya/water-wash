@@ -45,7 +45,7 @@ const ContactDial = () => {
                 },
               }}
             >
-              <Image className="p-2" {...icon} />
+              <Image className="p-2" {...icon} placeholder="empty" />
             </Box>
           }
           openIcon={<Close />}
@@ -82,7 +82,11 @@ const ContactDial = () => {
                 },
               }}
             >
-              <Image {...icon} className="flex-center w-5 h-5 fill-primary-900" />
+              <Image
+                {...icon}
+                className="flex-center w-5 h-5 fill-primary-900"
+                placeholder="empty"
+              />
             </Box>
           }
           tooltipOpen

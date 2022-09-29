@@ -33,7 +33,7 @@ export interface ICommercial {
     title: string;
     mission: {
       title: string;
-      subtitle: string;
+      content: string;
     };
     content: {
       title: string;
