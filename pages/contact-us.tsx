@@ -30,7 +30,7 @@ const ContactUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
 
   return (
     <>
-      <Seo {...seo} metaTitle={seo?.metaTitle ?? ContactUs.name} />
+      <Seo {...seo} metaTitle={seo.metaTitle ?? ContactUs.name} />
       <Banner {...banner} />
       <section aria-label="Get In Touch" className="z-10">
         <div className="container mx-auto flex flex-col md:flex-row gap-x-12 lg:gap-x-16">

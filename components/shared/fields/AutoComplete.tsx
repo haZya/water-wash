@@ -7,11 +7,18 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { IAutoComplete, IForm, SelectOption } from 'models/shared';
+import { IAutoComplete, IForm, SelectOption } from 'models/form';
 import { useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const AutoComplete = ({ name, label, required, width, multiple, options }: IAutoComplete) => {
+const AutoComplete = ({
+  name,
+  label,
+  required,
+  width,
+  multiple,
+  autoCompleteOptions: options,
+}: IAutoComplete) => {
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
   const {

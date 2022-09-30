@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { useStaggerItem } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IDescriptiveSectionItem } from 'models/home';

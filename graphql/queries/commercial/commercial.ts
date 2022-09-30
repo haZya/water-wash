@@ -1,12 +1,12 @@
 import { gql } from 'graphql-request';
 import { RequestDocument } from 'graphql-request/dist/types';
-import { FileFragment, ImageFragment, SeoFragment } from 'graphql/fragments';
+import { FileFragment, FormField, ImageFragment, SeoFragment } from 'graphql/fragments';
 import { client } from 'lib/graphql-request';
-import { IResidential, ResidentialResponse } from 'models/residential';
+import { CommercialResponse, ICommercial } from 'models/commercial';
 
 const GET_PAGE: RequestDocument = gql`
   query GetPage {
-    residentialPage {
+    commercialPage {
       data {
         attributes {
           title
@@ -25,7 +25,7 @@ const GET_PAGE: RequestDocument = gql`
               title
             }
           }
-          quoteSection {
+          enquireSection {
             title
             content
             buttons {
@@ -37,25 +37,17 @@ const GET_PAGE: RequestDocument = gql`
               ...ImageFragment
             }
           }
-          planSection {
+          formSection {
             title
-            plans {
-              tag
+            subtitle
+            form {
               title
-              bullets {
+              sections {
                 title
-              }
-            }
-          }
-          serviceSection {
-            items {
-              title
-              content
-              bullets {
-                title
-              }
-              backgroundImage {
-                ...ImageFragment
+                componentName
+                fields {
+                  ...FormField
+                }
               }
             }
           }
@@ -85,10 +77,11 @@ const GET_PAGE: RequestDocument = gql`
   }
   ${FileFragment}
   ${ImageFragment}
+  ${FormField}
   ${SeoFragment}
 `;
 
-function format(attr: ResidentialResponse['residentialPage']['data']['attributes']): IResidential {
+function format(attr: CommercialResponse['commercialPage']['data']['attributes']): ICommercial {
   return {
     ...attr,
     bannerSection: {
@@ -102,21 +95,22 @@ function format(attr: ResidentialResponse['residentialPage']['data']['attributes
         icon: s.icon.data.attributes,
       })),
     },
-    quoteSection: {
-      ...attr.quoteSection,
-      backgroundImage: attr.quoteSection.backgroundImage.data.attributes,
+    enquireSection: {
+      ...attr.enquireSection,
+      backgroundImage: attr.enquireSection.backgroundImage.data.attributes,
     },
-    planSection: {
-      ...attr.planSection,
-      plans: attr.planSection.plans.map((p) => ({ ...p, bullets: p.bullets.map((b) => b.title) })),
-    },
-    serviceSection: {
-      ...attr.serviceSection,
-      items: attr.serviceSection.items.map((s) => ({
-        ...s,
-        bullets: s.bullets.map((b) => b.title),
-        backgroundImage: s.backgroundImage.data.attributes,
-      })),
+    formSection: {
+      ...attr.formSection,
+      form: {
+        ...attr.formSection.form,
+        sections: attr.formSection.form.sections.map((s) => ({
+          ...s,
+          fields: s.fields.data.map((f) => ({
+            ...f.attributes.field,
+            ...f.attributes.fieldType[0],
+          })),
+        })),
+      },
     },
     missionSection: {
       ...attr.missionSection,
@@ -130,9 +124,9 @@ function format(attr: ResidentialResponse['residentialPage']['data']['attributes
   };
 }
 
-async function getResidentialPage(): Promise<IResidential> {
-  const { residentialPage } = await client.request<ResidentialResponse>(GET_PAGE);
-  return format(residentialPage.data.attributes);
+async function getCommercialPage(): Promise<ICommercial> {
+  const { commercialPage } = await client.request<CommercialResponse>(GET_PAGE);
+  return format(commercialPage.data.attributes);
 }
 
-export default getResidentialPage;
+export default getCommercialPage;

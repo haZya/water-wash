@@ -1,18 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICommercial } from 'models/commercial';
 
-const initialState: ICommercial = {
+const initialState: Omit<ICommercial, 'seo'> = {
+  title: '',
+  slug: '',
   bannerSection: {
-    lottie: '',
+    lottie: {
+      src: '',
+    },
   },
-  specializationSection: {
+  specializeSection: {
     title: '',
     specializations: [],
   },
   enquireSection: {
     title: '',
     content: '',
-    background: '',
+    buttons: [],
+    backgroundImage: {
+      src: '',
+      alt: '',
+    },
   },
   formSection: {
     title: '',
@@ -26,13 +34,19 @@ const initialState: ICommercial = {
     title: '',
     mission: {
       title: '',
-      subtitle: '',
+      content: '',
     },
     content: {
       title: '',
       content: '',
-      image: '',
-      badge: '',
+      image: {
+        src: '',
+        alt: '',
+      },
+      badge: {
+        src: '',
+        alt: '',
+      },
     },
   },
 };
@@ -41,7 +55,7 @@ const contentSlice = createSlice({
   name: 'commercial/content',
   initialState,
   reducers: {
-    setCommercialContent: (_state, action: PayloadAction<ICommercial>) => action.payload,
+    setCommercialContent: (_state, action: PayloadAction<typeof initialState>) => action.payload,
   },
 });
 

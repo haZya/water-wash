@@ -1,7 +1,5 @@
-// Import assets; TODO: From CMS
-import bg from '@/assets/images/commercial/enquire-section/background.jpg';
-
 import { Box, Typography } from '@mui/material';
+import clsx from 'clsx';
 import { AnimatedButton, Image } from 'components/shared';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
@@ -11,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const EnquireSection = () => {
   const [ref, inView] = useInView();
-  const { title, content, background } = useSelector(
+  const { title, content, buttons, backgroundImage } = useSelector(
     ({ commercial }: RootState) => commercial.content.enquireSection
   );
 
@@ -27,13 +25,7 @@ const EnquireSection = () => {
     >
       {inView && (
         <div className="pointer-events-none fixed transform-center w-full h-full">
-          <Image
-            className="absolute opacity-20 object-cover"
-            src={bg}
-            alt=""
-            fill
-            placeholder="blur"
-          />
+          <Image {...backgroundImage} className="absolute opacity-20 object-cover w-full h-full" />
         </div>
       )}
       <div className="container mx-auto flex-center flex-col pt-28 pb-36 space-y-12 overflow-hidden">
@@ -50,18 +42,25 @@ const EnquireSection = () => {
             dangerouslySetInnerHTML={{ __html: sanitize(content) }}
           />
         </header>
-        <Link href="/contact-us/#contact-form">
-          <a>
-            <AnimatedButton
-              className="xs:px-48 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
-              size="large"
-              variant="contained"
-              color="secondary"
-            >
-              Enquire Now
-            </AnimatedButton>
-          </a>
-        </Link>
+        {buttons.map((b) => (
+          <Link key={b.label} href={b.url}>
+            <a>
+              <AnimatedButton
+                className={clsx(
+                  'xs:px-48 py-3 text-xl sm:text-2xl text-white shadow-none hover:shadow-none',
+                  b.color === 'primary'
+                    ? 'bg-primary-500 hover:bg-primary-500'
+                    : 'bg-secondary-500 hover:bg-secondary-500'
+                )}
+                size="large"
+                variant="contained"
+                color={b.color}
+              >
+                {b.label}
+              </AnimatedButton>
+            </a>
+          </Link>
+        ))}
       </div>
     </Box>
   );

@@ -8,10 +8,16 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { ICheckboxGroup, IForm, SelectOption } from 'models/shared';
+import { ICheckboxGroup, IForm, SelectOption } from 'models/form';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup) => {
+const CheckboxGroup = ({
+  name,
+  label,
+  checkboxGroupOptions: options,
+  required,
+  width,
+}: ICheckboxGroup) => {
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
   const {

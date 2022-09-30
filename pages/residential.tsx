@@ -4,7 +4,7 @@ import {
   PlanSection,
   QuoteSection,
   ServiceSection,
-  SpecializationSection,
+  SpecializeSection,
 } from 'components/residential';
 import { setResidentialContent } from 'components/residential/store/contentSlice';
 import { Seo } from 'components/shared';
@@ -34,9 +34,9 @@ const Residential = ({ seo, ...props }: IProps) => {
 
   return (
     <>
-      <Seo {...seo} metaTitle={seo?.metaTitle ?? Residential.name} />
+      <Seo {...seo} metaTitle={seo.metaTitle ?? Residential.name} />
       <BannerSection />
-      <SpecializationSection />
+      <SpecializeSection />
       <QuoteSection />
       <PlanSection />
       <ServiceSection />

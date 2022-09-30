@@ -1,7 +1,8 @@
 import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { AnimatedButton, useFormSubmit } from 'components/shared';
+import { AnimatedButton } from 'components/shared';
 import { Field } from 'components/shared/fields';
+import { useFormSubmit } from 'components/shared/hooks';
 import { create } from 'graphql/mutations/commercial';
 import { RootState } from 'lib/redux';
 import { IForm } from 'models/form';

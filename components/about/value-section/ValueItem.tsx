@@ -1,6 +1,7 @@
 import { Box, Theme, Typography, useMediaQuery } from '@mui/material';
 import clsx from 'clsx';
-import { Image, useStaggerItem } from 'components/shared';
+import { Image } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IValueSectionItem } from 'models/about';

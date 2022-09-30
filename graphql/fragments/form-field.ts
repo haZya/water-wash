@@ -30,14 +30,14 @@ export const FormField = gql`
           ... on ComponentFormAutoComplete {
             type: __typename
             multiple
-            autoCompleteOptions: options {
+            autoCompleteOptions: options(pagination: { limit: -1 }) {
               name
               label
             }
           }
           ... on ComponentFormCheckboxGroup {
             type: __typename
-            checkboxGroupOptions: options {
+            checkboxGroupOptions: options(pagination: { limit: -1 }) {
               name
               label
             }

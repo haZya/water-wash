@@ -29,7 +29,7 @@ const AboutUs: NextPage<IProps> = ({ banner, seo, ...props }: IProps) => {
 
   return (
     <>
-      <Seo {...seo} metaTitle={seo?.metaTitle ?? AboutUs.name} />
+      <Seo {...seo} metaTitle={seo.metaTitle ?? AboutUs.name} />
       <Banner {...banner} />
       <MissionSection />
       <ValueSection />

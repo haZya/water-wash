@@ -1,11 +1,5 @@
 import { DropzoneOptions } from 'react-dropzone';
 
-export interface IFormSection {
-  title: string;
-  componentName?: string;
-  fields: (ITextField | ITextArea | ICheckboxGroup | IFileUpload)[];
-}
-
 export interface SelectOption {
   name: string;
   label: string;
@@ -41,17 +35,17 @@ export interface ITextArea extends IFormField, TextAreaType {}
 
 interface AutoCompleteType extends FieldType {
   multiple: boolean;
-  options: SelectOption[] | null;
+  autoCompleteOptions: SelectOption[] | null;
 }
 export interface IAutoComplete extends IFormField, AutoCompleteType {}
 
 interface CheckboxGroupType extends FieldType {
-  options: SelectOption[];
+  checkboxGroupOptions: SelectOption[];
 }
-export interface ICheckboxGroup extends IFormField, FieldType {}
+export interface ICheckboxGroup extends IFormField, CheckboxGroupType {}
 
 interface FileUploadType extends FieldType {
-  options: DropzoneOptions;
+  fileUploadOptions: DropzoneOptions;
 }
 export interface IFileUpload extends IFormField, FileUploadType {}
 
@@ -65,7 +59,13 @@ type FormFieldType =
 export type FormField = ITextField | ITextArea | IAutoComplete | ICheckboxGroup | IFileUpload;
 
 export interface IForm {
-  [x: string]: string | string[] | File[] | IAutoComplete['options'];
+  [x: string]: string | string[] | File[] | SelectOption[] | null;
+}
+
+export interface IFormSection {
+  title: string;
+  componentName?: string;
+  fields: FormField[];
 }
 
 //#region Graphql

@@ -422,7 +422,7 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
 
   return (
     <>
-      <Seo {...seo} metaTitle={seo?.metaTitle ?? Home.name} />
+      <Seo {...seo} metaTitle={seo.metaTitle ?? Home.name} />
       <Hero />
       <DescriptiveSection />
       <DynamicGallerySection />

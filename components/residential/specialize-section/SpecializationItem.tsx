@@ -1,8 +1,9 @@
 import { Box, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { Image, useStaggerItem } from 'components/shared';
+import { Image } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
-import { ISpecializationSectionItem } from 'models/commercial';
+import { ISpecializationSectionItem } from 'models/residential';
 import { useEffect, useState } from 'react';
 import styles from './SpecializationItem.module.css';
 
@@ -51,7 +52,7 @@ const SpecializationItem = ({ index, icon, title }: IProps) => {
             },
           }}
         >
-          <Image {...icon} className="min-w-10 p-2" />
+          <Image {...icon} className="min-w-10 xs:min-w-12 p-2" />
         </Box>
         <Typography
           className="text-base md:text-lg leading-4 xs:!leading-tight tracking-tighter xs:tracking-tight"

@@ -1,9 +1,9 @@
 import { Variables } from 'graphql-request/dist/types';
 import { upload } from 'graphql/mutations/upload';
-import { IFileUpload, IForm, IFormSection, SelectOption } from 'models/shared';
+import { IFileUpload, IForm, IFormSection, SelectOption } from 'models/form';
 import { UseFormReset } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { showMessage } from './store/messageSlice';
+import { showMessage } from '../store/messageSlice';
 
 const useFormSubmit = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const useFormSubmit = () => {
     reset: UseFormReset<IForm>
   ) => {
     const fileFields = sections.flatMap(
-      (s) => s.fields.filter((f) => f.type === 'file') as IFileUpload[]
+      (s) => s.fields.filter((f) => f.type === 'ComponentFormFileUpload') as IFileUpload[]
     );
     const files = fileFields.flatMap((f) => form[f.name] as File[]);
 
@@ -28,11 +28,12 @@ const useFormSubmit = () => {
             {},
             ...s.fields.map((f) => ({
               [f.name]:
-                f.type === 'file'
+                f.type === 'ComponentFormFileUpload'
                   ? (form[f.name] as File[]).flatMap((file) =>
                       fileUploads.filter((fu) => fu.name === file.name).map((u) => u.id)
                     )
-                  : f.type === 'autocomplete' || f.type === 'checkbox'
+                  : f.type === 'ComponentFormAutoComplete' ||
+                    f.type === 'ComponentFormCheckboxGroup'
                   ? (form[f.name] as SelectOption[]).map((o) => o.label).join(', ') || '-'
                   : form[f.name] || '-',
             }))

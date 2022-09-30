@@ -4,7 +4,7 @@ import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import { SpecializationItem } from '.';
 
-const SpecializationSection = () => {
+const SpecializeSection = () => {
   const { title, specializations } = useSelector(
     ({ residential }: RootState) => residential.content.specializeSection
   );
@@ -34,4 +34,4 @@ const SpecializationSection = () => {
   );
 };
 
-export default SpecializationSection;
+export default SpecializeSection;

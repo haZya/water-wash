@@ -3,11 +3,11 @@ import { MissionSection } from './mission-section';
 import { PlanSection } from './plan-section';
 import { QuoteSection } from './quote-section';
 import { ServiceSection } from './service-section';
-import { SpecializationSection } from './specialization-section';
+import { SpecializeSection } from './specialize-section';
 
 export {
   BannerSection,
-  SpecializationSection,
+  SpecializeSection,
   QuoteSection,
   PlanSection,
   ServiceSection,

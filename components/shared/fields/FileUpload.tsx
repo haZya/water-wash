@@ -8,7 +8,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { IFileUpload, IForm } from 'models/shared';
+import { IFileUpload, IForm } from 'models/form';
 import { useEffect } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
@@ -18,7 +18,7 @@ import { showMessage } from '../store/messageSlice';
 
 type UploadFile = File & { preview: string };
 
-const FileUpload = ({ name, label, required, width, options }: IFileUpload) => {
+const FileUpload = ({ name, label, required, width, fileUploadOptions: options }: IFileUpload) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));

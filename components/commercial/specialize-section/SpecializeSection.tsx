@@ -4,9 +4,9 @@ import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 import { SpecializationItem } from '.';
 
-const SpecializationSection = () => {
+const SpecializeSection = () => {
   const { title, specializations } = useSelector(
-    ({ commercial }: RootState) => commercial.content.specializationSection
+    ({ commercial }: RootState) => commercial.content.specializeSection
   );
 
   return (
@@ -34,4 +34,4 @@ const SpecializationSection = () => {
   );
 };
 
-export default SpecializationSection;
+export default SpecializeSection;
