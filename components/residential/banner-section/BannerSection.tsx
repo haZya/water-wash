@@ -24,18 +24,15 @@ const BannerSection = () => {
   return (
     <section
       aria-label="Residential"
-      className="relative my-auto h-full md:h-screen pt-[45rem] xs:pt-[60rem] sm:pt-[75rem] md:pt-0 overflow-hidden"
+      className="relative m-auto sm:w-[80rem] pt-full sm:pt-[68rem] overflow-hidden"
     >
-      {file && (
-        <Box
-          className="absolute transform-center w-full !mt-16 xs:!mt-24 md:!mt-16"
-          component={Player}
-          autoplay
-          loop
-          src={file}
-          style={{ height: 'calc(100vh - 150px)' }}
-        />
-      )}
+      <Box
+        className="absolute transform-center w-full !mt-10 xs:!mt-16"
+        component={Player}
+        autoplay
+        loop
+        src={file}
+      />
     </section>
   );
 };

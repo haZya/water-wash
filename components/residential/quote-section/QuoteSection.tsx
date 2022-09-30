@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import clsx from 'clsx';
 import { AnimatedButton, Image } from 'components/shared';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
@@ -46,10 +47,15 @@ const QuoteSection = () => {
             <Link key={b.label} href={b.url}>
               <a>
                 <AnimatedButton
-                  className="w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
+                  className={clsx(
+                    'w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white shadow-none hover:shadow-none',
+                    b.color === 'primary'
+                      ? 'bg-primary-500 hover:bg-primary-500'
+                      : 'bg-secondary-500 hover:bg-secondary-500'
+                  )}
                   size="large"
                   variant="contained"
-                  color="secondary"
+                  color={b.color}
                 >
                   {b.label}
                 </AnimatedButton>

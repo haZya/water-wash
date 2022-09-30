@@ -2,7 +2,7 @@
   from {
     visibility: hidden;
     opacity: 0;
-    transform: translateY(6.4rem);
+    transform: translateY(5.4rem);
   }
   to {
     visibility: visible;

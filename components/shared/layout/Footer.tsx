@@ -24,7 +24,7 @@ const Footer = () => {
   }, [dispatch]);
 
   return (
-    <footer ref={ref} className="bg-neutral-100 h-32">
+    <footer ref={ref} className="bg-neutral-100">
       <div className="container mx-auto py-2 flex items-center h-24">
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/" shallow scroll>
@@ -74,7 +74,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full h-8 text-center bg-neutral-200">
+      <div className="flex justify-center items-center w-full h-10 text-center bg-neutral-200 px-1">
         <Typography
           className="text-xs font-medium"
           component="p"
