@@ -64,7 +64,7 @@ const Footer = () => {
                   sx={{
                     '& img': {
                       filter:
-                        'invert(46%) sepia(8%) saturate(626%) hue-rotate(182deg) brightness(94%) contrast(93%)',
+                        'invert(41%) sepia(0%) saturate(0%) hue-rotate(282deg) brightness(96%) contrast(91%)',
                     },
                     '&:hover img': {
                       filter:

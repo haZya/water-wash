@@ -55,7 +55,7 @@ const NavbarTop = () => {
                         '& img': {
                           filter: hasBanner
                             ? 'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)'
-                            : 'invert(46%) sepia(8%) saturate(626%) hue-rotate(182deg) brightness(94%) contrast(93%)',
+                            : 'invert(41%) sepia(0%) saturate(0%) hue-rotate(282deg) brightness(96%) contrast(91%)',
                         },
                         '.group:hover & img': {
                           filter:
@@ -83,7 +83,7 @@ const NavbarTop = () => {
                       '& img': {
                         filter: hasBanner
                           ? 'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)'
-                          : 'invert(46%) sepia(8%) saturate(626%) hue-rotate(182deg) brightness(94%) contrast(93%)',
+                          : 'invert(41%) sepia(0%) saturate(0%) hue-rotate(282deg) brightness(96%) contrast(91%)',
                       },
                       '&:hover img': {
                         filter:
