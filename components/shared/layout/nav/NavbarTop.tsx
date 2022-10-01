@@ -93,7 +93,7 @@ const NavbarTop = () => {
                   >
                     <Image
                       {...m.icon}
-                      className="block transition duration-300 min-w-9 w-9"
+                      className="block transition duration-300 min-w-7 w-7 xs:min-w-9 xs:w-9"
                       placeholder="empty"
                     />
                     <div className="hidden xs:block">

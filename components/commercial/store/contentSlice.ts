@@ -27,6 +27,7 @@ const initialState: Omit<ICommercial, 'seo'> = {
     subtitle: '',
     form: {
       title: '',
+      subtitle: '',
       sections: [],
     },
   },

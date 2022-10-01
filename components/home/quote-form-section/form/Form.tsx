@@ -10,9 +10,7 @@ import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 const Form = () => {
-  const { title, sections } = useSelector(
-    ({ home }: RootState) => home.content.quoteFormSection.form
-  );
+  const { title, sections } = useSelector(({ home }: RootState) => home.content.formSection.form);
   const {
     reset,
     handleSubmit,

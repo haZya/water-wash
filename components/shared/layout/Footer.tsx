@@ -29,7 +29,12 @@ const Footer = () => {
         <div className="flex items-center sm:justify-between gap-8 w-full overflow-auto">
           <Link href="/" shallow scroll>
             <a className="grow hidden sm:block">
-              <Image {...logo} className="select-none w-24 h-auto my-2" priority />
+              <Image
+                {...logo}
+                className="select-none w-24 h-auto my-2"
+                priority
+                placeholder="empty"
+              />
             </a>
           </Link>
           <div className="grow flex-center gap-8 sm:gap-12 h-16">

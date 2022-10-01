@@ -76,9 +76,10 @@ const Navbar = () => {
                     {...logo}
                     className={clsx(
                       'select-none transition-all duration-300 drop-shadow-md h-auto',
-                      navSticky ? 'w-20 min-w-20' : 'w-28 min-w-28'
+                      navSticky ? 'w-20 min-w-20' : 'w-24 min-w-24'
                     )}
                     priority
+                    placeholder="empty"
                   />
                 </a>
               </Link>

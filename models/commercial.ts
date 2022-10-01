@@ -31,6 +31,7 @@ export interface ICommercial extends IPage {
     subtitle: string;
     form: {
       title: string;
+      subtitle: string;
       sections: IFormSection[];
     };
   };

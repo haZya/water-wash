@@ -42,6 +42,7 @@ const GET_PAGE: RequestDocument = gql`
             subtitle
             form {
               title
+              subtitle
               sections {
                 title
                 componentName

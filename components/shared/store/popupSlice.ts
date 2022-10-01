@@ -37,6 +37,9 @@ const popupSlice = createSlice({
     setAnimationEnd: (state) => ({
       ...state,
       animationEnded: true,
+      el: !state.open ? null : state.el,
+      rect: !state.open ? undefined : state.rect,
+      children: !state.open ? null : state.children,
     }),
   },
 });

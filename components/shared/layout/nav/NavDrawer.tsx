@@ -62,6 +62,7 @@ const NavDrawer = () => {
                 {...logo}
                 className="select-none w-36 h-auto mx-auto my-4 drop-shadow-md"
                 priority
+                placeholder="empty"
               />
             </a>
           </Link>
