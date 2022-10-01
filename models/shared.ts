@@ -51,6 +51,7 @@ export interface ILayout {
   };
   nav: {
     links: NavLink[];
+    mobileLinks: NavLink[];
   };
   footer: {
     copyrightText: string;

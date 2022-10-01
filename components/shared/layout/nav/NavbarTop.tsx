@@ -23,20 +23,20 @@ const NavbarTop = () => {
     <>
       <AppBar
         className={clsx(
-          'hidden xs:block bg-transparent border-b relative w-full z-50 h-16 transition-all duration-500',
+          'block bg-transparent border-b relative w-full z-50 h-16 transition-all duration-500',
           navSticky && '-translate-y-16 opacity-0 invisible'
         )}
         component="nav"
         color="transparent"
         elevation={0}
       >
-        <div className="container mx-auto">
+        <div className="container mx-auto h-full">
           <Toolbar
-            className={clsx('transition-all duration-500 mx-4 sm:mx-0 overflow-auto')}
+            className="transition-all duration-500 mx-4 sm:mx-0 h-full overflow-auto"
             disableGutters
           >
-            <div className="flex md:space-x-12 w-full h-full">
-              <ul className="hidden md:flex items-center flex-nowrap gap-4 self-center mx-auto">
+            <div className="flex space-x-4 md:space-x-12 w-full h-full">
+              <ul className="flex xs:hidden md:flex items-center flex-nowrap gap-2 xs:gap-4 self-center mx-auto">
                 {socials?.map((s) => (
                   <li
                     key={s.url}
@@ -65,18 +65,18 @@ const NavbarTop = () => {
                     >
                       <Image
                         {...s.icon}
-                        className={clsx('flex-center transition duration-300 w-8 h-8 p-2')}
+                        className="flex-center transition duration-300 min-w-8 min-h-8 w-8 h-8 p-2"
                         placeholder="empty"
                       />
                     </Box>
                   </li>
                 ))}
               </ul>
-              <div className="grow flex md:justify-center space-x-6">
+              <div className="grow flex justify-end xs:justify-start md:justify-center space-x-4 xs:space-x-6">
                 {contactMethods.map((m) => (
                   <Box
                     key={m.content}
-                    className="group relative flex items-center space-x-4"
+                    className="group relative flex items-center xs:space-x-4"
                     component="a"
                     href={m.url}
                     sx={{
@@ -93,10 +93,10 @@ const NavbarTop = () => {
                   >
                     <Image
                       {...m.icon}
-                      className="transition duration-300 w-9"
+                      className="block transition duration-300 min-w-9 w-9"
                       placeholder="empty"
                     />
-                    <div>
+                    <div className="hidden xs:block">
                       <Typography
                         className={clsx(
                           'text-xs sm:text-sm',
@@ -107,9 +107,15 @@ const NavbarTop = () => {
                       </Typography>
                       <Typography
                         className={clsx(
-                          'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-300 text-base font-medium',
+                          'whitespace-nowrap group-hover:text-primary-300 transition-colors duration-300 font-medium',
                           hasBanner ? 'text-white' : 'text-gray-600'
                         )}
+                        sx={(theme) => ({
+                          [theme.breakpoints.down('xs')]: {
+                            fontSize: '1.5rem',
+                          },
+                          fontSize: '1.6rem',
+                        })}
                       >
                         {m.content}
                       </Typography>

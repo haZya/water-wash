@@ -24,10 +24,10 @@ const BannerSection = () => {
   return (
     <section
       aria-label="Residential"
-      className="relative m-auto sm:w-[80rem] pt-full sm:pt-[68rem] overflow-hidden"
+      className="relative m-auto sm:w-[80rem] pt-full sm:pt-[68rem] mt-8 overflow-hidden"
     >
       <Box
-        className="absolute transform-center w-full !mt-10 xs:!mt-16"
+        className="absolute transform-center w-full !mt-16"
         component={Player}
         autoplay
         loop

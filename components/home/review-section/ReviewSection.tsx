@@ -22,8 +22,11 @@ const ReviewSection = () => {
             dangerouslySetInnerHTML={{ __html: sanitize(title) }}
           />
         </header>
-        <Script src={url} strategy="lazyOnload"></Script>
-        <div className={className} />
+        {/* <Script src={url} strategy="lazyOnload"></Script>
+        <div className={className} /> */}
+
+        <Script src={'https://apps.elfsight.com/p/platform.js'} strategy="lazyOnload"></Script>
+        <div className="elfsight-app-df54c5cf-6646-42df-906c-fb7195d046b0"></div>
       </div>
     </section>
   );

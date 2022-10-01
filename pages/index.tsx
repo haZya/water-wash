@@ -24,7 +24,7 @@ import before8 from '@/assets/images/home/gallery-section/8-before.jpeg';
 import after9 from '@/assets/images/home/gallery-section/9-after.png';
 import before9 from '@/assets/images/home/gallery-section/9-before.png';
 
-import { DescriptiveSection, Hero, ReviewSection } from 'components/home';
+import { ReviewSection } from 'components/home';
 import { setHomeContent } from 'components/home/store/contentSlice';
 import { Seo } from 'components/shared';
 import { IHome } from 'models/home';
@@ -423,11 +423,11 @@ const Home: NextPage<IProps> = ({ seo, ...props }: IProps) => {
   return (
     <>
       <Seo {...seo} metaTitle={seo.metaTitle ?? Home.name} />
-      <Hero />
-      <DescriptiveSection />
-      <DynamicGallerySection />
+      {/* <Hero /> */}
+      {/* <DescriptiveSection />
+      <DynamicGallerySection /> */}
       <ReviewSection />
-      <DynamicQuoteFormSection />
+      {/* <DynamicQuoteFormSection /> */}
     </>
   );
 };

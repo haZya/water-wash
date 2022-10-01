@@ -29,6 +29,7 @@ const initialState: IInitialState = {
     },
     nav: {
       links: [],
+      mobileLinks: [],
     },
     footer: {
       copyrightText: '',

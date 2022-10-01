@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 import { RequestDocument } from 'graphql-request/dist/types';
-import { ImageFragment } from 'graphql/fragments';
+import { ImageFragment, NavLinkFragment } from 'graphql/fragments';
 import { client } from 'lib/graphql-request';
 import { ILayout, LayoutResponse } from 'models/shared';
 
@@ -42,18 +42,15 @@ const GET_LAYOUT: RequestDocument = gql`
               url
             }
             links {
-              title
-              url
-              color
-              type
+              ...NavLinkFragment
             }
           }
           nav {
             links {
-              title
-              url
-              color
-              type
+              ...NavLinkFragment
+            }
+            mobileLinks {
+              ...NavLinkFragment
             }
           }
           footer {
@@ -64,6 +61,7 @@ const GET_LAYOUT: RequestDocument = gql`
     }
   }
   ${ImageFragment}
+  ${NavLinkFragment}
 `;
 
 function format(attr: LayoutResponse['layout']['data']['attributes']): ILayout {

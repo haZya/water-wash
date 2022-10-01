@@ -1,6 +1,7 @@
 import { FormatAlignLeft } from '@mui/icons-material';
 import {
   AppBar,
+  Box,
   IconButton,
   Toolbar,
   useMediaQuery,
@@ -27,7 +28,7 @@ const Navbar = () => {
     navDrawerOpen,
     layoutContent: {
       logo,
-      nav: { links },
+      nav: { links, mobileLinks },
     },
   } = useSelector(({ shared }: RootState) => shared.layout);
 
@@ -68,14 +69,14 @@ const Navbar = () => {
             >
               <FormatAlignLeft fontSize="medium" />
             </IconButton>
-            <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start pl-6 sm:pl-0">
+            <div className="w-full sm:w-32 flex sm:block justify-start sm:pl-0">
               <Link href="/" shallow scroll>
                 <a>
                   <Image
                     {...logo}
                     className={clsx(
                       'select-none transition-all duration-300 drop-shadow-md h-auto',
-                      navSticky ? 'w-20' : 'w-28'
+                      navSticky ? 'w-20 min-w-20' : 'w-28 min-w-28'
                     )}
                     priority
                   />
@@ -87,6 +88,20 @@ const Navbar = () => {
                 <NavLink key={l.url} {...l} />
               ))}
             </div>
+            <Box
+              className="flex sm:hidden items-center ml-auto"
+              sx={(theme) => ({
+                [theme.breakpoints.down(360)]: {
+                  display: 'none !important',
+                },
+              })}
+            >
+              {mobileLinks.map((l) => (
+                <div key={l.url} className="min-w-max">
+                  <NavLink {...l} />
+                </div>
+              ))}
+            </Box>
           </Toolbar>
         </div>
       </AppBar>
