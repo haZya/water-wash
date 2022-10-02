@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IContact } from 'models/contact';
 
 const initialState: Omit<IContact, 'banner' | 'seo'> = {
+  title: '',
+  slug: '',
   formSection: {
     title: '',
     subtitle: '',

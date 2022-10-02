@@ -1,6 +1,7 @@
 import { ISeo } from 'models/shared';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
+import { backendUrl } from 'utils/env';
 
 const removeLeadingSlash = (slug: string) =>
   slug.startsWith('/') ? slug.substring(1, slug.length) : slug;
@@ -30,7 +31,7 @@ const Seo = ({ indexing = false, metaTitle, metaDescription, metaImage }: IProps
           ? [
               {
                 ...metaImage,
-                url: process.env.NEXT_PUBLIC_FRONTEND_URL + metaImage.url,
+                url: backendUrl + metaImage.src,
               },
             ]
           : undefined,

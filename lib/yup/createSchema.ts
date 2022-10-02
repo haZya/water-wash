@@ -1,4 +1,4 @@
-import { IFormField } from 'models/shared';
+import { IFormField } from 'models/form';
 import * as yup from 'yup';
 
 function createYupSchema(fields: IFormField[]) {
