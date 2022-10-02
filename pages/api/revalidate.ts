@@ -12,9 +12,7 @@ const getPathForForm = (type: 'Quote Form' | 'Contact Form' | 'Commercial Quote 
     ? ''
     : type === 'Contact Form'
     ? 'contact-us'
-    : type === 'Commercial Quote Form'
-    ? 'commercial'
-    : '';
+    : type === 'Commercial Quote Form' && 'commercial';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Check for secret to confirm this is a valid request
@@ -27,9 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       '/' +
       (revalidatePageTypes.includes(req.body.model)
         ? req.body.entry.slug
-        : req.body.model === 'form-field'
-        ? getPathForForm(req.body.entry.type)
-        : '');
+        : req.body.model === 'form-field' && getPathForForm(req.body.entry.type));
 
     // this should be the actual path not a rewritten path
     // e.g. for "/blog/[slug]" this should be "/blog/post-1"
@@ -38,7 +34,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    console.log('err');
     return res.status(500).send('Error revalidating');
   }
 }
