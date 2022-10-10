@@ -1,17 +1,16 @@
 import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { AnimatedButton, useFormSubmit } from 'components/shared';
+import { AnimatedButton } from 'components/shared';
 import { Field } from 'components/shared/fields';
+import { useFormSubmit } from 'components/shared/hooks';
 import { create } from 'graphql/mutations/home';
 import { RootState } from 'lib/redux';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 const Form = () => {
-  const { title, sections } = useSelector(
-    ({ home }: RootState) => home.content.quoteFormSection.form
-  );
+  const { title, sections } = useSelector(({ home }: RootState) => home.content.formSection.form);
   const {
     reset,
     handleSubmit,

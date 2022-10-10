@@ -1,22 +1,21 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { Image, useStaggerItem } from 'components/shared';
+import { Image } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { PopupItem } from 'components/shared/popup';
 import { useInView } from 'hooks';
 import { IGallerySectionItem } from 'models/home';
-import { StaticImageData } from 'next/image';
+import { IImage } from 'models/shared';
 import { useEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderHandle } from 'react-compare-slider';
 import Tilt from 'react-parallax-tilt';
 import styles from './GalleryItem.module.css';
 
-const image = (src: StaticImageData | string, alt: string, fullWidth: boolean) => (
+const image = (image: IImage, fullWidth: boolean) => (
   <Image
-    src={src}
-    alt={alt}
-    fill
+    className="w-full h-full object-cover"
+    {...image}
     sizes={fullWidth ? '100vw' : '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'}
-    placeholder="blur"
   />
 );
 
@@ -24,7 +23,7 @@ interface IProps extends IGallerySectionItem {
   index: number;
 }
 
-const GalleryItem = ({ index, before, after, portrait }: IProps) => {
+const GalleryItem = ({ index, beforeImage, afterImage, portrait }: IProps) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const [animating, setAnimating] = useState(false);
@@ -72,8 +71,8 @@ const GalleryItem = ({ index, before, after, portrait }: IProps) => {
               <ReactCompareSlider
                 className="w-full h-full"
                 portrait={portrait}
-                itemOne={image(before, 'Image One', true)}
-                itemTwo={image(after, 'Image Two', true)}
+                itemOne={image(beforeImage, true)}
+                itemTwo={image(afterImage, true)}
                 position={compareSliderPosition}
                 onPositionChange={(pos) => {
                   setCompareSliderPosition(pos);
@@ -87,8 +86,8 @@ const GalleryItem = ({ index, before, after, portrait }: IProps) => {
                   className="w-full h-full"
                   onlyHandleDraggable
                   portrait={portrait}
-                  itemOne={image(before, 'Image One', false)}
-                  itemTwo={image(after, 'Image Two', false)}
+                  itemOne={image(beforeImage, false)}
+                  itemTwo={image(afterImage, false)}
                   position={compareSliderPosition}
                   onPositionChange={(pos) => {
                     setCompareSliderPosition(pos);

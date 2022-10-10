@@ -1,5 +1,6 @@
 import { Close } from '@mui/icons-material';
 import {
+  Box,
   lighten,
   Link,
   SpeedDial,
@@ -9,10 +10,10 @@ import {
   useTheme,
 } from '@mui/material';
 import { usePageBottom } from 'hooks';
-import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import Image from '../Image';
 
 const ContactDial = () => {
   const {
@@ -35,7 +36,18 @@ const ContactDial = () => {
         <SpeedDialIcon
           ref={ref}
           className="flex-center text-primary-900"
-          icon={<div dangerouslySetInnerHTML={{ __html: sanitize(icon) }} />}
+          icon={
+            <Box
+              sx={{
+                '& img': {
+                  filter:
+                    'invert(23%) sepia(64%) saturate(1564%) hue-rotate(174deg) brightness(94%) contrast(106%)',
+                },
+              }}
+            >
+              <Image className="p-2" {...icon} placeholder="empty" />
+            </Box>
+          }
           openIcon={<Close />}
         />
       }
@@ -56,19 +68,29 @@ const ContactDial = () => {
         },
       }}
     >
-      {actions.map(({ icon, label, path }) => (
+      {actions.map(({ title, url, icon }) => (
         <SpeedDialAction
-          key={label}
+          key={title}
           icon={
-            <Link href={path}>
-              <div
-                className="flex-center w-5 h-5 text-primary-900"
-                dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
+            <Box
+              component={Link}
+              href={url}
+              sx={{
+                '& img': {
+                  filter:
+                    'invert(23%) sepia(64%) saturate(1564%) hue-rotate(174deg) brightness(94%) contrast(106%)',
+                },
+              }}
+            >
+              <Image
+                {...icon}
+                className="flex-center w-5 h-5 fill-primary-900"
+                placeholder="empty"
               />
-            </Link>
+            </Box>
           }
           tooltipOpen
-          tooltipTitle={label}
+          tooltipTitle={title}
           sx={{
             '& .MuiSpeedDialAction-staticTooltipLabel': {
               color: 'white',

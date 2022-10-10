@@ -30,7 +30,7 @@ const MobileHero = () => {
   return (
     <Box
       className="flex-center pt-14 w-full h-full transition-colors duration-500"
-      sx={{ backgroundColor: items[activeIndex]?.color }}
+      sx={{ bgcolor: items[activeIndex]?.color }}
     >
       <Swiper
         className="max-w-72 w-3/4 xs:max-w-90 xs:w-2/4 h-96 transform-gpu"

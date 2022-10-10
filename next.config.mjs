@@ -11,6 +11,13 @@ const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    domains: [
+      new URL(
+        process.env.NODE_ENV === 'production'
+          ? process.env.NEXT_PUBLIC_BACKEND_URL
+          : process.env.NEXT_PUBLIC_BACKEND_LH_URL
+      ).hostname,
+    ],
   },
 };
 

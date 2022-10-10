@@ -5,17 +5,18 @@ import Link from 'next/link';
 import Tilt from 'react-parallax-tilt';
 import { useSelector } from 'react-redux';
 import WaterWave from 'react-water-wave';
+import { backendUrl } from 'utils/env';
 import AnimatedItem from './AnimatedItem';
 import styles from './Hero.module.css';
 
 const DesktopHero = () => {
   const { logo } = useSelector(({ shared }: RootState) => shared.layout.layoutContent);
-  const { items } = useSelector(({ home }: RootState) => home.content.hero);
+  const { items, backgroundImage } = useSelector(({ home }: RootState) => home.content.hero);
 
   return (
     <WaterWave
       className="w-full h-full bg-cover bg-center bg-opacity-10"
-      imageUrl="/assets/images/home/hero-section/bg.jpg"
+      imageUrl={backendUrl + backgroundImage.src}
       dropRadius={36}
       perturbance={0.04}
     >
@@ -25,15 +26,13 @@ const DesktopHero = () => {
             <a className="absolute transform-center z-10">
               <Tilt transitionSpeed={2000} trackOnWindow>
                 <Image
+                  {...logo}
                   className={clsx(
                     'pointer-events-none select-none w-96 lg:w-[44rem] xl:w-[48rem]',
                     styles.logo
                   )}
-                  src={logo}
-                  alt="logo"
-                  width={1129.725}
-                  height={726.354}
                   priority
+                  placeholder="empty"
                 />
               </Tilt>
             </a>

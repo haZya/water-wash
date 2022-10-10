@@ -1,15 +1,17 @@
 import { Divider, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { AnimatedButton, useFormSubmit } from 'components/shared';
+import { AnimatedButton } from 'components/shared';
 import { Field } from 'components/shared/fields';
+import { useFormSubmit } from 'components/shared/hooks';
 import { create } from 'graphql/mutations/commercial';
+import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 const Form = () => {
-  const { title, sections } = useSelector(
+  const { title, subtitle, sections } = useSelector(
     ({ commercial }: RootState) => commercial.content.formSection.form
   );
   const {
@@ -33,6 +35,10 @@ const Form = () => {
       >
         {title}
       </Typography>
+      <Typography
+        className="text-center text-base my-2"
+        dangerouslySetInnerHTML={{ __html: sanitize(subtitle) }}
+      />
       <Divider className="border-t-2 my-4 md:my-7" />
       <div className="flex flex-col items-center space-y-8 md:space-y-12 mt-8 md:mt-12">
         {sections.map((s) => (

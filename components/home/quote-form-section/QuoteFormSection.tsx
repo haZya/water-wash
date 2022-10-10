@@ -1,5 +1,3 @@
-import bg from '@/assets/images/home/quote-form-section/bg.png';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
 import clsx from 'clsx';
@@ -7,7 +5,7 @@ import { Image } from 'components/shared';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { createYupSchema } from 'lib/yup';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Wave } from '.';
@@ -18,9 +16,9 @@ const QuoteFormSection = () => {
   const {
     title,
     subtitle,
-    background,
     form: { sections },
-  } = useSelector(({ home }: RootState) => home.content.quoteFormSection);
+    backgroundImage,
+  } = useSelector(({ home }: RootState) => home.content.formSection);
   const fields = sections.flatMap((s) => s.fields);
 
   /**
@@ -42,7 +40,7 @@ const QuoteFormSection = () => {
     >
       <Wave />
       <div className="w-full pb-16 bg-gradient-to-r from-primary-100 to-secondary-100">
-        {bg && <Image className={clsx(styles.background)} src={bg} alt="" />}
+        <Image {...backgroundImage} className={clsx(styles.background)} placeholder="empty" />
         <div className="container mx-auto pt-8">
           <header id="quote-form" className="flex flex-col items-center space-y-4 md:space-y-8">
             <Typography

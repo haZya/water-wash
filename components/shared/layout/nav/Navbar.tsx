@@ -1,6 +1,7 @@
 import { FormatAlignLeft } from '@mui/icons-material';
 import {
   AppBar,
+  Box,
   IconButton,
   Toolbar,
   useMediaQuery,
@@ -8,7 +9,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import Image from 'components/shared/Image';
+import { Image } from 'components/shared';
 import { setLayout } from 'components/shared/store/layoutSlice';
 import { RootState } from 'lib/redux';
 import dynamic from 'next/dynamic';
@@ -27,7 +28,7 @@ const Navbar = () => {
     navDrawerOpen,
     layoutContent: {
       logo,
-      nav: { links },
+      nav: { links, mobileLinks },
     },
   } = useSelector(({ shared }: RootState) => shared.layout);
 
@@ -68,26 +69,40 @@ const Navbar = () => {
             >
               <FormatAlignLeft fontSize="medium" />
             </IconButton>
-            <div className="mr-12 w-full sm:w-32 flex sm:block justify-center sm:justify-start pl-6 sm:pl-0">
+            <div className="w-full sm:w-32 flex sm:block justify-start sm:pl-0">
               <Link href="/" shallow scroll>
                 <a>
                   <Image
+                    {...logo}
                     className={clsx(
                       'select-none transition-all duration-300 drop-shadow-md h-auto',
-                      navSticky ? 'w-20' : 'w-28'
+                      navSticky ? 'w-20 min-w-20' : 'w-24 min-w-24'
                     )}
-                    src={logo}
-                    alt="Water Wash Logo"
                     priority
+                    placeholder="empty"
                   />
                 </a>
               </Link>
             </div>
             <div className="hidden sm:flex items-center ml-auto gap-8 md:gap-12">
               {links.map((l) => (
-                <NavLink key={l.path} {...l} />
+                <NavLink key={l.url} {...l} />
               ))}
             </div>
+            <Box
+              className="flex sm:hidden items-center ml-auto"
+              sx={(theme) => ({
+                [theme.breakpoints.down(360)]: {
+                  display: 'none !important',
+                },
+              })}
+            >
+              {mobileLinks.map((l) => (
+                <div key={l.url} className="min-w-max">
+                  <NavLink {...l} />
+                </div>
+              ))}
+            </Box>
           </Toolbar>
         </div>
       </AppBar>

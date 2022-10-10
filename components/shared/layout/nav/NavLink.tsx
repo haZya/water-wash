@@ -8,17 +8,17 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import styles from './Navbar.module.css';
 
-const NavLink = ({ label, path, color, type }: NavLink) => {
+const NavLink = ({ title, url, color, type }: NavLink) => {
   const { hasBanner } = useSelector(({ shared }: RootState) => shared.layout);
   const navSticky = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
   });
   const { pathname } = useRouter();
-  const activePath = path === pathname;
+  const activePath = url === pathname;
 
   return (
-    <Link href={path}>
+    <Link href={url}>
       <a className={clsx('relative', styles.navLink)}>
         {type === 'text' ? (
           <Typography
@@ -39,7 +39,7 @@ const NavLink = ({ label, path, color, type }: NavLink) => {
               activePath && styles.navLinkActive
             )}
           >
-            {label}
+            {title}
           </Typography>
         ) : (
           <AnimatedButton
@@ -70,7 +70,7 @@ const NavLink = ({ label, path, color, type }: NavLink) => {
             color={color === 'text' ? 'inherit' : color}
             spring={false}
           >
-            {label}
+            {title}
           </AnimatedButton>
         )}
       </a>

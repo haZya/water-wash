@@ -1,31 +1,49 @@
-import { StaticImageData } from 'next/image';
-import { DropzoneOptions } from 'react-dropzone';
+//#region Common
+export interface IImage {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  blurDataURL?: string;
+}
 
+export interface IFile {
+  src: string;
+}
+//#endregion
+
+// #region Layout
 export type NavLink = {
-  label: string;
-  path: string;
+  title: string;
+  url: string;
   color: 'primary' | 'secondary' | 'text';
   type: 'text' | 'outlined';
 };
 
 export type Social = {
-  label: string;
-  icon: string;
+  title: string;
   url: string;
+  icon: IImage;
 };
 
 export type ContactAction = {
-  icon: string;
-  label: string;
-  path: string;
+  title: string;
+  url: string;
+  icon: IImage;
 };
 
 export interface ILayout {
-  logo: any;
+  logo: IImage;
+  socials: Social[];
+  contactDial: {
+    icon: IImage;
+    color: 'primary' | 'secondary';
+    actions: ContactAction[];
+  };
   navTop: {
     contactMethods: {
-      icon: string;
       title: string;
+      icon: IImage;
       content: string;
       url: string;
     }[];
@@ -33,12 +51,10 @@ export interface ILayout {
   };
   nav: {
     links: NavLink[];
+    mobileLinks: NavLink[];
   };
-  socials: Social[];
-  contactDial: {
-    icon: string;
-    color: 'primary' | 'secondary';
-    actions: ContactAction[];
+  footer: {
+    copyrightText: string;
   };
 }
 
@@ -60,74 +76,65 @@ export interface ISeo {
    *
    * Initial value: `undefined`
    */
-  metaDesc?: string;
+  metaDescription?: string;
   /**
    * Open Graph image
    *
-   * Initial value: `ogImageDefault`
+   * Initial value: `undefined`
    */
-  ogImage?: StaticImageData;
-  /**
-   * Open Graph image alt text
-   *
-   * Initial value: `ogAltText`
-   */
-  ogAltText?: string;
+  metaImage?: IImage;
 }
 
 export interface IBanner {
   title: string;
-  backgroundImage: StaticImageData | string;
+  backgroundImage: IImage;
 }
 
 export interface IPage {
-  banner?: IBanner;
+  title: string;
+  slug: string;
   seo: ISeo;
 }
+//#endregion
 
-//#region Form
-export interface IFormSection {
-  title: string;
-  componentName?: string;
-  fields: (ITextField | ITextArea | ICheckboxGroup | IFileUpload)[];
-}
+//#region Graphql
+export type ImageResponse = {
+  data: {
+    attributes: IImage;
+  };
+};
 
-export interface SelectOption {
-  name: string;
-  label: string;
-}
+export type FileResponse = {
+  data: {
+    attributes: IFile;
+  };
+};
 
-export interface IFormField {
-  type: 'text' | 'email' | 'textarea' | 'autocomplete' | 'checkbox' | 'file';
-  name: string;
-  label: string;
-  required: boolean;
-  width: 'full' | '2/3' | '1/2' | '1/3';
-  validationType?: string;
-  validations?: { type: string; params: any[] }[];
-  validationTypeError?: string;
-}
+export type SeoResponse = Omit<ISeo, 'metaImage'> & {
+  metaImage: ImageResponse;
+};
 
-export interface ITextField extends IFormField {}
-
-export interface ITextArea extends IFormField {
-  rows: number;
-}
-
-export interface IAutoComplete extends IFormField {
-  multiple: boolean;
-  options: SelectOption[] | null;
-}
-
-export interface ICheckboxGroup extends IFormField {
-  options: SelectOption[];
-}
-
-export interface IFileUpload extends IFormField {
-  options: DropzoneOptions;
-}
-
-export interface IForm {
-  [x: string]: string | string[] | File[] | IAutoComplete['options'];
-}
+export type LayoutResponse = {
+  layout: {
+    data: {
+      attributes: Omit<ILayout, 'logo' | 'socials' | 'contactDial' | 'navTop'> & {
+        logo: ImageResponse;
+        socials: (Omit<Social, 'icon'> & {
+          icon: ImageResponse;
+        })[];
+        contactDial: Omit<ILayout['contactDial'], 'icon' | 'actions'> & {
+          icon: ImageResponse;
+          actions: (Omit<ContactAction, 'icon'> & {
+            icon: ImageResponse;
+          })[];
+        };
+        navTop: Omit<ILayout['navTop'], 'contactMethods'> & {
+          contactMethods: (Omit<ILayout['navTop']['contactMethods'][number], 'icon'> & {
+            icon: ImageResponse;
+          })[];
+        };
+      };
+    };
+  };
+};
 //#endregion

@@ -1,10 +1,7 @@
-import badge1 from '@/assets/images/about/value-section/badge-1.png';
-import badge2 from '@/assets/images/about/value-section/badge-2.png';
-import badge3 from '@/assets/images/about/value-section/badge-3.png';
-
 import { Box, Theme, Typography, useMediaQuery } from '@mui/material';
 import clsx from 'clsx';
-import { Image, useStaggerItem } from 'components/shared';
+import { Image } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IValueSectionItem } from 'models/about';
@@ -16,7 +13,7 @@ interface IProps extends IValueSectionItem {
   index: number;
 }
 
-function ValueItem({ index, badge, title, content, color }: IProps) {
+function ValueItem({ index, image, title, content, bgColor }: IProps) {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [hovering, setHovering] = useState(false);
   const [animating, setAnimating] = useState(false);
@@ -42,7 +39,7 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
         tiltMaxAngleX={mdDown ? 10 : 15}
         tiltAxis="y"
         tiltAngleYManual={
-          hovering ? undefined : mdDown ? 0 : index === 0 ? 15 : index === 2 ? -15 : 0
+          hovering ? undefined : mdDown ? 0 : index % 3 === 0 ? 15 : index % 3 === 2 ? -15 : 0
         }
         onEnter={() => {
           setHovering(true);
@@ -63,15 +60,13 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
             animationDelay: `${(index + 1) * 0.15}s`,
           }}
         >
-          <Box className="py-4" sx={{ backgroundColor: color }}>
+          <Box className="py-4" sx={{ bgcolor: bgColor }}>
             <Image
+              {...image}
               className="w-64 h-auto mx-auto"
-              src={index === 0 ? badge1 : index === 1 ? badge2 : badge3}
-              alt="Badge"
               sizes="(max-width: 640px) 100vw,
               (max-width: 1024px) 50vw,
               33vw"
-              placeholder="blur"
             />
           </Box>
           <div
@@ -84,7 +79,7 @@ function ValueItem({ index, badge, title, content, color }: IProps) {
                 '&::after': {
                   content: '""',
                   position: 'absolute',
-                  backgroundColor: 'currentColor',
+                  bgcolor: 'currentColor',
                   bottom: '-6px',
                   left: 0,
                   width: '48px',

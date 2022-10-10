@@ -8,17 +8,17 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { IFileUpload, IForm } from 'models/shared';
+import { IFileUpload, IForm } from 'models/form';
 import { useEffect } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { formatBytes } from 'utils';
+import { formatBytes } from 'utils/format';
 import { showMessage } from '../store/messageSlice';
 
 type UploadFile = File & { preview: string };
 
-const FileUpload = ({ name, label, required, width, options }: IFileUpload) => {
+const FileUpload = ({ name, label, required, width, fileUploadOptions: options }: IFileUpload) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
@@ -117,11 +117,11 @@ const FileUpload = ({ name, label, required, width, options }: IFileUpload) => {
           className={clsx(
             xsDown || width === 'full'
               ? 'col-span-12'
-              : width === '2/3'
+              : width === 'two_thirds'
               ? 'col-span-8'
-              : width === '1/2'
+              : width === 'half'
               ? 'col-span-6'
-              : width === '1/3' && 'col-span-4',
+              : width === 'one_third' && 'col-span-4',
             'space-y-3'
           )}
         >

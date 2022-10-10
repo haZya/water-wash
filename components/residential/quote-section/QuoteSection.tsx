@@ -1,7 +1,5 @@
-// Import assets; TODO: From CMS
-import bg from '@/assets/images/residential/quote-section/background.jpg';
-
 import { Box, Typography } from '@mui/material';
+import clsx from 'clsx';
 import { AnimatedButton, Image } from 'components/shared';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
@@ -11,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const QuoteSection = () => {
   const [ref, inView] = useInView();
-  const { title, content, background } = useSelector(
+  const { title, content, buttons, backgroundImage } = useSelector(
     ({ residential }: RootState) => residential.content.quoteSection
   );
 
@@ -27,13 +25,7 @@ const QuoteSection = () => {
     >
       {inView && (
         <div className="pointer-events-none fixed transform-center w-full h-full">
-          <Image
-            className="absolute opacity-25 object-cover"
-            src={bg}
-            alt=""
-            fill
-            placeholder="blur"
-          />
+          <Image {...backgroundImage} className="absolute opacity-25 object-cover w-full h-full" />
         </div>
       )}
       <div className="container mx-auto flex-center flex-col pt-28 pb-36 space-y-12 overflow-hidden">
@@ -51,30 +43,25 @@ const QuoteSection = () => {
           />
         </header>
         <div className="flex flex-col sm:flex-row gap-8">
-          <Link href="/#quote-form">
-            <a>
-              <AnimatedButton
-                className="w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
-                size="large"
-                variant="contained"
-                color="secondary"
-              >
-                Get A Quote
-              </AnimatedButton>
-            </a>
-          </Link>
-          <Link href="/#contact-form">
-            <a>
-              <AnimatedButton
-                className="w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white bg-secondary-500 hover:bg-secondary-500 shadow-none hover:shadow-none"
-                size="large"
-                variant="contained"
-                color="secondary"
-              >
-                Enquire Now
-              </AnimatedButton>
-            </a>
-          </Link>
+          {buttons.map((b) => (
+            <Link key={b.label} href={b.url}>
+              <a>
+                <AnimatedButton
+                  className={clsx(
+                    'w-full sm:w-82.5 py-3 text-xl sm:text-2xl text-white shadow-none hover:shadow-none',
+                    b.color === 'primary'
+                      ? 'bg-primary-500 hover:bg-primary-500'
+                      : 'bg-secondary-500 hover:bg-secondary-500'
+                  )}
+                  size="large"
+                  variant="contained"
+                  color={b.color}
+                >
+                  {b.label}
+                </AnimatedButton>
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
     </Box>

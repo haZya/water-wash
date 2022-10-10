@@ -1,18 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IResidential } from 'models/residential';
 
-const initialState: IResidential = {
+const initialState: Omit<IResidential, 'seo'> = {
+  title: '',
+  slug: '',
   bannerSection: {
-    lottie: '',
+    lottie: {
+      src: '',
+    },
   },
-  specializationSection: {
+  specializeSection: {
     title: '',
     specializations: [],
   },
   quoteSection: {
     title: '',
     content: '',
-    background: '',
+    buttons: [],
+    backgroundImage: {
+      src: '',
+      alt: '',
+    },
   },
   planSection: {
     title: '',
@@ -25,13 +33,19 @@ const initialState: IResidential = {
     title: '',
     mission: {
       title: '',
-      subtitle: '',
+      content: '',
     },
     content: {
       title: '',
       content: '',
-      image: '',
-      badge: '',
+      image: {
+        src: '',
+        alt: '',
+      },
+      badge: {
+        src: '',
+        alt: '',
+      },
     },
   },
 };
@@ -40,7 +54,7 @@ const contentSlice = createSlice({
   name: 'residential/content',
   initialState,
   reducers: {
-    setResidentialContent: (_state, action: PayloadAction<IResidential>) => action.payload,
+    setResidentialContent: (_state, action: PayloadAction<typeof initialState>) => action.payload,
   },
 });
 

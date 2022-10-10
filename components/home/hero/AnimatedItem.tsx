@@ -1,11 +1,12 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Box, lighten, Typography, useTheme } from '@mui/material';
 import clsx from 'clsx';
+import { Image } from 'components/shared';
 import { useInView, useWindowSize } from 'hooks';
-import { sanitize } from 'lib/dompurify';
 import { IAnimatedItem } from 'models/home';
 import Link from 'next/link';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { backendUrl } from 'utils/env';
 import styles from './Hero.module.css';
 
 type CircleTranslate = {
@@ -15,7 +16,15 @@ type CircleTranslate = {
 
 interface IProps extends IAnimatedItem {}
 
-const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, path }: IProps) => {
+const AnimatedItem = ({
+  index = -1,
+  lottie: { src },
+  icon,
+  title,
+  description,
+  color,
+  path,
+}: IProps) => {
   const theme = useTheme();
   const [ref, inView] = useInView();
   const { width } = useWindowSize(inView);
@@ -35,6 +44,18 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
         return { circleTX: 0, circleTY: 0 };
     }
   }, [index, mdDown, width]);
+
+  const [file, setFile] = useState<string>('');
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setFile(await (await fetch(backendUrl + src)).json());
+      } catch (err) {
+        console.debug(err);
+      }
+    })();
+  }, [src]);
 
   return (
     <Link href={path}>
@@ -62,7 +83,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
               className={clsx('absolute top-0 left-0 w-full h-full drop-shadow-xl', styles.float)}
               autoplay
               loop
-              src={lottie}
+              src={file}
               style={{
                 animationDelay: `${4 * index}s`,
               }}
@@ -91,7 +112,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                   )}
                   component="span"
                   sx={{
-                    backgroundColor: lighten(color, 0.4),
+                    bgcolor: lighten(color, 0.4),
                     animationDelay: `${1 + index * 0.6}s`,
                   }}
                 />
@@ -120,7 +141,7 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                       styles.drop
                     )}
                     sx={{
-                      backgroundColor: color,
+                      bgcolor: color,
                       transition: 'all .2s cubic-bezier(.655,0.045,.355,1)',
                       transform: 'matrix(1, 0, 0, 1, 0, 0)',
                       '.group:hover &': {
@@ -135,17 +156,21 @@ const AnimatedItem = ({ index = -1, lottie, icon, title, description, color, pat
                       'absolute flex-center transition-colors rounded-full w-20 h-20 p-6'
                     )}
                     component="div"
-                    dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-                    color="text.secondary"
                     sx={{
                       transitionDuration: '.2s',
                       '.group:hover &': {
-                        backgroundColor: 'white',
+                        bgcolor: 'white',
                         transitionDelay: '.1s',
                         transitionDuration: '.3s',
                       },
+                      '& img': {
+                        filter:
+                          'invert(41%) sepia(0%) saturate(0%) hue-rotate(282deg) brightness(96%) contrast(91%)',
+                      },
                     }}
-                  />
+                  >
+                    <Image {...icon} placeholder="empty" />
+                  </Box>
                 </Box>
               </>
               <div

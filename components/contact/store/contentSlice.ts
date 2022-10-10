@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IContact } from 'models/contact';
 
-const initialState: IContact = {
+const initialState: Omit<IContact, 'banner' | 'seo'> = {
+  title: '',
+  slug: '',
   formSection: {
     title: '',
     subtitle: '',
@@ -23,7 +25,7 @@ const contentSlice = createSlice({
   name: 'contact/content',
   initialState,
   reducers: {
-    setContactContent: (_state, action: PayloadAction<IContact>) => action.payload,
+    setContactContent: (_state, action: PayloadAction<typeof initialState>) => action.payload,
   },
 });
 

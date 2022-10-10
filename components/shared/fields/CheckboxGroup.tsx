@@ -8,10 +8,16 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { ICheckboxGroup, IForm, SelectOption } from 'models/shared';
+import { ICheckboxGroup, IForm, SelectOption } from 'models/form';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup) => {
+const CheckboxGroup = ({
+  name,
+  label,
+  checkboxGroupOptions: options,
+  required,
+  width,
+}: ICheckboxGroup) => {
   const theme = useTheme();
   const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
   const {
@@ -31,11 +37,11 @@ const CheckboxGroup = ({ name, label, options, required, width }: ICheckboxGroup
           className={clsx(
             xsDown || width === 'full'
               ? 'col-span-12'
-              : width === '2/3'
+              : width === 'two_thirds'
               ? 'col-span-8'
-              : width === '1/2'
+              : width === 'half'
               ? 'col-span-6'
-              : width === '1/3' && 'col-span-4'
+              : width === 'one_third' && 'col-span-4'
           )}
         >
           <div className="flex mb-2">

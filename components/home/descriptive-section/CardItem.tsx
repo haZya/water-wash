@@ -1,6 +1,7 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { useStaggerItem } from 'components/shared';
+import { Image } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IDescriptiveSectionItem } from 'models/home';
@@ -50,14 +51,25 @@ const CardItem = ({ index, icon, title, content }: IProps) => {
             styles.wrapper
           )}
         >
-          <div
-            className="flex-center text-white bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 p-6 mx-auto"
-            dangerouslySetInnerHTML={{ __html: sanitize(icon) }}
-          />
+          <Box
+            className="flex-center bg-primary-100 group-hover:bg-secondary-400 transition-color duration-700 rounded-full w-20 h-20 p-6 mx-auto"
+            sx={{
+              '& img': {
+                filter:
+                  'invert(97%) sepia(68%) saturate(17%) hue-rotate(106deg) brightness(104%) contrast(100%)',
+              },
+            }}
+          >
+            <Image {...icon} className="" placeholder="empty" />
+          </Box>
           <Typography className="text-center text-lg font-medium select-none" variant="h2">
             {title}
           </Typography>
-          <Typography className="text-center text-xs select-none">{content}</Typography>
+          <Typography
+            className="text-center text-xs select-none"
+            component="div"
+            dangerouslySetInnerHTML={{ __html: sanitize(content) }}
+          />
         </div>
       </Tilt>
     </Box>

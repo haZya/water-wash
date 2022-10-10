@@ -1,7 +1,7 @@
 import { Check } from '@mui/icons-material';
 import { Box, Chip, Theme, Typography, useMediaQuery } from '@mui/material';
 import clsx from 'clsx';
-import { useStaggerItem } from 'components/shared';
+import { useStaggerItem } from 'components/shared/hooks';
 import { useInView } from 'hooks';
 import { sanitize } from 'lib/dompurify';
 import { IPlanSectionItem } from 'models/residential';
@@ -64,7 +64,7 @@ const PlanItem = ({ index, tag, title, bullets }: IProps) => {
                 '&::after': {
                   content: '""',
                   position: 'absolute',
-                  backgroundColor: 'currentColor',
+                  bgcolor: 'currentColor',
                   bottom: '-6px',
                   left: 0,
                   width: '48px',

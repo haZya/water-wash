@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RootState } from 'lib/redux';
 import { createYupSchema } from 'lib/yup';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Form } from './form';

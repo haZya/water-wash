@@ -6,7 +6,7 @@ import {
   useTheme,
 } from '@mui/material';
 import clsx from 'clsx';
-import { IForm, ITextArea, ITextField } from 'models/shared';
+import { IForm, ITextArea, ITextField } from 'models/form';
 import { Controller, useFormContext } from 'react-hook-form';
 
 const TextField = ({ type, name, label, required, width, rows }: ITextField & ITextArea) => {
@@ -29,15 +29,15 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
           className={clsx(
             xsDown || width === 'full'
               ? 'col-span-12'
-              : width === '2/3'
+              : width === 'two_thirds'
               ? 'col-span-8'
-              : width === '1/2'
+              : width === 'half'
               ? 'col-span-6'
-              : width === '1/3' && 'col-span-4',
+              : width === 'one_third' && 'col-span-4',
             'brightness-105 bg-white/50 hover:bg-white focus-within:bg-white shadow-lg shadow-primary-300/30 hover:shadow-primary-500/50 focus-within:!shadow-primary-500/70 transition duration-300'
           )}
           id={name}
-          type={type}
+          type={type === 'ComponentFormEmail' ? 'email' : 'text'}
           name={name}
           label={label}
           placeholder={!required ? '(optional)' : undefined}
@@ -46,7 +46,7 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
           variant="filled"
           color="primary"
           fullWidth
-          multiline={type === 'textarea'}
+          multiline={type === 'ComponentFormTextArea'}
           rows={rows}
           error={!!errors[name]}
           helperText={errors[name]?.message}
@@ -59,7 +59,7 @@ const TextField = ({ type, name, label, required, width, rows }: ITextField & IT
             ),
           }}
           sx={{
-            maxHeight: type !== 'textarea' ? (size === 'small' ? 46 : 53) : undefined,
+            maxHeight: type !== 'ComponentFormTextArea' ? (size === 'small' ? 46 : 53) : undefined,
             mb: errors[name] && 3,
             '& .Mui-focused .MuiInputAdornment-root svg': {
               color: (theme) => theme.palette.primary.main,

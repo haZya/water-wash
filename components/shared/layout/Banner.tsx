@@ -1,6 +1,4 @@
 // Import assets; TODO: From CMS
-import aboutBannerImage from '@/assets/images/about/banner/banner.jpg';
-import contactBannerImage from '@/assets/images/contact/banner/banner.jpg';
 
 import { Box, Typography, useScrollTrigger } from '@mui/material';
 import clsx from 'clsx';
@@ -45,18 +43,12 @@ const Banner = ({ title, backgroundImage }: IBanner) => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgb(0 0 0)',
+                bgcolor: 'rgb(0 0 0)',
                 opacity: 0.6,
               },
             }}
           >
-            <Image
-              src={title === 'About Us' ? aboutBannerImage : contactBannerImage}
-              alt="Banner"
-              fill
-              placeholder="blur"
-              priority
-            />
+            <Image className="object-cover w-full h-full" {...backgroundImage} priority />
           </Box>
         )}
       </div>

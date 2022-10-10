@@ -21,6 +21,6 @@ const SUBMIT: RequestDocument = gql`
 `;
 
 export async function create(variables: Variables) {
-  const { createContactForm }: ICreateResponse = await client.request(SUBMIT, variables);
+  const { createContactForm } = await client.request<ICreateResponse>(SUBMIT, variables);
   return createContactForm.data.id;
 }

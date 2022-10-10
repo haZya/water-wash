@@ -9,13 +9,13 @@ import styles from './DescriptiveSection.module.css';
 import Wave from './Wave';
 
 const DescriptiveSection = () => {
-  const { title, subtitle, background, items } = useSelector(
+  const { title, subtitle, backgroundImage, items } = useSelector(
     ({ home }: RootState) => home.content.descriptiveSection
   );
 
   return (
     <section aria-labelledby="descriptive-section-title" className="relative overflow-hidden pt-0">
-      {background && <Image className={clsx(styles.background)} src={background} alt="" />}
+      <Image {...backgroundImage} className={clsx(styles.background)} placeholder="empty" />
       <div className="bg-gradient-to-r from-primary-100 to-secondary-100 pt-16 pb-4 px-2">
         <div className="container mx-auto">
           <header className="flex flex-col items-center space-y-8">

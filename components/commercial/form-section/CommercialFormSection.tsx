@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { sanitize } from 'lib/dompurify';
 import { RootState } from 'lib/redux';
 import { createYupSchema } from 'lib/yup';
-import { IForm } from 'models/shared';
+import { IForm } from 'models/form';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Form } from './form';

@@ -4,7 +4,7 @@ import { Image } from 'components/shared';
 import { sanitize } from 'lib/dompurify';
 import { IServiceSectionItem } from 'models/residential';
 
-const ServiceItem = ({ title, content, bullets, background }: IServiceSectionItem) => {
+const ServiceItem = ({ title, content, bullets, backgroundImage }: IServiceSectionItem) => {
   return (
     <Box
       className="group relative grow hover:z-10 will-change-transform transition-all duration-500"
@@ -53,22 +53,21 @@ const ServiceItem = ({ title, content, bullets, background }: IServiceSectionIte
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgb(0 0 0 / 0.7)',
+            bgcolor: 'rgb(0 0 0 / 0.7)',
             transition: 'all 0.5s',
           },
           '.group:hover &': {
             boxShadow: '0 0 50px 20px rgb(0 0 0 / 25%)',
             '&::after': {
-              backgroundColor: 'rgb(0 0 0 / 0.6)',
+              bgcolor: 'rgb(0 0 0 / 0.6)',
             },
           },
         }}
       >
         <div className="relative h-full md:skew-x-10 md:-mx-16">
           <Image
-            src={background}
-            alt=""
-            fill
+            {...backgroundImage}
+            className="h-full object-cover"
             sizes="(max-width: 768px) 100vw,
             (max-width: 1024px) 50vw"
           />

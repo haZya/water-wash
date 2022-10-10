@@ -1,5 +1,3 @@
-import greenTick from '@/assets/images/about/mission-section/green-tick.png';
-
 import { Typography } from '@mui/material';
 import { Image } from 'components/shared';
 import { sanitize } from 'lib/dompurify';
@@ -7,7 +5,7 @@ import { RootState } from 'lib/redux';
 import { useSelector } from 'react-redux';
 
 const MissionSection = () => {
-  const { title, content, badge } = useSelector(
+  const { title, content, image } = useSelector(
     ({ about }: RootState) => about.content.missionSection
   );
 
@@ -25,13 +23,11 @@ const MissionSection = () => {
         </header>
         <div className="space-y-6">
           <Image
+            {...image}
             className="w-64 h-auto xs:float-right mx-auto xs:ml-8 sm:mb-4"
-            src={greenTick}
-            alt="Carbon Neutral Certified"
             sizes="(max-width: 640px) 100vw,
               (max-width: 1024px) 50vw,
               33vw"
-            placeholder="blur"
           />
           <Typography
             className="text-base sm:text-lg text-justify font-medium mx-2 md:mx-0"
