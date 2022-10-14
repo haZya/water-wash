@@ -166,6 +166,9 @@ module.exports = {
       skew: {
         10: '10deg',
       },
+      rotate: {
+        8: '8deg',
+      },
     },
   },
   plugins: [],

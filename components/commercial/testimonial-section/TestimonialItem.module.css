@@ -1,0 +1,7 @@
+.swiperSlide {
+  transform: translate3d(0px, 0px, -475px) rotateX(0deg) rotateY(0deg) !important;
+}
+
+.swiperSlideActive {
+  transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) !important;
+}

@@ -8,6 +8,20 @@ export interface ISpecializationSectionItem {
 }
 //#endregion
 
+//#region Testimonial Section
+export interface ITestimonialSectionItem {
+  name: string;
+  role: string;
+  photo: IImage;
+  comment: string;
+  company: {
+    name: string;
+    url: string;
+    logo: IImage;
+  };
+}
+//#endregion
+
 export interface ICommercial extends IPage {
   bannerSection: {
     lottie: IFile;
@@ -25,6 +39,10 @@ export interface ICommercial extends IPage {
       color: 'primary' | 'secondary';
     }[];
     backgroundImage: IImage;
+  };
+  testimonialSection: {
+    title: string;
+    items: ITestimonialSectionItem[];
   };
   formSection: {
     title: string;
@@ -59,6 +77,7 @@ export interface CommercialResponse {
         | 'bannerSection'
         | 'specializeSection'
         | 'enquireSection'
+        | 'testimonialSection'
         | 'formSection'
         | 'missionSection'
         | 'seo'
@@ -73,6 +92,14 @@ export interface CommercialResponse {
         };
         enquireSection: Omit<ICommercial['enquireSection'], 'backgroundImage'> & {
           backgroundImage: ImageResponse;
+        };
+        testimonialSection: Omit<ICommercial['testimonialSection'], 'items'> & {
+          items: (Omit<ITestimonialSectionItem, 'photo' | 'company'> & {
+            photo: ImageResponse;
+            company: Omit<ITestimonialSectionItem['company'], 'logo'> & {
+              logo: ImageResponse;
+            };
+          })[];
         };
         formSection: Omit<ICommercial['formSection'], 'form'> & {
           form: Omit<ICommercial['formSection']['form'], 'sections'> & {

@@ -22,6 +22,10 @@ const initialState: Omit<ICommercial, 'seo'> = {
       alt: '',
     },
   },
+  testimonialSection: {
+    title: '',
+    items: [],
+  },
   formSection: {
     title: '',
     subtitle: '',

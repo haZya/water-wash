@@ -18,6 +18,10 @@ const DynamicCommercialFormSection = dynamic(
   () => import('components/commercial/form-section/CommercialFormSection')
 );
 
+const DynamicTestimonialSection = dynamic(
+  () => import('components/commercial/testimonial-section/TestimonialSection')
+);
+
 interface IProps extends IPage, ICommercial {}
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -41,6 +45,7 @@ const Commercial = ({ seo, ...props }: IProps) => {
       <BannerSection />
       <SpecializeSection />
       <EnquireSection />
+      <DynamicTestimonialSection />
       <DynamicCommercialFormSection />
       <MissionSection />
     </>

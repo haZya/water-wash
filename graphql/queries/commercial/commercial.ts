@@ -37,6 +37,24 @@ const GET_PAGE: RequestDocument = gql`
               ...ImageFragment
             }
           }
+          testimonialSection {
+            title
+            items {
+              name
+              role
+              photo {
+                ...ImageFragment
+              }
+              comment
+              company {
+                name
+                url
+                logo {
+                  ...ImageFragment
+                }
+              }
+            }
+          }
           formSection {
             title
             subtitle
@@ -99,6 +117,14 @@ function format(attr: CommercialResponse['commercialPage']['data']['attributes']
     enquireSection: {
       ...attr.enquireSection,
       backgroundImage: attr.enquireSection.backgroundImage.data.attributes,
+    },
+    testimonialSection: {
+      ...attr.testimonialSection,
+      items: attr.testimonialSection.items.map((item) => ({
+        ...item,
+        photo: item.photo.data.attributes,
+        company: { ...item.company, logo: item.company.logo.data.attributes },
+      })),
     },
     formSection: {
       ...attr.formSection,

@@ -1,9 +1,6 @@
-import { useTheme } from '@mui/material';
 import styles from './Wave.module.css';
 
 const Wave = () => {
-  const theme = useTheme();
-
   return (
     <svg
       className="-mt-4 xs:-mt-16 sm:-mt-16 md:-mt-24 lg:-mt-32 xl:-mt-36"
@@ -16,8 +13,8 @@ const Wave = () => {
     >
       <defs>
         <linearGradient id="gradient-bottom" x1="0%" y1="50%" x2="100%" y2="50%">
-          <stop offset="0%" stopColor={theme.palette.secondary[100]} />
-          <stop offset="100%" stopColor={theme.palette.primary[100]} />
+          <stop offset="0%" stopColor="var(--secondary-100)" />
+          <stop offset="100%" stopColor="var(--primary-100)" />
         </linearGradient>
       </defs>
       <path
